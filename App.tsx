@@ -1,6 +1,6 @@
 import * as React from "react"
 import { createAppContainer } from "react-navigation"
-import Router from "./src/mvc/views/components/system/Router/Router"
+import Router from "./src/mvc/views/components/system/TabRouter/TabRouter"
 
 /**
  * Just export the router component in an app container, to
