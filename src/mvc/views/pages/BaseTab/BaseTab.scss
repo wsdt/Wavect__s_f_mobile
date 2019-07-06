@@ -1,0 +1,9 @@
+@import "../../../../globalConfiguration/globalConstants";
+
+.tab {
+    margin: 5px;
+    background-color: $primaryBackgroundColor;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+}

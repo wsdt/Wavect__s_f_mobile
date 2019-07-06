@@ -1,0 +1,14 @@
+# Secret files are pushed to Github, as the repo is private and we might change them anyways -> *.secrets.ts
+
+/src/**/*.js
+node_modules/**/*
+/dist/**/*
+.expo/*
+npm-debug.*
+*.jks
+*.p12
+*.key
+*.mobileprovision
+
+.jest/
+coverage/
