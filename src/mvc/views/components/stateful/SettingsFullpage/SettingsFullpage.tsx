@@ -106,12 +106,16 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     console.log("SettingsFullpage:getUserSettings: No user settings previously saved")
                     this.loadingContext.setLoading(LoadingStatus.DONE)
                 }
-                if (cb) {cb()}
+                if (cb) {
+                    cb()
+                }
             })
             .catch(e => {
                 console.error(e)
                 this.loadingContext.setLoading(LoadingStatus.ERROR)
-                if (cb) {cb()}
+                if (cb) {
+                    cb()
+                }
             })
     }
 
