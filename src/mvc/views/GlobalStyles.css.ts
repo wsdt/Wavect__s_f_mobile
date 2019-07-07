@@ -7,7 +7,7 @@ export const FULL_HEIGHT = Dimensions.get("window").height
 const globalStyles = StyleSheet.create({
     scrollViewContainer: {
         flexGrow: 1,
-        width: FULL_WIDTH,
+        width: "100%", // width: FULL_WIDTH,
     },
     absoluteCenter: {
         position: "absolute",

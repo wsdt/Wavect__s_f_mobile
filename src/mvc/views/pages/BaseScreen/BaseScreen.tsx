@@ -1,10 +1,10 @@
 import * as React from "react"
-import { View } from "react-native"
+import { RefreshControl, View } from "react-native"
 import { Text } from "react-native-elements"
 import SplashScreen from "react-native-splash-screen"
 import { ScrollView } from "react-navigation"
 import { LoadingIndicator } from "../../components/functional/LoadingIndicator/LoadingIndicator"
-import { LoadingContext, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
+import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
 import globalStyles from "../../GlobalStyles.css"
 import styles from "./BaseScreen.css"
 import { IBaseScreenState } from "./BaseScreen.state"
@@ -13,28 +13,38 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
     public state: IBaseScreenState = {
         loadingStatus: LoadingStatus.LOADING,
         isRefreshing: false,
-        refreshCallback: () => console.warn("BaseScreen: No refresh function provided")
+        refreshCallback: (_: () => void) => console.warn("BaseScreen: No refresh function provided"),
     }
 
     public componentDidMount() {
         SplashScreen.hide()
     }
 
-    public setLoading = (loadingStatus: LoadingStatus) => {
-        this.setState({ loadingStatus })
+    public render() {
+        const contextMethods: ILoadingContext = {
+            setLoading: (loadingStatus: LoadingStatus) => this.setState({ loadingStatus }),
+            setRefresh: (refreshCallback: (_: () => void) => void) => this.setState({ refreshCallback }),
+        }
+
+        return (
+            <LoadingHoc.Provider value={contextMethods}>
+                <ScrollView
+                    refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} />}
+                    contentContainerStyle={styles.page}
+                >
+                    {this.getLoadingStatusComponent()}
+                    <View style={[this.getDisplayProp(), globalStyles.scrollViewContainer]}>{this.props.children}</View>
+                </ScrollView>
+            </LoadingHoc.Provider>
+        )
     }
 
-    public render() {
-        return (
-            <LoadingContext.Provider value={(isLoading: LoadingStatus) => this.setLoading(isLoading)}>
-                <View style={styles.page}>
-                    {this.getLoadingStatusComponent()}
-                    <ScrollView style={this.getDisplayProp()} contentContainerStyle={globalStyles.scrollViewContainer}>
-                        {this.props.children}
-                    </ScrollView>
-                </View>
-            </LoadingContext.Provider>
-        )
+    private onRefresh = () => {
+        this.setState({ isRefreshing: true })
+        this.state.refreshCallback(() => {
+            this.setState({ isRefreshing: false })
+            console.log("BaseScreen:onRefresh: User refreshed screen.")
+        })
     }
 
     private getCenteredText = (text: string) => {

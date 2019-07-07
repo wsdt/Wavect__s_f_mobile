@@ -5,7 +5,7 @@ import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalCon
 import { getLocalUserId, markEmailAsCreated } from "../../../../controllers/LocalStorageController"
 import { noInternetAvailable } from "../../../../controllers/WarningsController"
 import globalStyles from "../../../GlobalStyles.css"
-import { LoadingContext, LoadingStatus } from "../../system/HOCs/LoadingHoc"
+import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../system/HOCs/LoadingHoc"
 import styles from "./SettingsFullpage.css"
 import { ISettingsFullpageState } from "./SettingsFullpage.state"
 
@@ -19,7 +19,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
         isSavingSettings: false,
     }
     private userId: string = ""
-    private setLoading!: (loadingStatus: LoadingStatus) => void
+    private loadingContext!: ILoadingContext
 
     public componentDidMount(): void {
         this.getUserSettings()
@@ -28,12 +28,12 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     public render() {
         return (
             <View style={[globalStyles.pageContainer, styles.fullpageWidth]}>
-                <LoadingContext.Consumer>
-                    {setLoading => {
-                        this.setLoading = setLoading
+                <LoadingHoc.Consumer>
+                    {contextMethods => {
+                        this.loadingContext = contextMethods
                         return this.getSettingsView()
                     }}
-                </LoadingContext.Consumer>
+                </LoadingHoc.Consumer>
             </View>
         )
     }
@@ -99,17 +99,17 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                         validEmail: true,
                     })
                     // Do NOT set LoadingStatus.NOT_AVAILABLE as Settings might be null
-                    this.setLoading(LoadingStatus.DONE)
+                    this.loadingContext.setLoading(LoadingStatus.DONE)
                     console.log("SettingsFullpage:getUserSettings: Received user settings.")
                 } else {
                     console.log("SettingsFullpage:getUserSettings: No user settings previously saved")
-                    this.setLoading(LoadingStatus.DONE)
+                    this.loadingContext.setLoading(LoadingStatus.DONE)
                 }
             })
 
             .catch(e => {
                 console.error(e)
-                this.setLoading(LoadingStatus.ERROR)
+                this.loadingContext.setLoading(LoadingStatus.ERROR)
             })
     }
 

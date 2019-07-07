@@ -14,7 +14,6 @@ const SponsorFullpage: React.FunctionComponent<ISponsorFullpageProps> = props =>
         <ScrollView>
             <View style={styles.mainContainer}>
                 <Image source={logoUri} containerStyle={styles.imageContainer} style={styles.imageStyle} resizeMode="contain" />
-                {/* <Text style={styles.heading}> {sponsorName}</Text> */}
 
                 <View style={styles.hr_line} />
 

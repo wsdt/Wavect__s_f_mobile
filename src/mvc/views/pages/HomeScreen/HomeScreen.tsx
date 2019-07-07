@@ -3,7 +3,7 @@ import { View } from "react-native"
 import { BACKEND_MOBILE_API } from "../../../../globalConfiguration/globalConfig"
 import { Challenge } from "../../../models/Challenge"
 import ChallengeFullpage from "../../components/stateful/ChallengeFullpage/ChallengeFullpage"
-import { LoadingContext, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
+import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
 import { BaseScreen } from "../BaseScreen/BaseScreen"
 import { IHomeScreenState } from "./HomeScreen.state"
 
@@ -11,21 +11,22 @@ export class HomeScreen extends React.Component<any, IHomeScreenState> {
     public state: IHomeScreenState = {
         challenge: undefined,
     }
-    private setLoading!: (_: LoadingStatus) => void
+    private loadingContext!: ILoadingContext
 
     public componentDidMount(): void {
         this.fetchChallenge()
+        this.loadingContext.setRefresh(this.fetchChallenge)
     }
 
     public render() {
         return (
             <BaseScreen>
-                <LoadingContext.Consumer>
-                    {setLoading => {
-                        this.setLoading = setLoading
+                <LoadingHoc.Consumer>
+                    {contextMethods => {
+                        this.loadingContext = contextMethods
                         return <View>{this.getChallengeComponent()}</View>
                     }}
-                </LoadingContext.Consumer>
+                </LoadingHoc.Consumer>
             </BaseScreen>
         )
     }
@@ -37,20 +38,26 @@ export class HomeScreen extends React.Component<any, IHomeScreenState> {
         return null
     }
 
-    private fetchChallenge = () => {
+    private fetchChallenge = (cb?: () => void) => {
         fetch(`${BACKEND_MOBILE_API}/challenge/current`)
             .then(res => res.json())
             .then(data => {
                 this.setState({ challenge: data.res as Challenge })
                 if (this.state.challenge) {
-                    this.setLoading(LoadingStatus.DONE)
+                    this.loadingContext.setLoading(LoadingStatus.DONE)
                 } else {
-                    this.setLoading(LoadingStatus.NOT_AVAILABLE)
+                    this.loadingContext.setLoading(LoadingStatus.NOT_AVAILABLE)
+                }
+                if (cb) {
+                    cb()
                 }
             })
             .catch(e => {
                 console.error(e)
-                this.setLoading(LoadingStatus.ERROR)
+                this.loadingContext.setLoading(LoadingStatus.ERROR)
+                if (cb) {
+                    cb()
+                }
             })
     }
 }

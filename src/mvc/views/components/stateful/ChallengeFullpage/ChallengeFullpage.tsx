@@ -5,7 +5,7 @@ import globalStyles from "../../../GlobalStyles.css"
 import { ChallengeTypeIcon } from "../../functional/ChallengeTypeIcon/ChallengeTypeIcon"
 import { CompanyLogo } from "../../functional/CompanyLogo/CompanyLogo"
 import { GrayColorImg } from "../../functional/GrayColorImg/GrayColorImg"
-import { LoadingContext, LoadingStatus } from "../../system/HOCs/LoadingHoc"
+import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../system/HOCs/LoadingHoc"
 import { routes } from "../../system/TabRouter/HomeScreenRouter/HomeRoutes"
 import ChallengeLayerBar from "../ChallengeLayerBar/ChallengeLayerBar"
 import styles from "./ChallengeFullpage.css"
@@ -17,24 +17,24 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
         isGrayscale: true,
         isLoading: true,
     }
-    private setLoading!: (_: LoadingStatus) => void
+    private loadingContext!: ILoadingContext
 
     public render() {
         // destructure
         const { bgImage } = this.props.challenge
 
         return (
-            <LoadingContext.Consumer>
-                {setLoading => {
-                    this.setLoading = setLoading
+            <LoadingHoc.Consumer>
+                {contextMethods => {
+                    this.loadingContext = contextMethods
                     return (
                         <GrayColorImg isGrayscale={this.state.isGrayscale}>
                             <ImageBackground
                                 source={bgImage}
                                 imageStyle={globalStyles.radius}
                                 onLoad={this.onLoad}
-                                onLoadStart={() => this.setLoading(LoadingStatus.LOADING)}
-                                onError={() => this.setLoading(LoadingStatus.ERROR)}
+                                onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)}
+                                onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
                                 style={globalStyles.pageContainer}
                             >
                                 {this.getChallengeView()}
@@ -42,7 +42,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                         </GrayColorImg>
                     )
                 }}
-            </LoadingContext.Consumer>
+            </LoadingHoc.Consumer>
         )
     }
 
@@ -78,7 +78,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     }
 
     private onLoad = () => {
-        this.setLoading(LoadingStatus.DONE)
+        this.loadingContext.setLoading(LoadingStatus.DONE)
     }
 }
 
