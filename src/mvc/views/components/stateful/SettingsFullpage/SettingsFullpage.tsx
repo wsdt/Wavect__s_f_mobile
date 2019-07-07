@@ -23,6 +23,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
 
     public componentDidMount(): void {
         this.getUserSettings()
+        this.loadingContext.setRefresh(this.getUserSettings)
     }
 
     public render() {
@@ -88,7 +89,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
         return this.userId
     }
 
-    private getUserSettings = async () => {
+    private getUserSettings = async (cb?: () => void) => {
         fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`)
             .then(res => res.json())
             .then(data => {
@@ -105,11 +106,12 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     console.log("SettingsFullpage:getUserSettings: No user settings previously saved")
                     this.loadingContext.setLoading(LoadingStatus.DONE)
                 }
+                if (cb) {cb()}
             })
-
             .catch(e => {
                 console.error(e)
                 this.loadingContext.setLoading(LoadingStatus.ERROR)
+                if (cb) {cb()}
             })
     }
 
