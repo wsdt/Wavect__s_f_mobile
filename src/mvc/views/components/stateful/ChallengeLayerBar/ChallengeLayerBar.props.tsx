@@ -1,7 +1,7 @@
 import { NavigationInjectedProps, NavigationParams, NavigationRoute, NavigationScreenProp } from "react-navigation"
 
 export interface IChallengeLayerBarProps {
-    setGrayscale: (isGrayscale:boolean) => void
+    setGrayscale: (isGrayscale: boolean) => void
     challengeId: string
     headline: string
     subline: string

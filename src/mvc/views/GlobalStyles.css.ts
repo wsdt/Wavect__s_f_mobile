@@ -20,7 +20,7 @@ const globalStyles = StyleSheet.create({
     },
     pageContainer: {
         flex: 1,
-        height: FULL_HEIGHT-150,
+        height: FULL_HEIGHT - 150,
         margin: 5,
         justifyContent: "flex-start",
     },

@@ -32,7 +32,7 @@ export const MajorButton: React.FunctionComponent<IMajorButtonProps> = props => 
                 buttonStyle={styles.btnStyleWithBorder}
                 onPress={onPress}
                 loading={props.isLoading}
-                icon={(icon) ? <Icon name={icon} type="font-awesome" /> : undefined}
+                icon={icon ? <Icon name={icon} type="font-awesome" /> : undefined}
             />
         </View>
     )

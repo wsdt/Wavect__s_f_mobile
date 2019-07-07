@@ -1,5 +1,5 @@
-import {StyleSheet} from "react-native"
-import {secondaryBackgroundColor, secondaryColor} from "../../../../../globalConfiguration/globalConstants.css"
+import { StyleSheet } from "react-native"
+import { secondaryBackgroundColor, secondaryColor } from "../../../../../globalConfiguration/globalConstants.css"
 
 const styles = StyleSheet.create({
     primaryBtnContainer: {

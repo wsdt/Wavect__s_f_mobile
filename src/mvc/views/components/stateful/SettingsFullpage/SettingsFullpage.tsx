@@ -1,13 +1,13 @@
 import React from "react"
-import {View} from "react-native"
-import {Button, CheckBox, Icon, Input, Text} from "react-native-elements"
-import {BACKEND_MOBILE_API} from "../../../../../globalConfiguration/globalConfig"
-import {getLocalUserId, markEmailAsCreated} from "../../../../controllers/LocalStorageController"
-import {noInternetAvailable} from "../../../../controllers/WarningsController"
+import { View } from "react-native"
+import { Button, CheckBox, Icon, Input, Text } from "react-native-elements"
+import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
+import { getLocalUserId, markEmailAsCreated } from "../../../../controllers/LocalStorageController"
+import { noInternetAvailable } from "../../../../controllers/WarningsController"
 import globalStyles from "../../../GlobalStyles.css"
-import {LoadingContext, LoadingStatus} from "../../system/HOCs/LoadingHoc"
+import { LoadingContext, LoadingStatus } from "../../system/HOCs/LoadingHoc"
 import styles from "./SettingsFullpage.css"
-import {ISettingsFullpageState} from "./SettingsFullpage.state"
+import { ISettingsFullpageState } from "./SettingsFullpage.state"
 
 export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpageState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/settings`
@@ -26,14 +26,16 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     }
 
     public render() {
-        return <View style={[globalStyles.pageContainer, styles.fullpageWidth]}>
-            <LoadingContext.Consumer>
-                {setLoading => {
-                    this.setLoading = setLoading
-                    return this.getSettingsView()
-                }}
-            </LoadingContext.Consumer>
-        </View>
+        return (
+            <View style={[globalStyles.pageContainer, styles.fullpageWidth]}>
+                <LoadingContext.Consumer>
+                    {setLoading => {
+                        this.setLoading = setLoading
+                        return this.getSettingsView()
+                    }}
+                </LoadingContext.Consumer>
+            </View>
+        )
     }
 
     private getSettingsView = () => {
@@ -41,8 +43,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
         return (
             <>
                 <Text style={styles.row}>
-                    Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder
-                    Produkten/Services zu kontaktieren.
+                    Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder Produkten/Services zu kontaktieren.
                 </Text>
 
                 <Input
@@ -51,7 +52,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     containerStyle={styles.row}
                     label="E-Mail"
                     placeholder=" Deine E-Mail"
-                    leftIcon={<Icon name="envelope" type="font-awesome"/>}
+                    leftIcon={<Icon name="envelope" type="font-awesome" />}
                     shake={true}
                     errorMessage={this.state.validEmail ? "" : "Bitte gib eine gültige E-Mail an."}
                 />
@@ -61,7 +62,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     containerStyle={styles.row}
                     checkedColor="#000"
                     title="Ich verstehe und akzeptiere, dass meine E-Mail-Adresse bei erfolgreichem Abschluss einer Herausforderung an den angegebenen Sponsor übermittelt wird."
-                    onPress={() => this.setState({hasAcceptedDataPrivacy: !this.state.hasAcceptedDataPrivacy})}
+                    onPress={() => this.setState({ hasAcceptedDataPrivacy: !this.state.hasAcceptedDataPrivacy })}
                 />
 
                 <Button
@@ -71,7 +72,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     raised={isFormSubmittable}
                     loading={this.state.isSavingSettings}
                     disabled={!isFormSubmittable}
-                    icon={<Icon name="save" type="font-awesome"/>}
+                    icon={<Icon name="save" type="font-awesome" />}
                     onPress={this.postUserSettings}
                 />
             </>
@@ -97,6 +98,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                         email: data.res.email,
                         validEmail: true,
                     })
+                    // Do NOT set LoadingStatus.NOT_AVAILABLE as Settings might be null
                     this.setLoading(LoadingStatus.DONE)
                     console.log("SettingsFullpage:getUserSettings: Received user settings.")
                 } else {
@@ -112,8 +114,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     }
 
     private postUserSettings = () => {
-        this.setState({isSavingSettings: true}, async () => {
-
+        this.setState({ isSavingSettings: true }, async () => {
             try {
                 const rawResp = await fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, {
                     method: "POST",
@@ -132,7 +133,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                 // mark the email as created, --> "Accept" Button works now.
                 markEmailAsCreated()
 
-                this.setState({isSavingSettings: false})
+                this.setState({ isSavingSettings: false })
                 console.log("SettingsFullpage:postUserSettings: Tried to save userSettings -> " + JSON.stringify(res))
             } catch (e) {
                 noInternetAvailable()
@@ -142,7 +143,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     }
 
     private emailValidation = (email: string) => {
-        this.setState({email, validEmail: SettingsFullpage.EMAIL_REGEX.test(email)})
+        this.setState({ email, validEmail: SettingsFullpage.EMAIL_REGEX.test(email) })
     }
 
     private isFormSubmittable = (): boolean => {

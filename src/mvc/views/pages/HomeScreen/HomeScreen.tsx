@@ -1,11 +1,11 @@
 import * as React from "react"
-import {View} from "react-native"
-import {BACKEND_MOBILE_API} from "../../../../globalConfiguration/globalConfig"
-import {Challenge} from "../../../models/Challenge"
+import { View } from "react-native"
+import { BACKEND_MOBILE_API } from "../../../../globalConfiguration/globalConfig"
+import { Challenge } from "../../../models/Challenge"
 import ChallengeFullpage from "../../components/stateful/ChallengeFullpage/ChallengeFullpage"
-import {LoadingContext, LoadingStatus} from "../../components/system/HOCs/LoadingHoc"
-import {BaseScreen} from "../BaseScreen/BaseScreen"
-import {IHomeScreenState} from "./HomeScreen.state"
+import { LoadingContext, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
+import { BaseScreen } from "../BaseScreen/BaseScreen"
+import { IHomeScreenState } from "./HomeScreen.state"
 
 export class HomeScreen extends React.Component<any, IHomeScreenState> {
     public state: IHomeScreenState = {
@@ -32,7 +32,7 @@ export class HomeScreen extends React.Component<any, IHomeScreenState> {
 
     private getChallengeComponent = () => {
         if (this.state.challenge) {
-            return <ChallengeFullpage challenge={this.state.challenge}/>
+            return <ChallengeFullpage challenge={this.state.challenge} />
         }
         return null
     }
@@ -41,8 +41,12 @@ export class HomeScreen extends React.Component<any, IHomeScreenState> {
         fetch(`${BACKEND_MOBILE_API}/challenge/current`)
             .then(res => res.json())
             .then(data => {
-                this.setState({challenge: data.res as Challenge})
-                this.setLoading(LoadingStatus.DONE)
+                this.setState({ challenge: data.res as Challenge })
+                if (this.state.challenge) {
+                    this.setLoading(LoadingStatus.DONE)
+                } else {
+                    this.setLoading(LoadingStatus.NOT_AVAILABLE)
+                }
             })
             .catch(e => {
                 console.error(e)

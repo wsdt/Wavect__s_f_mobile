@@ -1,5 +1,5 @@
 import React from "react"
-import { Linking, ScrollView, View} from "react-native"
+import { Linking, ScrollView, View } from "react-native"
 import { Image, Text } from "react-native-elements"
 import { withMappedNavigationParams } from "react-navigation-props-mapper"
 import { MajorBtnType, MajorButton } from "../../functional/MajorButton/MajorButton"
