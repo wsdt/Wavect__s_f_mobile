@@ -1,5 +1,5 @@
 import * as React from "react"
-import {RefreshControl, View} from "react-native"
+import { RefreshControl, View } from "react-native"
 import { Text } from "react-native-elements"
 import SplashScreen from "react-native-splash-screen"
 import { ScrollView } from "react-navigation"
@@ -33,14 +33,14 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
             <LoadingHoc.Provider value={contextMethods}>
                 <ScrollView
                     refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} />}
-                    contentContainerStyle={styles.page}>
+                    contentContainerStyle={styles.page}
+                >
                     {this.getLoadingStatusComponent()}
                     <View style={[this.getDisplayProp(), globalStyles.scrollViewContainer]}>{this.props.children}</View>
                 </ScrollView>
             </LoadingHoc.Provider>
         )
     }
-
 
     private onRefresh = () => {
         this.setState({ isRefreshing: true })

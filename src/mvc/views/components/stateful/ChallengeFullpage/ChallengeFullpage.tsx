@@ -21,7 +21,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
 
     public render() {
         // destructure
-       // const { bgImage } = this.props.challenge
+        // const { bgImage } = this.props.challenge
         // destructure
         const { bgImage } = this.props.challenge
 
@@ -34,11 +34,12 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                             <>
                                 <Image
                                     source={bgImage}
-                                    style={[styles.backgroundImage,globalStyles.radius]}
+                                    style={[styles.backgroundImage, globalStyles.radius]}
                                     onLoad={this.onLoad}
                                     onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)}
-                                    onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}/>
-                            {this.getChallengeView()}
+                                    onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
+                                />
+                                {this.getChallengeView()}
                             </>
                         </GrayColorImg>
                     )
@@ -46,8 +47,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
             </LoadingHoc.Consumer>
         )
     }
-
-
 
     public render1() {
         // destructure
