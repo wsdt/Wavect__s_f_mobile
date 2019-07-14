@@ -4,12 +4,6 @@ import globalStyles, { FULL_HEIGHT } from "../../../GlobalStyles.css"
 const radius = globalStyles.radius.borderRadius
 
 const styles = StyleSheet.create({
-    expirationCountdownText: {
-        flex: 1,
-        color: "#32CD32",
-        marginLeft: 5,
-        textAlign: "center",
-    },
     mainComponent: {
         height: FULL_HEIGHT - 150,
         justifyContent: "flex-end",

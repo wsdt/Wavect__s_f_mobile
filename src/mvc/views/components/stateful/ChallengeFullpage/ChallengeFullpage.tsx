@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ImageBackground, View } from "react-native"
+import { ImageBackground, View, Image } from "react-native"
 import { withNavigation } from "react-navigation"
 import globalStyles from "../../../GlobalStyles.css"
 import { ChallengeTypeIcon } from "../../functional/ChallengeTypeIcon/ChallengeTypeIcon"
@@ -20,6 +20,36 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     private loadingContext!: ILoadingContext
 
     public render() {
+        // destructure
+       // const { bgImage } = this.props.challenge
+        // destructure
+        const { bgImage } = this.props.challenge
+
+        return (
+            <LoadingHoc.Consumer>
+                {contextMethods => {
+                    this.loadingContext = contextMethods
+                    return (
+                        <GrayColorImg isGrayscale={this.state.isGrayscale}>
+                            <>
+                                <Image
+                                    source={bgImage}
+                                    style={[styles.backgroundImage,globalStyles.radius]}
+                                    onLoad={this.onLoad}
+                                    onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)}
+                                    onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}/>
+                            {this.getChallengeView()}
+                            </>
+                        </GrayColorImg>
+                    )
+                }}
+            </LoadingHoc.Consumer>
+        )
+    }
+
+
+
+    public render1() {
         // destructure
         const { bgImage } = this.props.challenge
 
