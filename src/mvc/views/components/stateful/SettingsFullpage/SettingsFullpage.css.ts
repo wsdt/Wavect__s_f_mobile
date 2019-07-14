@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native"
+import {FULL_WIDTH} from "../../../GlobalStyles.css";
 
 const styles = StyleSheet.create({
     row: {
@@ -8,6 +9,9 @@ const styles = StyleSheet.create({
     fullpageWidth: {
         width: "95%",
     },
+    fullAbsoluteWidth: {
+        width: FULL_WIDTH-15
+    }
 })
 
 export default styles

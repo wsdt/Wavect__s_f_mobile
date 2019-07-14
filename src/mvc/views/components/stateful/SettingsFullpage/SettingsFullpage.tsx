@@ -50,7 +50,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                 <Input
                     value={this.state.email}
                     onChangeText={text => this.emailValidation(text)}
-                    containerStyle={styles.row}
+                    containerStyle={[styles.row, styles.fullAbsoluteWidth]}
                     label="E-Mail"
                     placeholder=" Deine E-Mail"
                     leftIcon={<Icon name="envelope" type="font-awesome" />}
@@ -67,7 +67,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                 />
 
                 <Button
-                    containerStyle={styles.row}
+                    containerStyle={[styles.row, styles.fullAbsoluteWidth]}
                     type="outline"
                     title=" Speichern"
                     raised={isFormSubmittable}
@@ -79,6 +79,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
             </>
         )
     }
+
 
     private getUserId = async () => {
         if (!this.userId) {

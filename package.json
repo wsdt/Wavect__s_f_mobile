@@ -7,8 +7,8 @@
     "dependencies": {
         "@babel/runtime": "^7.0.0",
         "@react-native-community/async-storage": "^1.5.0",
-        "react": "16.8.3",
-        "react-native": "0.59.9",
+        "react": "16.8.6",
+        "react-native": "0.60.3",
         "react-native-color-matrix-image-filters": "^5.1.5",
         "react-native-elements": "^1.1.0",
         "react-native-fa-icons": "^4.1.1",

@@ -2,7 +2,7 @@ import * as React from "react"
 import { RefreshControl, View } from "react-native"
 import { Text } from "react-native-elements"
 import SplashScreen from "react-native-splash-screen"
-import { ScrollView } from "react-navigation"
+import { ScrollView, SafeAreaView } from "react-navigation"
 import { LoadingIndicator } from "../../components/functional/LoadingIndicator/LoadingIndicator"
 import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
 import globalStyles from "../../GlobalStyles.css"
@@ -36,7 +36,9 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
                     contentContainerStyle={styles.page}
                 >
                     {this.getLoadingStatusComponent()}
-                    <View style={[this.getDisplayProp(), globalStyles.scrollViewContainer]}>{this.props.children}</View>
+                    <SafeAreaView>
+                        <View style={[this.getDisplayProp(), globalStyles.scrollViewContainer]}>{this.props.children}</View>
+                    </SafeAreaView>
                 </ScrollView>
             </LoadingHoc.Provider>
         )
