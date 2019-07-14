@@ -1,11 +1,11 @@
 import { StyleSheet } from "react-native"
-import globalStyles  from "../../../GlobalStyles.css"
+import globalStyles from "../../../GlobalStyles.css"
 
 const radius = globalStyles.radius.borderRadius
 
 const styles = StyleSheet.create({
     mainComponent: {
-        height: '100%',
+        height: "100%",
         justifyContent: "flex-end",
     },
     btnStyleTransparent: {

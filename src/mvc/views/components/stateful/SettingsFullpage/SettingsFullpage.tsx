@@ -80,7 +80,6 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
         )
     }
 
-
     private getUserId = async () => {
         if (!this.userId) {
             // save as instance var to not fetch on every render from local storage
