@@ -33,7 +33,8 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
             <LoadingHoc.Provider value={contextMethods}>
                 <ScrollView
                     refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} />}
-                    contentContainerStyle={styles.page}>
+                    contentContainerStyle={styles.page}
+                >
                     {this.getLoadingStatusComponent()}
                     <View style={[this.getDisplayProp(), globalStyles.scrollViewContainer]}>{this.props.children}</View>
                 </ScrollView>
