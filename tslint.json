@@ -1,3 +1,0 @@
-{
-    "extends": ["tslint-react-native", "../../_base/tslint.json"]
-}
