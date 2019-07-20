@@ -15,14 +15,14 @@ export const routesConfig: NavigationRouteConfigMap = {
     [tabRoutes.HomeScreen]: {
         screen: HomeScreenRouter, // which component to load
         navigationOptions: {
-            title: "Challenge",
-            tabBarIcon: <Icon name="bell" type="font-awesome" />,
+            title: "Herausforderung",
+            tabBarIcon: <Icon name="tasks" type="font-awesome" />,
         },
     },
     [tabRoutes.SettingsScreen]: {
         screen: SettingsScreenRouter,
         navigationOptions: {
-            title: "Settings",
+            title: "Einstellungen",
             tabBarIcon: <Icon name="cog" type="font-awesome" />,
         },
     },

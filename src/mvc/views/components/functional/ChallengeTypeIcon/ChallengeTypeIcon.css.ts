@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native"
-import { GREY } from "../../../GlobalStyles.css"
 
 const roundRadius = 500
+export const BG_COLOR = "#008B8B" // color used for tooltip and image-bg when user accomplished challenge
 
 const styles = StyleSheet.create({
     image: {
@@ -14,7 +14,6 @@ const styles = StyleSheet.create({
         borderRadius: roundRadius,
         width: 47,
         height: 47,
-        backgroundColor: GREY,
     },
     touchableContainer: {
         alignSelf: "flex-end",

@@ -3,19 +3,24 @@ import { TouchableOpacity } from "react-native"
 import { Image, Text, Tooltip } from "react-native-elements"
 import { CHALLENGE_CATEGORIES } from "../../../../models/ChallengeCategory"
 import globalStyles, { GREY } from "../../../GlobalStyles.css"
-import styles from "./ChallengeTypeIcon.css"
+import styles, {BG_COLOR} from "./ChallengeTypeIcon.css"
 import { IChallengeTypeIconProps } from "./ChallengeTypeIcon.props"
 
 export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps> = props => {
+    const currColor = getColor(props.isGrayscale)
     return (
         <TouchableOpacity style={styles.touchableContainer}>
             <Tooltip
                 popover={<Text style={globalStyles.tooltipText}>{CHALLENGE_CATEGORIES[props.type].descr}</Text>}
-                backgroundColor={GREY}
+                backgroundColor={currColor}
                 height={135}
             >
-                <Image source={CHALLENGE_CATEGORIES[props.type].icon} containerStyle={styles.imageContainer} style={styles.image} />
+                <Image source={CHALLENGE_CATEGORIES[props.type].icon} containerStyle={[styles.imageContainer, {backgroundColor: currColor}]} style={styles.image} />
             </Tooltip>
         </TouchableOpacity>
     )
+}
+
+const getColor = (isGrayscale:boolean) => {
+    return (isGrayscale) ? GREY : BG_COLOR
 }

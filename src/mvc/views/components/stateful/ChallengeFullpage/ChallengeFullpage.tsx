@@ -92,7 +92,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                             })
                         }}
                     />
-                    <ChallengeTypeIcon type={majorCategory} />
+                    <ChallengeTypeIcon type={majorCategory} isGrayscale={this.state.isGrayscale}/>
                 </View>
                 <ChallengeLayerBar
                     headline={headline}
