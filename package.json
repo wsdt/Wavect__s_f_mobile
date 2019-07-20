@@ -1,60 +1,60 @@
 {
-  "name": "wavect",
-  "version": "0.0.1",
-  "private": true,
-  "scripts": {
-    "start": "nps",
-    "test": "jest",
-    "lint": "eslint ."
-  },
-  "dependencies": {
-    "@babel/runtime": "^7.0.0",
-    "@react-native-community/async-storage": "^1.5.0",
-    "react": "16.8.6",
-    "react-native": "0.60.3",
-    "react-native-color-matrix-image-filters": "^5.1.5",
-    "react-native-elements": "^1.1.0",
-    "react-native-fa-icons": "^4.1.1",
-    "react-native-fontawesome": "^6.0.1",
-    "react-native-formik": "^1.7.4",
-    "react-native-gesture-handler": "^1.3.0",
-    "react-native-splash-screen": "^3.2.0",
-    "react-native-vector-icons": "^6.4.2",
-    "react-navigation": "^3.3.2",
-    "react-navigation-props-mapper": "^1.0.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.5.4",
-    "@react-native-community/eslint-config": "^0.0.5",
-    "@types/jest": "^24.0.5",
-    "@types/react": "^16.8.3",
-    "@types/react-native": "^0.57.36",
-    "@types/react-navigation": "^3.0.7",
-    "@types/react-test-renderer": "^16.8.1",
-    "babel-jest": "^24.8.0",
-    "eslint": "^6.0.1",
-    "husky": "^1.3.1",
-    "jest": "^24.8.0",
-    "metro-react-native-babel-preset": "^0.55.0",
-    "node-sass": "^4.11.0",
-    "nps": "^5.9.3",
-    "prettier": "^1.16.4",
-    "react-test-renderer": "16.8.6",
-    "ts-jest": "^23.10.5",
-    "tslint": "^5.12.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-consistent-codestyle": "^1.15.0",
-    "tslint-eslint-rules": "^5.4.0",
-    "tslint-react": "^3.6.0",
-    "tslint-react-native": "^0.0.6",
-    "typescript": "^3.5.3"
-  },
-  "jest": {
-    "preset": "react-native"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "yarn start prettier"
+    "name": "wavect",
+    "version": "0.0.1",
+    "private": true,
+    "scripts": {
+        "start": "nps",
+        "test": "jest",
+        "lint": "eslint ."
+    },
+    "dependencies": {
+        "@babel/runtime": "^7.0.0",
+        "@react-native-community/async-storage": "^1.5.0",
+        "react": "16.8.6",
+        "react-native": "0.60.3",
+        "react-native-color-matrix-image-filters": "^5.1.5",
+        "react-native-elements": "^1.1.0",
+        "react-native-fa-icons": "^4.1.1",
+        "react-native-fontawesome": "^6.0.1",
+        "react-native-formik": "^1.7.4",
+        "react-native-gesture-handler": "^1.3.0",
+        "react-native-splash-screen": "^3.2.0",
+        "react-native-vector-icons": "^6.4.2",
+        "react-navigation": "^3.3.2",
+        "react-navigation-props-mapper": "^1.0.1"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.5.4",
+        "@react-native-community/eslint-config": "^0.0.5",
+        "@types/jest": "^24.0.5",
+        "@types/react": "^16.8.3",
+        "@types/react-native": "^0.57.36",
+        "@types/react-navigation": "^3.0.7",
+        "@types/react-test-renderer": "^16.8.1",
+        "babel-jest": "^24.8.0",
+        "eslint": "^6.0.1",
+        "husky": "^1.3.1",
+        "jest": "^24.8.0",
+        "metro-react-native-babel-preset": "^0.55.0",
+        "node-sass": "^4.11.0",
+        "nps": "^5.9.3",
+        "prettier": "^1.16.4",
+        "react-test-renderer": "16.8.6",
+        "ts-jest": "^23.10.5",
+        "tslint": "^5.12.1",
+        "tslint-config-prettier": "^1.18.0",
+        "tslint-consistent-codestyle": "^1.15.0",
+        "tslint-eslint-rules": "^5.4.0",
+        "tslint-react": "^3.6.0",
+        "tslint-react-native": "^0.0.6",
+        "typescript": "^3.5.3"
+    },
+    "jest": {
+        "preset": "react-native"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "yarn start prettier"
+        }
     }
-  }
 }

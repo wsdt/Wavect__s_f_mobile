@@ -1,7 +1,6 @@
 /** Enum does not allow require or dynamic strings. But useful for type-safety. */
 
-
-import {ICO_ENVIRONMENT, ICO_HEALTH, ICO_SOCIETY} from "../../assets/AssetIndex";
+import { ICO_ENVIRONMENT, ICO_HEALTH, ICO_SOCIETY } from "../../assets/AssetIndex"
 
 export enum ChallengeCategory {
     ENVIRONMENT = "ENVIRONMENT",
