@@ -63,5 +63,6 @@ export const styles = StyleSheet.create({
         width: "100%",
         justifyContent: "space-around",
         marginTop: 20,
+        marginBottom:20,
     },
 })

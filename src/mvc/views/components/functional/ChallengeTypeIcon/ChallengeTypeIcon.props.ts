@@ -1,4 +1,4 @@
-import {ChallengeCategory} from "../../../../models/ChallengeCategory"
+import { ChallengeCategory } from "../../../../models/ChallengeCategory"
 
 export interface IChallengeTypeIconProps {
     type: ChallengeCategory

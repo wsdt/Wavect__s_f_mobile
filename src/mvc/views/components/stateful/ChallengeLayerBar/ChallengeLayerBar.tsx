@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-community/async-storage"
 import React from "react"
-import { Alert, View } from "react-native"
+import {Alert, ToastAndroid, View} from "react-native"
 import { Text } from "react-native-elements"
 import { withNavigation } from "react-navigation"
 import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
@@ -39,7 +39,8 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                             <MajorButton
                                 title="Abschließen"
                                 btnType={MajorBtnType.PRIMARY}
-                                onPress={() => this.execBtnAccept()}
+                                onLongPress={() => this.execBtnAccept()}
+                                onPress={() => ToastAndroid.show("Gedrückt halten, um die Challenge abzuschließen",ToastAndroid.SHORT)}
                                 isLoading={this.state.isLoadingChallengeSolved}
                             />
                         )}

@@ -22,7 +22,7 @@ export const MajorButton: React.FunctionComponent<IMajorButtonProps> = props => 
             break
     }
 
-    const { title, onPress, icon } = props
+    const { title, onPress, icon, onLongPress } = props
     return (
         <View style={containerStyle}>
             <Button
@@ -31,6 +31,7 @@ export const MajorButton: React.FunctionComponent<IMajorButtonProps> = props => 
                 titleStyle={titleStyle}
                 buttonStyle={styles.btnStyleWithBorder}
                 onPress={onPress}
+                onLongPress={onLongPress}
                 loading={props.isLoading}
                 icon={icon ? <Icon name={icon} type="font-awesome" /> : undefined}
             />
