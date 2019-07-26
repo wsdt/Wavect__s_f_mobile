@@ -13,13 +13,15 @@ export const routerOptions: TabNavigatorConfig = {
     animationEnabled: true,
     tabBarPosition: "bottom",
     lazy: true,
-    tabBarOptions: {
-        // scrollEnabled: true, // todo: maybe no scrollviews needed anymore (but making tabbar width weird -> maybe because of existing scrollviews?)
+    // should exist, but typings not up-to-date
+    // optimizationsEnabled: true,
+    tabBarOptions: { // scrollEnabled (scrolling through tabs itself)
         activeTintColor: "#000",
         inactiveTintColor: "#888",
         style: { backgroundColor: "#fff" },
         indicatorStyle: { backgroundColor: "#000" },
         allowFontScaling: true,
+        // renderIndicator (maybe as solution for loading indicator for lazy loading?)
     },
     defaultNavigationOptions: {
         /*add default icons here if icons enabled*/

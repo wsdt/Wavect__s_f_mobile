@@ -1,5 +1,5 @@
 import * as React from "react"
-import { ImageBackground, View, Image } from "react-native"
+import { View, Image } from "react-native"
 import { withNavigation } from "react-navigation"
 import globalStyles from "../../../GlobalStyles.css"
 import { ChallengeTypeIcon } from "../../functional/ChallengeTypeIcon/ChallengeTypeIcon"
@@ -24,6 +24,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
         // const { bgImage } = this.props.challenge
         // destructure
         const { bgImage } = this.props.challenge
+        bgImage.cache =  "only-if-cached" // works only on iOS
 
         return (
             <LoadingHoc.Consumer>
@@ -41,33 +42,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                                 />
                                 {this.getChallengeView()}
                             </>
-                        </GrayColorImg>
-                    )
-                }}
-            </LoadingHoc.Consumer>
-        )
-    }
-
-    public render1() {
-        // destructure
-        const { bgImage } = this.props.challenge
-
-        return (
-            <LoadingHoc.Consumer>
-                {contextMethods => {
-                    this.loadingContext = contextMethods
-                    return (
-                        <GrayColorImg isGrayscale={this.state.isGrayscale}>
-                            <ImageBackground
-                                source={bgImage}
-                                imageStyle={globalStyles.radius}
-                                onLoad={this.onLoad}
-                                onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)}
-                                onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
-                                style={globalStyles.pageContainer}
-                            >
-                                {this.getChallengeView()}
-                            </ImageBackground>
                         </GrayColorImg>
                     )
                 }}

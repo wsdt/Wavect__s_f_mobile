@@ -5,6 +5,8 @@ import styles from "./CompanyLogo.css"
 import { ICompanyLogoProps } from "./CompanyLogo.props"
 
 export const CompanyLogo: React.FunctionComponent<ICompanyLogoProps> = props => {
+    props.companyLogoUri.cache =  "only-if-cached" // works only on ios
+
     return (
         <TouchableOpacity style={styles.topLeftCompany} onPress={props.onPressed}>
             <GrayColorImg isGrayscale={props.isGrayscale}>
