@@ -1,6 +1,4 @@
-import * as React from "react"
-import { Icon } from "react-native-elements"
-import { BottomTabNavigatorConfig } from "react-navigation"
+import {TabNavigatorConfig} from "react-navigation"
 import * as globalConfig from "../../../../../globalConfiguration/globalConfig"
 
 /**
@@ -8,18 +6,20 @@ import * as globalConfig from "../../../../../globalConfiguration/globalConfig"
  * But if you don't provide any, then these default options are set.
  */
 /** You can define additional options for our router here */
-export const routerOptions: BottomTabNavigatorConfig = {
+export const routerOptions: TabNavigatorConfig = {
     initialRouteName: globalConfig.START_PAGE, // Start page
     backBehavior: "history",
+    swipeEnabled: true,
+    animationEnabled: true,
+    tabBarPosition: "bottom",
+    lazy: true,
     tabBarOptions: {
+        // scrollEnabled: true, // todo: maybe no scrollviews needed anymore (but making tabbar width weird -> maybe because of existing scrollviews?)
         activeTintColor: "#000",
-        activeBackgroundColor: "#ccc",
         inactiveTintColor: "#888",
-        labelStyle: {
-            fontSize: 12,
-        },
+        style: {backgroundColor: "#fff"},
+        indicatorStyle: {backgroundColor: "#000",},
+        allowFontScaling: true,
     },
-    defaultNavigationOptions: {
-        tabBarIcon: <Icon name="exclamation-triangle" type="font-awesome" />,
-    },
+    defaultNavigationOptions: {/*add default icons here if icons enabled*/},
 }
