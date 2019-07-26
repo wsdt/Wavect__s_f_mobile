@@ -1,0 +1,6 @@
+dist/
+.jest/
+coverage/
+node_modules/
+android/
+ios/

@@ -1,4 +1,4 @@
-import {TabNavigatorConfig} from "react-navigation"
+import { TabNavigatorConfig } from "react-navigation"
 import * as globalConfig from "../../../../../globalConfiguration/globalConfig"
 
 /**
@@ -17,9 +17,11 @@ export const routerOptions: TabNavigatorConfig = {
         // scrollEnabled: true, // todo: maybe no scrollviews needed anymore (but making tabbar width weird -> maybe because of existing scrollviews?)
         activeTintColor: "#000",
         inactiveTintColor: "#888",
-        style: {backgroundColor: "#fff"},
-        indicatorStyle: {backgroundColor: "#000",},
+        style: { backgroundColor: "#fff" },
+        indicatorStyle: { backgroundColor: "#000" },
         allowFontScaling: true,
     },
-    defaultNavigationOptions: {/*add default icons here if icons enabled*/},
+    defaultNavigationOptions: {
+        /*add default icons here if icons enabled*/
+    },
 }
