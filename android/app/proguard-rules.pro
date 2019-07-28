@@ -8,3 +8,6 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
+
+
+# TODO: https://github.com/DylanVann/react-native-fast-image (if using this lib, then add proguard rules)

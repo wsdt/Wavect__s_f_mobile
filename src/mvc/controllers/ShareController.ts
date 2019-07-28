@@ -1,7 +1,6 @@
 import Share from "react-native-share"
 
-export const shareImage = (res:any) => {
-
+export const shareImage = (res: any) => {
     const shareOptions = {
         title: "Share via",
         message: 'Hey Leute, ich habe die Challenge "Mach ein Foto von Kevin erfolgreich gelöst, hier das Foto:',
@@ -19,6 +18,3 @@ export const shareImage = (res:any) => {
     // @ts-ignore
     Share.shareSingle(shareOptions)
 }
-
-
-

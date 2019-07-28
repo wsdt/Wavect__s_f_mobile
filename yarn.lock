@@ -1354,6 +1354,11 @@ async@^2.4.0:
   dependencies:
     lodash "^4.17.14"
 
+async@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/async/-/async-3.1.0.tgz#42b3b12ae1b74927b5217d8c0016baaf62463772"
+  integrity sha512-4vx/aaY6j/j3Lw3fbCHNWP0pPaTCew3F6F3hYyl/tHs/ndmV1q7NW9T5yuJ2XAGwdQrP+6Wu20x06U4APo/iQQ==
+
 asynckit@^0.4.0:
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
@@ -5126,6 +5131,13 @@ react-lifecycles-compat@^3.0.2, react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
+react-native-cache@^1.1.8:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/react-native-cache/-/react-native-cache-1.1.8.tgz#9815139b0dad594f3abb16ae04caa5058fbc744a"
+  integrity sha512-PKDI66Uqi6EcIPr2qkUXtirovRGPRLMwA0+HlwRJkU/FZoAhTNKpqkoGmKesMBXIFbgaSLskqj/3uRtbIwUFrA==
+  dependencies:
+    async "^3.1.0"
+
 react-native-color-matrix-image-filters@^5.1.5:
   version "5.1.7"
   resolved "https://registry.yarnpkg.com/react-native-color-matrix-image-filters/-/react-native-color-matrix-image-filters-5.1.7.tgz#fd54de1f0d83cc00397a174d8ea279f9a3db3e0c"
@@ -5146,6 +5158,11 @@ react-native-elements@^1.1.0:
     prop-types "^15.5.8"
     react-native-ratings "^6.3.0"
     react-native-status-bar-height "^2.2.0"
+
+react-native-fast-image@^7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-7.0.2.tgz#e06b21f42f4a9786eaa86f3db35d919070fb8403"
+  integrity sha512-MfuzJbC0RjYobR2gFCdqe1I7jvNOCfDkjQ7VGOHXniqjohhULMkcWNBE9Umovi9Dx93lJ6t5utcE2wf/09zvlg==
 
 react-native-formik@^1.7.6:
   version "1.7.6"

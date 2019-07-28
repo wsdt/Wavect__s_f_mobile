@@ -1,17 +1,15 @@
-import ImagePicker from 'react-native-image-picker'
+import ImagePicker from "react-native-image-picker"
 
-
-export const openFilePicker = (cb: (res:any) => void ):void => {
-
+export const openFilePicker = (cb: (res: any) => void): void => {
     const options = {
-        title: 'Proof it',
+        title: "Proof it",
         storageOptions: {
             skipBackup: true,
-            path: "images"
-        }
+            path: "images",
+        },
     }
 
-    ImagePicker.showImagePicker(options, (res) =>{
+    ImagePicker.showImagePicker(options, res => {
         if (res.didCancel) {
             cb(res)
         } else if (res.error) {
@@ -19,5 +17,6 @@ export const openFilePicker = (cb: (res:any) => void ):void => {
         } else {
             // return the URI of res-obj
             return cb(res)
-    }})
+        }
+    })
 }
