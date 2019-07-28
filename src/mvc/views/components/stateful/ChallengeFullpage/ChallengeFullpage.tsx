@@ -11,7 +11,7 @@ import ChallengeLayerBar from "../ChallengeLayerBar/ChallengeLayerBar"
 import styles from "./ChallengeFullpage.css"
 import { IChallengeFullpageProps } from "./ChallengeFullpage.props"
 import { IChallengeFullpageState } from "./ChallengeFullpage.state"
-import FastImage from "react-native-fast-image";
+import FastImage from "react-native-fast-image"
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
@@ -25,7 +25,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
         // const { bgImage } = this.props.challenge
         // destructure
         const { bgImage } = this.props.challenge
-
 
         return (
             <LoadingHoc.Consumer>

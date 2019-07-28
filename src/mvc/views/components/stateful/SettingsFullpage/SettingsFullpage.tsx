@@ -1,15 +1,15 @@
 import React from "react"
-import {View} from "react-native"
-import {Button, CheckBox, Icon, Input, Text} from "react-native-elements"
-import {BACKEND_MOBILE_API} from "../../../../../globalConfiguration/globalConfig"
-import {getLocalUserId, markEmailAsCreated} from "../../../../controllers/LocalStorageController"
-import {noInternetAvailable} from "../../../../controllers/WarningsController"
+import { View } from "react-native"
+import { Button, CheckBox, Icon, Input, Text } from "react-native-elements"
+import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
+import { getLocalUserId, markEmailAsCreated } from "../../../../controllers/LocalStorageController"
+import { noInternetAvailable } from "../../../../controllers/WarningsController"
 import globalStyles from "../../../GlobalStyles.css"
-import {ILoadingContext, LoadingHoc, LoadingStatus} from "../../system/HOCs/LoadingHoc"
+import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../system/HOCs/LoadingHoc"
 import styles from "./SettingsFullpage.css"
-import {ISettingsFullpageState} from "./SettingsFullpage.state"
-import {cachedFetch, putCache} from "../../../../controllers/CacheController/CacheController";
-import {CACHE_KEY_SETTINGS} from "../../../../controllers/CacheController/CacheController.constants";
+import { ISettingsFullpageState } from "./SettingsFullpage.state"
+import { cachedFetch, putCache } from "../../../../controllers/CacheController/CacheController"
+import { CACHE_KEY_SETTINGS } from "../../../../controllers/CacheController/CacheController.constants"
 
 export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpageState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/settings`
@@ -25,7 +25,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
 
     public componentDidMount(): void {
         this.getUserSettings(false)
-        this.loadingContext.setRefresh((cb: ()=>void) => this.getUserSettings(true, cb))
+        this.loadingContext.setRefresh((cb: () => void) => this.getUserSettings(true, cb))
     }
 
     public render() {
@@ -46,8 +46,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
         return (
             <>
                 <Text style={styles.row}>
-                    Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder
-                    Produkten/Services zu kontaktieren.
+                    Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder Produkten/Services zu kontaktieren.
                 </Text>
 
                 <Input
@@ -56,7 +55,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     containerStyle={[styles.row, styles.fullAbsoluteWidth]}
                     label="E-Mail"
                     placeholder=" Deine E-Mail"
-                    leftIcon={<Icon name="envelope" type="font-awesome"/>}
+                    leftIcon={<Icon name="envelope" type="font-awesome" />}
                     shake={true}
                     errorMessage={this.state.validEmail ? "" : "Bitte gib eine gültige E-Mail an."}
                 />
@@ -66,7 +65,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     containerStyle={styles.row}
                     checkedColor="#000"
                     title="Ich verstehe und akzeptiere, dass meine E-Mail-Adresse bei erfolgreichem Abschluss einer Herausforderung an den angegebenen Sponsor übermittelt wird."
-                    onPress={() => this.setState({hasAcceptedDataPrivacy: !this.state.hasAcceptedDataPrivacy})}
+                    onPress={() => this.setState({ hasAcceptedDataPrivacy: !this.state.hasAcceptedDataPrivacy })}
                 />
 
                 <Button
@@ -76,7 +75,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     raised={isFormSubmittable}
                     loading={this.state.isSavingSettings}
                     disabled={!isFormSubmittable}
-                    icon={<Icon name="save" type="font-awesome"/>}
+                    icon={<Icon name="save" type="font-awesome" />}
                     onPress={this.postUserSettings}
                 />
             </>
@@ -93,7 +92,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     }
 
     // Not recommended, use superior cache implementation please
-    private getUserSettings = (reload: boolean, cb?: ()=>void) => {
+    private getUserSettings = (reload: boolean, cb?: () => void) => {
         cachedFetch(this, CACHE_KEY_SETTINGS, this.loadingContext, reload, async () => {
             fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`)
                 .then(res => res.json())
@@ -130,7 +129,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     }
 
     private postUserSettings = () => {
-        this.setState({isSavingSettings: true}, async () => {
+        this.setState({ isSavingSettings: true }, async () => {
             try {
                 const rawResp = await fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, {
                     method: "POST",
@@ -154,13 +153,13 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                 noInternetAvailable()
                 console.error(e)
             } finally {
-                this.setState({isSavingSettings: false})
+                this.setState({ isSavingSettings: false })
             }
         })
     }
 
     private emailValidation = (email: string) => {
-        this.setState({email, validEmail: SettingsFullpage.EMAIL_REGEX.test(email)})
+        this.setState({ email, validEmail: SettingsFullpage.EMAIL_REGEX.test(email) })
     }
 
     private isFormSubmittable = (): boolean => {

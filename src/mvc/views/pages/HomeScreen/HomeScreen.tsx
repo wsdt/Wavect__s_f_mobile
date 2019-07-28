@@ -1,8 +1,8 @@
 import * as React from "react"
 import { View } from "react-native"
 import { BACKEND_MOBILE_API } from "../../../../globalConfiguration/globalConfig"
-import {cachedFetch, putCache} from "../../../controllers/CacheController/CacheController";
-import {CACHE_KEY_CHALLENGE} from "../../../controllers/CacheController/CacheController.constants";
+import { cachedFetch, putCache } from "../../../controllers/CacheController/CacheController"
+import { CACHE_KEY_CHALLENGE } from "../../../controllers/CacheController/CacheController.constants"
 import { Challenge } from "../../../models/Challenge"
 import ChallengeFullpage from "../../components/stateful/ChallengeFullpage/ChallengeFullpage"
 import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
@@ -17,7 +17,7 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
 
     public componentDidMount(): void {
         this.fetchChallenge(false)
-        this.loadingContext.setRefresh((cb:()=>void) => this.fetchChallenge(true, cb))
+        this.loadingContext.setRefresh((cb: () => void) => this.fetchChallenge(true, cb))
     }
 
     public render() {
@@ -40,7 +40,7 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
         return null
     }
 
-    private fetchChallenge = (reload:boolean, cb?: () => void) => {
+    private fetchChallenge = (reload: boolean, cb?: () => void) => {
         cachedFetch(this, CACHE_KEY_CHALLENGE, this.loadingContext, reload, () => {
             fetch(`${BACKEND_MOBILE_API}/challenge/current`)
                 .then(res => res.json())

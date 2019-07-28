@@ -33,51 +33,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         openFilePicker(res => {
             shareImage(res)
         })
-
-        /*
-        const options = {
-            title: "Proof it!",
-            storageOptions: {
-                skipBackup: true,
-                path: "images",
-            },
-        }
-
-        ImagePicker.showImagePicker(options, res => {
-            //console.log('Response = ', res);
-
-            if (res.didCancel) {
-                console.log("User canceled Image Picker")
-            } else if (res.error) {
-                console.log("ImagePicker Error: ", res.error)
-            } else {
-                // this is the default breakpoint
-                this.setState({
-                    source: { uri: res.uri },
-                })
-
-                console.log(this.state.source)
-
-                const shareOptions = {
-                    title: "Share via",
-                    message: 'Hey Leute, ich habe die Challenge "Mach ein Foto von Kevin erfolgreich gelöst, hier das Foto:',
-                    url: `data:${res.type};base64, ${res.data}`,
-                }
-
-                Share.open(shareOptions)
-                    .then(res => {
-                        console.log(res)
-                    })
-                    .catch(err => {
-                        err && console.log(err)
-                    })
-
-                Share.shareSingle(shareOptions)
-            }
-        })
-
-        */
-    }
+    };
 
     public render() {
         const { headline, subline } = this.props

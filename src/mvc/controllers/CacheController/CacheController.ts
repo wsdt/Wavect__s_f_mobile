@@ -1,8 +1,8 @@
 import AsyncStorage from "@react-native-community/async-storage"
 import * as React from "react"
 // @ts-ignore
-import {Cache} from "react-native-cache"
-import {ILoadingContext, LoadingStatus} from "../../views/components/system/HOCs/LoadingHoc"
+import { Cache } from "react-native-cache"
+import { ILoadingContext, LoadingStatus } from "../../views/components/system/HOCs/LoadingHoc"
 
 const TAG = "CacheController"
 
@@ -71,7 +71,13 @@ export const clearCache = (): void => {
 }
 
 /** Wrapper function to fetch data or use the cached version accordingly. */
-export const cachedFetch = (component: React.PureComponent, cacheKey: string, loadingContext: ILoadingContext, reload: boolean, fetchFunction: () => void) => {
+export const cachedFetch = (
+    component: React.PureComponent,
+    cacheKey: string,
+    loadingContext: ILoadingContext,
+    reload: boolean,
+    fetchFunction: () => void
+) => {
     // if user reloads
     if (reload) {
         fetchFunction()

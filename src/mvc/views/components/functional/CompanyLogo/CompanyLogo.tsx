@@ -1,9 +1,9 @@
 import React from "react"
-import { TouchableOpacity} from "react-native"
+import { TouchableOpacity } from "react-native"
 import FastImage from "react-native-fast-image"
-import {GrayColorImg} from "../GrayColorImg/GrayColorImg"
+import { GrayColorImg } from "../GrayColorImg/GrayColorImg"
 import styles from "./CompanyLogo.css"
-import {ICompanyLogoProps} from "./CompanyLogo.props"
+import { ICompanyLogoProps } from "./CompanyLogo.props"
 
 export const CompanyLogo: React.FunctionComponent<ICompanyLogoProps> = props => {
     // props.companyLogoUri.cache = "only-if-cached" // works only on ios
@@ -16,10 +16,10 @@ export const CompanyLogo: React.FunctionComponent<ICompanyLogoProps> = props => 
                     source={{
                         priority: FastImage.priority.normal,
                         uri: props.companyLogoUri.uri,
-                }} style={styles.image}/>
+                    }}
+                    style={styles.image}
+                />
             </GrayColorImg>
         </TouchableOpacity>
     )
 }
-
-
