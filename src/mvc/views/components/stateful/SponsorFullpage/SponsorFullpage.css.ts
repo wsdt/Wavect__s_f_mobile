@@ -1,18 +1,17 @@
-
-import {StyleSheet} from "react-native";
+import { StyleSheet } from "react-native"
 
 export const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
     },
     topBar: {
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         left: 0,
         right: 0,
-        backgroundColor: 'gray',
+        backgroundColor: "gray",
         height: 120,
     },
     imageStyle: {
@@ -20,21 +19,21 @@ export const styles = StyleSheet.create({
         height: null,
         width: null,
     },
-    roundImageContainer:{
+    roundImageContainer: {
         flex: 1,
         height: 100,
         width: 100,
         borderRadius: 50,
-        borderColor: '#ccc',
-        backgroundColor: 'white',
+        borderColor: "#ccc",
+        backgroundColor: "white",
         borderWidth: 2,
-        overflow: 'hidden',
-        marginTop: 60
+        overflow: "hidden",
+        marginTop: 60,
     },
     centered: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
         padding: 10,
     },
     socialMedia: {
@@ -45,8 +44,8 @@ export const styles = StyleSheet.create({
     },
     boldHeadline: {
         fontSize: 30,
-        fontWeight: 'bold',
-        color: 'gray',
+        fontWeight: "bold",
+        color: "gray",
         marginTop: 20,
     },
     buttonContainer: {
@@ -55,5 +54,4 @@ export const styles = StyleSheet.create({
         width: "100%",
         justifyContent: "center",
     },
-});
-
+})

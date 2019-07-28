@@ -1,5 +1,6 @@
 import * as React from "react"
-import { View, Image } from "react-native"
+import { View } from "react-native"
+import FastImage from "react-native-fast-image"
 import { withNavigation } from "react-navigation"
 import globalStyles from "../../../GlobalStyles.css"
 import { ChallengeTypeIcon } from "../../functional/ChallengeTypeIcon/ChallengeTypeIcon"
@@ -11,7 +12,6 @@ import ChallengeLayerBar from "../ChallengeLayerBar/ChallengeLayerBar"
 import styles from "./ChallengeFullpage.css"
 import { IChallengeFullpageProps } from "./ChallengeFullpage.props"
 import { IChallengeFullpageState } from "./ChallengeFullpage.state"
-import FastImage from "react-native-fast-image";
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
@@ -21,9 +21,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     private loadingContext!: ILoadingContext
 
     public render() {
-        // destructure
-        // const { bgImage } = this.props.challenge
-        // destructure
         const { bgImage } = this.props.challenge
 
         return (
@@ -39,7 +36,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                                         uri: bgImage.uri,
                                     }}
                                     style={[styles.backgroundImage, globalStyles.radius]}
-                                    onLoad={this.onLoad}
+                                    onLoad={() => this.loadingContext.setLoading(LoadingStatus.DONE)}
                                     onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)}
                                     onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
                                 />
@@ -81,10 +78,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                 />
             </>
         )
-    }
-
-    private onLoad = () => {
-        this.loadingContext.setLoading(LoadingStatus.DONE)
     }
 }
 

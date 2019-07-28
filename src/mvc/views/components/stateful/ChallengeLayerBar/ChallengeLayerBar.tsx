@@ -2,6 +2,9 @@ import AsyncStorage from "@react-native-community/async-storage"
 import React from "react"
 import { Alert, ToastAndroid, View } from "react-native"
 import { Text } from "react-native-elements"
+// @ts-ignore
+import ImagePicker  from "react-native-image-picker"
+import Share from "react-native-share"
 import { withNavigation } from "react-navigation"
 import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
 import { getEmailMarked, getLocalUserId } from "../../../../controllers/LocalStorageController"
@@ -12,9 +15,6 @@ import { CHALLENGE_SOLVED_ID } from "./ChallengeLayerBar.constants"
 import styles from "./ChallengeLayerBar.css"
 import { IChallengeLayerBarProps } from "./ChallengeLayerBar.props"
 import { IChallengeLayerBarState } from "./ChallengeLayerBar.state"
-
-import ImagePicker  from "react-native-image-picker"
-import Share from "react-native-share"
 
 
 class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, IChallengeLayerBarState> {
