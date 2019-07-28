@@ -60,6 +60,8 @@ var MajorButton_1 = require("../../functional/MajorButton/MajorButton");
 var SettingsRoutes_1 = require("../../system/TabRouter/SettingsScreenRouter/SettingsRoutes");
 var ChallengeLayerBar_constants_1 = require("./ChallengeLayerBar.constants");
 var ChallengeLayerBar_css_1 = require("./ChallengeLayerBar.css");
+var react_native_image_picker_1 = require("react-native-image-picker");
+var react_native_share_1 = require("react-native-share");
 var ChallengeLayerBar = (function (_super) {
     __extends(ChallengeLayerBar, _super);
     function ChallengeLayerBar() {
@@ -67,12 +69,45 @@ var ChallengeLayerBar = (function (_super) {
         _this.state = {
             isLoadingChallengeSolved: false,
             currChallengeSolved: false,
+            source: { uri: "" },
         };
         _this.lastChallengeIdSolved = null;
-        _this.challengeAlreadySolved = function () {
-            react_native_1.Alert.alert("Challenge solved", "Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.", [{ text: "OK" }], {
-                cancelable: true,
+        _this.shareIt = function () {
+            var options = {
+                title: 'Proof it!',
+                storageOptions: {
+                    skipBackup: true,
+                    path: 'images',
+                },
+            };
+            react_native_image_picker_1.default.showImagePicker(options, function (res) {
+                console.log('Response = ', res);
+                if (res.didCancel) {
+                    console.log('User canceled Image Picker');
+                }
+                else if (res.error) {
+                    console.log('ImagePicker Error: ', res.error);
+                }
+                else {
+                    _this.setState({
+                        source: { uri: res.uri },
+                    });
+                    console.log(_this.state.source);
+                    react_native_share_1.default.open(options)
+                        .then(function (res) { console.log(res); })
+                        .catch(function (err) { err && console.log(err); });
+                    var shareOptions = {
+                        title: 'Share via',
+                        message: 'He du Pimmelkopf',
+                        url: "data:" + res.type + ";base64, " + res.data,
+                        social: react_native_share_1.default.Social.GMAIL
+                    };
+                    react_native_share_1.default.shareSingle(shareOptions);
+                }
             });
+        };
+        _this.challengeAlreadySolved = function () {
+            _this.shareIt();
         };
         _this.challengeSolved = function () { return __awaiter(_this, void 0, void 0, function () {
             var rawResp, _a, _b, res, e_1;
