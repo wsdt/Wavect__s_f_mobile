@@ -3,7 +3,7 @@ import Share from "react-native-share"
 export const shareImage = (res: any) => {
     const shareOptions = {
         title: "Share via",
-        message: 'Hey Leute, ich habe die Challenge "Mach ein Foto von Kevin erfolgreich gelöst, hier das Foto:',
+        message: 'Hey Leute, ich habe die Challenge "Mach ein Foto von Kevin erfolgreich gelöst, hier der Beweis:',
         url: `data:${res.type};base64, ${res.data}`,
     }
 

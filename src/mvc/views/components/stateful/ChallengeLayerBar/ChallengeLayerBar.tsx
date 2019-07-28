@@ -16,8 +16,8 @@ import { IChallengeLayerBarState } from "./ChallengeLayerBar.state"
 // import ImagePicker from "react-native-image-picker"
 // import Share from "react-native-share"
 
-import { openFilePicker } from "../../../../controllers/FilePickerController"
-import { shareImage } from "../../../../controllers/ShareController"
+import { openFilePicker } from "../../../../controllers/SocialController/FilePickerController"
+import { shareImage } from "../../../../controllers/SocialController/ShareController"
 
 class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, IChallengeLayerBarState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/email`
@@ -33,7 +33,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         openFilePicker(res => {
             shareImage(res)
         })
-    };
+    }
 
     public render() {
         const { headline, subline } = this.props
