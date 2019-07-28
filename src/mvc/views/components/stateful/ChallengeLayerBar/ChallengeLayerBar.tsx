@@ -13,15 +13,60 @@ import styles from "./ChallengeLayerBar.css"
 import { IChallengeLayerBarProps } from "./ChallengeLayerBar.props"
 import { IChallengeLayerBarState } from "./ChallengeLayerBar.state"
 
+import ImagePicker  from "react-native-image-picker"
+import Share from "react-native-share"
+
+
 class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, IChallengeLayerBarState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/email`
 
     public state: IChallengeLayerBarState = {
         isLoadingChallengeSolved: false,
         currChallengeSolved: false,
+        source: { uri: ""},
     }
 
     private lastChallengeIdSolved: string | null = null
+
+    private shareIt = () => {
+        const options = {
+            title: 'Proof it!',
+            storageOptions:{
+                skipBackup: true,
+                path: 'images',
+            },
+        };
+
+
+        ImagePicker.showImagePicker(options, (res) => {
+            //console.log('Response = ', res);
+
+            if (res.didCancel) {
+                console.log('User canceled Image Picker');
+            } else if (res.error) {
+                console.log('ImagePicker Error: ', res.error);
+            } else {
+                // this is the default breakpoint
+                this.setState({
+                    source: {uri: res.uri},
+                });
+
+                console.log(this.state.source)
+
+                const shareOptions = {
+                    title: 'Share via',
+                    message: 'Hey Leute, ich habe die Challenge "Mach ein Foto von Kevin erfolgreich gelöst, hier das Foto:',
+                    url: `data:${res.type};base64, ${res.data}`,
+                }
+
+                Share.open(shareOptions)
+                    .then((res) => { console.log(res)})
+                    .catch((err) => { err && console.log(err) });
+
+                Share.shareSingle(shareOptions)
+            }
+        });
+    }
 
     public render() {
         const { headline, subline } = this.props
@@ -55,7 +100,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
     }
 
     private challengeAlreadySolved = () => {
-        Alert.alert(
+      /*  Alert.alert(
             "Challenge solved",
             "Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.",
             [{ text: "OK" }],
@@ -63,7 +108,10 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                 cancelable: true,
             }
         )
-    }
+    */
+
+        this.shareIt()
+    };
 
     private challengeSolved = async () => {
         this.setState({ isLoadingChallengeSolved: true })
@@ -156,6 +204,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             console.error(e)
         }
     }
+
 }
 
 export default withNavigation(ChallengeLayerBar)

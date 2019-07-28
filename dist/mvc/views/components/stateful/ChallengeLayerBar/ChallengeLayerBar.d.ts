@@ -5,6 +5,7 @@ declare class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarPr
     private static API_ENDPOINT;
     state: IChallengeLayerBarState;
     private lastChallengeIdSolved;
+    private shareIt;
     render(): JSX.Element;
     componentDidMount(): void;
     private challengeAlreadySolved;
@@ -13,7 +14,7 @@ declare class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarPr
     private retrieveChallengeSolved;
     private storeChallengeSolved;
 }
-declare const _default: React.ComponentType<Pick<IChallengeLayerBarProps, "headline" | "subline" | "expirationInMs" | "setGrayscale" | "challengeId" | "sponsorEmail"> & {
+declare const _default: React.ComponentType<Pick<IChallengeLayerBarProps, "headline" | "setGrayscale" | "challengeId" | "subline" | "expirationInMs" | "sponsorEmail"> & {
     onRef?: ((instance: ChallengeLayerBar | null) => void) | React.RefObject<ChallengeLayerBar> | null | undefined;
 }>;
 export default _default;
