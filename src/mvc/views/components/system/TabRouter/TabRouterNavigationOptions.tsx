@@ -22,6 +22,8 @@ export const routerOptions: TabNavigatorConfig = {
         style: { backgroundColor: "#fff" },
         indicatorStyle: { backgroundColor: "#000" },
         allowFontScaling: true,
+        showIcon: false,
+        showLabel: true,
         // renderIndicator (maybe as solution for loading indicator for lazy loading?)
     },
     defaultNavigationOptions: {

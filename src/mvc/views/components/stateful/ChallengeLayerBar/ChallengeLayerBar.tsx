@@ -1,20 +1,19 @@
 import AsyncStorage from "@react-native-community/async-storage"
 import React from "react"
-import { Alert, ToastAndroid, View } from "react-native"
-import { Text } from "react-native-elements"
-import { withNavigation } from "react-navigation"
-import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
-import { getEmailMarked, getLocalUserId } from "../../../../controllers/LocalStorageController"
-import { openFilePicker } from "../../../../controllers/SocialController/FilePickerController"
-import { shareImage } from "../../../../controllers/SocialController/ShareController"
-import { noInternetAvailable } from "../../../../controllers/WarningsController"
-import { MajorBtnType, MajorButton } from "../../functional/MajorButton/MajorButton"
-import { routes } from "../../system/TabRouter/SettingsScreenRouter/SettingsRoutes"
-import { CHALLENGE_SOLVED_ID } from "./ChallengeLayerBar.constants"
+import {Alert, ToastAndroid, View} from "react-native"
+import {Text} from "react-native-elements"
+import {withNavigation} from "react-navigation"
+import {BACKEND_MOBILE_API} from "../../../../../globalConfiguration/globalConfig"
+import {getEmailMarked, getLocalUserId} from "../../../../controllers/LocalStorageController"
+import {openFilePicker} from "../../../../controllers/SocialController/FilePickerController"
+import {shareImage} from "../../../../controllers/SocialController/ShareController"
+import {noInternetAvailable} from "../../../../controllers/WarningsController"
+import {MajorBtnType, MajorButton} from "../../functional/MajorButton/MajorButton"
+import {routes} from "../../system/TabRouter/SettingsScreenRouter/SettingsRoutes"
+import {CHALLENGE_SOLVED_ID} from "./ChallengeLayerBar.constants"
 import styles from "./ChallengeLayerBar.css"
-import { IChallengeLayerBarProps } from "./ChallengeLayerBar.props"
-import { IChallengeLayerBarState } from "./ChallengeLayerBar.state"
-
+import {IChallengeLayerBarProps} from "./ChallengeLayerBar.props"
+import {IChallengeLayerBarState} from "./ChallengeLayerBar.state"
 
 class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, IChallengeLayerBarState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/email`
@@ -27,7 +26,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
     private lastChallengeIdSolved: string | null = null
 
     public render() {
-        const { headline, subline } = this.props
+        const {headline, subline} = this.props
 
         return (
             <View style={styles.mainComponent}>
@@ -37,7 +36,8 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
                     <View style={styles.btnContainer}>
                         {this.state.currChallengeSolved ? (
-                            <MajorButton title="Challenge solved" btnType={MajorBtnType.HIGHLIGHTED} onPress={() => this.challengeAlreadySolved()} />
+                            <MajorButton title="Challenge solved" btnType={MajorBtnType.HIGHLIGHTED}
+                                         onPress={() => this.challengeAlreadySolved()}/>
                         ) : (
                             <MajorButton
                                 title="Abschließen"
@@ -61,60 +61,76 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         Alert.alert(
             "Challenge solved",
             "Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.",
-            [{ text: "OK" }],
+            [{text: "OK"}],
             {
                 cancelable: true,
             }
         )
     }
 
-    private challengeSolved = async () => {
-        this.setState({ isLoadingChallengeSolved: true })
+    private challengeSolved = () => {
+        this.setState({isLoadingChallengeSolved: true})
+
+        const userAbortedProcedure = () => {
+            ToastAndroid.show("Bitte sag Bescheid, wenn du soweit bist!", ToastAndroid.SHORT)
+            this.setState({
+                currChallengeSolved: false,
+                isLoadingChallengeSolved: false,
+            })
+            console.log("ChallengeLayerBar:userAbortedProcedure: User aborted.")
+        }
 
         // Share it
         openFilePicker(res => {
-            shareImage(res)
-        })
-
-        try {
-            const rawResp = await fetch(`${ChallengeLayerBar.API_ENDPOINT}/current/${await getLocalUserId()}`, {
-                method: "POST",
-                headers: {
-                    Accept: "application/json",
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    email: this.props.sponsorEmail,
-                }),
-            })
-
-            const res = await rawResp.json()
-            if (res.error !== null && res.error !== undefined) {
-                // might return {}
-                console.error(res.error)
+            if (res.error || res.didCancel) {
+                userAbortedProcedure()
+                console.log("ChallengeLayerBar:challengeSolved: User did not choose a file.")
             } else {
-                this.storeChallengeSolved()
+                shareImage(this.props.headline, res, async (wasShareSuccessful: boolean) => {
+                    try {
+                        const rawResp = await fetch(`${ChallengeLayerBar.API_ENDPOINT}/current/${await getLocalUserId()}`, {
+                            method: "POST",
+                            headers: {
+                                Accept: "application/json",
+                                "Content-Type": "application/json",
+                            },
+                            body: JSON.stringify({
+                                email: this.props.sponsorEmail,
+                            }),
+                        })
 
-                this.setState({
-                    currChallengeSolved: true,
-                    isLoadingChallengeSolved: false,
-                })
+                        const apiRes = await rawResp.json()
+                        if (apiRes.error !== null && apiRes.error !== undefined) {
+                            // might return {}
+                            console.error("ChallengeLayer:challengeSolved: " + apiRes.error)
+                        } else {
+                            if (wasShareSuccessful) {
+                                this.storeChallengeSolved()
 
-                Alert.alert(
-                    "Sponsor notified",
-                    "Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.",
-                    [{ text: "Super!" }],
-                    {
-                        cancelable: true,
+                                Alert.alert(
+                                    "Sponsor notified",
+                                    "Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.",
+                                    [{text: "Super!"}],
+                                    {
+                                        cancelable: true,
+                                    }
+                                )
+
+                                console.log("ChallengeLayerBar:challengeSolved: Sent email to sponsor.")
+                            }
+                        }
+                    } catch (e) {
+                        console.error(e)
+                        noInternetAvailable()
+                    } finally {
+                        this.setState({
+                            currChallengeSolved: wasShareSuccessful,
+                            isLoadingChallengeSolved: false,
+                        })
                     }
-                )
-
-                console.log("ChallengeLayerBar:challengeSolved: Sent email to sponsor.")
+                })
             }
-        } catch (e) {
-            console.error(e)
-            noInternetAvailable()
-        }
+        })
     }
 
     private execBtnAccept = async () => {
@@ -124,7 +140,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             Alert.alert(
                 "Einen Moment noch!",
                 "Wir benötigen deine E-Mail Adresse damit dich unsere Sponsoren kontaktieren können.   ",
-                [{ text: "OK", onPress: () => this.props.navigation.navigate(routes.SettingsScreen) }],
+                [{text: "OK", onPress: () => this.props.navigation.navigate(routes.SettingsScreen)}],
                 {
                     cancelable: true,
                 }
@@ -148,7 +164,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                 }
             }
 
-            this.setState({ currChallengeSolved })
+            this.setState({currChallengeSolved})
             this.props.setGrayscale(!this.state.currChallengeSolved)
         } catch (e) {
             console.error(e)
@@ -158,7 +174,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
     private storeChallengeSolved = async () => {
         try {
             await AsyncStorage.setItem(CHALLENGE_SOLVED_ID, this.props.challengeId)
-            this.setState({ currChallengeSolved: true })
+            this.setState({currChallengeSolved: true})
             this.props.setGrayscale(!this.state.currChallengeSolved)
         } catch (e) {
             console.error(e)

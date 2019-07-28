@@ -7,14 +7,13 @@ import styles, { BG_COLOR } from "./ChallengeTypeIcon.css"
 import { IChallengeTypeIconProps } from "./ChallengeTypeIcon.props"
 
 export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps> = props => {
-    const currColor = getColor(props.isGrayscale)
+    const currColor = props.isGrayscale ? GREY : BG_COLOR
     return (
         <TouchableOpacity style={styles.touchableContainer}>
             <Tooltip
                 popover={<Text style={globalStyles.tooltipText}>{CHALLENGE_CATEGORIES[props.type].descr}</Text>}
                 backgroundColor={currColor}
-                height={135}
-            >
+                height={130}>
                 <Image
                     source={CHALLENGE_CATEGORIES[props.type].icon}
                     containerStyle={[styles.imageContainer, { backgroundColor: currColor }]}
@@ -23,8 +22,4 @@ export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps>
             </Tooltip>
         </TouchableOpacity>
     )
-}
-
-const getColor = (isGrayscale: boolean) => {
-    return isGrayscale ? GREY : BG_COLOR
 }
