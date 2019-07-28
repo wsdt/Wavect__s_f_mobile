@@ -24,7 +24,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
         // const { bgImage } = this.props.challenge
         // destructure
         const { bgImage } = this.props.challenge
-        bgImage.cache =  "only-if-cached" // works only on iOS
+        bgImage.cache = "only-if-cached" // works only on iOS
 
         return (
             <LoadingHoc.Consumer>
