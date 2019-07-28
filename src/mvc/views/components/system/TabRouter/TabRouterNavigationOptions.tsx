@@ -15,7 +15,8 @@ export const routerOptions: TabNavigatorConfig = {
     lazy: true,
     // should exist, but typings not up-to-date
     // optimizationsEnabled: true,
-    tabBarOptions: { // scrollEnabled (scrolling through tabs itself)
+    tabBarOptions: {
+        // scrollEnabled (scrolling through tabs itself)
         activeTintColor: "#000",
         inactiveTintColor: "#888",
         style: { backgroundColor: "#fff" },

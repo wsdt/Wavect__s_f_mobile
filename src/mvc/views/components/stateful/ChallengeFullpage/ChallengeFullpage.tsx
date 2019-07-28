@@ -11,6 +11,7 @@ import ChallengeLayerBar from "../ChallengeLayerBar/ChallengeLayerBar"
 import styles from "./ChallengeFullpage.css"
 import { IChallengeFullpageProps } from "./ChallengeFullpage.props"
 import { IChallengeFullpageState } from "./ChallengeFullpage.state"
+import FastImage from "react-native-fast-image";
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
@@ -24,7 +25,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
         // const { bgImage } = this.props.challenge
         // destructure
         const { bgImage } = this.props.challenge
-        bgImage.cache =  "only-if-cached" // works only on iOS
 
         return (
             <LoadingHoc.Consumer>
@@ -33,8 +33,11 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                     return (
                         <GrayColorImg isGrayscale={this.state.isGrayscale}>
                             <>
-                                <Image
-                                    source={bgImage}
+                                <FastImage
+                                    source={{
+                                        priority: FastImage.priority.high,
+                                        uri: bgImage.uri,
+                                    }}
                                     style={[styles.backgroundImage, globalStyles.radius]}
                                     onLoad={this.onLoad}
                                     onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)}
