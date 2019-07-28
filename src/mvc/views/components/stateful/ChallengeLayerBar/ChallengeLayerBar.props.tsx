@@ -7,5 +7,6 @@ export interface IChallengeLayerBarProps {
     subline: string
     expirationInMs: number
     sponsorEmail: string
+    sponsorName: string
     navigation: NavigationInjectedProps<NavigationParams> & NavigationScreenProp<NavigationRoute<NavigationParams>, NavigationParams>
 }

@@ -70,6 +70,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                 </View>
                 <ChallengeLayerBar
                     headline={headline}
+                    sponsorName={sponsor.name}
                     setGrayscale={(isGrayscale: boolean) => this.setState({ isGrayscale })}
                     subline={subline}
                     expirationInMs={expirationInMs}
