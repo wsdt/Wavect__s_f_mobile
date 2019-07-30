@@ -1,14 +1,12 @@
 import { ImagePickerResponse } from "react-native-image-picker"
 import Share from "react-native-share"
 
-export const shareImage = (headline: string, sponsorName: string, res: ImagePickerResponse, cb?: (wasShareSuccessful: boolean) => void) => {
-
-    console.log(res)
+export const shareImage = async (headline: string, sponsorName: string, res: ImagePickerResponse, cb?: (wasShareSuccessful: boolean) => void) => {
 
     const shareOptionsImage = {
         title: "Share via",
         message: `Hey Leute, ich habe die Challenge "${headline}" (Gesponsort von "${sponsorName}") erfolgreich gelöst, hier der Beweis:`,
-        url: res.type === "image/jpeg" ? `data:${res.type};base64, ${res.data}` : `${res.uri}`
+        url: `data:${res.type};base64, ${res.data}`,
     }
 
     // todo still a bug.. but guess im at 99%
@@ -18,10 +16,10 @@ export const shareImage = (headline: string, sponsorName: string, res: ImagePick
         message: "Check out my video!",
         url: `file://${res.path}`,
         type: "video/mp4",
-        subject: "Check out my video!"
+        subject: "Check out my video!",
     }
 
-    const shareOptions = res.type === "image/jep" ? shareOptionsImage : shareOptionsVideo
+    const shareOptions = res.type === "image/jpeg" ? shareOptionsImage : shareOptionsVideo
 
     console.log(shareOptions)
 

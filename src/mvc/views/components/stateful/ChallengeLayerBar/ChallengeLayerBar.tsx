@@ -84,7 +84,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             if (res.error || res.didCancel) {
                 userAbortedProcedure()
                 console.log("ChallengeLayerBar:challengeSolved: User did not choose a file.")
-            }else{
+            } else {
                 console.log(res)
                 shareImage(this.props.headline, this.props.sponsorName, res, async (wasShareSuccessful: boolean) => {
                     try {
