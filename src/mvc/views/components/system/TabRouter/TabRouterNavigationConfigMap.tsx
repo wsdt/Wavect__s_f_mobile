@@ -1,7 +1,6 @@
 import * as React from "react"
 import { Image } from "react-native"
 import { NavigationRouteConfigMap } from "react-navigation"
-import { ICO_TAB_CHALLENGE, ICO_TAB_SETTINGS } from "../../../../../assets/AssetIndex"
 import HomeScreenRouter from "./HomeScreenRouter/HomeScreenRouter"
 import SettingsScreenRouter from "./SettingsScreenRouter/SettingsScreenRouter"
 import { tabRoutes } from "./TabRoutes"
@@ -17,7 +16,7 @@ export const routesConfig: NavigationRouteConfigMap = {
         screen: HomeScreenRouter, // which component to load
         navigationOptions: {
             tabBarLabel: "",
-            tabBarIcon: ({ tintColor }) => (
+            tabBarIcon: () => (
                 <Image
                     source={require("../../../../../assets/img/icons/ic_tab_challenges.png")}
                     style={{ width: 20, height: 20, tintColor: "white" }}
@@ -32,7 +31,7 @@ export const routesConfig: NavigationRouteConfigMap = {
         },
         screen: SettingsScreenRouter,
         navigationOptions: {
-            tabBarIcon: ({ tintColor }) => (
+            tabBarIcon: () => (
                 <Image
                     source={require("../../../../../assets/img/icons/ic_tab_settings.png")}
                     style={{ width: 20, height: 20, tintColor: "white" }}
