@@ -48,10 +48,10 @@ export const styles = StyleSheet.create({
         fontWeight: "bold",
         color: "gray",
         justifyContent: "center",
-        alignContent: 'center',
+        alignContent: "center",
         marginTop: 20,
         paddingLeft: 10,
-        paddingRight: 10
+        paddingRight: 10,
     },
     buttonContainer: {
         margin: 15,
@@ -62,7 +62,7 @@ export const styles = StyleSheet.create({
     icon: {
         marginRight: 20,
         marginLeft: 20,
-        marginBottom: 10
+        marginBottom: 10,
     },
     socialMedia: {
         position: "absolute",
@@ -75,18 +75,18 @@ export const styles = StyleSheet.create({
         position: "absolute",
         right: 0,
         flexDirection: "row",
-        justifyContent: 'center',
+        justifyContent: "center",
         color: "#ccc",
         fontWeight: "bold",
         fontStyle: "italic",
         fontSize: 50,
         marginRight: 20,
-        marginTop: 20
+        marginTop: 20,
     },
     blockText: {
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
-        fontSize: 20
-    }
+        fontSize: 20,
+    },
 })

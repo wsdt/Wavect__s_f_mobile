@@ -1,5 +1,5 @@
 import React from "react"
-import { View } from "react-native"
+import { View, ScrollView } from "react-native"
 import { Button, CheckBox, Icon, Input, Text } from "react-native-elements"
 import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
 import { getLocalUserId, markEmailAsCreated } from "../../../../controllers/LocalStorageController"
@@ -44,7 +44,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     private getSettingsView = () => {
         const isFormSubmittable = this.isFormSubmittable()
         return (
-            <>
+            <ScrollView style={{flex: 1, width: "100%"}}>
                 <Text style={styles.row}>
                     Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder Produkten/Services zu kontaktieren.
                 </Text>
@@ -53,6 +53,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     value={this.state.email}
                     onChangeText={text => this.emailValidation(text)}
                     containerStyle={[styles.row, styles.fullAbsoluteWidth]}
+                    style={styles.row}
                     label="E-Mail"
                     placeholder=" Deine E-Mail"
                     leftIcon={<Icon name="envelope" type="font-awesome" />}
@@ -78,7 +79,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     icon={<Icon name="save" type="font-awesome" />}
                     onPress={this.postUserSettings}
                 />
-            </>
+            </ScrollView>
         )
     }
 

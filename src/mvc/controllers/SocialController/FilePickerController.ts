@@ -16,7 +16,7 @@ export const openFilePicker = (cb: (res: ImagePickerResponse) => void): void => 
             skipBackup: true,
         },
         mediaType: "video",
-        noData: true
+        noData: true,
     }
 
     ImagePicker.showImagePicker(options, (res: ImagePickerResponse) => {
