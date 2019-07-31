@@ -2,8 +2,8 @@ import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
     row: {
-        margin: 5,
-        padding: 5,
+        margin: 10,
+        padding: 10,
         marginTop: 10,
     },
 
