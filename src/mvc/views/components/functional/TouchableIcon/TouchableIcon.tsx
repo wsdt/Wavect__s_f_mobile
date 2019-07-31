@@ -4,10 +4,10 @@ import { Icon } from "react-native-elements"
 import { ITouchableIconProps } from "./ITouchableIcon.props"
 
 export const TouchableIcon: React.FunctionComponent<ITouchableIconProps> = props => {
-    const { icon, onPress } = props
+    const { icon, onPress, style } = props
 
     return (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={onPress} style={style}>
             <Icon name={icon} type="font-awesome" color="white" />
         </TouchableOpacity>
     )
