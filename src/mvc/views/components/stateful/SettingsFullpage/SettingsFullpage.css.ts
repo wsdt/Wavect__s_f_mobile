@@ -9,8 +9,8 @@ const styles = StyleSheet.create({
 
     inputStyle: {
         flex: 1,
-        justifyContent: "center"
-    }
+        justifyContent: "center",
+    },
 })
 
 export default styles

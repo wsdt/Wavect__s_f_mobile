@@ -44,7 +44,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     private getSettingsView = () => {
         const isFormSubmittable = this.isFormSubmittable()
         return (
-            <ScrollView style={{flex: 1, width: "100%"}}>
+            <ScrollView style={{ flex: 1, width: "100%" }}>
                 <Text style={styles.row}>
                     Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder Produkten/Services zu kontaktieren.
                 </Text>

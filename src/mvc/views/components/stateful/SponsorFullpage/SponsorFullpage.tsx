@@ -42,7 +42,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                             icon="envelope"
                         />
                     </View>
-                    <Text style={styles.boldHeadline}> Über uns </Text>
+                    <Text style={styles.boldHeadline}> Wissenswertes </Text>
                     <Text style={styles.blockText}>
                         {" "}
                         Die Idee für taurinhaltige Getränke kam aus Japan, wo sie im Zweiten Weltkrieg japanischen Piloten zur Steigerung der Leistung
