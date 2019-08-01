@@ -1,9 +1,9 @@
 import AsyncStorage from "@react-native-community/async-storage"
 import * as React from "react"
 // @ts-ignore
-import {Cache} from "react-native-cache"
-import {disableCache} from "../../../globalConfiguration/globalConfig"
-import {ILoadingContext, LoadingStatus} from "../../views/components/system/HOCs/LoadingHoc"
+import { Cache } from "react-native-cache"
+import { disableCache } from "../../../globalConfiguration/globalConfig"
+import { ILoadingContext, LoadingStatus } from "../../views/components/system/HOCs/LoadingHoc"
 
 const TAG = "CacheController"
 
@@ -79,13 +79,17 @@ export const getAllFromCache = (): Promise<any> => {
     })
 }
 
-export const clearCache = (): void => {
-    cache.clearAll((err: any) => {
-        if (err) {
-            console.error(`${TAG}:clearCache: Could not clear cache, err below: \n${JSON.stringify(err)}`)
-        } else {
-            console.log(`${TAG}:clearCache: Cleared cache successfully.`)
-        }
+export const clearCache = (): Promise<any> => {
+    return new Promise<boolean>((resolve, reject) => {
+        cache.clearAll((err: any) => {
+            if (err) {
+                console.error(`${TAG}:clearCache: Could not clear cache, err below: \n${JSON.stringify(err)}`)
+                return reject(err)
+            } else {
+                console.log(`${TAG}:clearCache: Cleared cache successfully.`)
+                resolve(true)
+            }
+        })
     })
 }
 

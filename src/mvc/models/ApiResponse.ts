@@ -19,5 +19,4 @@ export class ApiResponse {
     // Undefined forbidden (never set undefined as developer)
     private _err!: string | Error | string | Error | Array<string | Error> | null
     private _res!: [] | {} | null
-
 }
