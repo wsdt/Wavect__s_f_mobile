@@ -8,14 +8,13 @@ import { getEmailMarked, getLocalUserId } from "../../../../controllers/LocalSto
 import { openFilePicker } from "../../../../controllers/SocialController/FilePickerController"
 import { shareImage } from "../../../../controllers/SocialController/ShareController"
 import { noInternetAvailable } from "../../../../controllers/WarningsController"
+import { ApiResponse } from "../../../../models/ApiResponse"
 import { MajorBtnType, MajorButton } from "../../functional/MajorButton/MajorButton"
 import { routes } from "../../system/TabRouter/SettingsScreenRouter/SettingsRoutes"
 import { CHALLENGE_SOLVED_ID } from "./ChallengeLayerBar.constants"
 import styles from "./ChallengeLayerBar.css"
 import { IChallengeLayerBarProps } from "./ChallengeLayerBar.props"
 import { IChallengeLayerBarState } from "./ChallengeLayerBar.state"
-import { ApiResponse } from "../../../../models/ApiResponse"
-
 
 class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, IChallengeLayerBarState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/email`
@@ -44,7 +43,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                                 title="Abschließen"
                                 btnType={MajorBtnType.PRIMARY}
                                 onLongPress={() => this.execBtnAccept()}
-                                onPress={() => ToastAndroid.show('Gedrückt halten, um die Challenge abzuschließen', ToastAndroid.SHORT)}
+                                onPress={() => ToastAndroid.show("Gedrückt halten, um die Challenge abzuschließen", ToastAndroid.SHORT)}
                                 isLoading={this.state.isLoadingChallengeSolved}
                             />
                         )}
@@ -60,9 +59,9 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
     private challengeAlreadySolved = () => {
         Alert.alert(
-            'Challenge solved',
-            'Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.',
-            [{ text: 'OK' }],
+            "Challenge solved",
+            "Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.",
+            [{ text: "OK" }],
             {
                 cancelable: true,
             }
@@ -109,12 +108,12 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         this.setState({ isLoadingChallengeSolved: true })
 
         const userAbortedProcedure = () => {
-            ToastAndroid.show('Bitte sag Bescheid, wenn du soweit bist!', ToastAndroid.SHORT)
+            ToastAndroid.show("Bitte sag Bescheid, wenn du soweit bist!", ToastAndroid.SHORT)
             this.setState({
                 currChallengeSolved: false,
                 isLoadingChallengeSolved: false,
             })
-            console.log('ChallengeLayerBar:userAbortedProcedure: User aborted.')
+            console.log("ChallengeLayerBar:userAbortedProcedure: User aborted.")
         }
 
         // Share it
@@ -123,7 +122,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
             if (res.error || res.didCancel) {
                 userAbortedProcedure()
-                console.log('ChallengeLayerBar:challengeSolved: User did not choose a file.')
+                console.log("ChallengeLayerBar:challengeSolved: User did not choose a file.")
             } else {
                 console.log(res)
                 const wasShareSuccessful = await shareImage(this.props.headline, this.props.sponsorName, res)
@@ -146,9 +145,9 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             this.challengeSolved()
         } else {
             Alert.alert(
-                'Einen Moment noch!',
-                'Wir benötigen deine E-Mail Adresse damit dich unsere Sponsoren kontaktieren können.   ',
-                [{ text: 'OK', onPress: () => this.props.navigation.navigate(routes.SettingsScreen) }],
+                "Einen Moment noch!",
+                "Wir benötigen deine E-Mail Adresse damit dich unsere Sponsoren kontaktieren können.   ",
+                [{ text: "OK", onPress: () => this.props.navigation.navigate(routes.SettingsScreen) }],
                 {
                     cancelable: true,
                 }

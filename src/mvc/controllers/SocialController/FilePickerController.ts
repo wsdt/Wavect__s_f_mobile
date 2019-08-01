@@ -1,5 +1,4 @@
-import ImagePicker, { ImagePickerOptions, ImagePickerResponse } from 'react-native-image-picker'
-
+import ImagePicker, { ImagePickerOptions, ImagePickerResponse } from "react-native-image-picker"
 
 export const openFilePicker = (): Promise<any> => {
     return new Promise((resolve, reject) => {

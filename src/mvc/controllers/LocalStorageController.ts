@@ -1,8 +1,8 @@
-import AsyncStorage from '@react-native-community/async-storage'
+import AsyncStorage from "@react-native-community/async-storage"
 
 // Local constants
-const USER_ID = 'user_id'
-const EMAIL_MARKED = 'email_marked'
+const USER_ID = "user_id"
+const EMAIL_MARKED = "email_marked"
 
 const generateNewUserId = async (): Promise<string> => {
     const newUserId: string = Math.random()
@@ -21,19 +21,21 @@ export const getLocalUserId = async (): Promise<string> => {
     return localUserId === null ? generateNewUserId() : localUserId
 }
 
-export const doesLocalUserIDExist = async () => {
+export const doesLocalUserIDExist = async (): Promise<boolean> => {
     const localUserId: string | null = await AsyncStorage.getItem(USER_ID)
     return localUserId !== null
 }
 
-export const markEmailAsCreated = async () => {
+export const markEmailAsCreated = async (): Promise<boolean> => {
     try {
-        await AsyncStorage.setItem(EMAIL_MARKED, 'true')
+        await AsyncStorage.setItem(EMAIL_MARKED, "true")
+        return true
     } catch (e) {
         console.error(e)
+        return false
     }
 }
 
-export const getEmailMarked = async () => {
+export const getEmailMarked = async (): Promise<string|null> => {
     return AsyncStorage.getItem(EMAIL_MARKED)
 }
