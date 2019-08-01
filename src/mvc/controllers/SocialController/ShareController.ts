@@ -10,12 +10,10 @@ export const shareImage = async (headline: string, sponsorName: string, res: Ima
         url: `data:${res.type};base64, ${res.data}`,
     }
 
-
     try {
         await Share.open(shareOptions)
         return true
-
-    } catch(err) {
+    } catch (err) {
         console.warn("ShareController:shareMedia: Action aborted by user -> " + JSON.stringify(err))
         return false
     }
