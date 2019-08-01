@@ -57,6 +57,8 @@ var WarningsController_1 = require("../../../../controllers/WarningsController")
 var GlobalStyles_css_1 = require("../../../GlobalStyles.css");
 var LoadingHoc_1 = require("../../system/HOCs/LoadingHoc");
 var SettingsFullpage_css_1 = require("./SettingsFullpage.css");
+var CacheController_1 = require("../../../../controllers/CacheController/CacheController");
+var CacheController_constants_1 = require("../../../../controllers/CacheController/CacheController.constants");
 var SettingsFullpage = (function (_super) {
     __extends(SettingsFullpage, _super);
     function SettingsFullpage() {
@@ -70,17 +72,17 @@ var SettingsFullpage = (function (_super) {
         _this.userId = "";
         _this.getSettingsView = function () {
             var isFormSubmittable = _this.isFormSubmittable();
-            return (<>
+            return (<react_native_1.ScrollView style={{ flex: 1, width: "100%" }}>
                 <react_native_elements_1.Text style={SettingsFullpage_css_1.default.row}>
                     Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder Produkten/Services zu kontaktieren.
                 </react_native_elements_1.Text>
 
-                <react_native_elements_1.Input value={_this.state.email} onChangeText={function (text) { return _this.emailValidation(text); }} containerStyle={[SettingsFullpage_css_1.default.row, SettingsFullpage_css_1.default.fullAbsoluteWidth]} label="E-Mail" placeholder=" Deine E-Mail" leftIcon={<react_native_elements_1.Icon name="envelope" type="font-awesome"/>} shake={true} errorMessage={_this.state.validEmail ? "" : "Bitte gib eine gültige E-Mail an."}/>
+                <react_native_elements_1.Input value={_this.state.email} onChangeText={function (text) { return _this.emailValidation(text); }} containerStyle={SettingsFullpage_css_1.default.row} style={SettingsFullpage_css_1.default.row} label="E-Mail" placeholder=" Deine E-Mail" leftIcon={<react_native_elements_1.Icon name="envelope" type="font-awesome"/>} shake={true} errorMessage={_this.state.validEmail ? "" : "Bitte gib eine gültige E-Mail an."}/>
 
                 <react_native_elements_1.CheckBox checked={_this.state.hasAcceptedDataPrivacy} containerStyle={SettingsFullpage_css_1.default.row} checkedColor="#000" title="Ich verstehe und akzeptiere, dass meine E-Mail-Adresse bei erfolgreichem Abschluss einer Herausforderung an den angegebenen Sponsor übermittelt wird." onPress={function () { return _this.setState({ hasAcceptedDataPrivacy: !_this.state.hasAcceptedDataPrivacy }); }}/>
 
-                <react_native_elements_1.Button containerStyle={[SettingsFullpage_css_1.default.row, SettingsFullpage_css_1.default.fullAbsoluteWidth]} type="outline" title=" Speichern" raised={isFormSubmittable} loading={_this.state.isSavingSettings} disabled={!isFormSubmittable} icon={<react_native_elements_1.Icon name="save" type="font-awesome"/>} onPress={_this.postUserSettings}/>
-            </>);
+                <react_native_elements_1.Button containerStyle={SettingsFullpage_css_1.default.row} type="outline" title=" Speichern" raised={isFormSubmittable} loading={_this.state.isSavingSettings} disabled={!isFormSubmittable} icon={<react_native_elements_1.Icon name="save" type="font-awesome"/>} onPress={_this.postUserSettings}/>
+            </react_native_1.ScrollView>);
         };
         _this.getUserId = function () { return __awaiter(_this, void 0, void 0, function () {
             var _a;
@@ -97,54 +99,57 @@ var SettingsFullpage = (function (_super) {
                 }
             });
         }); };
-        _this.getUserSettings = function (cb) { return __awaiter(_this, void 0, void 0, function () {
-            var _a, _b;
-            var _this = this;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        _a = fetch;
-                        _b = SettingsFullpage.API_ENDPOINT + "/";
-                        return [4, this.getUserId()];
-                    case 1:
-                        _a.apply(void 0, [_b + (_c.sent())])
-                            .then(function (res) { return res.json(); })
-                            .then(function (data) {
-                            if (data.res) {
-                                _this.setState({
-                                    hasAcceptedDataPrivacy: data.res.hasAcceptedDataPrivacy,
-                                    email: data.res.email,
-                                    validEmail: true,
-                                });
+        _this.getUserSettings = function (reload, cb) {
+            CacheController_1.cachedFetch(_this, CacheController_constants_1.CACHE_KEY_SETTINGS, _this.loadingContext, reload, function () { return __awaiter(_this, void 0, void 0, function () {
+                var _a, _b;
+                var _this = this;
+                return __generator(this, function (_c) {
+                    switch (_c.label) {
+                        case 0:
+                            _a = fetch;
+                            _b = SettingsFullpage.API_ENDPOINT + "/";
+                            return [4, this.getUserId()];
+                        case 1:
+                            _a.apply(void 0, [_b + (_c.sent())])
+                                .then(function (res) { return res.json(); })
+                                .then(function (data) {
+                                if (data.res) {
+                                    var apiRes = {
+                                        hasAcceptedDataPrivacy: data.res.hasAcceptedDataPrivacy,
+                                        email: data.res.email,
+                                        validEmail: true,
+                                    };
+                                    _this.setState(apiRes);
+                                    CacheController_1.putCache(CacheController_constants_1.CACHE_KEY_SETTINGS, apiRes);
+                                    console.log("SettingsFullpage:getUserSettings: Received user settings.");
+                                }
+                                else {
+                                    console.log("SettingsFullpage:getUserSettings: No user settings previously saved");
+                                }
                                 _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE);
-                                console.log("SettingsFullpage:getUserSettings: Received user settings.");
-                            }
-                            else {
-                                console.log("SettingsFullpage:getUserSettings: No user settings previously saved");
-                                _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE);
-                            }
-                            if (cb) {
-                                cb();
-                            }
-                        })
-                            .catch(function (e) {
-                            console.error(e);
-                            _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR);
-                            if (cb) {
-                                cb();
-                            }
-                        });
-                        return [2];
-                }
-            });
-        }); };
+                                if (cb) {
+                                    cb();
+                                }
+                            })
+                                .catch(function (e) {
+                                console.error(e);
+                                _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR);
+                                if (cb) {
+                                    cb();
+                                }
+                            });
+                            return [2];
+                    }
+                });
+            }); });
+        };
         _this.postUserSettings = function () {
             _this.setState({ isSavingSettings: true }, function () { return __awaiter(_this, void 0, void 0, function () {
                 var rawResp, _a, _b, res, e_1;
                 return __generator(this, function (_c) {
                     switch (_c.label) {
                         case 0:
-                            _c.trys.push([0, 4, , 5]);
+                            _c.trys.push([0, 4, 5, 6]);
                             _a = fetch;
                             _b = SettingsFullpage.API_ENDPOINT + "/";
                             return [4, this.getUserId()];
@@ -165,15 +170,17 @@ var SettingsFullpage = (function (_super) {
                         case 3:
                             res = _c.sent();
                             LocalStorageController_1.markEmailAsCreated();
-                            this.setState({ isSavingSettings: false });
                             console.log("SettingsFullpage:postUserSettings: Tried to save userSettings -> " + JSON.stringify(res));
-                            return [3, 5];
+                            return [3, 6];
                         case 4:
                             e_1 = _c.sent();
                             WarningsController_1.noInternetAvailable();
                             console.error(e_1);
-                            return [3, 5];
-                        case 5: return [2];
+                            return [3, 6];
+                        case 5:
+                            this.setState({ isSavingSettings: false });
+                            return [7];
+                        case 6: return [2];
                     }
                 });
             }); });
@@ -187,12 +194,13 @@ var SettingsFullpage = (function (_super) {
         return _this;
     }
     SettingsFullpage.prototype.componentDidMount = function () {
-        this.getUserSettings();
-        this.loadingContext.setRefresh(this.getUserSettings);
+        var _this = this;
+        this.getUserSettings(false);
+        this.loadingContext.setRefresh(function (cb) { return _this.getUserSettings(true, cb); });
     };
     SettingsFullpage.prototype.render = function () {
         var _this = this;
-        return (<react_native_1.View style={[GlobalStyles_css_1.default.pageContainer, SettingsFullpage_css_1.default.fullpageWidth]}>
+        return (<react_native_1.View style={[GlobalStyles_css_1.default.pageContainer]}>
                 <LoadingHoc_1.LoadingHoc.Consumer>
                     {function (contextMethods) {
             _this.loadingContext = contextMethods;

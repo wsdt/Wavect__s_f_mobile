@@ -1,4 +1,4 @@
-import { ImageURISource } from "react-native"
+import { ImageURISource } from 'react-native'
 
 export class Sponsor {
     private _id!: string
@@ -7,6 +7,8 @@ export class Sponsor {
     private _shortDescr!: string
     private _website!: string
     private _email!: string
+    private _aboutUs!: string
+    private _misc!: string
     private _youtube?: string
     private _instagram?: string
     private _linkedin?: string
@@ -19,6 +21,8 @@ export class Sponsor {
         shortDescr: string,
         website: string,
         email: string,
+        aboutUs: string,
+        misc: string,
         facebook: string,
         instagram: string,
         linkedin: string,
@@ -30,6 +34,8 @@ export class Sponsor {
         this.shortDescr = shortDescr
         this.website = website
         this.email = email
+        this.aboutUs = aboutUs
+        this.misc = misc
         this.youtube = youtube
         this.instagram = instagram
         this.facebook = facebook
@@ -114,5 +120,21 @@ export class Sponsor {
 
     set facebook(value: string | undefined) {
         this._facebook = value
+    }
+
+    get aboutUs(): string {
+        return this._aboutUs
+    }
+
+    set aboutUs(value: string) {
+        this._aboutUs = value
+    }
+
+    get misc(): string {
+        return this._misc
+    }
+
+    set misc(value: string) {
+        this._misc = value
     }
 }

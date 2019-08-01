@@ -55,13 +55,13 @@ var react_native_elements_1 = require("react-native-elements");
 var react_navigation_1 = require("react-navigation");
 var globalConfig_1 = require("../../../../../globalConfiguration/globalConfig");
 var LocalStorageController_1 = require("../../../../controllers/LocalStorageController");
+var FilePickerController_1 = require("../../../../controllers/SocialController/FilePickerController");
+var ShareController_1 = require("../../../../controllers/SocialController/ShareController");
 var WarningsController_1 = require("../../../../controllers/WarningsController");
 var MajorButton_1 = require("../../functional/MajorButton/MajorButton");
 var SettingsRoutes_1 = require("../../system/TabRouter/SettingsScreenRouter/SettingsRoutes");
 var ChallengeLayerBar_constants_1 = require("./ChallengeLayerBar.constants");
 var ChallengeLayerBar_css_1 = require("./ChallengeLayerBar.css");
-var react_native_image_picker_1 = require("react-native-image-picker");
-var react_native_share_1 = require("react-native-share");
 var ChallengeLayerBar = (function (_super) {
     __extends(ChallengeLayerBar, _super);
     function ChallengeLayerBar() {
@@ -69,97 +69,85 @@ var ChallengeLayerBar = (function (_super) {
         _this.state = {
             isLoadingChallengeSolved: false,
             currChallengeSolved: false,
-            source: { uri: "" },
         };
         _this.lastChallengeIdSolved = null;
-        _this.shareIt = function () {
-            var options = {
-                title: 'Proof it!',
-                storageOptions: {
-                    skipBackup: true,
-                    path: 'images',
-                },
+        _this.challengeAlreadySolved = function () {
+            react_native_1.Alert.alert("Challenge solved", "Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.", [{ text: "OK" }], {
+                cancelable: true,
+            });
+        };
+        _this.challengeSolved = function () {
+            _this.setState({ isLoadingChallengeSolved: true });
+            var userAbortedProcedure = function () {
+                react_native_1.ToastAndroid.show("Bitte sag Bescheid, wenn du soweit bist!", react_native_1.ToastAndroid.SHORT);
+                _this.setState({
+                    currChallengeSolved: false,
+                    isLoadingChallengeSolved: false,
+                });
+                console.log("ChallengeLayerBar:userAbortedProcedure: User aborted.");
             };
-            react_native_image_picker_1.default.showImagePicker(options, function (res) {
-                console.log('Response = ', res);
-                if (res.didCancel) {
-                    console.log('User canceled Image Picker');
-                }
-                else if (res.error) {
-                    console.log('ImagePicker Error: ', res.error);
+            FilePickerController_1.openFilePicker(function (res) {
+                if (res.error || res.didCancel) {
+                    userAbortedProcedure();
+                    console.log("ChallengeLayerBar:challengeSolved: User did not choose a file.");
                 }
                 else {
-                    _this.setState({
-                        source: { uri: res.uri },
-                    });
-                    console.log(_this.state.source);
-                    react_native_share_1.default.open(options)
-                        .then(function (res) { console.log(res); })
-                        .catch(function (err) { err && console.log(err); });
-                    var shareOptions = {
-                        title: 'Share via',
-                        message: 'He du Pimmelkopf',
-                        url: "data:" + res.type + ";base64, " + res.data,
-                        social: react_native_share_1.default.Social.GMAIL
-                    };
-                    react_native_share_1.default.shareSingle(shareOptions);
+                    console.log(res);
+                    ShareController_1.shareImage(_this.props.headline, _this.props.sponsorName, res, function (wasShareSuccessful) { return __awaiter(_this, void 0, void 0, function () {
+                        var rawResp, _a, _b, apiRes, e_1;
+                        return __generator(this, function (_c) {
+                            switch (_c.label) {
+                                case 0:
+                                    _c.trys.push([0, 4, 5, 6]);
+                                    _a = fetch;
+                                    _b = ChallengeLayerBar.API_ENDPOINT + "/current/";
+                                    return [4, LocalStorageController_1.getLocalUserId()];
+                                case 1: return [4, _a.apply(void 0, [_b + (_c.sent()), {
+                                            method: "POST",
+                                            headers: {
+                                                Accept: "application/json",
+                                                "Content-Type": "application/json",
+                                            },
+                                            body: JSON.stringify({
+                                                email: this.props.sponsorEmail,
+                                            }),
+                                        }])];
+                                case 2:
+                                    rawResp = _c.sent();
+                                    return [4, rawResp.json()];
+                                case 3:
+                                    apiRes = _c.sent();
+                                    if (apiRes.error !== null && apiRes.error !== undefined) {
+                                        console.error("ChallengeLayer:challengeSolved: " + apiRes.error);
+                                    }
+                                    else {
+                                        if (wasShareSuccessful) {
+                                            this.storeChallengeSolved();
+                                            react_native_1.Alert.alert("Sponsor notified", "Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.", [{ text: "Super!" }], {
+                                                cancelable: true,
+                                            });
+                                            console.log("ChallengeLayerBar:challengeSolved: Sent email to sponsor.");
+                                        }
+                                    }
+                                    return [3, 6];
+                                case 4:
+                                    e_1 = _c.sent();
+                                    console.error(e_1);
+                                    WarningsController_1.noInternetAvailable();
+                                    return [3, 6];
+                                case 5:
+                                    this.setState({
+                                        currChallengeSolved: wasShareSuccessful,
+                                        isLoadingChallengeSolved: false,
+                                    });
+                                    return [7];
+                                case 6: return [2];
+                            }
+                        });
+                    }); });
                 }
             });
         };
-        _this.challengeAlreadySolved = function () {
-            _this.shareIt();
-        };
-        _this.challengeSolved = function () { return __awaiter(_this, void 0, void 0, function () {
-            var rawResp, _a, _b, res, e_1;
-            return __generator(this, function (_c) {
-                switch (_c.label) {
-                    case 0:
-                        this.setState({ isLoadingChallengeSolved: true });
-                        _c.label = 1;
-                    case 1:
-                        _c.trys.push([1, 5, , 6]);
-                        _a = fetch;
-                        _b = ChallengeLayerBar.API_ENDPOINT + "/current/";
-                        return [4, LocalStorageController_1.getLocalUserId()];
-                    case 2: return [4, _a.apply(void 0, [_b + (_c.sent()), {
-                                method: "POST",
-                                headers: {
-                                    Accept: "application/json",
-                                    "Content-Type": "application/json",
-                                },
-                                body: JSON.stringify({
-                                    email: this.props.sponsorEmail,
-                                }),
-                            }])];
-                    case 3:
-                        rawResp = _c.sent();
-                        return [4, rawResp.json()];
-                    case 4:
-                        res = _c.sent();
-                        if (res.error !== null && res.error !== undefined) {
-                            console.error(res.error);
-                        }
-                        else {
-                            this.storeChallengeSolved();
-                            this.setState({
-                                currChallengeSolved: true,
-                                isLoadingChallengeSolved: false,
-                            });
-                            react_native_1.Alert.alert("Sponsor notified", "Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.", [{ text: "Super!" }], {
-                                cancelable: true,
-                            });
-                            console.log("ChallengeLayerBar:challengeSolved: Sent email to sponsor.");
-                        }
-                        return [3, 6];
-                    case 5:
-                        e_1 = _c.sent();
-                        console.error(e_1);
-                        WarningsController_1.noInternetAvailable();
-                        return [3, 6];
-                    case 6: return [2];
-                }
-            });
-        }); };
         _this.execBtnAccept = function () { return __awaiter(_this, void 0, void 0, function () {
             var _this = this;
             return __generator(this, function (_a) {

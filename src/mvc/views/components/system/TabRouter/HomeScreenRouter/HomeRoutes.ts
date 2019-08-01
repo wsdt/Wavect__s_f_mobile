@@ -1,6 +1,6 @@
 /** Public routes mapping to avoid all sorts of spelling errors. */
 
 export const routes = {
-    HomeScreen: "HomeScreen",
-    SponsorFullpage: "SponsorFullpage2",
+    HomeScreen: 'HomeScreen',
+    SponsorFullpage: 'SponsorFullpage2',
 }

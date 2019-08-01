@@ -1,20 +1,20 @@
-import * as React from "react"
-import { RefreshControl, View } from "react-native"
-import { Text } from "react-native-elements"
-import SplashScreen from "react-native-splash-screen"
-import { SafeAreaView, ScrollView } from "react-navigation"
-import { LoadingIndicator } from "../../components/functional/LoadingIndicator/LoadingIndicator"
-import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
-import globalStyles from "../../GlobalStyles.css"
-import styles from "./BaseScreen.css"
-import { IBaseScreenState } from "./BaseScreen.state"
+import * as React from 'react'
+import { RefreshControl, View } from 'react-native'
+import { Text } from 'react-native-elements'
+import SplashScreen from 'react-native-splash-screen'
+import { SafeAreaView, ScrollView } from 'react-navigation'
+import { LoadingIndicator } from '../../components/functional/LoadingIndicator/LoadingIndicator'
+import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../components/system/HOCs/LoadingHoc'
+import globalStyles from '../../GlobalStyles.css'
+import styles from './BaseScreen.css'
+import { IBaseScreenState } from './BaseScreen.state'
 
 export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
     public state: IBaseScreenState = {
         loadingStatus: LoadingStatus.LOADING,
         isRefreshing: false,
         refreshCallback: (cb: () => void) => {
-            console.warn("BaseScreen: No refresh function provided")
+            console.warn('BaseScreen: No refresh function provided')
             cb()
         },
     }
@@ -48,13 +48,13 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
         this.setState({ isRefreshing: true })
         this.state.refreshCallback(() => {
             this.setState({ isRefreshing: false })
-            console.log("BaseScreen:onRefresh: User refreshed screen.")
+            console.log('BaseScreen:onRefresh: User refreshed screen.')
         })
     }
 
     private getCenteredText = (text: string) => {
         return (
-            <View style={{ justifyContent: "center", height: "100%" }}>
+            <View style={{ justifyContent: 'center', height: '100%' }}>
                 <Text>{text}</Text>
             </View>
         )
@@ -65,7 +65,7 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
             case LoadingStatus.LOADING:
                 return <LoadingIndicator />
             case LoadingStatus.NOT_AVAILABLE:
-                return this.getCenteredText("No data available")
+                return this.getCenteredText('No data available')
             case LoadingStatus.ERROR:
                 return this.getCenteredText("Couldn't load")
             default:
@@ -74,6 +74,6 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
     }
 
     private getDisplayProp = (): null | {} => {
-        return this.state.loadingStatus !== LoadingStatus.DONE ? { display: "none" } : null
+        return this.state.loadingStatus !== LoadingStatus.DONE ? { display: 'none' } : null
     }
 }

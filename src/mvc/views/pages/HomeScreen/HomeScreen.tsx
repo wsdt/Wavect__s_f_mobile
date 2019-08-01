@@ -1,3 +1,4 @@
+
 import * as React from "react"
 import { View } from "react-native"
 import { BACKEND_MOBILE_API } from "../../../../globalConfiguration/globalConfig"

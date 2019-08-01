@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     row: {
@@ -8,7 +8,7 @@ const styles = StyleSheet.create({
 
     inputStyle: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: 'center',
     },
 })
 

@@ -29,6 +29,7 @@ var styles = react_native_1.StyleSheet.create({
         alignItems: "center",
         flex: 1,
         flexDirection: "row",
+        margin: 5,
     },
     headline: {
         fontSize: 32,

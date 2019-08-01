@@ -1,13 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var Sponsor = (function () {
-    function Sponsor(id, name, logoUri, shortDescr, website, email, facebook, instagram, linkedin, youtube) {
+    function Sponsor(id, name, logoUri, shortDescr, website, email, aboutUs, misc, facebook, instagram, linkedin, youtube) {
         this.id = id;
         this.name = name;
         this.logoUri = logoUri;
         this.shortDescr = shortDescr;
         this.website = website;
         this.email = email;
+        this.aboutUs = aboutUs;
+        this.misc = misc;
         this.youtube = youtube;
         this.instagram = instagram;
         this.facebook = facebook;
@@ -109,6 +111,26 @@ var Sponsor = (function () {
         },
         set: function (value) {
             this._facebook = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Sponsor.prototype, "aboutUs", {
+        get: function () {
+            return this._aboutUs;
+        },
+        set: function (value) {
+            this._aboutUs = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(Sponsor.prototype, "misc", {
+        get: function () {
+            return this._misc;
+        },
+        set: function (value) {
+            this._misc = value;
         },
         enumerable: true,
         configurable: true

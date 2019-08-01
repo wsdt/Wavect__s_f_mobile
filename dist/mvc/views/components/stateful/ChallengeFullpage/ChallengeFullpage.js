@@ -15,6 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_native_1 = require("react-native");
+var react_native_fast_image_1 = require("react-native-fast-image");
 var react_navigation_1 = require("react-navigation");
 var GlobalStyles_css_1 = require("../../../GlobalStyles.css");
 var ChallengeTypeIcon_1 = require("../../functional/ChallengeTypeIcon/ChallengeTypeIcon");
@@ -44,24 +45,23 @@ var ChallengeFullpage = (function (_super) {
             }}/>
                     <ChallengeTypeIcon_1.ChallengeTypeIcon type={majorCategory} isGrayscale={_this.state.isGrayscale}/>
                 </react_native_1.View>
-                <ChallengeLayerBar_1.default headline={headline} setGrayscale={function (isGrayscale) { return _this.setState({ isGrayscale: isGrayscale }); }} subline={subline} expirationInMs={expirationInMs} challengeId={id} sponsorEmail={sponsor.email}/>
+                <ChallengeLayerBar_1.default headline={headline} sponsorName={sponsor.name} setGrayscale={function (isGrayscale) { return _this.setState({ isGrayscale: isGrayscale }); }} subline={subline} expirationInMs={expirationInMs} challengeId={id} sponsorEmail={sponsor.email}/>
             </>);
-        };
-        _this.onLoad = function () {
-            _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE);
         };
         return _this;
     }
     ChallengeFullpage.prototype.render = function () {
         var _this = this;
         var bgImage = this.props.challenge.bgImage;
-        bgImage.cache = "only-if-cached";
         return (<LoadingHoc_1.LoadingHoc.Consumer>
                 {function (contextMethods) {
             _this.loadingContext = contextMethods;
             return (<GrayColorImg_1.GrayColorImg isGrayscale={_this.state.isGrayscale}>
                             <>
-                                <react_native_1.Image source={bgImage} style={[ChallengeFullpage_css_1.default.backgroundImage, GlobalStyles_css_1.default.radius]} onLoad={_this.onLoad} onLoadStart={function () { return _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.LOADING); }} onError={function () { return _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR); }}/>
+                                <react_native_fast_image_1.default source={{
+                priority: react_native_fast_image_1.default.priority.high,
+                uri: bgImage.uri,
+            }} style={[ChallengeFullpage_css_1.default.backgroundImage, GlobalStyles_css_1.default.radius]} onLoad={function () { return _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE); }} onError={function () { return _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR); }}/>
                                 {_this.getChallengeView()}
                             </>
                         </GrayColorImg_1.GrayColorImg>);

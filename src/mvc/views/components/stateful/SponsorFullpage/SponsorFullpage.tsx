@@ -1,10 +1,10 @@
-import React from "react"
-import { Image, Linking, ScrollView, Text, View } from "react-native"
-import { withMappedNavigationParams } from "react-navigation-props-mapper"
-import { MajorBtnType, MajorButton } from "../../functional/MajorButton/MajorButton"
-import { TouchableIcon } from "../../functional/TouchableIcon/TouchableIcon"
-import { styles } from "./SponsorFullpage.css"
-import { SponsorFullpageProps } from "./SponsorFullpage.props"
+import React from 'react'
+import { Image, Linking, ScrollView, Text, View } from 'react-native'
+import { withMappedNavigationParams } from 'react-navigation-props-mapper'
+import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
+import { TouchableIcon } from '../../functional/TouchableIcon/TouchableIcon'
+import { styles } from './SponsorFullpage.css'
+import { SponsorFullpageProps } from './SponsorFullpage.props'
 
 const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => {
     const { shortDescr, logoUri, email, website, youtube, facebook, linkedin, instagram } = props.sponsor
@@ -13,16 +13,16 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
         <View>
             <View style={styles.topBar}>
                 <View style={styles.socialMedia}>
-                    {linkedin ? <TouchableIcon icon={"linkedin"} onPress={() => Linking.openURL(linkedin)} style={styles.icon} /> : null}
-                    {facebook ? <TouchableIcon icon={"facebook"} onPress={() => Linking.openURL(facebook)} style={styles.icon} /> : null}
-                    {instagram ? <TouchableIcon icon={"instagram"} onPress={() => Linking.openURL(instagram)} style={styles.icon} /> : null}
-                    {youtube ? <TouchableIcon icon={"youtube"} onPress={() => Linking.openURL(youtube)} style={styles.icon} /> : null}
+                    {linkedin ? <TouchableIcon icon={'linkedin'} onPress={() => Linking.openURL(linkedin)} style={styles.icon} /> : null}
+                    {facebook ? <TouchableIcon icon={'facebook'} onPress={() => Linking.openURL(facebook)} style={styles.icon} /> : null}
+                    {instagram ? <TouchableIcon icon={'instagram'} onPress={() => Linking.openURL(instagram)} style={styles.icon} /> : null}
+                    {youtube ? <TouchableIcon icon={'youtube'} onPress={() => Linking.openURL(youtube)} style={styles.icon} /> : null}
                 </View>
 
                 <Text style={styles.sponsorName}> #redbull </Text>
 
                 <View style={styles.roundImageContainer}>
-                    <Image source={logoUri} style={styles.imageStyle} resizeMode={"contain"} />
+                    <Image source={logoUri} style={styles.imageStyle} resizeMode={'contain'} />
                 </View>
             </View>
 
@@ -34,9 +34,9 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     <Text style={styles.boldHeadline}> Kontaktiere uns doch einfach: </Text>
 
                     <View style={styles.buttonContainer}>
-                        <MajorButton title={"Website"} btnType={MajorBtnType.SECONDARY} onPress={() => Linking.openURL(website)} icon="globe" />
+                        <MajorButton title={'Website'} btnType={MajorBtnType.SECONDARY} onPress={() => Linking.openURL(website)} icon="globe" />
                         <MajorButton
-                            title={"Email"}
+                            title={'Email'}
                             btnType={MajorBtnType.SECONDARY}
                             onPress={() => Linking.openURL(`mailto:${email}`)}
                             icon="envelope"
@@ -44,7 +44,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     </View>
                     <Text style={styles.boldHeadline}> Wissenswertes </Text>
                     <Text style={styles.blockText}>
-                        {" "}
+                        {' '}
                         Die Idee für taurinhaltige Getränke kam aus Japan, wo sie im Zweiten Weltkrieg japanischen Piloten zur Steigerung der Leistung
                         verabreicht wurden. Aus Thailand importierte der Gründer der Red Bull GmbH, Dietrich Mateschitz, später die Idee nach Europa.
                         Bei einem Besuch 1982 in Thailand stellte er fest, dass ihm ein Getränk namens Krating Daeng half, den Einfluss des Jetlags zu
@@ -63,7 +63,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                         sondern lässt das Getränk bei der Firma Rauch Fruchtsäfte in Nüziders[5] (Vorarlberg) produzieren und abfüllen. Für den Export
                         wird Red Bull nicht als Konzentrat produziert, sondern fertig in Dosen abgefüllt nach Übersee exportiert. Für den
                         amerikanischen Markt wird es von Rauch in der Schweiz abgefüllt, wo ein Werk in Widnau SG errichtet wurde. Dieser Standort
-                        wurde gewählt, um bei Handelsstreitigkeiten zwischen der EU und den USA nicht betroffen zu sein.[6]{" "}
+                        wurde gewählt, um bei Handelsstreitigkeiten zwischen der EU und den USA nicht betroffen zu sein.[6]{' '}
                     </Text>
                 </View>
             </ScrollView>

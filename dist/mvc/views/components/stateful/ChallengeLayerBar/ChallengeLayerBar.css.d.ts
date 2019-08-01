@@ -24,6 +24,7 @@ declare const styles: {
         alignItems: "center";
         flex: number;
         flexDirection: "row";
+        margin: number;
     };
     headline: {
         fontSize: number;

@@ -1,13 +1,11 @@
 declare const styles: {
     row: {
-        margin: number;
+        padding: number;
         marginTop: number;
     };
-    fullpageWidth: {
-        width: string;
-    };
-    fullAbsoluteWidth: {
-        width: number;
+    inputStyle: {
+        flex: number;
+        justifyContent: "center";
     };
 };
 export default styles;
