@@ -36,6 +36,6 @@ export const markEmailAsCreated = async (): Promise<boolean> => {
     }
 }
 
-export const getEmailMarked = async (): Promise<string|null> => {
+export const getEmailMarked = async (): Promise<string | null> => {
     return AsyncStorage.getItem(EMAIL_MARKED)
 }
