@@ -8,6 +8,7 @@ import ChallengeFullpage from "../../components/stateful/ChallengeFullpage/Chall
 import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
 import { BaseScreen } from "../BaseScreen/BaseScreen"
 import { IHomeScreenState } from "./HomeScreen.state"
+import {ApiResponse} from "../../../models/ApiResponse";
 
 export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
     public state: IHomeScreenState = {
@@ -41,28 +42,27 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
     }
 
     private fetchChallenge = (reload: boolean, cb?: () => void) => {
-        cachedFetch(this, CACHE_KEY_CHALLENGE, this.loadingContext, reload, () => {
-            fetch(`${BACKEND_MOBILE_API}/challenge/current`)
-                .then(res => res.json())
-                .then(data => {
-                    this.setState({ challenge: data.res as Challenge })
-                    if (this.state.challenge) {
-                        putCache(CACHE_KEY_CHALLENGE, { challenge: data.res as Challenge })
-                        this.loadingContext.setLoading(LoadingStatus.DONE)
-                    } else {
-                        this.loadingContext.setLoading(LoadingStatus.NOT_AVAILABLE)
-                    }
-                    if (cb) {
-                        cb()
-                    }
-                })
-                .catch(e => {
-                    console.error(e)
-                    this.loadingContext.setLoading(LoadingStatus.ERROR)
-                    if (cb) {
-                        cb()
-                    }
-                })
+        cachedFetch(this, CACHE_KEY_CHALLENGE, this.loadingContext, reload, async () => {
+            try {
+                const data:ApiResponse = await (await fetch(`${BACKEND_MOBILE_API}/challenge/current`)).json()
+                this.setState({ challenge: data.res as Challenge })
+                if (this.state.challenge) {
+                    putCache(CACHE_KEY_CHALLENGE, { challenge: data.res as Challenge })
+                    this.loadingContext.setLoading(LoadingStatus.DONE)
+                } else {
+                    this.loadingContext.setLoading(LoadingStatus.NOT_AVAILABLE)
+                }
+                if (cb) {
+                    cb()
+                }
+            } catch (e) {
+                console.error(e)
+                this.loadingContext.setLoading(LoadingStatus.ERROR)
+                if (cb) {
+                    cb()
+                }
+            }
         })
     }
 }
+
