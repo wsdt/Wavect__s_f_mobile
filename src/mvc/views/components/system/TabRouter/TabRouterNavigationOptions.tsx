@@ -1,7 +1,6 @@
 import { TabNavigatorConfig } from "react-navigation"
 import * as globalConfig from "../../../../../globalConfiguration/globalConfig"
 
-
 /**
  * You can provide custom navigationoptions for your nav bar for each page.
  * But if you don't provide any, then these default options are set.
