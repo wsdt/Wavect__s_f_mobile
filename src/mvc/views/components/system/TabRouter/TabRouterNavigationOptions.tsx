@@ -19,11 +19,11 @@ export const routerOptions: TabNavigatorConfig = {
         // scrollEnabled (scrolling through tabs itself)
         activeTintColor: "#000",
         inactiveTintColor: "#888",
-        style: { backgroundColor: "#fff" },
+        style: { backgroundColor: "#000" },
         indicatorStyle: { backgroundColor: "#000" },
         allowFontScaling: true,
-        showIcon: false,
-        showLabel: true,
+        showIcon: true,
+        showLabel: false,
         // renderIndicator (maybe as solution for loading indicator for lazy loading?)
     },
     defaultNavigationOptions: {

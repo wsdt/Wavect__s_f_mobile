@@ -31,6 +31,7 @@ const styles = StyleSheet.create({
         alignItems: "center",
         flex: 1,
         flexDirection: "row",
+        margin: 5,
     },
     headline: {
         fontSize: 32,

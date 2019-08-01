@@ -5,7 +5,6 @@ const styles = StyleSheet.create({
     primaryBtnContainer: {
         backgroundColor: "#f3f3ee",
         borderRadius: 3,
-
         flex: 1.5,
         margin: 5,
     },
