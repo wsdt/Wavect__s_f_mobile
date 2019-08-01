@@ -43,7 +43,7 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
 
     private fetchChallenge = (reload: boolean, cb?: () => void) => {
         cachedFetch(this, CACHE_KEY_CHALLENGE, this.loadingContext, reload, async () => {
-            console.log("Bumsen")
+            console.log('Bumsen')
             try {
                 const data: ApiResponse = await (await fetch(`${BACKEND_MOBILE_API}/challenge/current`)).json()
                 console.log(data)
@@ -57,7 +57,6 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
                 if (cb) {
                     cb()
                 }
-
             } catch (e) {
                 console.error(e)
                 this.loadingContext.setLoading(LoadingStatus.ERROR)
