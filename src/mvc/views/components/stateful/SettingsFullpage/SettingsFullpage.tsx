@@ -30,7 +30,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
 
     public render() {
         return (
-            <View style={[globalStyles.pageContainer, styles.fullpageWidth]}>
+            <View style={[globalStyles.pageContainer]}>
                 <LoadingHoc.Consumer>
                     {contextMethods => {
                         this.loadingContext = contextMethods

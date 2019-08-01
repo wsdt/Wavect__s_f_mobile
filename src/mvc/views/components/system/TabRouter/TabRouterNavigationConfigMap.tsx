@@ -19,7 +19,7 @@ export const routesConfig: NavigationRouteConfigMap = {
             tabBarIcon: () => (
                 <Image
                     source={require("../../../../../assets/img/icons/ic_tab_challenges.png")}
-                    style={{ width: 20, height: 20, tintColor: "white" }}
+                    style={{ width: 20, height: 20, tintColor: "black" }}
                 />
             ),
             title: "",
@@ -34,7 +34,7 @@ export const routesConfig: NavigationRouteConfigMap = {
             tabBarIcon: () => (
                 <Image
                     source={require("../../../../../assets/img/icons/ic_tab_settings.png")}
-                    style={{ width: 20, height: 20, tintColor: "white" }}
+                    style={{ width: 20, height: 20, tintColor: "black" }}
                 />
             ),
             title: "",
