@@ -1,5 +1,5 @@
-import React from "react";
-import { ISettingsFullpageState } from "./SettingsFullpage.state";
+import React from 'react';
+import { ISettingsFullpageState } from './SettingsFullpage.state';
 export declare class SettingsFullpage extends React.PureComponent<any, ISettingsFullpageState> {
     private static API_ENDPOINT;
     private static EMAIL_REGEX;

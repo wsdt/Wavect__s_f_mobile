@@ -10,10 +10,10 @@ var LoadingStatus;
 })(LoadingStatus = exports.LoadingStatus || (exports.LoadingStatus = {}));
 var defaultVal = {
     setLoading: function (_) {
-        console.error("LoadingHoc: Calling default context!");
+        console.error('LoadingHoc: Calling default context!');
     },
     setRefresh: function (_) {
-        console.error("LoadingHoc: Calling default context for setRefresh.");
+        console.error('LoadingHoc: Calling default context for setRefresh.');
     },
 };
 exports.LoadingHoc = React.createContext(defaultVal);

@@ -5,8 +5,8 @@ var GlobalStyles_css_1 = require("../../../GlobalStyles.css");
 var radius = GlobalStyles_css_1.default.radius.borderRadius;
 var styles = react_native_1.StyleSheet.create({
     topLeftCompany: {
-        alignSelf: "flex-start",
-        position: "absolute",
+        alignSelf: 'flex-start',
+        position: 'absolute',
         flex: 1,
         margin: 5,
         marginLeft: 15,
@@ -16,7 +16,7 @@ var styles = react_native_1.StyleSheet.create({
     image: {
         width: 75,
         height: 50,
-        resizeMode: "contain",
+        resizeMode: 'contain',
     },
 });
 exports.default = styles;

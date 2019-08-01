@@ -1,6 +1,6 @@
-import { ImageURISource } from "react-native";
-import { ChallengeCategory } from "./ChallengeCategory";
-import { Sponsor } from "./Sponsor";
+import { ImageURISource } from 'react-native';
+import { ChallengeCategory } from './ChallengeCategory';
+import { Sponsor } from './Sponsor';
 export declare class Challenge {
     id: string;
     whyDoesOrganizationSponsor: string;

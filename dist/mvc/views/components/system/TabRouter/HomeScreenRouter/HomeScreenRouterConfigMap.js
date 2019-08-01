@@ -8,13 +8,13 @@ exports.routesConfig = (_a = {},
     _a[HomeRoutes_1.routes.HomeScreen] = {
         screen: HomeScreen_1.HomeScreen,
         navigationOptions: function () { return ({
-            title: "Challenge",
+            title: 'Challenge',
         }); },
     },
     _a[HomeRoutes_1.routes.SponsorFullpage] = {
         screen: SponsorFullpage_1.default,
         navigationOptions: function () { return ({
-            title: "Sponsor",
+            title: 'Sponsor',
         }); },
     },
     _a);

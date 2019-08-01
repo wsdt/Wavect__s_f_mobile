@@ -8,7 +8,7 @@ var styles = react_native_1.StyleSheet.create({
     },
     inputStyle: {
         flex: 1,
-        justifyContent: "center",
+        justifyContent: 'center',
     },
 });
 exports.default = styles;

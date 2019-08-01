@@ -72,24 +72,24 @@ var ChallengeLayerBar = (function (_super) {
         };
         _this.lastChallengeIdSolved = null;
         _this.challengeAlreadySolved = function () {
-            react_native_1.Alert.alert("Challenge solved", "Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.", [{ text: "OK" }], {
+            react_native_1.Alert.alert('Challenge solved', 'Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.', [{ text: 'OK' }], {
                 cancelable: true,
             });
         };
         _this.challengeSolved = function () {
             _this.setState({ isLoadingChallengeSolved: true });
             var userAbortedProcedure = function () {
-                react_native_1.ToastAndroid.show("Bitte sag Bescheid, wenn du soweit bist!", react_native_1.ToastAndroid.SHORT);
+                react_native_1.ToastAndroid.show('Bitte sag Bescheid, wenn du soweit bist!', react_native_1.ToastAndroid.SHORT);
                 _this.setState({
                     currChallengeSolved: false,
                     isLoadingChallengeSolved: false,
                 });
-                console.log("ChallengeLayerBar:userAbortedProcedure: User aborted.");
+                console.log('ChallengeLayerBar:userAbortedProcedure: User aborted.');
             };
             FilePickerController_1.openFilePicker(function (res) {
                 if (res.error || res.didCancel) {
                     userAbortedProcedure();
-                    console.log("ChallengeLayerBar:challengeSolved: User did not choose a file.");
+                    console.log('ChallengeLayerBar:challengeSolved: User did not choose a file.');
                 }
                 else {
                     console.log(res);
@@ -103,10 +103,10 @@ var ChallengeLayerBar = (function (_super) {
                                     _b = ChallengeLayerBar.API_ENDPOINT + "/current/";
                                     return [4, LocalStorageController_1.getLocalUserId()];
                                 case 1: return [4, _a.apply(void 0, [_b + (_c.sent()), {
-                                            method: "POST",
+                                            method: 'POST',
                                             headers: {
-                                                Accept: "application/json",
-                                                "Content-Type": "application/json",
+                                                Accept: 'application/json',
+                                                'Content-Type': 'application/json',
                                             },
                                             body: JSON.stringify({
                                                 email: this.props.sponsorEmail,
@@ -118,15 +118,15 @@ var ChallengeLayerBar = (function (_super) {
                                 case 3:
                                     apiRes = _c.sent();
                                     if (apiRes.error !== null && apiRes.error !== undefined) {
-                                        console.error("ChallengeLayer:challengeSolved: " + apiRes.error);
+                                        console.error('ChallengeLayer:challengeSolved: ' + apiRes.error);
                                     }
                                     else {
                                         if (wasShareSuccessful) {
                                             this.storeChallengeSolved();
-                                            react_native_1.Alert.alert("Sponsor notified", "Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.", [{ text: "Super!" }], {
+                                            react_native_1.Alert.alert('Sponsor notified', 'Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.', [{ text: 'Super!' }], {
                                                 cancelable: true,
                                             });
-                                            console.log("ChallengeLayerBar:challengeSolved: Sent email to sponsor.");
+                                            console.log('ChallengeLayerBar:challengeSolved: Sent email to sponsor.');
                                         }
                                     }
                                     return [3, 6];
@@ -158,7 +158,7 @@ var ChallengeLayerBar = (function (_super) {
                             this.challengeSolved();
                         }
                         else {
-                            react_native_1.Alert.alert("Einen Moment noch!", "Wir benötigen deine E-Mail Adresse damit dich unsere Sponsoren kontaktieren können.   ", [{ text: "OK", onPress: function () { return _this.props.navigation.navigate(SettingsRoutes_1.routes.SettingsScreen); } }], {
+                            react_native_1.Alert.alert('Einen Moment noch!', 'Wir benötigen deine E-Mail Adresse damit dich unsere Sponsoren kontaktieren können.   ', [{ text: 'OK', onPress: function () { return _this.props.navigation.navigate(SettingsRoutes_1.routes.SettingsScreen); } }], {
                                 cancelable: true,
                             });
                             this.props.navigation.navigate(SettingsRoutes_1.routes.SettingsScreen);
@@ -227,7 +227,7 @@ var ChallengeLayerBar = (function (_super) {
                     <react_native_elements_1.Text style={ChallengeLayerBar_css_1.default.subline}>{subline}</react_native_elements_1.Text>
 
                     <react_native_1.View style={ChallengeLayerBar_css_1.default.btnContainer}>
-                        {this.state.currChallengeSolved ? (<MajorButton_1.MajorButton title="Challenge solved" btnType={MajorButton_1.MajorBtnType.HIGHLIGHTED} onPress={function () { return _this.challengeAlreadySolved(); }}/>) : (<MajorButton_1.MajorButton title="Abschließen" btnType={MajorButton_1.MajorBtnType.PRIMARY} onLongPress={function () { return _this.execBtnAccept(); }} onPress={function () { return react_native_1.ToastAndroid.show("Gedrückt halten, um die Challenge abzuschließen", react_native_1.ToastAndroid.SHORT); }} isLoading={this.state.isLoadingChallengeSolved}/>)}
+                        {this.state.currChallengeSolved ? (<MajorButton_1.MajorButton title="Challenge solved" btnType={MajorButton_1.MajorBtnType.HIGHLIGHTED} onPress={function () { return _this.challengeAlreadySolved(); }}/>) : (<MajorButton_1.MajorButton title="Abschließen" btnType={MajorButton_1.MajorBtnType.PRIMARY} onLongPress={function () { return _this.execBtnAccept(); }} onPress={function () { return react_native_1.ToastAndroid.show('Gedrückt halten, um die Challenge abzuschließen', react_native_1.ToastAndroid.SHORT); }} isLoading={this.state.isLoadingChallengeSolved}/>)}
                     </react_native_1.View>
                 </react_native_1.View>
             </react_native_1.View>);

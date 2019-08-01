@@ -11,16 +11,16 @@ var SponsorFullpage = function (props) {
     return (<react_native_1.View>
             <react_native_1.View style={SponsorFullpage_css_1.styles.topBar}>
                 <react_native_1.View style={SponsorFullpage_css_1.styles.socialMedia}>
-                    {linkedin ? <TouchableIcon_1.TouchableIcon icon={"linkedin"} onPress={function () { return react_native_1.Linking.openURL(linkedin); }} style={SponsorFullpage_css_1.styles.icon}/> : null}
-                    {facebook ? <TouchableIcon_1.TouchableIcon icon={"facebook"} onPress={function () { return react_native_1.Linking.openURL(facebook); }} style={SponsorFullpage_css_1.styles.icon}/> : null}
-                    {instagram ? <TouchableIcon_1.TouchableIcon icon={"instagram"} onPress={function () { return react_native_1.Linking.openURL(instagram); }} style={SponsorFullpage_css_1.styles.icon}/> : null}
-                    {youtube ? <TouchableIcon_1.TouchableIcon icon={"youtube"} onPress={function () { return react_native_1.Linking.openURL(youtube); }} style={SponsorFullpage_css_1.styles.icon}/> : null}
+                    {linkedin ? <TouchableIcon_1.TouchableIcon icon={'linkedin'} onPress={function () { return react_native_1.Linking.openURL(linkedin); }} style={SponsorFullpage_css_1.styles.icon}/> : null}
+                    {facebook ? <TouchableIcon_1.TouchableIcon icon={'facebook'} onPress={function () { return react_native_1.Linking.openURL(facebook); }} style={SponsorFullpage_css_1.styles.icon}/> : null}
+                    {instagram ? <TouchableIcon_1.TouchableIcon icon={'instagram'} onPress={function () { return react_native_1.Linking.openURL(instagram); }} style={SponsorFullpage_css_1.styles.icon}/> : null}
+                    {youtube ? <TouchableIcon_1.TouchableIcon icon={'youtube'} onPress={function () { return react_native_1.Linking.openURL(youtube); }} style={SponsorFullpage_css_1.styles.icon}/> : null}
                 </react_native_1.View>
 
                 <react_native_1.Text style={SponsorFullpage_css_1.styles.sponsorName}> #redbull </react_native_1.Text>
 
                 <react_native_1.View style={SponsorFullpage_css_1.styles.roundImageContainer}>
-                    <react_native_1.Image source={logoUri} style={SponsorFullpage_css_1.styles.imageStyle} resizeMode={"contain"}/>
+                    <react_native_1.Image source={logoUri} style={SponsorFullpage_css_1.styles.imageStyle} resizeMode={'contain'}/>
                 </react_native_1.View>
             </react_native_1.View>
 
@@ -32,12 +32,12 @@ var SponsorFullpage = function (props) {
                     <react_native_1.Text style={SponsorFullpage_css_1.styles.boldHeadline}> Kontaktiere uns doch einfach: </react_native_1.Text>
 
                     <react_native_1.View style={SponsorFullpage_css_1.styles.buttonContainer}>
-                        <MajorButton_1.MajorButton title={"Website"} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL(website); }} icon="globe"/>
-                        <MajorButton_1.MajorButton title={"Email"} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL("mailto:" + email); }} icon="envelope"/>
+                        <MajorButton_1.MajorButton title={'Website'} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL(website); }} icon="globe"/>
+                        <MajorButton_1.MajorButton title={'Email'} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL("mailto:" + email); }} icon="envelope"/>
                     </react_native_1.View>
                     <react_native_1.Text style={SponsorFullpage_css_1.styles.boldHeadline}> Wissenswertes </react_native_1.Text>
                     <react_native_1.Text style={SponsorFullpage_css_1.styles.blockText}>
-                        {" "}
+                        {' '}
                         Die Idee für taurinhaltige Getränke kam aus Japan, wo sie im Zweiten Weltkrieg japanischen Piloten zur Steigerung der Leistung
                         verabreicht wurden. Aus Thailand importierte der Gründer der Red Bull GmbH, Dietrich Mateschitz, später die Idee nach Europa.
                         Bei einem Besuch 1982 in Thailand stellte er fest, dass ihm ein Getränk namens Krating Daeng half, den Einfluss des Jetlags zu
@@ -56,7 +56,7 @@ var SponsorFullpage = function (props) {
                         sondern lässt das Getränk bei der Firma Rauch Fruchtsäfte in Nüziders[5] (Vorarlberg) produzieren und abfüllen. Für den Export
                         wird Red Bull nicht als Konzentrat produziert, sondern fertig in Dosen abgefüllt nach Übersee exportiert. Für den
                         amerikanischen Markt wird es von Rauch in der Schweiz abgefüllt, wo ein Werk in Widnau SG errichtet wurde. Dieser Standort
-                        wurde gewählt, um bei Handelsstreitigkeiten zwischen der EU und den USA nicht betroffen zu sein.[6]{" "}
+                        wurde gewählt, um bei Handelsstreitigkeiten zwischen der EU und den USA nicht betroffen zu sein.[6]{' '}
                     </react_native_1.Text>
                 </react_native_1.View>
             </react_native_1.ScrollView>

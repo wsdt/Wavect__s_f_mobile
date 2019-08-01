@@ -37,8 +37,8 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var async_storage_1 = require("@react-native-community/async-storage");
-var USER_ID = "user_id";
-var EMAIL_MARKED = "email_marked";
+var USER_ID = 'user_id';
+var EMAIL_MARKED = 'email_marked';
 var generateNewUserId = function () { return __awaiter(_this, void 0, void 0, function () {
     var newUserId, e_1;
     return __generator(this, function (_a) {
@@ -90,7 +90,7 @@ exports.markEmailAsCreated = function () { return __awaiter(_this, void 0, void 
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4, async_storage_1.default.setItem(EMAIL_MARKED, "true")];
+                return [4, async_storage_1.default.setItem(EMAIL_MARKED, 'true')];
             case 1:
                 _a.sent();
                 return [3, 3];

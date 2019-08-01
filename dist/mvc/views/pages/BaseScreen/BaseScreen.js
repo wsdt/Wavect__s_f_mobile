@@ -30,7 +30,7 @@ var BaseScreen = (function (_super) {
             loadingStatus: LoadingHoc_1.LoadingStatus.LOADING,
             isRefreshing: false,
             refreshCallback: function (cb) {
-                console.warn("BaseScreen: No refresh function provided");
+                console.warn('BaseScreen: No refresh function provided');
                 cb();
             },
         };
@@ -38,11 +38,11 @@ var BaseScreen = (function (_super) {
             _this.setState({ isRefreshing: true });
             _this.state.refreshCallback(function () {
                 _this.setState({ isRefreshing: false });
-                console.log("BaseScreen:onRefresh: User refreshed screen.");
+                console.log('BaseScreen:onRefresh: User refreshed screen.');
             });
         };
         _this.getCenteredText = function (text) {
-            return (<react_native_1.View style={{ justifyContent: "center", height: "100%" }}>
+            return (<react_native_1.View style={{ justifyContent: 'center', height: '100%' }}>
                 <react_native_elements_1.Text>{text}</react_native_elements_1.Text>
             </react_native_1.View>);
         };
@@ -51,7 +51,7 @@ var BaseScreen = (function (_super) {
                 case LoadingHoc_1.LoadingStatus.LOADING:
                     return <LoadingIndicator_1.LoadingIndicator />;
                 case LoadingHoc_1.LoadingStatus.NOT_AVAILABLE:
-                    return _this.getCenteredText("No data available");
+                    return _this.getCenteredText('No data available');
                 case LoadingHoc_1.LoadingStatus.ERROR:
                     return _this.getCenteredText("Couldn't load");
                 default:
@@ -59,7 +59,7 @@ var BaseScreen = (function (_super) {
             }
         };
         _this.getDisplayProp = function () {
-            return _this.state.loadingStatus !== LoadingHoc_1.LoadingStatus.DONE ? { display: "none" } : null;
+            return _this.state.loadingStatus !== LoadingHoc_1.LoadingStatus.DONE ? { display: 'none' } : null;
         };
         return _this;
     }
