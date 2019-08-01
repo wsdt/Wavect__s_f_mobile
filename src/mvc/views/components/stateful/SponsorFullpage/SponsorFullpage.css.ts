@@ -21,6 +21,7 @@ export const styles = StyleSheet.create({
         height: null,
         // @ts-ignore
         width: null,
+        padding: 5
     },
     roundImageContainer: {
         top: 0,

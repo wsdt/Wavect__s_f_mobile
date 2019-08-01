@@ -4,7 +4,7 @@ var react_native_1 = require("react-native");
 var globalConstants_css_1 = require("../../../../../globalConfiguration/globalConstants.css");
 var styles = react_native_1.StyleSheet.create({
     primaryBtnContainer: {
-        backgroundColor: "#f3f3ee",
+        backgroundColor: '#f3f3ee',
         borderRadius: 3,
         flex: 1.5,
         margin: 5,
@@ -20,12 +20,12 @@ var styles = react_native_1.StyleSheet.create({
         margin: 5,
     },
     btnTitleStandard: {
-        color: "#000",
+        color: '#000',
         fontSize: 20,
         padding: 10,
     },
     btnStyleWithBorder: {
-        borderColor: "#000",
+        borderColor: '#000',
         height: 60,
     },
     btnTitleHighlighted: {

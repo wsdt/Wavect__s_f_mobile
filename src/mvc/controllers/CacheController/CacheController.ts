@@ -1,9 +1,9 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import * as React from 'react'
 // @ts-ignore
-import {Cache} from "react-native-cache"
-import {disableCache} from "../../../globalConfiguration/globalConfig"
-import {ILoadingContext, LoadingStatus} from "../../views/components/system/HOCs/LoadingHoc"
+import { Cache } from 'react-native-cache'
+import { disableCache } from '../../../globalConfiguration/globalConfig'
+import { ILoadingContext, LoadingStatus } from '../../views/components/system/HOCs/LoadingHoc'
 
 const TAG = 'CacheController'
 

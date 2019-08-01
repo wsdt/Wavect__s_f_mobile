@@ -65,19 +65,19 @@ var SettingsFullpage = (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.state = {
             hasAcceptedDataPrivacy: false,
-            email: "",
+            email: '',
             validEmail: false,
             isSavingSettings: false,
         };
-        _this.userId = "";
+        _this.userId = '';
         _this.getSettingsView = function () {
             var isFormSubmittable = _this.isFormSubmittable();
-            return (<react_native_1.ScrollView style={{ flex: 1, width: "100%" }}>
+            return (<react_native_1.ScrollView style={{ flex: 1, width: '100%' }}>
                 <react_native_elements_1.Text style={SettingsFullpage_css_1.default.row}>
                     Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder Produkten/Services zu kontaktieren.
                 </react_native_elements_1.Text>
 
-                <react_native_elements_1.Input value={_this.state.email} onChangeText={function (text) { return _this.emailValidation(text); }} containerStyle={SettingsFullpage_css_1.default.row} style={SettingsFullpage_css_1.default.row} label="E-Mail" placeholder=" Deine E-Mail" leftIcon={<react_native_elements_1.Icon name="envelope" type="font-awesome"/>} shake={true} errorMessage={_this.state.validEmail ? "" : "Bitte gib eine gültige E-Mail an."}/>
+                <react_native_elements_1.Input value={_this.state.email} onChangeText={function (text) { return _this.emailValidation(text); }} containerStyle={SettingsFullpage_css_1.default.row} style={SettingsFullpage_css_1.default.row} label="E-Mail" placeholder=" Deine E-Mail" leftIcon={<react_native_elements_1.Icon name="envelope" type="font-awesome"/>} shake={true} errorMessage={_this.state.validEmail ? '' : 'Bitte gib eine gültige E-Mail an.'}/>
 
                 <react_native_elements_1.CheckBox checked={_this.state.hasAcceptedDataPrivacy} containerStyle={SettingsFullpage_css_1.default.row} checkedColor="#000" title="Ich verstehe und akzeptiere, dass meine E-Mail-Adresse bei erfolgreichem Abschluss einer Herausforderung an den angegebenen Sponsor übermittelt wird." onPress={function () { return _this.setState({ hasAcceptedDataPrivacy: !_this.state.hasAcceptedDataPrivacy }); }}/>
 
@@ -121,10 +121,10 @@ var SettingsFullpage = (function (_super) {
                                     };
                                     _this.setState(apiRes);
                                     CacheController_1.putCache(CacheController_constants_1.CACHE_KEY_SETTINGS, apiRes);
-                                    console.log("SettingsFullpage:getUserSettings: Received user settings.");
+                                    console.log('SettingsFullpage:getUserSettings: Received user settings.');
                                 }
                                 else {
-                                    console.log("SettingsFullpage:getUserSettings: No user settings previously saved");
+                                    console.log('SettingsFullpage:getUserSettings: No user settings previously saved');
                                 }
                                 _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE);
                                 if (cb) {
@@ -154,10 +154,10 @@ var SettingsFullpage = (function (_super) {
                             _b = SettingsFullpage.API_ENDPOINT + "/";
                             return [4, this.getUserId()];
                         case 1: return [4, _a.apply(void 0, [_b + (_c.sent()), {
-                                    method: "POST",
+                                    method: 'POST',
                                     headers: {
-                                        Accept: "application/json",
-                                        "Content-Type": "application/json",
+                                        Accept: 'application/json',
+                                        'Content-Type': 'application/json',
                                     },
                                     body: JSON.stringify({
                                         email: this.state.email,
@@ -170,7 +170,7 @@ var SettingsFullpage = (function (_super) {
                         case 3:
                             res = _c.sent();
                             LocalStorageController_1.markEmailAsCreated();
-                            console.log("SettingsFullpage:postUserSettings: Tried to save userSettings -> " + JSON.stringify(res));
+                            console.log('SettingsFullpage:postUserSettings: Tried to save userSettings -> ' + JSON.stringify(res));
                             return [3, 6];
                         case 4:
                             e_1 = _c.sent();

@@ -7,7 +7,7 @@ exports.routesConfig = (_a = {},
     _a[SettingsRoutes_1.routes.SettingsScreen] = {
         screen: SettingsScreen_1.SettingsScreen,
         navigationOptions: function () { return ({
-            title: "Einstellungen",
+            title: 'Einstellungen',
         }); },
     },
     _a);

@@ -38,57 +38,77 @@ var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var async_storage_1 = require("@react-native-community/async-storage");
 var react_native_cache_1 = require("react-native-cache");
+var globalConfig_1 = require("../../../globalConfiguration/globalConfig");
 var LoadingHoc_1 = require("../../views/components/system/HOCs/LoadingHoc");
-var TAG = "CacheController";
+var TAG = 'CacheController';
 var cache = new react_native_cache_1.Cache({
     backend: async_storage_1.default,
-    namespace: "wavect_cache",
+    namespace: 'wavect_cache',
     policy: {
         maxEntries: 5,
     },
 });
 exports.putCache = function (key, val) {
-    cache.setItem(key, val, function (err) {
-        if (err) {
-            console.error(TAG + ":putCache: Cannot push element in cache -> '" + key + "':'" + val + "', err below: \n" + JSON.stringify(err));
-        }
+    return new Promise(function (resolve, reject) {
+        cache.setItem(key, val, function (err) {
+            if (err) {
+                console.error(TAG + ":putCache: Cannot push element in cache -> '" + key + "':'" + val + "', err below: \n" + JSON.stringify(err));
+                reject(err);
+            }
+            else {
+                resolve(true);
+            }
+        });
     });
 };
-exports.getCache = function (key, cb) {
-    cache.getItem(key, function (err, val) {
-        if (err) {
-            console.error(TAG + ":getCache: Cannot get element with key -> '" + key + "', err below: \n" + JSON.stringify(err));
-        }
-        else {
-            cb(val);
-        }
+exports.getCache = function (key) {
+    return new Promise(function (resolve, reject) {
+        cache.getItem(key, function (err, val) {
+            if (err) {
+                console.error(TAG + ":getCache: Cannot get element with key -> '" + key + "', err below: \n" + JSON.stringify(err));
+                reject(err);
+            }
+            else {
+                resolve(val);
+            }
+        });
     });
 };
 exports.deleteCache = function (key) {
-    cache.removeItem(key, function (err) {
-        if (err) {
-            console.error(TAG + ":deleteCache: Cannot delete element with key -> '" + key + "', err below: \n" + JSON.stringify(err));
-        }
+    return new Promise(function (resolve, reject) {
+        cache.removeItem(key, function (err) {
+            if (err) {
+                console.error(TAG + ":deleteCache: Cannot delete element with key -> '" + key + "', err below: \n" + JSON.stringify(err));
+                reject(err);
+            }
+            resolve(true);
+        });
     });
 };
-exports.sneakCache = function (key, cb) {
-    cache.peekItem(key, function (err, val) {
-        if (err) {
-            console.error(TAG + ":sneakCache: Cannot get element with key -> '" + key + "', err below: \n" + JSON.stringify(err));
-        }
-        else {
-            cb(val);
-        }
+exports.sneakCache = function (key) {
+    return new Promise(function (resolve, reject) {
+        cache.peekItem(key, function (err, val) {
+            if (err) {
+                console.error(TAG + ":sneakCache: Cannot get element with key -> '" + key + "', err below: \n" + JSON.stringify(err));
+                reject(err);
+            }
+            else {
+                resolve(val);
+            }
+        });
     });
 };
-exports.getAllFromCache = function (cb) {
-    cache.getAll(function (err, entries) {
-        if (err) {
-            console.error(TAG + ":getAllFromCache: Cannot read cache, err below: \n" + JSON.stringify(err));
-        }
-        else {
-            cb(entries);
-        }
+exports.getAllFromCache = function () {
+    return new Promise(function (resolve, reject) {
+        cache.getAll(function (err, entries) {
+            if (err) {
+                console.error(TAG + ":getAllFromCache: Cannot read cache, err below: \n" + JSON.stringify(err));
+                reject(err);
+            }
+            else {
+                resolve(entries);
+            }
+        });
     });
 };
 exports.clearCache = function () {
@@ -101,13 +121,17 @@ exports.clearCache = function () {
         }
     });
 };
-exports.cachedFetch = function (component, cacheKey, loadingContext, reload, fetchFunction) {
-    if (reload) {
-        fetchFunction();
-    }
-    else {
-        exports.getCache(cacheKey, function (cachedData) { return __awaiter(_this, void 0, void 0, function () {
-            return __generator(this, function (_a) {
+exports.cachedFetch = function (component, cacheKey, loadingContext, reload, fetchFunction) { return __awaiter(_this, void 0, void 0, function () {
+    var cachedData;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                if (!(reload || globalConfig_1.disableCache)) return [3, 1];
+                fetchFunction();
+                return [3, 3];
+            case 1: return [4, exports.getCache(cacheKey)];
+            case 2:
+                cachedData = _a.sent();
                 if (cachedData) {
                     console.log(TAG + ":cachedFetch: Loading from cache");
                     component.setState(cachedData);
@@ -116,9 +140,9 @@ exports.cachedFetch = function (component, cacheKey, loadingContext, reload, fet
                 else {
                     fetchFunction();
                 }
-                return [2];
-            });
-        }); });
-    }
-};
+                _a.label = 3;
+            case 3: return [2];
+        }
+    });
+}); };
 //# sourceMappingURL=CacheController.js.map
