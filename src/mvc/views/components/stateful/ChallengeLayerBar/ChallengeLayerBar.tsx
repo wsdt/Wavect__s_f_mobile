@@ -8,6 +8,7 @@ import { getEmailMarked, getLocalUserId } from '../../../../controllers/LocalSto
 import { openFilePicker } from '../../../../controllers/SocialController/FilePickerController'
 import { shareImage } from '../../../../controllers/SocialController/ShareController'
 import { noInternetAvailable } from '../../../../controllers/WarningsController'
+import { ApiResponse } from '../../../../models/ApiResponse'
 import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
 import { routes } from '../../system/TabRouter/SettingsScreenRouter/SettingsRoutes'
 import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
@@ -67,7 +68,43 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         )
     }
 
-    private challengeSolved = () => {
+    private sendChallengeSolvedEmailToSponsor = async () => {
+        try {
+            const apiRes: ApiResponse = await (await fetch(`${ChallengeLayerBar.API_ENDPOINT}/current/${await getLocalUserId()}`, {
+                method: 'POST',
+                headers: {
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: this.props.sponsorEmail,
+                }),
+            })).json()
+
+            if (apiRes.err !== null && apiRes.err !== undefined) {
+                // might return {}
+                console.error('ChallengeLayer:challengeSolved: ' + apiRes.err)
+            } else {
+                this.storeChallengeSolved()
+
+                Alert.alert(
+                    'Sponsor notified',
+                    'Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.',
+                    [{ text: 'Super!' }],
+                    {
+                        cancelable: true,
+                    }
+                )
+
+                console.log('ChallengeLayerBar:challengeSolved: Sent email to sponsor.')
+            }
+        } catch (e) {
+            console.error(e)
+            noInternetAvailable()
+        }
+    }
+
+    private challengeSolved = async () => {
         this.setState({ isLoadingChallengeSolved: true })
 
         const userAbortedProcedure = () => {
@@ -80,57 +117,27 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         }
 
         // Share it
-        openFilePicker(res => {
+        try {
+            const res = await openFilePicker()
+
             if (res.error || res.didCancel) {
                 userAbortedProcedure()
                 console.log('ChallengeLayerBar:challengeSolved: User did not choose a file.')
             } else {
                 console.log(res)
-                shareImage(this.props.headline, this.props.sponsorName, res, async (wasShareSuccessful: boolean) => {
-                    try {
-                        const rawResp = await fetch(`${ChallengeLayerBar.API_ENDPOINT}/current/${await getLocalUserId()}`, {
-                            method: 'POST',
-                            headers: {
-                                Accept: 'application/json',
-                                'Content-Type': 'application/json',
-                            },
-                            body: JSON.stringify({
-                                email: this.props.sponsorEmail,
-                            }),
-                        })
+                const wasShareSuccessful = await shareImage(this.props.headline, this.props.sponsorName, res)
 
-                        const apiRes = await rawResp.json()
-                        if (apiRes.error !== null && apiRes.error !== undefined) {
-                            // might return {}
-                            console.error('ChallengeLayer:challengeSolved: ' + apiRes.error)
-                        } else {
-                            if (wasShareSuccessful) {
-                                this.storeChallengeSolved()
-
-                                Alert.alert(
-                                    'Sponsor notified',
-                                    'Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.',
-                                    [{ text: 'Super!' }],
-                                    {
-                                        cancelable: true,
-                                    }
-                                )
-
-                                console.log('ChallengeLayerBar:challengeSolved: Sent email to sponsor.')
-                            }
-                        }
-                    } catch (e) {
-                        console.error(e)
-                        noInternetAvailable()
-                    } finally {
-                        this.setState({
-                            currChallengeSolved: wasShareSuccessful,
-                            isLoadingChallengeSolved: false,
-                        })
-                    }
+                if (wasShareSuccessful) {
+                    this.sendChallengeSolvedEmailToSponsor()
+                }
+                this.setState({
+                    currChallengeSolved: wasShareSuccessful,
+                    isLoadingChallengeSolved: false,
                 })
             }
-        })
+        } catch (e) {
+            console.error("ChallengeLayerBar:challengeSolved: Couldn't open imagePicker -> " + JSON.stringify(e))
+        }
     }
 
     private execBtnAccept = async () => {

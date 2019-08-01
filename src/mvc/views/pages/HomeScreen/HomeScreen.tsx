@@ -10,6 +10,7 @@ import { BaseScreen } from '../BaseScreen/BaseScreen'
 import { IHomeScreenState } from './HomeScreen.state'
 import { ApiResponse } from '../../../models/ApiResponse'
 
+
 export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
     public state: IHomeScreenState = {
         challenge: undefined,
@@ -43,7 +44,6 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
 
     private fetchChallenge = (reload: boolean, cb?: () => void) => {
         cachedFetch(this, CACHE_KEY_CHALLENGE, this.loadingContext, reload, async () => {
-            console.log('Bumsen')
             try {
                 const data: ApiResponse = await (await fetch(`${BACKEND_MOBILE_API}/challenge/current`)).json()
                 console.log(data)

@@ -12,7 +12,7 @@ export const routerOptions: TabNavigatorConfig = {
     swipeEnabled: true,
     animationEnabled: true,
     tabBarPosition: 'bottom',
-    lazy: true,
+    lazy: false,
     // should exist, but typings not up-to-date
     // optimizationsEnabled: true,
     tabBarOptions: {

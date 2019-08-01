@@ -79,13 +79,17 @@ export const getAllFromCache = (): Promise<any> => {
     })
 }
 
-export const clearCache = (): void => {
-    cache.clearAll((err: any) => {
-        if (err) {
-            console.error(`${TAG}:clearCache: Could not clear cache, err below: \n${JSON.stringify(err)}`)
-        } else {
-            console.log(`${TAG}:clearCache: Cleared cache successfully.`)
-        }
+export const clearCache = (): Promise<any> => {
+    return new Promise<boolean>((resolve, reject) => {
+        cache.clearAll((err: any) => {
+            if (err) {
+                console.error(`${TAG}:clearCache: Could not clear cache, err below: \n${JSON.stringify(err)}`)
+                return reject(err)
+            } else {
+                console.log(`${TAG}:clearCache: Cleared cache successfully.`)
+                resolve(true)
+            }
+        })
     })
 }
 
