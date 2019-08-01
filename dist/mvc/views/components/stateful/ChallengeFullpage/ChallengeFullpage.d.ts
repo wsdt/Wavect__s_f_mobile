@@ -6,7 +6,6 @@ declare class ChallengeFullpage extends React.PureComponent<IChallengeFullpagePr
     private loadingContext;
     render(): JSX.Element;
     private getChallengeView;
-    private onLoad;
 }
 declare const _default: React.ComponentType<Pick<IChallengeFullpageProps, "challenge"> & {
     onRef?: ((instance: ChallengeFullpage | null) => void) | React.RefObject<ChallengeFullpage> | null | undefined;

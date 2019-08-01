@@ -10,10 +10,13 @@ exports.routerOptions = {
     lazy: true,
     tabBarOptions: {
         activeTintColor: "#000",
+        keyboardHidesTabBar: true,
         inactiveTintColor: "#888",
         style: { backgroundColor: "#fff" },
         indicatorStyle: { backgroundColor: "#000" },
         allowFontScaling: true,
+        showIcon: true,
+        showLabel: false,
     },
     defaultNavigationOptions: {},
 };

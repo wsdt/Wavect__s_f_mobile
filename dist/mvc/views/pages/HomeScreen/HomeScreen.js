@@ -16,6 +16,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_native_1 = require("react-native");
 var globalConfig_1 = require("../../../../globalConfiguration/globalConfig");
+var CacheController_1 = require("../../../controllers/CacheController/CacheController");
+var CacheController_constants_1 = require("../../../controllers/CacheController/CacheController.constants");
 var ChallengeFullpage_1 = require("../../components/stateful/ChallengeFullpage/ChallengeFullpage");
 var LoadingHoc_1 = require("../../components/system/HOCs/LoadingHoc");
 var BaseScreen_1 = require("../BaseScreen/BaseScreen");
@@ -32,34 +34,38 @@ var HomeScreen = (function (_super) {
             }
             return null;
         };
-        _this.fetchChallenge = function (cb) {
-            fetch(globalConfig_1.BACKEND_MOBILE_API + "/challenge/current")
-                .then(function (res) { return res.json(); })
-                .then(function (data) {
-                _this.setState({ challenge: data.res });
-                if (_this.state.challenge) {
-                    _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE);
-                }
-                else {
-                    _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.NOT_AVAILABLE);
-                }
-                if (cb) {
-                    cb();
-                }
-            })
-                .catch(function (e) {
-                console.error(e);
-                _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR);
-                if (cb) {
-                    cb();
-                }
+        _this.fetchChallenge = function (reload, cb) {
+            CacheController_1.cachedFetch(_this, CacheController_constants_1.CACHE_KEY_CHALLENGE, _this.loadingContext, reload, function () {
+                fetch(globalConfig_1.BACKEND_MOBILE_API + "/challenge/current")
+                    .then(function (res) { return res.json(); })
+                    .then(function (data) {
+                    _this.setState({ challenge: data.res });
+                    if (_this.state.challenge) {
+                        CacheController_1.putCache(CacheController_constants_1.CACHE_KEY_CHALLENGE, { challenge: data.res });
+                        _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE);
+                    }
+                    else {
+                        _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.NOT_AVAILABLE);
+                    }
+                    if (cb) {
+                        cb();
+                    }
+                })
+                    .catch(function (e) {
+                    console.error(e);
+                    _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR);
+                    if (cb) {
+                        cb();
+                    }
+                });
             });
         };
         return _this;
     }
     HomeScreen.prototype.componentDidMount = function () {
-        this.fetchChallenge();
-        this.loadingContext.setRefresh(this.fetchChallenge);
+        var _this = this;
+        this.fetchChallenge(false);
+        this.loadingContext.setRefresh(function (cb) { return _this.fetchChallenge(true, cb); });
     };
     HomeScreen.prototype.render = function () {
         var _this = this;
@@ -73,6 +79,6 @@ var HomeScreen = (function (_super) {
             </BaseScreen_1.BaseScreen>);
     };
     return HomeScreen;
-}(React.Component));
+}(React.PureComponent));
 exports.HomeScreen = HomeScreen;
 //# sourceMappingURL=HomeScreen.js.map
