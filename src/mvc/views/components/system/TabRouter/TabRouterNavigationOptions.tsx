@@ -19,7 +19,7 @@ export const routerOptions: TabNavigatorConfig = {
         // scrollEnabled (scrolling through tabs itself)
         activeTintColor: "#000",
         inactiveTintColor: "#888",
-        style: { backgroundColor: "#000" },
+        style: { backgroundColor: "#fff" },
         indicatorStyle: { backgroundColor: "#000" },
         allowFontScaling: true,
         showIcon: true,

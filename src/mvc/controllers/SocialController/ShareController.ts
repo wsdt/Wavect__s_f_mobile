@@ -2,7 +2,6 @@ import { ImagePickerResponse } from "react-native-image-picker"
 import Share from "react-native-share"
 
 export const shareImage = async (headline: string, sponsorName: string, res: ImagePickerResponse, cb?: (wasShareSuccessful: boolean) => void) => {
-
     // options for sharing an image
     const shareOptionsImage = {
         title: "Share via",

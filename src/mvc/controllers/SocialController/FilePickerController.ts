@@ -11,7 +11,6 @@ export const openFilePicker = (cb: (res: ImagePickerResponse) => void): void => 
         // noData: true, // TODO: uncomment when pic/vid shared via path as this greatly enhances performance!
     }
 
-
     const videoOptions: any = {
         storageOptions: {
             skipBackup: true,
