@@ -1,4 +1,4 @@
-import { ImageURISource } from "react-native"
+import { ImageURISource } from 'react-native'
 
 export class Sponsor {
     private _id!: string
@@ -123,18 +123,18 @@ export class Sponsor {
     }
 
     get aboutUs(): string {
-        return this._aboutUs;
+        return this._aboutUs
     }
 
     set aboutUs(value: string) {
-        this._aboutUs = value;
+        this._aboutUs = value
     }
 
     get misc(): string {
-        return this._misc;
+        return this._misc
     }
 
     set misc(value: string) {
-        this._misc = value;
+        this._misc = value
     }
 }

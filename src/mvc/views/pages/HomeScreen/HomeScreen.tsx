@@ -1,13 +1,13 @@
-import * as React from "react"
-import { View } from "react-native"
-import { BACKEND_MOBILE_API } from "../../../../globalConfiguration/globalConfig"
-import { cachedFetch, putCache } from "../../../controllers/CacheController/CacheController"
-import { CACHE_KEY_CHALLENGE } from "../../../controllers/CacheController/CacheController.constants"
-import { Challenge } from "../../../models/Challenge"
-import ChallengeFullpage from "../../components/stateful/ChallengeFullpage/ChallengeFullpage"
-import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
-import { BaseScreen } from "../BaseScreen/BaseScreen"
-import { IHomeScreenState } from "./HomeScreen.state"
+import * as React from 'react'
+import { View } from 'react-native'
+import { BACKEND_MOBILE_API } from '../../../../globalConfiguration/globalConfig'
+import { cachedFetch, putCache } from '../../../controllers/CacheController/CacheController'
+import { CACHE_KEY_CHALLENGE } from '../../../controllers/CacheController/CacheController.constants'
+import { Challenge } from '../../../models/Challenge'
+import ChallengeFullpage from '../../components/stateful/ChallengeFullpage/ChallengeFullpage'
+import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../components/system/HOCs/LoadingHoc'
+import { BaseScreen } from '../BaseScreen/BaseScreen'
+import { IHomeScreenState } from './HomeScreen.state'
 
 export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
     public state: IHomeScreenState = {
