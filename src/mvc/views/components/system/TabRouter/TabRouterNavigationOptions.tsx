@@ -1,6 +1,7 @@
 import { TabNavigatorConfig } from "react-navigation"
 import * as globalConfig from "../../../../../globalConfiguration/globalConfig"
 
+
 /**
  * You can provide custom navigationoptions for your nav bar for each page.
  * But if you don't provide any, then these default options are set.
@@ -18,6 +19,7 @@ export const routerOptions: TabNavigatorConfig = {
     tabBarOptions: {
         // scrollEnabled (scrolling through tabs itself)
         activeTintColor: "#000",
+        keyboardHidesTabBar: true, // TODO: not working
         inactiveTintColor: "#888",
         style: { backgroundColor: "#fff" },
         indicatorStyle: { backgroundColor: "#000" },

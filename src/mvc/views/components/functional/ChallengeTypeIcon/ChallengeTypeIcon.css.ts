@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native"
 
-const roundRadius = 0
+const roundRadius = 5
 export const BG_COLOR = "#008B8B" // color used for tooltip and image-bg when user accomplished challenge
 
 const styles = StyleSheet.create({

@@ -13,8 +13,7 @@ export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps>
             <Tooltip
                 popover={<Text style={globalStyles.tooltipText}>{CHALLENGE_CATEGORIES[props.type].descr}</Text>}
                 backgroundColor={currColor}
-                height={130}
-            >
+                height={130}>
                 <Image
                     source={CHALLENGE_CATEGORIES[props.type].icon}
                     containerStyle={[styles.imageContainer, { backgroundColor: currColor }]}
