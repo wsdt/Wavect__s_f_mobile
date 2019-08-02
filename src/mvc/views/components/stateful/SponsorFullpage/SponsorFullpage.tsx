@@ -22,7 +22,8 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     source={{
                         priority: FastImage.priority.normal,
                         uri: props.challengeBgImage.uri,
-                    }}>
+                    }}
+                >
                     <View style={styles.socialMedia}>
                         {linkedin ? <TouchableIcon icon={"linkedin"} onPress={() => Linking.openURL(linkedin)}
                                                    style={styles.icon}/> : null}
@@ -54,26 +55,33 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     <Text style={styles.boldHeadline}> {name}</Text>
                     <Text style={styles.blockText}>{shortDescr ? shortDescr : noTextAvailable}</Text>
 
-
                     <Text style={styles.boldHeadline}> Über uns </Text>
                     <Text style={styles.blockText}>{aboutUs ? aboutUs : noTextAvailable}</Text>
 
                     <Text style={styles.boldHeadline}> Wissenswertes</Text>
                     <Text style={styles.blockText}>{misc ? misc : noTextAvailable}</Text>
 
-                    <Text style={styles.boldHeadline}> Kontakt</Text>
-
-                    {(website || email) ?
-                        <View style={styles.buttonContainer}>
-                            {website ? <MajorButton title={"Website"} btnType={MajorBtnType.SECONDARY}
-                                         onPress={() => Linking.openURL(website)} icon="globe"/> : null }
-                            {email ? <MajorButton
-                                title={"Email"}
-                                btnType={MajorBtnType.SECONDARY}
-                                onPress={() => Linking.openURL(`mailto:${email}`)}
-                                icon="envelope"
-                            /> : null }
-                        </View> : null}
+                    {(website || email) ? (
+                        <><Text style={styles.boldHeadline}> Kontakt</Text>
+                            <View style={styles.buttonContainer}>
+                                {website ? (
+                                    <MajorButton
+                                        title={"Website"}
+                                        btnType={MajorBtnType.SECONDARY}
+                                        onPress={() => Linking.openURL(website)}
+                                        icon="globe"
+                                    />
+                                ) : null}
+                                {email ? (
+                                    <MajorButton
+                                        title={"Email"}
+                                        btnType={MajorBtnType.SECONDARY}
+                                        onPress={() => Linking.openURL(`mailto:${email}`)}
+                                        icon="envelope"
+                                    />
+                                ) : null}
+                            </View></>
+                    ) : null}
                 </View>
             </ScrollView>
         </View>
