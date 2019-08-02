@@ -1,18 +1,18 @@
 import React from "react"
-import {Linking, ScrollView, Text, View} from "react-native"
-import {brightness, ColorMatrix, grayscale} from "react-native-color-matrix-image-filters"
+import { Linking, ScrollView, Text, View } from "react-native"
+import { brightness, ColorMatrix, grayscale } from "react-native-color-matrix-image-filters"
 import FastImage from "react-native-fast-image"
-import {withMappedNavigationParams} from "react-navigation-props-mapper"
-import {BOTTOM_TABBAR_MARGIN} from "../../../GlobalStyles.css"
-import {MajorBtnType, MajorButton} from "../../functional/MajorButton/MajorButton"
-import {TouchableIcon} from "../../functional/TouchableIcon/TouchableIcon"
-import {styles} from "./SponsorFullpage.css"
-import {SponsorFullpageProps} from "./SponsorFullpage.props"
+import { withMappedNavigationParams } from "react-navigation-props-mapper"
+import { BOTTOM_TABBAR_MARGIN } from "../../../GlobalStyles.css"
+import { MajorBtnType, MajorButton } from "../../functional/MajorButton/MajorButton"
+import { TouchableIcon } from "../../functional/TouchableIcon/TouchableIcon"
+import { styles } from "./SponsorFullpage.css"
+import { SponsorFullpageProps } from "./SponsorFullpage.props"
 
 const noTextAvailable: string = "Keine Information vorhanden"
 
 const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => {
-    const {shortDescr, name, logoUri, misc, aboutUs, email, website, youtube, facebook, linkedin, instagram} = props.sponsor
+    const { shortDescr, name, logoUri, misc, aboutUs, email, website, youtube, facebook, linkedin, instagram } = props.sponsor
 
     return (
         <View>
@@ -25,14 +25,10 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     }}
                 >
                     <View style={styles.socialMedia}>
-                        {linkedin ? <TouchableIcon icon={"linkedin"} onPress={() => Linking.openURL(linkedin)}
-                                                   style={styles.icon}/> : null}
-                        {facebook ? <TouchableIcon icon={"facebook"} onPress={() => Linking.openURL(facebook)}
-                                                   style={styles.icon}/> : null}
-                        {instagram ? <TouchableIcon icon={"instagram"} onPress={() => Linking.openURL(instagram)}
-                                                    style={styles.icon}/> : null}
-                        {youtube ? <TouchableIcon icon={"youtube"} onPress={() => Linking.openURL(youtube)}
-                                                  style={styles.icon}/> : null}
+                        {linkedin ? <TouchableIcon icon={"linkedin"} onPress={() => Linking.openURL(linkedin)} style={styles.icon} /> : null}
+                        {facebook ? <TouchableIcon icon={"facebook"} onPress={() => Linking.openURL(facebook)} style={styles.icon} /> : null}
+                        {instagram ? <TouchableIcon icon={"instagram"} onPress={() => Linking.openURL(instagram)} style={styles.icon} /> : null}
+                        {youtube ? <TouchableIcon icon={"youtube"} onPress={() => Linking.openURL(youtube)} style={styles.icon} /> : null}
                     </View>
 
                     <Text style={styles.sponsorName}> #{name.toLowerCase()} </Text>
@@ -50,7 +46,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                 </FastImage>
             </ColorMatrix>
 
-            <ScrollView style={{marginBottom: BOTTOM_TABBAR_MARGIN}}>
+            <ScrollView style={{ marginBottom: BOTTOM_TABBAR_MARGIN }}>
                 <View>
                     <Text style={styles.boldHeadline}> {name}</Text>
                     <Text style={styles.blockText}>{shortDescr ? shortDescr : noTextAvailable}</Text>
@@ -61,8 +57,9 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     <Text style={styles.boldHeadline}> Wissenswertes</Text>
                     <Text style={styles.blockText}>{misc ? misc : noTextAvailable}</Text>
 
-                    {(website || email) ? (
-                        <><Text style={styles.boldHeadline}> Kontakt</Text>
+                    {website || email ? (
+                        <>
+                            <Text style={styles.boldHeadline}> Kontakt</Text>
                             <View style={styles.buttonContainer}>
                                 {website ? (
                                     <MajorButton
@@ -80,7 +77,8 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                         icon="envelope"
                                     />
                                 ) : null}
-                            </View></>
+                            </View>
+                        </>
                     ) : null}
                 </View>
             </ScrollView>
