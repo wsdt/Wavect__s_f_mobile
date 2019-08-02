@@ -35,7 +35,8 @@ export const styles = StyleSheet.create({
         margin: 10,
         opacity: 1,
     },
-    shadow: { // TODO: Not working yet
+    shadow: {
+        // TODO: Not working yet
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

@@ -3,16 +3,18 @@ import {Linking, ScrollView, Text, View} from "react-native"
 import {brightness, ColorMatrix, grayscale} from "react-native-color-matrix-image-filters"
 import FastImage from "react-native-fast-image"
 import {withMappedNavigationParams} from "react-navigation-props-mapper"
+import {BOTTOM_TABBAR_MARGIN} from "../../../GlobalStyles.css"
 import {MajorBtnType, MajorButton} from "../../functional/MajorButton/MajorButton"
 import {TouchableIcon} from "../../functional/TouchableIcon/TouchableIcon"
 import {styles} from "./SponsorFullpage.css"
 import {SponsorFullpageProps} from "./SponsorFullpage.props"
 
+const noTextAvailable: string = "Keine Information vorhanden"
+
 const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => {
     const {shortDescr, name, logoUri, misc, aboutUs, email, website, youtube, facebook, linkedin, instagram} = props.sponsor
 
     return (
-
         <View>
             <ColorMatrix matrix={[grayscale(1), brightness(0.5)]}>
                 <FastImage
@@ -35,35 +37,43 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     <Text style={styles.sponsorName}> #{name.toLowerCase()} </Text>
 
                     <View style={[styles.roundImageContainer, styles.shadow]}>
-                    <FastImage source={{
-                        priority: FastImage.priority.high,
-                        uri: logoUri.uri,}} style={styles.imageStyle} resizeMode={"contain"}/>
+                        <FastImage
+                            source={{
+                                priority: FastImage.priority.high,
+                                uri: logoUri.uri,
+                            }}
+                            style={styles.imageStyle}
+                            resizeMode={"contain"}
+                        />
                     </View>
                 </FastImage>
             </ColorMatrix>
 
-
-            <ScrollView>
+            <ScrollView style={{marginBottom: BOTTOM_TABBAR_MARGIN}}>
                 <View>
-                    <Text style={styles.boldHeadline}> Über Uns</Text>
-                    <Text style={styles.blockText}>{shortDescr}</Text>
+                    <Text style={styles.boldHeadline}> {name}</Text>
+                    <Text style={styles.blockText}>{shortDescr ? shortDescr : noTextAvailable}</Text>
+
+
+                    <Text style={styles.boldHeadline}> Über uns </Text>
+                    <Text style={styles.blockText}>{aboutUs ? aboutUs : noTextAvailable}</Text>
+
+                    <Text style={styles.boldHeadline}> Wissenswertes</Text>
+                    <Text style={styles.blockText}>{misc ? misc : noTextAvailable}</Text>
 
                     <Text style={styles.boldHeadline}> Kontakt</Text>
 
-                    <View style={styles.buttonContainer}>
-                        <MajorButton title={"Website"} btnType={MajorBtnType.SECONDARY}
-                                     onPress={() => Linking.openURL(website)} icon="globe"/>
-                        <MajorButton
-                            title={"Email"}
-                            btnType={MajorBtnType.SECONDARY}
-                            onPress={() => Linking.openURL(`mailto:${email}`)}
-                            icon="envelope"
-                        />
-                    </View>
-                    <Text style={styles.boldHeadline}> Wissenswertes</Text>
-                    <Text style={styles.blockText}>{misc}</Text>
-                    <Text style={styles.boldHeadline}> Über uns </Text>
-                    <Text style={styles.blockText}>{aboutUs}</Text>
+                    {(website || email) ?
+                        <View style={styles.buttonContainer}>
+                            {website ? <MajorButton title={"Website"} btnType={MajorBtnType.SECONDARY}
+                                         onPress={() => Linking.openURL(website)} icon="globe"/> : null }
+                            {email ? <MajorButton
+                                title={"Email"}
+                                btnType={MajorBtnType.SECONDARY}
+                                onPress={() => Linking.openURL(`mailto:${email}`)}
+                                icon="envelope"
+                            /> : null }
+                        </View> : null}
                 </View>
             </ScrollView>
         </View>

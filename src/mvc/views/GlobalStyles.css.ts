@@ -1,8 +1,9 @@
 import { Dimensions, StyleSheet } from "react-native"
 
 export const GREY = "#9b9b9b"
-export const FULL_WIDTH = Dimensions.get("window").width
-export const FULL_HEIGHT = Dimensions.get("window").height
+export const FULL_WIDTH = Dimensions.get("window").width // TODO: do not use! (remove!) -> or adapt on orientation change
+export const FULL_HEIGHT = Dimensions.get("window").height // TODO: do not use! (remove!) -> or adapt on orientation change
+export const BOTTOM_TABBAR_MARGIN = 100
 
 const globalStyles = StyleSheet.create({
     scrollViewContainer: {
@@ -20,7 +21,7 @@ const globalStyles = StyleSheet.create({
     },
     pageContainer: {
         flex: 1,
-        height: FULL_HEIGHT - 150,
+        height: FULL_HEIGHT - BOTTOM_TABBAR_MARGIN,
         margin: 5,
         justifyContent: "flex-start",
     },

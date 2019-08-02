@@ -3,12 +3,12 @@ import { RefreshControl, View } from "react-native"
 import { Text } from "react-native-elements"
 import SplashScreen from "react-native-splash-screen"
 import { SafeAreaView, ScrollView } from "react-navigation"
+import { logEvent, LogType } from "../../../controllers/LoggingController/LoggingController"
 import { LoadingIndicator } from "../../components/functional/LoadingIndicator/LoadingIndicator"
 import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
 import globalStyles from "../../GlobalStyles.css"
 import styles from "./BaseScreen.css"
 import { IBaseScreenState } from "./BaseScreen.state"
-import { logEvent, LogType } from "../../../controllers/LoggingController/LoggingController"
 
 const TAG = "BaseScreen"
 

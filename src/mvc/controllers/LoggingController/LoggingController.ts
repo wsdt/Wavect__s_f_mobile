@@ -40,7 +40,8 @@ export const logEvent = (logType: LogType, event: string, params: any): void => 
                 console.error(`LogType not implemented: '${logType}', actual event: ${event}:${params}`)
         }
     } else {
-        if (logType === LogType.ERROR || logType === LogType.WARN) { // TODO: Maybe allow also "info" for logging certain events for statistic purposes (how many feedback clicks, etc.)
+        if (logType === LogType.ERROR || logType === LogType.WARN) {
+            // TODO: Maybe allow also "info" for logging certain events for statistic purposes (how many feedback clicks, etc.)
             analyticsInstance.logEvent(`${logType}:${event}`, params) // only release mode and on warnings/errors
         }
     }
