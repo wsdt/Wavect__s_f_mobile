@@ -10,6 +10,7 @@
     "dependencies": {
         "@babel/runtime": "^7.0.0",
         "@react-native-community/async-storage": "^1.5.0",
+        "@react-native-firebase/app": "^0.1.2",
         "react": "16.8.6",
         "react-native": "0.60.4",
         "react-native-cache": "^1.1.8",

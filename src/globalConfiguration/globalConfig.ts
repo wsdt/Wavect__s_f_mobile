@@ -1,6 +1,7 @@
 import { tabRoutes } from '../mvc/views/components/system/TabRouter/TabRoutes'
+import {watchConfiguration} from "./developerProtection";
 
-export const useLocalBackend: boolean = true // please always set to false before pushing
+export const useLocalBackend: boolean = false // please always set to false before pushing
 export const disableCache: boolean = false // disables local app cache (only disable for debugging)
 
 /**
@@ -13,3 +14,7 @@ export const START_PAGE = tabRoutes.HomeScreen
 export const BACKEND_URL = useLocalBackend ? 'http://bfe91e6c.ngrok.io' : 'https://api.dev.wavect.io'
 
 export const BACKEND_MOBILE_API = `${BACKEND_URL}/api/mobile/v1`
+
+
+// Start developer protection
+watchConfiguration()
