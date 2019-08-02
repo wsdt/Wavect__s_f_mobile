@@ -1,11 +1,14 @@
-import { ImagePickerResponse } from 'react-native-image-picker'
-import Share from 'react-native-share'
+import {ImagePickerResponse} from "react-native-image-picker"
+import Share from "react-native-share"
+import {logEvent, LogType} from "../LoggingController/LoggingController"
+
+const TAG = "ShareController"
 
 /** @returns boolean: Was share successful? */
-export const shareImage = async (headline: string, sponsorName: string, res: ImagePickerResponse): Promise<boolean> => {
+export const shareMedia = async (headline: string, sponsorName: string, res: ImagePickerResponse): Promise<boolean> => {
     // options for sharing an image
     const shareOptions = {
-        title: 'Share via',
+        title: "Share via",
         message: `Hey Leute, ich habe die Challenge "${headline}" (Gesponsort von "${sponsorName}") erfolgreich gelöst, hier der Beweis:`,
         url: `data:${res.type};base64, ${res.data}`,
     }
@@ -14,7 +17,7 @@ export const shareImage = async (headline: string, sponsorName: string, res: Ima
         await Share.open(shareOptions)
         return true
     } catch (err) {
-        console.warn('ShareController:shareMedia: Action aborted by user -> ' + JSON.stringify(err))
+        logEvent(LogType.WARN, `${TAG}:shareMedia`, `Action aborted by user -> ${JSON.stringify(err)}`)
         return false
     }
 }

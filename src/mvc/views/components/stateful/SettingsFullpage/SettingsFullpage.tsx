@@ -1,26 +1,29 @@
-import React from 'react'
-import { View, ScrollView } from 'react-native'
-import { Button, CheckBox, Icon, Input, Text } from 'react-native-elements'
-import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
-import { getLocalUserId, markEmailAsCreated } from '../../../../controllers/LocalStorageController'
-import { noInternetAvailable } from '../../../../controllers/WarningsController'
-import globalStyles from '../../../GlobalStyles.css'
-import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/LoadingHoc'
-import styles from './SettingsFullpage.css'
-import { ISettingsFullpageState } from './SettingsFullpage.state'
-import { cachedFetch, putCache } from '../../../../controllers/CacheController/CacheController'
-import { CACHE_KEY_SETTINGS } from '../../../../controllers/CacheController/CacheController.constants'
+import React from "react"
+import { ScrollView, View } from "react-native"
+import { Button, CheckBox, Icon, Input, Text } from "react-native-elements"
+import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
+import { cachedFetch, putCache } from "../../../../controllers/CacheController/CacheController"
+import { CACHE_KEY_SETTINGS } from "../../../../controllers/CacheController/CacheController.constants"
+import { getLocalUserId, markEmailAsCreated } from "../../../../controllers/LocalStorageController"
+import {logEvent, LogType} from "../../../../controllers/LoggingController/LoggingController"
+import { noInternetAvailable } from "../../../../controllers/WarningsController"
+import globalStyles from "../../../GlobalStyles.css"
+import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../system/HOCs/LoadingHoc"
+import styles from "./SettingsFullpage.css"
+import { ISettingsFullpageState } from "./SettingsFullpage.state"
+
+const TAG:string = "SettingsFullpage"
 
 export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpageState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/settings`
     private static EMAIL_REGEX: RegExp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
     public state: ISettingsFullpageState = {
         hasAcceptedDataPrivacy: false,
-        email: '',
+        email: "",
         validEmail: false,
         isSavingSettings: false,
     }
-    private userId: string = ''
+    private userId: string = ""
     private loadingContext!: ILoadingContext
 
     public componentDidMount(): void {
@@ -44,7 +47,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     private getSettingsView = () => {
         const isFormSubmittable = this.isFormSubmittable()
         return (
-            <ScrollView style={{ flex: 1, width: '100%' }}>
+            <ScrollView style={{ flex: 1, width: "100%" }}>
                 <Text style={styles.row}>
                     Deine E-Mail Adresse wird benötigt, um dich bzgl. gewonnenen Rabatten, Gutscheinen oder Produkten/Services zu kontaktieren.
                 </Text>
@@ -58,7 +61,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     placeholder=" Deine E-Mail"
                     leftIcon={<Icon name="envelope" type="font-awesome" />}
                     shake={true}
-                    errorMessage={this.state.validEmail ? '' : 'Bitte gib eine gültige E-Mail an.'}
+                    errorMessage={this.state.validEmail ? "" : "Bitte gib eine gültige E-Mail an."}
                 />
 
                 <CheckBox
@@ -107,9 +110,9 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                         this.setState(apiRes)
                         putCache(CACHE_KEY_SETTINGS, apiRes)
 
-                        console.log('SettingsFullpage:getUserSettings: Received user settings.')
+                        logEvent(LogType.LOG, `${TAG}:getUserSettings`, "Received user settings")
                     } else {
-                        console.log('SettingsFullpage:getUserSettings: No user settings previously saved')
+                        logEvent(LogType.LOG, `${TAG}:getUserSettings`, "No user settings previously saved")
                     }
 
                     // Do NOT set LoadingStatus.NOT_AVAILABLE as Settings might be null
@@ -133,10 +136,10 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
         this.setState({ isSavingSettings: true }, async () => {
             try {
                 const rawResp = await fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, {
-                    method: 'POST',
+                    method: "POST",
                     headers: {
-                        Accept: 'application/json',
-                        'Content-Type': 'application/json',
+                        Accept: "application/json",
+                        "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
                         email: this.state.email,
@@ -149,7 +152,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                 // mark the email as created, --> "Accept" Button works now.
                 markEmailAsCreated()
 
-                console.log('SettingsFullpage:postUserSettings: Tried to save userSettings -> ' + JSON.stringify(res))
+                logEvent(LogType.LOG, `${TAG}:postUserSettings`, `Tried to save userSettings -> ${JSON.stringify(res)}`)
             } catch (e) {
                 noInternetAvailable()
                 console.error(e)

@@ -935,25 +935,6 @@
     shell-quote "1.6.1"
     ws "^1.1.0"
 
-"@react-native-firebase/app-types@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-0.1.2.tgz#cfb1e017559ba55de39caaac27032ac0e73309c7"
-  integrity sha512-J+O1yFzQ5g65dZwzdBKNww67sOUZwggavgNNxXKtvl81Otgo2Vyrsp7qHm8wh/uH6AOYnGVtO/4WSyEMdYV0Fw==
-
-"@react-native-firebase/app@^0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-0.1.2.tgz#fd42f7081f68f687d279509db9c311532a6a0392"
-  integrity sha512-Y2sizhr47Hnm7A9OfDvrpsj3AqTDu2awis9a7rDn046Yf/t1cKr8brxq3T0BbsG+TapgThpWJZ8BifuIzYPcqg==
-  dependencies:
-    "@react-native-firebase/app-types" "0.1.2"
-    "@react-native-firebase/common" "0.1.2"
-    opencollective-postinstall "^2.0.1"
-
-"@react-native-firebase/common@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/common/-/common-0.1.2.tgz#2644a8c6a1f261ea693b47e57733e2b8859c9197"
-  integrity sha512-t5S3zti4sc0xfR9B0n6V6HoTAnueg7h9VD3uWOUEOttqELnyCtdH06ctF66DXlQn3W3nYIBSNwAPmGD+Ku+Ivg==
-
 "@react-navigation/core@~3.4.1":
   version "3.4.2"
   resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.4.2.tgz#bec563e94fde40fbab3730cdc97f22afbb2a1498"
@@ -4688,7 +4669,7 @@ open@^6.2.0:
   dependencies:
     is-wsl "^1.1.0"
 
-opencollective-postinstall@^2.0.0, opencollective-postinstall@^2.0.1:
+opencollective-postinstall@^2.0.0:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
   integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
@@ -5171,6 +5152,14 @@ react-native-fast-image@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/react-native-fast-image/-/react-native-fast-image-7.0.2.tgz#e06b21f42f4a9786eaa86f3db35d919070fb8403"
   integrity sha512-MfuzJbC0RjYobR2gFCdqe1I7jvNOCfDkjQ7VGOHXniqjohhULMkcWNBE9Umovi9Dx93lJ6t5utcE2wf/09zvlg==
+
+react-native-firebase@~5.5.6:
+  version "5.5.6"
+  resolved "https://registry.yarnpkg.com/react-native-firebase/-/react-native-firebase-5.5.6.tgz#17b34ec0d5dc39afaaf0e159fd160f6339e0f707"
+  integrity sha512-AdbpGwKEEiMFgaRar9WOPc8Li4sfxR//WOyNQzxYsQ1fpARC908j7feqy2gu73SLqk4wzIrnlfJWakOe0/Bclg==
+  dependencies:
+    opencollective-postinstall "^2.0.0"
+    prop-types "^15.7.2"
 
 react-native-formik@^1.7.6:
   version "1.7.7"

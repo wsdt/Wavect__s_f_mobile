@@ -1,15 +1,16 @@
-import AsyncStorage from '@react-native-community/async-storage'
-import * as React from 'react'
+import AsyncStorage from "@react-native-community/async-storage"
+import * as React from "react"
 // @ts-ignore
-import { Cache } from 'react-native-cache'
-import { disableCache } from '../../../globalConfiguration/globalConfig'
-import { ILoadingContext, LoadingStatus } from '../../views/components/system/HOCs/LoadingHoc'
+import {Cache} from "react-native-cache"
+import {disableCache} from "../../../globalConfiguration/globalConfig"
+import {ILoadingContext, LoadingStatus} from "../../views/components/system/HOCs/LoadingHoc"
+import {logEvent, LogType} from "../LoggingController/LoggingController"
 
-const TAG = 'CacheController'
+const TAG = "CacheController"
 
 const cache = new Cache({
     backend: AsyncStorage,
-    namespace: 'wavect_cache',
+    namespace: "wavect_cache",
     policy: {
         maxEntries: 5,
     },
@@ -19,7 +20,7 @@ export const putCache = (key: string, val: any): Promise<any> => {
     return new Promise((resolve, reject) => {
         cache.setItem(key, val, (err: any) => {
             if (err) {
-                console.error(`${TAG}:putCache: Cannot push element in cache -> '${key}':'${val}', err below: \n${JSON.stringify(err)}`)
+                logEvent(LogType.ERROR, `${TAG}:putCache`, `Cannot push element in cache -> '${key}':'${val}', err below: \n${JSON.stringify(err)}`)
                 reject(err)
             } else {
                 resolve(true)

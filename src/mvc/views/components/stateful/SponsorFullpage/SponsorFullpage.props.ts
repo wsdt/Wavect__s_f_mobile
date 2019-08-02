@@ -1,4 +1,4 @@
-import { Sponsor } from '../../../../models/Sponsor'
+import { Sponsor } from "../../../../models/Sponsor"
 
 export interface SponsorFullpageProps {
     sponsor: Sponsor
