@@ -50,7 +50,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     }
 
     private getChallengeView = (): React.ReactElement => {
-        const { id, headline, subline, sponsor, majorCategory, expirationInMs, whyDoesOrganizationSponsor } = this.props.challenge
+        const { id, headline, subline, sponsor, majorCategory, expirationInMs, whyDoesOrganizationSponsor, bgImage } = this.props.challenge
 
         return (
             <>
@@ -62,6 +62,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                             this.props.navigation.navigate(routes.SponsorFullpage, {
                                 sponsor,
                                 whySponsor: whyDoesOrganizationSponsor,
+                                challengeBgImage: bgImage,
                             })
                         }}
                     />

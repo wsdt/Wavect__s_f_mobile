@@ -1,5 +1,5 @@
-import {analytics, RNFirebase} from 'react-native-firebase'
-import {getLocalUserId} from "../LocalStorageController"
+import { analytics, RNFirebase } from "react-native-firebase"
+import { getLocalUserId } from "../LocalStorageController"
 
 const analyticsInstance: RNFirebase.Analytics = analytics()
 
@@ -8,7 +8,10 @@ analyticsInstance.setAnalyticsCollectionEnabled(true)
 
 /** Used to send different events and logging to console. */
 export enum LogType {
-    ERROR = "Error", WARN = "Warn", LOG = "Log", INFO = "Info"
+    ERROR = "Error",
+    WARN = "Warn",
+    LOG = "Log",
+    INFO = "Info",
 }
 
 /**
@@ -21,14 +24,23 @@ export const logEvent = (logType: LogType, event: string, params: any): void => 
     if (__DEV__) {
         params = JSON.stringify(params) // assuming that firebase does this already as they allow objects
         switch (logType) {
-            case LogType.ERROR: console.error(`${event}: ${params}`);break
-            case LogType.WARN: console.warn(`${event}: ${params}`);break
-            case LogType.LOG: console.log(`${event}: ${params}`);break
-            case LogType.INFO: console.info(`${event}: ${params}`);break
-            default: console.error(`LogType not implemented: '${logType}', actual event: ${event}:${params}`)
+            case LogType.ERROR:
+                console.error(`${event}: ${params}`)
+                break
+            case LogType.WARN:
+                console.warn(`${event}: ${params}`)
+                break
+            case LogType.LOG:
+                console.log(`${event}: ${params}`)
+                break
+            case LogType.INFO:
+                console.info(`${event}: ${params}`)
+                break
+            default:
+                console.error(`LogType not implemented: '${logType}', actual event: ${event}:${params}`)
         }
     } else {
-        if (logType === LogType.ERROR || logType === LogType.WARN) {
+        if (logType === LogType.ERROR || logType === LogType.WARN) { // TODO: Maybe allow also "info" for logging certain events for statistic purposes (how many feedback clicks, etc.)
             analyticsInstance.logEvent(`${logType}:${event}`, params) // only release mode and on warnings/errors
         }
     }
@@ -53,6 +65,3 @@ export const setCurrentUserId = async (): Promise<void> => {
 }
 
 // many more functions available
-
-
-

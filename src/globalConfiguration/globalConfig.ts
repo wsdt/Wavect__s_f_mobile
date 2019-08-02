@@ -13,4 +13,3 @@ export const START_PAGE = tabRoutes.HomeScreen
 export const BACKEND_URL = useLocalBackend ? "http://bfe91e6c.ngrok.io" : "https://api.dev.wavect.io"
 
 export const BACKEND_MOBILE_API = `${BACKEND_URL}/api/mobile/v1`
-

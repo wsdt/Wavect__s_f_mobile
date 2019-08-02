@@ -8,7 +8,7 @@ import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/sys
 import globalStyles from "../../GlobalStyles.css"
 import styles from "./BaseScreen.css"
 import { IBaseScreenState } from "./BaseScreen.state"
-import {logEvent, LogType} from "../../../controllers/LoggingController/LoggingController";
+import { logEvent, LogType } from "../../../controllers/LoggingController/LoggingController"
 
 const TAG = "BaseScreen"
 

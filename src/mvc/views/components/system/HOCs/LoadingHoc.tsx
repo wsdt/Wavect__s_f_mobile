@@ -1,5 +1,5 @@
 import * as React from "react"
-import {logEvent, LogType} from "../../../../controllers/LoggingController/LoggingController";
+import { logEvent, LogType } from "../../../../controllers/LoggingController/LoggingController"
 
 const TAG = "LoadingHoc"
 

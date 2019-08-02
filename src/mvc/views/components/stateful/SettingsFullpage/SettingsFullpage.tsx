@@ -5,14 +5,14 @@ import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalCon
 import { cachedFetch, putCache } from "../../../../controllers/CacheController/CacheController"
 import { CACHE_KEY_SETTINGS } from "../../../../controllers/CacheController/CacheController.constants"
 import { getLocalUserId, markEmailAsCreated } from "../../../../controllers/LocalStorageController"
-import {logEvent, LogType} from "../../../../controllers/LoggingController/LoggingController"
+import { logEvent, LogType } from "../../../../controllers/LoggingController/LoggingController"
 import { noInternetAvailable } from "../../../../controllers/WarningsController"
 import globalStyles from "../../../GlobalStyles.css"
 import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../system/HOCs/LoadingHoc"
 import styles from "./SettingsFullpage.css"
 import { ISettingsFullpageState } from "./SettingsFullpage.state"
 
-const TAG:string = "SettingsFullpage"
+const TAG: string = "SettingsFullpage"
 
 export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpageState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/settings`

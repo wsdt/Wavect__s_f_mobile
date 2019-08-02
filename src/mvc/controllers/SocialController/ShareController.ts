@@ -1,6 +1,6 @@
-import {ImagePickerResponse} from "react-native-image-picker"
+import { ImagePickerResponse } from "react-native-image-picker"
 import Share from "react-native-share"
-import {logEvent, LogType} from "../LoggingController/LoggingController"
+import { logEvent, LogType } from "../LoggingController/LoggingController"
 
 const TAG = "ShareController"
 

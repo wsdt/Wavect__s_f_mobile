@@ -17,25 +17,34 @@ export const styles = StyleSheet.create({
     },
     imageStyle: {
         flex: 1,
-        // @ts-ignore
-        height: null,
-        // @ts-ignore
-        width: null,
-        padding: 5,
+        alignSelf: "center",
+        width: "80%",
+        height: "80%",
     },
+
     roundImageContainer: {
         top: 0,
         position: "absolute",
-        flex: 1,
         height: 100,
         width: 100,
         borderRadius: 500,
         borderColor: "#ccc",
         backgroundColor: "white",
-        borderWidth: 2,
+        borderWidth: 1,
         overflow: "hidden",
         margin: 10,
         opacity: 1,
+    },
+    shadow: { // TODO: Not working yet
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+
+        elevation: 3,
     },
     centered: {
         flex: 1,
@@ -77,7 +86,7 @@ export const styles = StyleSheet.create({
         right: 0,
         flexDirection: "row",
         justifyContent: "center",
-        color: "#ccc",
+        color: "#eee",
         fontWeight: "bold",
         fontStyle: "italic",
         fontSize: 50,
