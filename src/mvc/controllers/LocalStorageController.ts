@@ -1,5 +1,5 @@
 import AsyncStorage from "@react-native-community/async-storage"
-import {logEvent, LogType} from "./LoggingController/LoggingController";
+import { logEvent, LogType } from "./LoggingController/LoggingController"
 
 const TAG = "LocalStorageController"
 

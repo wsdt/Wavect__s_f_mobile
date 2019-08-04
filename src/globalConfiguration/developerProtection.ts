@@ -1,4 +1,4 @@
-import { BACKEND_URL, disableCache, useLocalBackend } from "./globalConfig"
+import {BACKEND_URL, disableCache, useLocalBackend, useReactotron} from "./globalConfig"
 
 /** Watches whether all configs are as developers might want them to have it under certain conditions. */
 
@@ -13,6 +13,7 @@ export const watchConfiguration = () => {
 
         if (useLocalBackend) throw new Error(`${TAG}: You must not compile a release app with a local backend!`)
         if (disableCache) throw new Error(`${TAG}: You must not disable cache for a release build!`)
+        if (useReactotron) throw new Error(`${TAG}: You must not use Reactotron in a release build!`)
     }
 
     // ############# Place here general developer protection (for all builds) #########

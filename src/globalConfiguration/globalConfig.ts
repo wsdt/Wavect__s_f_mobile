@@ -1,7 +1,9 @@
 import { tabRoutes } from "../mvc/views/components/system/TabRouter/TabRoutes"
 
-export const useLocalBackend: boolean = false // please always set to false before pushing
-export const disableCache: boolean = false // disables local app cache (only disable for debugging)
+// NOTE: Following constants use the __DEV__ var to ensure that this only has an impact on debug builds!
+export const useLocalBackend: boolean = __DEV__ && false // please always set to false before pushing
+export const disableCache: boolean = __DEV__ && false // disables local app cache (only disable for debugging)
+export const useReactotron: boolean = __DEV__ && true // strong debugging tool
 
 /**
  * Which page should be shown on app startup. Please be aware that only screens which have been added to the
