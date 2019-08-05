@@ -1,7 +1,9 @@
-import { analytics, RNFirebase } from "react-native-firebase"
+import analytics from "@react-native-firebase/analytics"
+import crashlytics from "@react-native-firebase/crashlytics"
 import { getLocalUserId } from "../LocalStorageController"
 
-const analyticsInstance: RNFirebase.Analytics = analytics()
+const analyticsInstance = analytics()
+const crashlyticsInstance = crashlytics()
 
 // Send data to Firebase # TODO: Data meant for us or really Google? If second disable!
 analyticsInstance.setAnalyticsCollectionEnabled(true)
@@ -19,8 +21,9 @@ export enum LogType {
  * @param logType: Which event has been fired? How should we react?
  * @param event: Event names should contain 1 to 32 alphanumeric characters or underscores.
  * @param params: Up to 100 characters is the maximum character length supported for event parameters.
+ * @param error: Used by crashlytics to submit the stacktrace (optional)
  */
-export const logEvent = (logType: LogType, event: string, params: any): void => {
+export const logEvent = (logType: LogType, event: string, params: any, error?:Error): void => {
     if (__DEV__) {
         params = JSON.stringify(params) // assuming that firebase does this already as they allow objects
         switch (logType) {
@@ -40,9 +43,11 @@ export const logEvent = (logType: LogType, event: string, params: any): void => 
                 console.error(`LogType not implemented: '${logType}', actual event: ${event}:${params}`)
         }
     } else {
-        if (logType === LogType.ERROR || logType === LogType.WARN) {
-            // TODO: Maybe allow also "info" for logging certain events for statistic purposes (how many feedback clicks, etc.)
-            analyticsInstance.logEvent(`${logType}:${event}`, params) // only release mode and on warnings/errors
+        // Release mode
+        analyticsInstance.logEvent(`${logType}:${event}`, params)
+
+        if (error) { // do not if via logtype, as maybe also warnings provided
+            crashlyticsInstance.recordError(error) // error-obj with stacktrace
         }
     }
 }
@@ -62,7 +67,9 @@ export const setCurrentScreen = (screenName: string, screenClassOverride: string
  * Might be helpful for backend debugging as that id used as primary key.
  */
 export const setCurrentUserId = async (): Promise<void> => {
-    analyticsInstance.setUserId(await getLocalUserId())
+    const userId = await getLocalUserId()
+    analyticsInstance.setUserId(userId)
+    crashlyticsInstance.setUserId(userId)
 }
 
 // many more functions available
