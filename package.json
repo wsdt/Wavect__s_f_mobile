@@ -5,7 +5,8 @@
     "scripts": {
         "start": "nps",
         "test": "jest",
-        "postversion": "react-native-version"
+        "postversion": "react-native-version",
+        "postinstall": "npx jetify"
     },
     "dependencies": {
         "@babel/runtime": "^7.0.0",

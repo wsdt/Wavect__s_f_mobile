@@ -1,5 +1,5 @@
 import analytics from "@react-native-firebase/analytics"
-import crashlytics from "@react-native-firebase/crashlytics"
+import crashlytics, {Crashlytics} from "@react-native-firebase/crashlytics"
 import { getLocalUserId } from "../LocalStorageController"
 
 const analyticsInstance = analytics()
@@ -14,6 +14,7 @@ export enum LogType {
     WARN = "Warn",
     LOG = "Log",
     INFO = "Info",
+    EVENT = "Event", // separate Event type to log event to analytics
 }
 
 /**
@@ -24,7 +25,7 @@ export enum LogType {
  * @param error: Used by crashlytics to submit the stacktrace (optional)
  */
 export const logEvent = (logType: LogType, event: string, params: any, error?: Error): void => {
-    if (__DEV__) {
+    if (!__DEV__) {
         params = JSON.stringify(params) // assuming that firebase does this already as they allow objects
         switch (logType) {
             case LogType.ERROR:
@@ -36,7 +37,7 @@ export const logEvent = (logType: LogType, event: string, params: any, error?: E
             case LogType.LOG:
                 console.log(`${event}: ${params}`)
                 break
-            case LogType.INFO:
+            case (LogType.INFO || LogType.EVENT):
                 console.info(`${event}: ${params}`)
                 break
             default:
@@ -44,8 +45,14 @@ export const logEvent = (logType: LogType, event: string, params: any, error?: E
         }
     } else {
         // Release mode
-        analyticsInstance.logEvent(`${logType}:${event}`, params)
 
+        /* Log analytics events to analyze how our app is used */
+        if (logType === LogType.EVENT) {
+            analyticsInstance.logEvent(`${logType}:${event}`, params) // don't push log/debug
+        }
+
+        /* Crashlytics, send Reports */
+        crashlyticsInstance.log(`${event}: ${params}`)
         if (error) {
             // do not if via logtype, as maybe also warnings provided
             crashlyticsInstance.recordError(error) // error-obj with stacktrace
