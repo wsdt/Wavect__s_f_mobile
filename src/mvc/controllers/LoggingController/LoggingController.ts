@@ -1,5 +1,5 @@
 import analytics from "@react-native-firebase/analytics"
-import crashlytics, {Crashlytics} from "@react-native-firebase/crashlytics"
+import crashlytics, { Crashlytics } from "@react-native-firebase/crashlytics"
 import { getLocalUserId } from "../LocalStorageController"
 
 const analyticsInstance = analytics()
@@ -37,7 +37,7 @@ export const logEvent = (logType: LogType, event: string, params: any, error?: E
             case LogType.LOG:
                 console.log(`${event}: ${params}`)
                 break
-            case (LogType.INFO || LogType.EVENT):
+            case LogType.INFO || LogType.EVENT:
                 console.info(`${event}: ${params}`)
                 break
             default:

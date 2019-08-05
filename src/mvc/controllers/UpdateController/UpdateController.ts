@@ -6,7 +6,7 @@ import { ON_UPDATE_TASKS } from "./UpdateController.tasks"
 const TAG = "UpdateController"
 const PACKAGE_VERSION_KEY = "app_version"
 
-const buildVersion:string = AppVersion.buildVersion.toString() // necessary as it is a number regardless of typing
+const buildVersion: string = AppVersion.buildVersion.toString() // necessary as it is a number regardless of typing
 
 /** What tasks should be executed when the app updates? Uses the package.json-version and not the native versionName/-code! */
 export const performAppUpdateProcedure = async (): Promise<void> => {
@@ -29,5 +29,3 @@ export const performAppUpdateProcedure = async (): Promise<void> => {
         logEvent(LogType.INFO, `${TAG}:main`, "User has ran the app for the first time.")
     }
 }
-
-
