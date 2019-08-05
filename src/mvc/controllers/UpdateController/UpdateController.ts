@@ -1,3 +1,4 @@
+import AppVersion from "react-native-version-number"
 import { getLocalItem, setLocalItem } from "../LocalStorageController"
 import { logEvent, LogType } from "../LoggingController/LoggingController"
 import { ON_UPDATE_TASKS } from "./UpdateController.tasks"
@@ -10,19 +11,19 @@ export const performAppUpdateProcedure = async (): Promise<void> => {
     const appVersion: string | null = await getLocalItem(PACKAGE_VERSION_KEY)
 
     if (appVersion) {
-        if (appVersion !== version) {
+        if (appVersion !== AppVersion.buildVersion) {
             // new update received
             logEvent(LogType.INFO, `${TAG}:main`, "User updated app.")
 
             for (const task of ON_UPDATE_TASKS) {
                 // run update task list
-                task.onAppUpdate(appVersion, version) // oldVersion, newVersion
+                task.onAppUpdate(appVersion, AppVersion.buildVersion) // oldVersion, newVersion
             }
 
-            setLocalItem(PACKAGE_VERSION_KEY, version) // set for future updates
-        }
+            setLocalItem(PACKAGE_VERSION_KEY, AppVersion.buildVersion) // set for future updates
+        } // otherwise regular run
     } else {
-        setLocalItem(PACKAGE_VERSION_KEY, version) // set for future updates
+        setLocalItem(PACKAGE_VERSION_KEY, AppVersion.buildVersion) // set for future updates
         logEvent(LogType.INFO, `${TAG}:main`, "User has ran the app for the first time.")
     }
 }
