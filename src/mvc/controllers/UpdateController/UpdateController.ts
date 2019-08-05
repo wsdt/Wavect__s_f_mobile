@@ -1,5 +1,3 @@
-// @ts-ignore
-import { version } from "../../../../package.json"
 import { getLocalItem, setLocalItem } from "../LocalStorageController"
 import { logEvent, LogType } from "../LoggingController/LoggingController"
 import { ON_UPDATE_TASKS } from "./UpdateController.tasks"

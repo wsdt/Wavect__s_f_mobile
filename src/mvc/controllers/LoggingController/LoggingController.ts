@@ -23,7 +23,7 @@ export enum LogType {
  * @param params: Up to 100 characters is the maximum character length supported for event parameters.
  * @param error: Used by crashlytics to submit the stacktrace (optional)
  */
-export const logEvent = (logType: LogType, event: string, params: any, error?:Error): void => {
+export const logEvent = (logType: LogType, event: string, params: any, error?: Error): void => {
     if (__DEV__) {
         params = JSON.stringify(params) // assuming that firebase does this already as they allow objects
         switch (logType) {
@@ -46,7 +46,8 @@ export const logEvent = (logType: LogType, event: string, params: any, error?:Er
         // Release mode
         analyticsInstance.logEvent(`${logType}:${event}`, params)
 
-        if (error) { // do not if via logtype, as maybe also warnings provided
+        if (error) {
+            // do not if via logtype, as maybe also warnings provided
             crashlyticsInstance.recordError(error) // error-obj with stacktrace
         }
     }

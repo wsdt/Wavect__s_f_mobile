@@ -5,7 +5,7 @@
     "scripts": {
         "start": "nps",
         "test": "jest",
-        "lint": "eslint ."
+        "postversion": "react-native-version"
     },
     "dependencies": {
         "@babel/runtime": "^7.0.0",
@@ -42,6 +42,7 @@
         "metro-react-native-babel-preset": "^0.55.0",
         "nps": "^5.9.3",
         "prettier": "^1.16.4",
+        "react-native-version": "^3.1.0",
         "react-test-renderer": "16.8.6",
         "reactotron-react-native": "^3.6.4",
         "ts-jest": "^23.10.5",
