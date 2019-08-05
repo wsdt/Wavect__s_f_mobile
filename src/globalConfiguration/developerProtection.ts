@@ -11,6 +11,7 @@ export const watchConfiguration = () => {
     } else {
         // ######### Place here developer-protection for release builds ###############
 
+        // Following use the __DEV__ var even in release to determine if it should run, so this is just in case a developer removes it accidently
         if (useLocalBackend) throw new Error(`${TAG}: You must not compile a release app with a local backend!`)
         if (disableCache) throw new Error(`${TAG}: You must not disable cache for a release build!`)
         if (useReactotron) throw new Error(`${TAG}: You must not use Reactotron in a release build!`)

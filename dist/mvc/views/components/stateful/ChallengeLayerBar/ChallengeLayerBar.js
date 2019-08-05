@@ -177,7 +177,7 @@ var ChallengeLayerBar = (function (_super) {
                     case 1:
                         _b.trys.push([1, 3, , 4]);
                         _a = this;
-                        return [4, async_storage_1.default.getItem(ChallengeLayerBar_constants_1.CHALLENGE_SOLVED_ID)];
+                        return [4, async_storage_1.default.getLocalItem(ChallengeLayerBar_constants_1.CHALLENGE_SOLVED_ID)];
                     case 2:
                         _a.lastChallengeIdSolved = _b.sent();
                         if (this.lastChallengeIdSolved !== null) {

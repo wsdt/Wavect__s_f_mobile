@@ -66,7 +66,7 @@ exports.getLocalUserId = function () { return __awaiter(_this, void 0, void 0, f
     var localUserId;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, async_storage_1.default.getItem(USER_ID)];
+            case 0: return [4, async_storage_1.default.getLocalItem(USER_ID)];
             case 1:
                 localUserId = _a.sent();
                 return [2, localUserId === null ? generateNewUserId() : localUserId];
@@ -77,7 +77,7 @@ exports.doesLocalUserIDExist = function () { return __awaiter(_this, void 0, voi
     var localUserId;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, async_storage_1.default.getItem(USER_ID)];
+            case 0: return [4, async_storage_1.default.getLocalItem(USER_ID)];
             case 1:
                 localUserId = _a.sent();
                 return [2, localUserId !== null];
@@ -104,7 +104,7 @@ exports.markEmailAsCreated = function () { return __awaiter(_this, void 0, void 
 }); };
 exports.getEmailMarked = function () { return __awaiter(_this, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        return [2, async_storage_1.default.getItem(EMAIL_MARKED)];
+        return [2, async_storage_1.default.getLocalItem(EMAIL_MARKED)];
     });
 }); };
 //# sourceMappingURL=LocalStorageController.js.map

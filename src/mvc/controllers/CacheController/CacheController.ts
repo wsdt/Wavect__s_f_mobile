@@ -1,10 +1,11 @@
 import AsyncStorage from "@react-native-community/async-storage"
 import * as React from "react"
 // @ts-ignore
-import { Cache } from "react-native-cache"
-import { disableCache } from "../../../globalConfiguration/globalConfig"
-import { ILoadingContext, LoadingStatus } from "../../views/components/system/HOCs/LoadingHoc"
-import { logEvent, LogType } from "../LoggingController/LoggingController"
+import {Cache} from "react-native-cache"
+import {disableCache} from "../../../globalConfiguration/globalConfig"
+import {ILoadingContext, LoadingStatus} from "../../views/components/system/HOCs/LoadingHoc"
+import {logEvent, LogType} from "../LoggingController/LoggingController"
+import {IUpdateTask} from "../UpdateController/UpdateController.tasks";
 
 const TAG = "CacheController"
 
@@ -15,6 +16,19 @@ const cache = new Cache({
         maxEntries: 5,
     },
 })
+
+/** Called by UpdateController on App-Update. */
+export const onAppUpdate:IUpdateTask = new class implements IUpdateTask {
+    // @ts-ignore
+    public onAppUpdate = async (oldVersion:string, newVersion:string): Promise<void> => {
+        try {
+            await clearCache()
+        } catch (e) {
+            throw new Error(`${TAG}:onAppUpdate: Could not clear cache.`)
+        }
+    }
+}
+
 
 export const putCache = (key: string, val: any): Promise<any> => {
     return new Promise((resolve, reject) => {
