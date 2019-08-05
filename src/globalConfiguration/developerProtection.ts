@@ -1,4 +1,4 @@
-import {BACKEND_URL, disableCache, useLocalBackend, useReactotron} from "./globalConfig"
+import { BACKEND_URL, disableCache, useLocalBackend, useReactotron } from "./globalConfig"
 
 /** Watches whether all configs are as developers might want them to have it under certain conditions. */
 
