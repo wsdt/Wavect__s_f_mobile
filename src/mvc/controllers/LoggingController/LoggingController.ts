@@ -1,5 +1,5 @@
 import analytics from "@react-native-firebase/analytics"
-import crashlytics, { Crashlytics } from "@react-native-firebase/crashlytics"
+import crashlytics from "@react-native-firebase/crashlytics"
 import { getLocalUserId } from "../LocalStorageController"
 
 const analyticsInstance = analytics()
@@ -48,10 +48,11 @@ export const logEvent = (logType: LogType, event: string, params: any, error?: E
 
         /* Log analytics events to analyze how our app is used */
         if (logType === LogType.EVENT) {
-            analyticsInstance.logEvent(`${logType}:${event}`, params) // don't push log/debug
+            // NOTE: Events might need to be created manually online!
+            analyticsInstance.logEvent(event, params) // don't push log/debug
         }
 
-        /* Crashlytics, send Reports */
+        /* Crashlytics, send Reports, only get's submitted in error case as far as I understand */
         crashlyticsInstance.log(`${event}: ${params}`)
         if (error) {
             // do not if via logtype, as maybe also warnings provided
