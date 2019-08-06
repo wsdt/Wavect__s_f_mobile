@@ -1,11 +1,11 @@
-import AsyncStorage from "@react-native-community/async-storage"
-import { logEvent, LogType } from "./LoggingController/LoggingController"
+import AsyncStorage from '@react-native-community/async-storage'
+import { logEvent, LogType } from '../LoggingController/LoggingController'
 
-const TAG = "LocalStorageController"
+const TAG = 'LocalStorageController'
 
 // Local constants
-const USER_ID = "user_id"
-const EMAIL_MARKED = "email_marked"
+const USER_ID = 'user_id'
+const EMAIL_MARKED = 'email_marked'
 
 // General functions
 export const getLocalItem = async (key: string): Promise<string | null> => {
@@ -50,7 +50,7 @@ export const doesLocalUserIDExist = async (): Promise<boolean> => {
 
 export const markEmailAsCreated = async (): Promise<boolean> => {
     try {
-        await AsyncStorage.setItem(EMAIL_MARKED, "true")
+        await AsyncStorage.setItem(EMAIL_MARKED, 'true')
         return true
     } catch (e) {
         logEvent(LogType.ERROR, `${TAG}:markEmailAsCreated`, e)

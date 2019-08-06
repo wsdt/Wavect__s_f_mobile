@@ -1,8 +1,8 @@
-import { BACKEND_URL, disableCache, useLocalBackend, useReactotron } from "./globalConfig"
+import { BACKEND_URL, disableCache, useLocalBackend, useReactotron } from './globalConfig'
 
 /** Watches whether all configs are as developers might want them to have it under certain conditions. */
 
-const TAG: string = "DeveloperProtection"
+const TAG: string = 'DeveloperProtection'
 
 export const watchConfiguration = () => {
     // React-Native global constant = __DEV__
@@ -18,5 +18,5 @@ export const watchConfiguration = () => {
     }
 
     // ############# Place here general developer protection (for all builds) #########
-    if (BACKEND_URL.slice(-1) === "/") throw new Error(`${TAG}: All api calls assume that the backend-url has NO backslash at the end!`)
+    if (BACKEND_URL.slice(-1) === '/') throw new Error(`${TAG}: All api calls assume that the backend-url has NO backslash at the end!`)
 }

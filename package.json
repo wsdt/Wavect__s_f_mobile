@@ -44,20 +44,16 @@
         "metro-react-native-babel-preset": "^0.55.0",
         "nps": "^5.9.5",
         "prettier": "^1.18.2",
+        "react-native-testing-library": "^1.11.1",
         "react-native-version": "^3.1.0",
         "react-test-renderer": "16.8.6",
         "reactotron-react-native": "^3.6.4",
         "ts-jest": "^24.0.2",
         "tslint": "^5.18.0",
         "tslint-config-prettier": "^1.18.0",
-        "tslint-consistent-codestyle": "^1.15.1",
         "tslint-eslint-rules": "^5.4.0",
         "tslint-react": "^4.0.0",
-        "tslint-react-native": "^0.0.7",
-        "typescript": "^3.5.3"
-    },
-    "jest": {
-        "preset": "react-native"
+        "tslint-react-native": "^0.0.7"
     },
     "husky": {
         "hooks": {

@@ -1,6 +1,10 @@
 # Do not push keystore
 android/app/wavect.keystore
 
+# Ignore generated test files
+.jest/
+coverage/
+
 # OSX
 #
 .DS_Store

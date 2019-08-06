@@ -1,9 +1,9 @@
-import * as React from "react"
-import { Image } from "react-native"
-import { NavigationRouteConfigMap } from "react-navigation"
-import HomeScreenRouter from "./HomeScreenRouter/HomeScreenRouter"
-import SettingsScreenRouter from "./SettingsScreenRouter/SettingsScreenRouter"
-import { tabRoutes } from "./TabRoutes"
+import * as React from 'react'
+import { Image } from 'react-native'
+import { NavigationRouteConfigMap } from 'react-navigation'
+import HomeScreenRouter from './HomeScreenRouter/HomeScreenRouter'
+import SettingsScreenRouter from './SettingsScreenRouter/SettingsScreenRouter'
+import { tabRoutes } from './TabRoutes'
 
 /**
  * Add here your routes as key-value pairs (if key == value, you can
@@ -15,14 +15,14 @@ export const routesConfig: NavigationRouteConfigMap = {
     [tabRoutes.HomeScreen]: {
         screen: HomeScreenRouter, // which component to load
         navigationOptions: {
-            tabBarLabel: "",
+            tabBarLabel: '',
             tabBarIcon: () => (
                 <Image
-                    source={require("../../../../../assets/img/icons/ic_tab_challenges.png")}
-                    style={{ width: 20, height: 20, tintColor: "black" }}
+                    source={require('../../../../../assets/img/icons/ic_tab_challenges.png')}
+                    style={{ width: 20, height: 20, tintColor: 'black' }}
                 />
             ),
-            title: "",
+            title: '',
         },
     },
     [tabRoutes.SettingsScreen]: {
@@ -33,11 +33,11 @@ export const routesConfig: NavigationRouteConfigMap = {
         navigationOptions: {
             tabBarIcon: () => (
                 <Image
-                    source={require("../../../../../assets/img/icons/ic_tab_settings.png")}
-                    style={{ width: 20, height: 20, tintColor: "black" }}
+                    source={require('../../../../../assets/img/icons/ic_tab_settings.png')}
+                    style={{ width: 20, height: 20, tintColor: 'black' }}
                 />
             ),
-            title: "",
+            title: '',
         },
     },
 }

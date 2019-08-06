@@ -1,7 +1,7 @@
-import * as React from "react"
-import { logEvent, LogType } from "../../../../controllers/LoggingController/LoggingController"
+import * as React from 'react'
+import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
 
-const TAG = "LoadingHoc"
+const TAG = 'LoadingHoc'
 
 export interface ILoadingContext {
     setLoading: (_: LoadingStatus) => void
@@ -9,19 +9,19 @@ export interface ILoadingContext {
 }
 
 export enum LoadingStatus {
-    LOADING = "loading",
-    DONE = "done",
-    ERROR = "error",
-    NOT_AVAILABLE = "not_available",
+    LOADING = 'loading',
+    DONE = 'done',
+    ERROR = 'error',
+    NOT_AVAILABLE = 'not_available',
 }
 
 const defaultVal: ILoadingContext = {
     setLoading: (_: LoadingStatus): void => {
-        logEvent(LogType.ERROR, `${TAG}:setLoading`, "Calling default context!")
+        logEvent(LogType.ERROR, `${TAG}:setLoading`, 'Calling default context!')
     },
     setRefresh: (_: (cb: () => void) => void): void => {
-        logEvent(LogType.LOG, `${TAG}:setRefresh`, "Calling default context!")
-        console.error("LoadingHoc: Calling default context for setRefresh.")
+        logEvent(LogType.LOG, `${TAG}:setRefresh`, 'Calling default context!')
+        console.error('LoadingHoc: Calling default context for setRefresh.')
     },
 }
 

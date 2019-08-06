@@ -6,7 +6,7 @@
         "paths": { "*": ["types/*"] },
         "jsx": "react-native",
         "outDir": "dist",
-        "lib": ["es6", "dom", "es2015", "es2016"]
+        "lib": ["es2017", "dom"]
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules"]

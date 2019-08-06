@@ -1,7 +1,7 @@
-import * as React from "react"
-import { setCurrentScreen } from "../../../controllers/LoggingController/LoggingController"
-import { SettingsFullpage } from "../../components/stateful/SettingsFullpage/SettingsFullpage"
-import { BaseScreen } from "../BaseScreen/BaseScreen"
+import * as React from 'react'
+import { setCurrentScreen } from '../../../controllers/LoggingController/LoggingController'
+import { SettingsFullpage } from '../../components/stateful/SettingsFullpage/SettingsFullpage'
+import { BaseScreen } from '../BaseScreen/BaseScreen'
 
 export class SettingsScreen extends React.Component<any, any> {
     public render(): React.ReactNode {
@@ -13,4 +13,4 @@ export class SettingsScreen extends React.Component<any, any> {
     }
 }
 
-setCurrentScreen("SettingsScreen", SettingsScreen.toString())
+setCurrentScreen('SettingsScreen', SettingsScreen.toString())

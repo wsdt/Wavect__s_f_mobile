@@ -1,5 +1,5 @@
-import { TabNavigatorConfig } from "react-navigation"
-import * as globalConfig from "../../../../../globalConfiguration/globalConfig"
+import { TabNavigatorConfig } from 'react-navigation'
+import * as globalConfig from '../../../../../globalConfiguration/globalConfig'
 
 /**
  * You can provide custom navigationoptions for your nav bar for each page.
@@ -8,20 +8,20 @@ import * as globalConfig from "../../../../../globalConfiguration/globalConfig"
 /** You can define additional options for our router here */
 export const routerOptions: TabNavigatorConfig = {
     initialRouteName: globalConfig.START_PAGE, // Start page
-    backBehavior: "history",
+    backBehavior: 'history',
     swipeEnabled: true,
     animationEnabled: true,
-    tabBarPosition: "bottom",
+    tabBarPosition: 'bottom',
     lazy: false,
     // should exist, but typings not up-to-date
     // optimizationsEnabled: true,
     tabBarOptions: {
         // scrollEnabled (scrolling through tabs itself)
-        activeTintColor: "#000",
+        activeTintColor: '#000',
         keyboardHidesTabBar: true, // TODO: not working
-        inactiveTintColor: "#888",
-        style: { backgroundColor: "#fff" },
-        indicatorStyle: { backgroundColor: "#000" },
+        inactiveTintColor: '#888',
+        style: { backgroundColor: '#fff' },
+        indicatorStyle: { backgroundColor: '#000' },
         allowFontScaling: true,
         showIcon: true,
         showLabel: false,

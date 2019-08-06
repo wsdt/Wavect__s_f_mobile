@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Linking } from "react-native"
-import { StackNavigatorConfig } from "react-navigation"
-import { RoundedButton } from "../../../functional/RoundedButton/RoundedButton"
-import { routes } from "./SettingsRoutes"
+import * as React from 'react'
+import { Linking } from 'react-native'
+import { StackNavigatorConfig } from 'react-navigation'
+import { RoundedButton } from '../../../functional/RoundedButton/RoundedButton'
+import { routes } from './SettingsRoutes'
 
 /**
  * You can provide custom navigationoptions for your nav bar for each page.
@@ -16,19 +16,19 @@ export const routerOptions: StackNavigatorConfig = {
         headerRight: (
             <RoundedButton
                 containerStyle={{ marginRight: 5 }}
-                title="Feedback"
-                press={() => Linking.openURL("mailto:support@bekind.com?subject=BeKind-Feedback&body=Was könnten wir verbessern?")}
+                title='Feedback'
+                press={() => Linking.openURL('mailto:support@bekind.com?subject=BeKind-Feedback&body=Was könnten wir verbessern?')}
             />
         ),
         headerStyle: {
-            backgroundColor: "#fff",
+            backgroundColor: '#fff',
             elevation: 0,
             shadowOpacity: 0,
             shadowRadius: 0,
         },
-        headerTintColor: "#111" /* tintColor is used by title and back btn etc. */,
+        headerTintColor: '#111' /* tintColor is used by title and back btn etc. */,
         headerTitleStyle: {
-            fontWeight: "bold",
+            fontWeight: 'bold',
         },
     },
 }
