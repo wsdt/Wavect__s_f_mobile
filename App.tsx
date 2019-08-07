@@ -10,5 +10,3 @@ watchConfiguration()
  * make routes available to all pages.
  */
 export default createAppContainer(Router)
-
-

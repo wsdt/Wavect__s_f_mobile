@@ -1,18 +1,15 @@
 import * as React from 'react'
-import {RefreshControl, View} from 'react-native'
-import {Text} from 'react-native-elements'
+import { RefreshControl, View } from 'react-native'
+import { Text } from 'react-native-elements'
 import SplashScreen from 'react-native-splash-screen'
-import {SafeAreaView, ScrollView} from 'react-navigation'
-import {logEvent, LogType} from '../../../controllers/LoggingController/LoggingController'
-import {
-    hasPerformedUpdateCheck,
-    performAppUpdateProcedure
-} from '../../../controllers/UpdateController/UpdateController'
-import {LoadingIndicator} from '../../components/functional/LoadingIndicator/LoadingIndicator'
-import {ILoadingContext, LoadingHoc, LoadingStatus} from '../../components/system/HOCs/LoadingHoc'
+import { SafeAreaView, ScrollView } from 'react-navigation'
+import { logEvent, LogType } from '../../../controllers/LoggingController/LoggingController'
+import { hasPerformedUpdateCheck, performAppUpdateProcedure } from '../../../controllers/UpdateController/UpdateController'
+import { LoadingIndicator } from '../../components/functional/LoadingIndicator/LoadingIndicator'
+import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../components/system/HOCs/LoadingHoc'
 import globalStyles from '../../GlobalStyles.css'
 import styles from './BaseScreen.css'
-import {IBaseScreenState} from './BaseScreen.state'
+import { IBaseScreenState } from './BaseScreen.state'
 
 const TAG = 'BaseScreen'
 
@@ -29,11 +26,12 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
     public componentDidMount() {
         SplashScreen.hide()
 
-        if (!hasPerformedUpdateCheck) { // only for UX improvement (do not show "preparing" when already done
+        if (!hasPerformedUpdateCheck) {
+            // only for UX improvement (do not show "preparing" when already done
             // Perform update tasks if new app update
-            this.setState({loadingStatus: LoadingStatus.PREPARING}) // show that we do sth. as maybe multiple tasks are executed
+            this.setState({ loadingStatus: LoadingStatus.PREPARING }) // show that we do sth. as maybe multiple tasks are executed
             performAppUpdateProcedure().then(() => {
-                this.setState({loadingStatus: LoadingStatus.LOADING}) // back to loading to allow sub-components to determine when they finished
+                this.setState({ loadingStatus: LoadingStatus.LOADING }) // back to loading to allow sub-components to determine when they finished
             })
         }
     }
@@ -48,7 +46,8 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
             <LoadingHoc.Provider value={contextMethods}>
                 <ScrollView
                     refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} />}
-                    contentContainerStyle={styles.page}>
+                    contentContainerStyle={styles.page}
+                >
                     {this.getLoadingStatusComponent()}
                     <SafeAreaView>
                         <View style={[this.getDisplayProp(), globalStyles.scrollViewContainer]}>{this.props.children}</View>
@@ -66,7 +65,7 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
         })
     }
 
-    private getCenteredText = (text: string, containerStyle?:any) => {
+    private getCenteredText = (text: string, containerStyle?: any) => {
         return (
             <View style={[{ justifyContent: 'center', height: '100%' }, containerStyle]}>
                 <Text>{text}</Text>
@@ -77,9 +76,14 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
     private getLoadingStatusComponent = () => {
         switch (this.state.loadingStatus) {
             case LoadingStatus.LOADING:
-                return <LoadingIndicator/>
+                return <LoadingIndicator />
             case LoadingStatus.PREPARING:
-                return  <><LoadingIndicator />{this.getCenteredText('Preparing..', {marginTop: 30})}</>
+                return (
+                    <>
+                        <LoadingIndicator />
+                        {this.getCenteredText('Preparing..', { marginTop: 30 })}
+                    </>
+                )
             case LoadingStatus.NOT_AVAILABLE:
                 return this.getCenteredText('No data available')
             case LoadingStatus.ERROR:

@@ -1,5 +1,5 @@
 export interface IFadeProps {
-    visible:boolean
+    visible: boolean
     containerStyle?: any
     fadeDuration: number
 }

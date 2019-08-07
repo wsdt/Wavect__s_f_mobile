@@ -12,7 +12,7 @@ import ChallengeLayerBar from '../ChallengeLayerBar/ChallengeLayerBar'
 import styles from './ChallengeFullpage.css'
 import { IChallengeFullpageProps } from './ChallengeFullpage.props'
 import { IChallengeFullpageState } from './ChallengeFullpage.state'
-import {Fade} from "../_Extendables/animations/Fade/Fade";
+import { Fade } from '../_animations/Fade/Fade'
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
@@ -24,10 +24,13 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     public render() {
         const { bgImage } = this.props.challenge
 
-        return <LoadingHoc.Consumer>
+        return (
+            <LoadingHoc.Consumer>
                 {contextMethods => {
                     this.loadingContext = contextMethods
-                    return <Fade visible={true} fadeDuration={200}><GrayColorImg isGrayscale={this.state.isGrayscale}>
+                    return (
+                        <Fade visible={true} fadeDuration={200}>
+                            <GrayColorImg isGrayscale={this.state.isGrayscale}>
                                 <>
                                     <FastImage
                                         source={{
@@ -42,9 +45,11 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                                     {this.getChallengeView()}
                                 </>
                             </GrayColorImg>
-                    </Fade>
+                        </Fade>
+                    )
                 }}
             </LoadingHoc.Consumer>
+        )
     }
 
     private getChallengeView = (): React.ReactElement => {
