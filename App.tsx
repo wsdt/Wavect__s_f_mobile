@@ -1,6 +1,6 @@
-import { createAppContainer } from "react-navigation"
-import { watchConfiguration } from "./src/globalConfiguration/developerProtection"
-import Router from "./src/mvc/views/components/system/TabRouter/TabRouter"
+import { createAppContainer } from 'react-navigation'
+import { watchConfiguration } from './src/globalConfiguration/developerProtection'
+import Router from './src/mvc/views/components/system/TabRouter/TabRouter'
 
 // Start developer protection
 watchConfiguration()
@@ -10,3 +10,5 @@ watchConfiguration()
  * make routes available to all pages.
  */
 export default createAppContainer(Router)
+
+

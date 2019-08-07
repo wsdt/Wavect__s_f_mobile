@@ -1,6 +1,6 @@
 import { NavigationRouteConfigMap } from 'react-navigation'
 import { HomeScreen } from '../../../../pages/HomeScreen/HomeScreen'
-import SponsorFullpage from '../../../stateful/SponsorFullpage/SponsorFullpage'
+import SponsorFullpage from '../../../classbased/SponsorFullpage/SponsorFullpage'
 import { routes } from './HomeRoutes'
 
 export const routesConfig: NavigationRouteConfigMap = {

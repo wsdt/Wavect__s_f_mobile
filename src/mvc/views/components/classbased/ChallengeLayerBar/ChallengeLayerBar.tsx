@@ -40,10 +40,10 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
                     <View style={styles.btnContainer}>
                         {this.state.currChallengeSolved ? (
-                            <MajorButton title='Challenge solved' btnType={MajorBtnType.HIGHLIGHTED} onPress={() => this.challengeAlreadySolved()} />
+                            <MajorButton title="Challenge solved" btnType={MajorBtnType.HIGHLIGHTED} onPress={() => this.challengeAlreadySolved()} />
                         ) : (
                             <MajorButton
-                                title='Abschließen'
+                                title="Abschließen"
                                 btnType={MajorBtnType.PRIMARY}
                                 onLongPress={() => this.execBtnAccept()}
                                 onPress={() => ToastAndroid.show('Gedrückt halten, um die Challenge abzuschließen', ToastAndroid.SHORT)}

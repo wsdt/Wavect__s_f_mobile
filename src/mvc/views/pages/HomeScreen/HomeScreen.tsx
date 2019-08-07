@@ -6,7 +6,7 @@ import { CACHE_KEY_CHALLENGE } from '../../../controllers/CacheController/CacheC
 import { setCurrentScreen } from '../../../controllers/LoggingController/LoggingController'
 import { ApiResponse } from '../../../models/ApiResponse'
 import { Challenge } from '../../../models/Challenge'
-import ChallengeFullpage from '../../components/stateful/ChallengeFullpage/ChallengeFullpage'
+import ChallengeFullpage from '../../components/classbased/ChallengeFullpage/ChallengeFullpage'
 import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../components/system/HOCs/LoadingHoc'
 import { BaseScreen } from '../BaseScreen/BaseScreen'
 import { IHomeScreenState } from './HomeScreen.state'

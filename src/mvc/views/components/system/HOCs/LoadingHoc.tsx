@@ -10,6 +10,7 @@ export interface ILoadingContext {
 
 export enum LoadingStatus {
     LOADING = 'loading',
+    PREPARING = 'preparing', // used to indicate that some specific tasks are running
     DONE = 'done',
     ERROR = 'error',
     NOT_AVAILABLE = 'not_available',
@@ -20,8 +21,7 @@ const defaultVal: ILoadingContext = {
         logEvent(LogType.ERROR, `${TAG}:setLoading`, 'Calling default context!')
     },
     setRefresh: (_: (cb: () => void) => void): void => {
-        logEvent(LogType.LOG, `${TAG}:setRefresh`, 'Calling default context!')
-        console.error('LoadingHoc: Calling default context for setRefresh.')
+        logEvent(LogType.ERROR, `${TAG}:setRefresh`, 'Calling default context!')
     },
 }
 

@@ -57,9 +57,9 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     onChangeText={text => this.emailValidation(text)}
                     containerStyle={styles.row}
                     style={styles.row}
-                    label='E-Mail'
-                    placeholder=' Deine E-Mail'
-                    leftIcon={<Icon name='envelope' type='font-awesome' />}
+                    label="E-Mail"
+                    placeholder=" Deine E-Mail"
+                    leftIcon={<Icon name="envelope" type="font-awesome" />}
                     shake={true}
                     errorMessage={this.state.validEmail ? '' : 'Bitte gib eine gültige E-Mail an.'}
                 />
@@ -67,19 +67,19 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                 <CheckBox
                     checked={this.state.hasAcceptedDataPrivacy}
                     containerStyle={styles.row}
-                    checkedColor='#000'
-                    title='Ich verstehe und akzeptiere, dass meine E-Mail-Adresse bei erfolgreichem Abschluss einer Herausforderung an den angegebenen Sponsor übermittelt wird.'
+                    checkedColor="#000"
+                    title="Ich verstehe und akzeptiere, dass meine E-Mail-Adresse bei erfolgreichem Abschluss einer Herausforderung an den angegebenen Sponsor übermittelt wird."
                     onPress={() => this.setState({ hasAcceptedDataPrivacy: !this.state.hasAcceptedDataPrivacy })}
                 />
 
                 <Button
                     containerStyle={styles.row}
-                    type='outline'
-                    title=' Speichern'
+                    type="outline"
+                    title=" Speichern"
                     raised={isFormSubmittable}
                     loading={this.state.isSavingSettings}
                     disabled={!isFormSubmittable}
-                    icon={<Icon name='save' type='font-awesome' />}
+                    icon={<Icon name="save" type="font-awesome" />}
                     onPress={this.postUserSettings}
                 />
             </ScrollView>

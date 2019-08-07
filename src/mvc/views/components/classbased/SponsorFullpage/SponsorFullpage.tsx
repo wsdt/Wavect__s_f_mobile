@@ -14,7 +14,6 @@ const noTextAvailable: string = 'Keine Information vorhanden'
 const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => {
     const { shortDescr, name, logoUri, misc, aboutUs, email, website, youtube, facebook, linkedin, instagram } = props.sponsor
 
-
     return (
         <View>
             <ColorMatrix matrix={[grayscale(1), brightness(0.5)]}>
@@ -23,12 +22,14 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     source={{
                         priority: FastImage.priority.normal,
                         uri: props.challengeBgImage.uri,
-                    }}>
-
+                    }}
+                >
                     <View style={styles.socialMedia}>
                         {linkedin ? <TouchableIcon icon={'linkedin'} onPress={() => Linking.openURL(linkedin)} containerStyle={styles.icon} /> : null}
                         {facebook ? <TouchableIcon icon={'facebook'} onPress={() => Linking.openURL(facebook)} containerStyle={styles.icon} /> : null}
-                        {instagram ? <TouchableIcon icon={'instagram'} onPress={() => Linking.openURL(instagram)} containerStyle={styles.icon} /> : null}
+                        {instagram ? (
+                            <TouchableIcon icon={'instagram'} onPress={() => Linking.openURL(instagram)} containerStyle={styles.icon} />
+                        ) : null}
                         {youtube ? <TouchableIcon icon={'youtube'} onPress={() => Linking.openURL(youtube)} containerStyle={styles.icon} /> : null}
                     </View>
 
@@ -67,7 +68,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                         title={'Website'}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(website)}
-                                        icon='globe'
+                                        icon="globe"
                                     />
                                 ) : null}
                                 {email ? (
@@ -75,7 +76,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                         title={'Email'}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(`mailto:${email}`)}
-                                        icon='envelope'
+                                        icon="envelope"
                                     />
                                 ) : null}
                             </View>

@@ -8,7 +8,7 @@ export const TouchableIcon: React.FunctionComponent<ITouchableIconProps> = props
 
     return (
         <TouchableOpacity onPress={onPress} style={containerStyle}>
-            <Icon name={icon} type='font-awesome' color='white' iconStyle={iconStyle} />
+            <Icon name={icon} type="font-awesome" color="white" iconStyle={iconStyle} />
         </TouchableOpacity>
     )
 }
