@@ -25,6 +25,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     }
     private userId: string = ''
     private loadingContext!: ILoadingContext
+    private abortController:AbortController = new AbortController() // memory safety/leaks avoidance
 
     public componentDidMount(): void {
         this.getUserSettings(false)
@@ -42,6 +43,10 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                 </LoadingHoc.Consumer>
             </View>
         )
+    }
+
+    public componentWillUnmount(): void {
+        this.abortController.abort()
     }
 
     private getSettingsView = () => {
@@ -98,7 +103,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     // Not recommended, use superior cache implementation please
     private getUserSettings = (reload: boolean, cb?: () => void) => {
         cachedFetch(this, CACHE_KEY_SETTINGS, this.loadingContext, reload, async () => {
-            fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`)
+            fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, {signal: this.abortController.signal})
                 .then(res => res.json())
                 .then(data => {
                     if (data.res) {

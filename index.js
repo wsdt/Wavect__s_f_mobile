@@ -1,13 +1,8 @@
-/**
- * @format
- */
-
 import { AppRegistry } from 'react-native'
 import App from './App'
 import { name as appName } from './app.json'
 import { useReactotron } from './src/globalConfiguration/globalConfig'
 import { logEvent, LogType, setCurrentUserId } from './src/mvc/controllers/LoggingController/LoggingController'
-import { performAppUpdateProcedure } from './src/mvc/controllers/UpdateController/UpdateController'
 
 // Use reactotron if debug mode and activated
 if (useReactotron) {

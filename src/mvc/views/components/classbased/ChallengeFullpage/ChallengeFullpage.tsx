@@ -17,9 +17,9 @@ import { Fade } from '../_animations/Fade/Fade'
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
         isGrayscale: true,
-        isLoading: true,
     }
     private loadingContext!: ILoadingContext
+    private abortController:AbortController = new AbortController() // memory safety/leaks avoidance
 
     public render() {
         const { bgImage } = this.props.challenge
@@ -50,6 +50,10 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                 }}
             </LoadingHoc.Consumer>
         )
+    }
+
+    public componentWillUnmount(): void {
+        this.abortController.abort()
     }
 
     private getChallengeView = (): React.ReactElement => {

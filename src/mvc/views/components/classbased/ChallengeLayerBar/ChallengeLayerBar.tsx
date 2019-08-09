@@ -16,6 +16,7 @@ import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
 import styles from './ChallengeLayerBar.css'
 import { IChallengeLayerBarProps } from './ChallengeLayerBar.props'
 import { IChallengeLayerBarState } from './ChallengeLayerBar.state'
+import {translate} from "../../../../controllers/MultiLingualityController/MultiLingualityController";
 
 const TAG = 'ChallengeLayerBar'
 
@@ -43,7 +44,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                             <MajorButton title="Challenge solved" btnType={MajorBtnType.HIGHLIGHTED} onPress={() => this.challengeAlreadySolved()} />
                         ) : (
                             <MajorButton
-                                title="Abschließen"
+                                title={translate('homescreen.challengelayerbar.btn_finish')}
                                 btnType={MajorBtnType.PRIMARY}
                                 onLongPress={() => this.execBtnAccept()}
                                 onPress={() => ToastAndroid.show('Gedrückt halten, um die Challenge abzuschließen', ToastAndroid.SHORT)}

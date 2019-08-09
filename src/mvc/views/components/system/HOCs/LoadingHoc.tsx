@@ -25,5 +25,4 @@ const defaultVal: ILoadingContext = {
     },
 }
 
-// tslint:disable-next-line:no-empty
 export const LoadingHoc: React.Context<ILoadingContext> = React.createContext(defaultVal)
