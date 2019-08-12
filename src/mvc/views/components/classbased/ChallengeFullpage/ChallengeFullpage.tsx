@@ -19,7 +19,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
         isGrayscale: true,
     }
     private loadingContext!: ILoadingContext
-    private abortController:AbortController = new AbortController() // memory safety/leaks avoidance
+    private abortController: AbortController = new AbortController() // memory safety/leaks avoidance
 
     public render() {
         const { bgImage } = this.props.challenge

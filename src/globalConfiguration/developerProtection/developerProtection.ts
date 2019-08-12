@@ -1,25 +1,25 @@
 import { BACKEND_URL, disableCache, useLocalBackend, useReactotron } from '../globalConfig'
-import {ControlFunctionType, ICustomControlFunctions} from './CustomControlFunctions'
+import { ControlFunctionType, ICustomControlFunctions } from './CustomControlFunctions'
 
 /** Watches whether all configs are as developers might want them to have it under certain conditions. */
 
 const TAG: string = 'DeveloperProtection'
 
-const customControlFunctions:ICustomControlFunctions = {
+const customControlFunctions: ICustomControlFunctions = {
     [ControlFunctionType.ALL]: [],
     [ControlFunctionType.DEBUG]: [],
     [ControlFunctionType.RELEASE]: [],
 }
 
 /** Used to encapsulate customControlFunctions to prevent further developer mistakes. */
-export const addCustomControlFunction = (controlFunctionType: ControlFunctionType, func: ()=>Error|null) => {
+export const addCustomControlFunction = (controlFunctionType: ControlFunctionType, func: () => Error | null) => {
     customControlFunctions[controlFunctionType].push(func)
 }
 
 /** For brevity */
 const evaluateCustomControlFunctions = (controlFunctionType: ControlFunctionType) => {
     for (const func of customControlFunctions[controlFunctionType]) {
-        const err:Error|null = func()
+        const err: Error | null = func()
         if (err) throw err
     }
 }
@@ -46,4 +46,3 @@ export const watchConfiguration = () => {
 
     evaluateCustomControlFunctions(ControlFunctionType.ALL)
 }
-

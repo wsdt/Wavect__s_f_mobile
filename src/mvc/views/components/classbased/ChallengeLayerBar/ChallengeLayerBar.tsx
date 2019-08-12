@@ -3,9 +3,11 @@ import React from 'react'
 import { Alert, ToastAndroid, View } from 'react-native'
 import { Text } from 'react-native-elements'
 import { withNavigation } from 'react-navigation'
+import * as _schema from '../../../../../assets/translations/_schema.json'
 import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
 import { getEmailMarked, getLocalUserId } from '../../../../controllers/LocalStorageController/LocalStorageController'
 import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
+import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { openFilePicker } from '../../../../controllers/SocialController/FilePickerController'
 import { shareMedia } from '../../../../controllers/SocialController/ShareController'
 import { noInternetAvailable } from '../../../../controllers/WarningsController'
@@ -16,7 +18,6 @@ import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
 import styles from './ChallengeLayerBar.css'
 import { IChallengeLayerBarProps } from './ChallengeLayerBar.props'
 import { IChallengeLayerBarState } from './ChallengeLayerBar.state'
-import {translate} from "../../../../controllers/MultiLingualityController/MultiLingualityController";
 
 const TAG = 'ChallengeLayerBar'
 
@@ -41,13 +42,13 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
                     <View style={styles.btnContainer}>
                         {this.state.currChallengeSolved ? (
-                            <MajorButton title="Challenge solved" btnType={MajorBtnType.HIGHLIGHTED} onPress={() => this.challengeAlreadySolved()} />
+                            <MajorButton title={t(_schema.homescreen.challengelayerbar.btn.accomplished)} btnType={MajorBtnType.HIGHLIGHTED} onPress={() => this.challengeAlreadySolved()} />
                         ) : (
                             <MajorButton
-                                title={translate('homescreen.challengelayerbar.btn_finish')}
+                                title={t(_schema.homescreen.challengelayerbar.btn.finish)}
                                 btnType={MajorBtnType.PRIMARY}
                                 onLongPress={() => this.execBtnAccept()}
-                                onPress={() => ToastAndroid.show('Gedrückt halten, um die Challenge abzuschließen', ToastAndroid.SHORT)}
+                                onPress={() => ToastAndroid.show(t(_schema.homescreen.challengelayerbar.toast.onclick_btn_finish), ToastAndroid.SHORT)}
                                 isLoading={this.state.isLoadingChallengeSolved}
                             />
                         )}
@@ -63,9 +64,9 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
     private challengeAlreadySolved = () => {
         Alert.alert(
-            'Challenge solved',
-            'Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.',
-            [{ text: 'OK' }],
+            t(_schema.homescreen.challengelayerbar.dialog.challenge_already_solved.title),
+            t(_schema.homescreen.challengelayerbar.dialog.challenge_already_solved.msg),
+            [{ text: t(_schema.homescreen.challengelayerbar.dialog.challenge_already_solved.btn_ok) }],
             {
                 cancelable: true,
             }
@@ -92,9 +93,9 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                 this.storeChallengeSolved()
 
                 Alert.alert(
-                    'Sponsor notified',
-                    'Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.',
-                    [{ text: 'Super!' }],
+                    t(_schema.homescreen.challengelayerbar.dialog.sponsor_notified.title),
+                    t(_schema.homescreen.challengelayerbar.dialog.sponsor_notified.msg),
+                    [{ text: t(_schema.homescreen.challengelayerbar.dialog.sponsor_notified.btn_ok) }],
                     {
                         cancelable: true,
                     }
@@ -112,7 +113,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         this.setState({ isLoadingChallengeSolved: true })
 
         const userAbortedProcedure = () => {
-            ToastAndroid.show('Bitte sag Bescheid, wenn du soweit bist!', ToastAndroid.SHORT)
+            ToastAndroid.show(t(_schema.homescreen.challengelayerbar.toast.onabort_imgpicker_share), ToastAndroid.SHORT)
             this.setState({
                 currChallengeSolved: false,
                 isLoadingChallengeSolved: false,
@@ -148,9 +149,9 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             this.challengeSolved()
         } else {
             Alert.alert(
-                'Einen Moment noch!',
-                'Wir benötigen deine E-Mail Adresse damit dich unsere Sponsoren kontaktieren können.   ',
-                [{ text: 'OK', onPress: () => this.props.navigation.navigate(routes.SettingsScreen) }],
+                t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.title),
+                t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.msg),
+                [{ text: t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.btn_ok), onPress: () => this.props.navigation.navigate(routes.SettingsScreen) }],
                 {
                     cancelable: true,
                 }

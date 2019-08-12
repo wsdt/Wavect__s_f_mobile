@@ -1,0 +1,120 @@
+{
+    "homescreen": {
+        "challengelayerbar": {
+            "btn": {
+                "finish": "homescreen.challengelayerbar.btn.finish",
+                "accomplished": "homescreen.challengelayerbar.btn.accomplished"
+            },
+            "toast": {
+                "onclick_btn_finish": "homescreen.challengelayerbar.toast.onclick_btn_finish",
+                "onabort_imgpicker_share": "homescreen.challengelayerbar.toast.onabort_imgpicker_share"
+            },
+            "dialog": {
+                "challenge_already_solved": {
+                    "title": "homescreen.challengelayerbar.dialog.challenge_already_solved.title",
+                    "msg": "homescreen.challengelayerbar.dialog.challenge_already_solved.msg",
+                    "btn_ok": "homescreen.challengelayerbar.dialog.challenge_already_solved.btn_ok"
+                },
+                "sponsor_notified": {
+                    "title": "homescreen.challengelayerbar.dialog.sponsor_notified.title",
+                    "msg": "homescreen.challengelayerbar.dialog.sponsor_notified.msg",
+                    "btn_ok": "homescreen.challengelayerbar.dialog.sponsor_notified.btn_ok"
+                },
+                "settings_not_set": {
+                    "title": "homescreen.challengelayerbar.dialog.settings_not_set.title",
+                    "msg": "homescreen.challengelayerbar.dialog.settings_not_set.msg",
+                    "btn_ok": "homescreen.challengelayerbar.dialog.settings_not_set.btn_ok"
+                }
+            }
+        },
+        "sponsor_fullpage": {
+            "btn": {
+                "website": "homescreen.sponsor_fullpage.btn.website",
+                "email": "homescreen.sponsor_fullpage.btn.email"
+            }
+        }
+    },
+    "settingsscreen": {
+        "fullpage": {
+            "intro": "settingsscreen.fullpage.intro",
+            "form": {
+                "input_mail": {
+                    "lbl": "settingsscreen.fullpage.form.input_mail.lbl",
+                    "placeholder": "settingsscreen.fullpage.form.input_mail.placeholder",
+                    "errorMsg": "settingsscreen.fullpage.form.input_mail.errorMsg"
+                },
+                "checkbox_dataprivacy": "settingsscreen.fullpage.form.checkbox_dataprivacy",
+                "btn": {
+                    "save": "settingsscreen.fullpage.form.btn.save"
+                }
+            }
+        }
+    },
+    "basescreen": {
+        "loading": {
+            "preparing": "basescreen.loading.preparing",
+            "not_available": "basescreen.loading.not_available",
+            "error": "basescreen.loading.error"
+        }
+    },
+    "system": {
+        "tabrouter": {
+            "stackrouters": {
+                "homescreen": {
+                    "default": {
+                        "btn_rounded": "system.tabrouter.stackrouters.homescreen.default.btn_rounded"
+                    },
+                    "home": {
+                        "title": "system.tabrouter.stackrouters.homescreen.home.title"
+                    },
+                    "sponsor": {
+                        "title": "system.tabrouter.stackrouters.homescreen.sponsor.title"
+                    }
+                },
+                "settingsscreen": {
+                    "default": {
+                        "btn_rouned": "system.tabrouter.stackrouters.settingsscreen.default.btn_rouned"
+                    },
+                    "settings": {
+                        "title": "system.tabrouter.stackrouters.settingsscreen.settings.title"
+                    }
+                }
+            }
+        }
+    },
+    "models": {
+        "challenge_category": {
+            "environment": {
+                "descr": "models.challenge_category.environment.descr"
+            },
+            "health": {
+                "descr": "models.challenge_category.health.descr"
+            },
+            "social": {
+                "descr": "models.challenge_category.social.descr"
+            }
+        }
+    },
+    "controllers": {
+        "filepicker": {
+            "dialog": {
+                "title": "controllers.filepicker.dialog.title"
+            }
+        },
+        "share": {
+            "dialog": {
+                "title": "controllers.share.dialog.title",
+                "msg": "controllers.share.dialog.msg"
+            }
+        },
+        "warning": {
+            "dialog": {
+                "no_internet": {
+                    "title": "controllers.warning.dialog.no_internet.title",
+                    "msg": "controllers.warning.dialog.no_internet.msg",
+                    "btn_ok": "controllers.warning.dialog.no_internet.btn_ok"
+                }
+            }
+        }
+    }
+}

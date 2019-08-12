@@ -8,6 +8,8 @@ import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorBut
 import { TouchableIcon } from '../../functional/TouchableIcon/TouchableIcon'
 import { styles } from './SponsorFullpage.css'
 import { SponsorFullpageProps } from './SponsorFullpage.props'
+import {t} from "../../../../controllers/MultiLingualityController/MultiLingualityController";
+import * as _schema from "../../../../../assets/translations/_schema.json";
 
 const noTextAvailable: string = 'Keine Information vorhanden'
 
@@ -65,18 +67,18 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                             <View style={styles.buttonContainer}>
                                 {website ? (
                                     <MajorButton
-                                        title={'Website'}
+                                        title={t(_schema.homescreen.sponsor_fullpage.btn.website)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(website)}
-                                        icon="globe"
+                                        icon='globe'
                                     />
                                 ) : null}
                                 {email ? (
                                     <MajorButton
-                                        title={'Email'}
+                                        title={t(_schema.homescreen.sponsor_fullpage.btn.email)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(`mailto:${email}`)}
-                                        icon="envelope"
+                                        icon='envelope'
                                     />
                                 ) : null}
                             </View>

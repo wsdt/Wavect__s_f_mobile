@@ -16,7 +16,7 @@ export const routerOptions: StackNavigatorConfig = {
         headerRight: (
             <RoundedButton
                 containerStyle={{ marginRight: 5 }}
-                title="Feedback"
+                title='Feedback'
                 press={() => Linking.openURL('mailto:support@wavect.io?subject=Wavect-Feedback&body=Was könnten wir verbessern?')}
             />
         ),

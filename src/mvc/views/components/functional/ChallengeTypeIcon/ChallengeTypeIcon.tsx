@@ -1,6 +1,7 @@
 import React from 'react'
 import { TouchableOpacity } from 'react-native'
 import { Image, Text, Tooltip } from 'react-native-elements'
+import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { CHALLENGE_CATEGORIES } from '../../../../models/ChallengeCategory'
 import globalStyles, { GREY } from '../../../GlobalStyles.css'
 import styles, { BG_COLOR } from './ChallengeTypeIcon.css'
@@ -11,12 +12,12 @@ export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps>
     return (
         <TouchableOpacity style={styles.touchableContainer}>
             <Tooltip
-                popover={<Text style={globalStyles.tooltipText}>{CHALLENGE_CATEGORIES[props.type].descr}</Text>}
+                popover={<Text style={globalStyles.tooltipText}>{CHALLENGE_CATEGORIES(t)[props.type].descr}</Text>}
                 backgroundColor={currColor}
                 height={120}
             >
                 <Image
-                    source={CHALLENGE_CATEGORIES[props.type].icon}
+                    source={CHALLENGE_CATEGORIES(t)[props.type].icon}
                     containerStyle={[styles.imageContainer, { backgroundColor: currColor }]}
                     style={styles.image}
                 />
@@ -24,3 +25,4 @@ export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps>
         </TouchableOpacity>
     )
 }
+

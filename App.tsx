@@ -1,6 +1,13 @@
-import { createAppContainer } from 'react-navigation'
-import { watchConfiguration } from './src/globalConfiguration/developerProtection/developerProtection'
+import * as React from 'react'
+import * as RNLocalize from 'react-native-localize'
+import {createAppContainer} from 'react-navigation'
+import {IAppState} from './App.state'
+import {watchConfiguration} from './src/globalConfiguration/developerProtection/developerProtection'
+import {logEvent, LogType} from './src/mvc/controllers/LoggingController/LoggingController'
+import {setCurrentLanguageBundle} from './src/mvc/controllers/MultiLingualityController/MultiLingualityController'
 import Router from './src/mvc/views/components/system/TabRouter/TabRouter'
+
+const TAG = 'App'
 
 // Start developer protection
 watchConfiguration()
@@ -9,4 +16,46 @@ watchConfiguration()
  * Just export the router component in an app container, to
  * make routes available to all pages.
  */
-export default createAppContainer(Router)
+const AppContainer = createAppContainer(Router)
+
+/** Make app multilingual */
+class App extends React.Component<any, IAppState> {
+    public state: IAppState = {
+        isTranslationBundleLoaded: false,
+    }
+
+    constructor(props: any) {
+        super(props)
+
+        setCurrentLanguageBundle() // set initial config
+            .then(() => {
+                this.setState({isTranslationBundleLoaded: true})
+                RNLocalize.addEventListener('change', this.handleLocalizationChange)
+            })
+            .catch((error: Error) => {
+                logEvent(LogType.ERROR, `${TAG}:constructor:setCurrentLanguageBundle`, 'Could not set current language bundle.', error)
+            })
+    }
+
+    public componentWillUnmount() {
+        RNLocalize.removeEventListener('change', this.handleLocalizationChange)
+    }
+
+    public handleLocalizationChange = () => {
+        setCurrentLanguageBundle()
+            .then(() => this.forceUpdate())
+            .catch((error: Error) => {
+                logEvent(LogType.ERROR, `${TAG}:constructor:setCurrentLanguageBundle`, 'Could not set current language bundle.', error)
+            })
+    }
+
+    public shouldComponentUpdate(_: Readonly<any>, nextState: Readonly<IAppState>): boolean {
+        return nextState.isTranslationBundleLoaded
+    }
+
+    public render() {
+        return <AppContainer/>
+    }
+}
+
+export default App

@@ -1,11 +1,11 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import * as React from 'react'
 // @ts-ignore
-import {Cache} from 'react-native-cache'
-import {disableCache} from '../../../globalConfiguration/globalConfig'
-import {ILoadingContext, LoadingStatus} from '../../views/components/system/HOCs/LoadingHoc'
-import {logEvent, LogType} from '../LoggingController/LoggingController'
-import {IUpdateTask} from '../UpdateController/UpdateController.tasks'
+import { Cache } from 'react-native-cache'
+import { disableCache } from '../../../globalConfiguration/globalConfig'
+import { ILoadingContext, LoadingStatus } from '../../views/components/system/HOCs/LoadingHoc'
+import { logEvent, LogType } from '../LoggingController/LoggingController'
+import { IUpdateTask } from '../UpdateController/UpdateController.tasks'
 
 const TAG = 'CacheController'
 
@@ -121,7 +121,7 @@ export const cachedFetch = async (
     } else {
         const cachedData = await getCache(cacheKey)
         if (cachedData) {
-            console.log(`${TAG}:cachedFetch: Loading from cache`)
+            logEvent(LogType.LOG,`${TAG}:cachedFetch`,'Loading from cache')
             component.setState(cachedData) // TODO: might cause problems in future if also non-cacheable state is in state (avoid overriding, ...)
             loadingContext.setLoading(LoadingStatus.DONE)
         } else {
