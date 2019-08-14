@@ -5,7 +5,7 @@ import SplashScreen from 'react-native-splash-screen'
 import { SafeAreaView, ScrollView } from 'react-navigation'
 import * as _schema from '../../../../assets/translations/_schema.json'
 import { logEvent, LogType } from '../../../controllers/LoggingController/LoggingController'
-import {t} from '../../../controllers/MultiLingualityController/MultiLingualityController'
+import { t } from '../../../controllers/MultiLingualityController/MultiLingualityController'
 import { hasPerformedUpdateCheck, performAppUpdateProcedure } from '../../../controllers/UpdateController/UpdateController'
 import { LoadingIndicator } from '../../components/functional/LoadingIndicator/LoadingIndicator'
 import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../components/system/HOCs/LoadingHoc'
@@ -48,12 +48,11 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
             <LoadingHoc.Provider value={contextMethods}>
                 <ScrollView
                     refreshControl={<RefreshControl refreshing={this.state.isRefreshing} onRefresh={this.onRefresh} />}
-                    contentContainerStyle={styles.page}>
+                    contentContainerStyle={styles.page}
+                >
                     {this.getLoadingStatusComponent()}
                     <SafeAreaView>
-                        <View style={[this.getDisplayProp(), globalStyles.scrollViewContainer]}>
-                            {this.props.children}
-                        </View>
+                        <View style={[this.getDisplayProp(), globalStyles.scrollViewContainer]}>{this.props.children}</View>
                     </SafeAreaView>
                 </ScrollView>
             </LoadingHoc.Provider>

@@ -6,7 +6,6 @@ import TranslationBundle, { fallbackLanguagePack } from '../../../assets/transla
 import { ControlFunctionType } from '../../../globalConfiguration/developerProtection/CustomControlFunctions'
 import { addCustomControlFunction } from '../../../globalConfiguration/developerProtection/developerProtection'
 
-
 /** Enhances performance seemingly (better than "translate" method from I18 or similar.
  * NOTE: This view is ONLY working in a view! If you need it somewhere else you have to provide it as parameter.
  * @param config: As far as I understand these are string-params for placeholders. */

@@ -121,7 +121,7 @@ export const cachedFetch = async (
     } else {
         const cachedData = await getCache(cacheKey)
         if (cachedData) {
-            logEvent(LogType.LOG,`${TAG}:cachedFetch`,'Loading from cache')
+            logEvent(LogType.LOG, `${TAG}:cachedFetch`, 'Loading from cache')
             component.setState(cachedData) // TODO: might cause problems in future if also non-cacheable state is in state (avoid overriding, ...)
             loadingContext.setLoading(LoadingStatus.DONE)
         } else {

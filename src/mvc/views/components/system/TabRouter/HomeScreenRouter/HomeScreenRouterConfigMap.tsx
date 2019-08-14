@@ -1,6 +1,6 @@
 import { NavigationRouteConfigMap } from 'react-navigation'
 import * as _schema from '../../../../../../assets/translations/_schema.json'
-import {t} from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { t } from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { HomeScreen } from '../../../../pages/HomeScreen/HomeScreen'
 import SponsorFullpage from '../../../classbased/SponsorFullpage/SponsorFullpage'
 import { routes } from './HomeRoutes'

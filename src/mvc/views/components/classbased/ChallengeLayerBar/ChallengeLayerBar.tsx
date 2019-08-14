@@ -42,13 +42,19 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
                     <View style={styles.btnContainer}>
                         {this.state.currChallengeSolved ? (
-                            <MajorButton title={t(_schema.homescreen.challengelayerbar.btn.accomplished)} btnType={MajorBtnType.HIGHLIGHTED} onPress={() => this.challengeAlreadySolved()} />
+                            <MajorButton
+                                title={t(_schema.homescreen.challengelayerbar.btn.accomplished)}
+                                btnType={MajorBtnType.HIGHLIGHTED}
+                                onPress={() => this.challengeAlreadySolved()}
+                            />
                         ) : (
                             <MajorButton
                                 title={t(_schema.homescreen.challengelayerbar.btn.finish)}
                                 btnType={MajorBtnType.PRIMARY}
                                 onLongPress={() => this.execBtnAccept()}
-                                onPress={() => ToastAndroid.show(t(_schema.homescreen.challengelayerbar.toast.onclick_btn_finish), ToastAndroid.SHORT)}
+                                onPress={() =>
+                                    ToastAndroid.show(t(_schema.homescreen.challengelayerbar.toast.onclick_btn_finish), ToastAndroid.SHORT)
+                                }
                                 isLoading={this.state.isLoadingChallengeSolved}
                             />
                         )}
@@ -151,7 +157,12 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             Alert.alert(
                 t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.title),
                 t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.msg),
-                [{ text: t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.btn_ok), onPress: () => this.props.navigation.navigate(routes.SettingsScreen) }],
+                [
+                    {
+                        text: t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.btn_ok),
+                        onPress: () => this.props.navigation.navigate(routes.SettingsScreen),
+                    },
+                ],
                 {
                     cancelable: true,
                 }

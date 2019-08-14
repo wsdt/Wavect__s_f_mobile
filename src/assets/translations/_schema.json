@@ -31,6 +31,11 @@
             "btn": {
                 "website": "homescreen.sponsor_fullpage.btn.website",
                 "email": "homescreen.sponsor_fullpage.btn.email"
+            },
+            "headers": {
+                "whySponsor": "homescreen.sponsor_fullpage.headers.whySponsor",
+                "aboutUs": "homescreen.sponsor_fullpage.headers.aboutUs",
+                "misc": "homescreen.sponsor_fullpage.headers.misc"
             }
         }
     },

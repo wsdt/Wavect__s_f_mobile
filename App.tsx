@@ -1,10 +1,10 @@
 import * as React from 'react'
 import * as RNLocalize from 'react-native-localize'
-import {createAppContainer} from 'react-navigation'
-import {IAppState} from './App.state'
-import {watchConfiguration} from './src/globalConfiguration/developerProtection/developerProtection'
-import {logEvent, LogType} from './src/mvc/controllers/LoggingController/LoggingController'
-import {setCurrentLanguageBundle} from './src/mvc/controllers/MultiLingualityController/MultiLingualityController'
+import { createAppContainer } from 'react-navigation'
+import { IAppState } from './App.state'
+import { watchConfiguration } from './src/globalConfiguration/developerProtection/developerProtection'
+import { logEvent, LogType } from './src/mvc/controllers/LoggingController/LoggingController'
+import { setCurrentLanguageBundle } from './src/mvc/controllers/MultiLingualityController/MultiLingualityController'
 import Router from './src/mvc/views/components/system/TabRouter/TabRouter'
 
 const TAG = 'App'
@@ -29,7 +29,7 @@ class App extends React.Component<any, IAppState> {
 
         setCurrentLanguageBundle() // set initial config
             .then(() => {
-                this.setState({isTranslationBundleLoaded: true})
+                this.setState({ isTranslationBundleLoaded: true })
                 RNLocalize.addEventListener('change', this.handleLocalizationChange)
             })
             .catch((error: Error) => {
@@ -54,7 +54,7 @@ class App extends React.Component<any, IAppState> {
     }
 
     public render() {
-        return <AppContainer/>
+        return <AppContainer />
     }
 }
 

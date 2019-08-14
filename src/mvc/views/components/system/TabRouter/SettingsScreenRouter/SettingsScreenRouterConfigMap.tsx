@@ -1,6 +1,6 @@
 import { NavigationRouteConfigMap } from 'react-navigation'
 import * as _schema from '../../../../../../assets/translations/_schema.json'
-import {t} from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { t } from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { SettingsScreen } from '../../../../pages/SettingsScreen/SettingsScreen'
 import { routes } from './SettingsRoutes'
 

@@ -3,15 +3,21 @@ import { Linking, ScrollView, Text, View } from 'react-native'
 import { brightness, ColorMatrix, grayscale } from 'react-native-color-matrix-image-filters'
 import FastImage from 'react-native-fast-image'
 import { withMappedNavigationParams } from 'react-navigation-props-mapper'
+import * as _schema from '../../../../../assets/translations/_schema.json'
+import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { BOTTOM_TABBAR_MARGIN } from '../../../GlobalStyles.css'
 import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
 import { TouchableIcon } from '../../functional/TouchableIcon/TouchableIcon'
 import { styles } from './SponsorFullpage.css'
 import { SponsorFullpageProps } from './SponsorFullpage.props'
-import {t} from "../../../../controllers/MultiLingualityController/MultiLingualityController";
-import * as _schema from "../../../../../assets/translations/_schema.json";
 
-const noTextAvailable: string = 'Keine Information vorhanden'
+const getParagraph = (header:string, text:string) => {
+    if (text) {
+        return <><Text style={styles.boldHeadline}> {header}</Text>
+            <Text style={styles.blockText}>{text}</Text></>
+    }
+    return null
+}
 
 const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => {
     const { shortDescr, name, logoUri, misc, aboutUs, email, website, youtube, facebook, linkedin, instagram } = props.sponsor
@@ -52,14 +58,10 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
 
             <ScrollView style={{ marginBottom: BOTTOM_TABBAR_MARGIN }}>
                 <View>
-                    <Text style={styles.boldHeadline}> {name}</Text>
-                    <Text style={styles.blockText}>{shortDescr ? shortDescr : noTextAvailable}</Text>
-
-                    <Text style={styles.boldHeadline}> Über uns </Text>
-                    <Text style={styles.blockText}>{aboutUs ? aboutUs : noTextAvailable}</Text>
-
-                    <Text style={styles.boldHeadline}> Wissenswertes</Text>
-                    <Text style={styles.blockText}>{misc ? misc : noTextAvailable}</Text>
+                    {getParagraph(name, shortDescr)}
+                    {getParagraph(t(_schema.homescreen.sponsor_fullpage.headers.whySponsor), props.whySponsor)}
+                    {getParagraph(t(_schema.homescreen.sponsor_fullpage.headers.aboutUs), aboutUs)}
+                    {getParagraph(t(_schema.homescreen.sponsor_fullpage.headers.misc), misc)}
 
                     {website || email ? (
                         <>
