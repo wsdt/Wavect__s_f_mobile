@@ -8,11 +8,11 @@ import { CompanyLogo } from '../../functional/CompanyLogo/CompanyLogo'
 import { GrayColorImg } from '../../functional/GrayColorImg/GrayColorImg'
 import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/LoadingHoc'
 import { routes } from '../../system/TabRouter/HomeScreenRouter/HomeRoutes'
+import { Fade } from '../_animations/Fade/Fade'
 import ChallengeLayerBar from '../ChallengeLayerBar/ChallengeLayerBar'
 import styles from './ChallengeFullpage.css'
 import { IChallengeFullpageProps } from './ChallengeFullpage.props'
 import { IChallengeFullpageState } from './ChallengeFullpage.state'
-import { Fade } from '../_animations/Fade/Fade'
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {

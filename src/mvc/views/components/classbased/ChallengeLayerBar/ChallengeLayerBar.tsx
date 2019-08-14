@@ -1,23 +1,23 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import React from 'react'
-import { Alert, ToastAndroid, View } from 'react-native'
-import { Text } from 'react-native-elements'
-import { withNavigation } from 'react-navigation'
+import {Alert, ToastAndroid, View} from 'react-native'
+import {Text} from 'react-native-elements'
+import {withNavigation} from 'react-navigation'
 import * as _schema from '../../../../../assets/translations/_schema.json'
-import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
-import { getEmailMarked, getLocalUserId } from '../../../../controllers/LocalStorageController/LocalStorageController'
-import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
-import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
-import { openFilePicker } from '../../../../controllers/SocialController/FilePickerController'
-import { shareMedia } from '../../../../controllers/SocialController/ShareController'
-import { noInternetAvailable } from '../../../../controllers/WarningsController'
-import { ApiResponse } from '../../../../models/ApiResponse'
-import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
-import { routes } from '../../system/TabRouter/SettingsScreenRouter/SettingsRoutes'
-import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
+import {BACKEND_MOBILE_API} from '../../../../../globalConfiguration/globalConfig'
+import {getEmailMarked, getLocalUserId} from '../../../../controllers/LocalStorageController/LocalStorageController'
+import {logEvent, LogType} from '../../../../controllers/LoggingController/LoggingController'
+import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import {openFilePicker} from '../../../../controllers/SocialController/FilePickerController'
+import {shareMedia} from '../../../../controllers/SocialController/ShareController'
+import {noInternetAvailable} from '../../../../controllers/WarningsController'
+import {ApiResponse} from '../../../../models/ApiResponse'
+import {MajorBtnType, MajorButton} from '../../functional/MajorButton/MajorButton'
+import {routes} from '../../system/TabRouter/SettingsScreenRouter/SettingsRoutes'
+import {CHALLENGE_SOLVED_ID} from './ChallengeLayerBar.constants'
 import styles from './ChallengeLayerBar.css'
-import { IChallengeLayerBarProps } from './ChallengeLayerBar.props'
-import { IChallengeLayerBarState } from './ChallengeLayerBar.state'
+import {IChallengeLayerBarProps} from './ChallengeLayerBar.props'
+import {IChallengeLayerBarState} from './ChallengeLayerBar.state'
 
 const TAG = 'ChallengeLayerBar'
 
@@ -180,7 +180,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             if (this.lastChallengeIdSolved !== null) {
                 // vals previously stored
 
-                if (this.lastChallengeIdSolved === this.props.challengeId) {
+                if (this.lastChallengeIdSolved === this.getCurrentChallengeSolvedId()) {
                     // current challenge already accepted
                     currChallengeSolved = true
                 }
@@ -189,17 +189,21 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             this.setState({ currChallengeSolved })
             this.props.setGrayscale(!this.state.currChallengeSolved)
         } catch (e) {
-            console.error(e)
+            logEvent(LogType.ERROR, `${TAG}:retrieveChallengeSolved`, null, e)
         }
+    }
+
+    private getCurrentChallengeSolvedId = ():string => {
+        return `${this.props.challengeId}`
     }
 
     private storeChallengeSolved = async () => {
         try {
-            await AsyncStorage.setItem(CHALLENGE_SOLVED_ID, this.props.challengeId)
+            await AsyncStorage.setItem(CHALLENGE_SOLVED_ID, this.getCurrentChallengeSolvedId())
             this.setState({ currChallengeSolved: true })
             this.props.setGrayscale(!this.state.currChallengeSolved)
         } catch (e) {
-            console.error(e)
+            logEvent(LogType.ERROR, `${TAG}:storeChallengeSolved`, null, e)
         }
     }
 }

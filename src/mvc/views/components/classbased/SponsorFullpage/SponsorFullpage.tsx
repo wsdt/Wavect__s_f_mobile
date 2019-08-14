@@ -11,10 +11,14 @@ import { TouchableIcon } from '../../functional/TouchableIcon/TouchableIcon'
 import { styles } from './SponsorFullpage.css'
 import { SponsorFullpageProps } from './SponsorFullpage.props'
 
-const getParagraph = (header:string, text:string) => {
+const getParagraph = (header: string, text: string) => {
     if (text) {
-        return <><Text style={styles.boldHeadline}> {header}</Text>
-            <Text style={styles.blockText}>{text}</Text></>
+        return (
+            <>
+                <Text style={styles.boldHeadline}> {header}</Text>
+                <Text style={styles.blockText}>{text}</Text>
+            </>
+        )
     }
     return null
 }
@@ -72,7 +76,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                         title={t(_schema.homescreen.sponsor_fullpage.btn.website)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(website)}
-                                        icon='globe'
+                                        icon="globe"
                                     />
                                 ) : null}
                                 {email ? (
@@ -80,7 +84,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                         title={t(_schema.homescreen.sponsor_fullpage.btn.email)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(`mailto:${email}`)}
-                                        icon='envelope'
+                                        icon="envelope"
                                     />
                                 ) : null}
                             </View>
