@@ -15,10 +15,13 @@
                     "msg": "Du hast diese Herausforderung bereits abgeschlossen. Bitte warte, bis sich der Sponsor mit dir in Verbindung setzt oder eine neue Herausforderung veröffentlicht wird.",
                     "btn_ok": "OK"
                 },
-                "sponsor_notified": {
-                    "title": "Sponsor benachrichtigt",
-                    "msg": "Wir haben den Sponsor der aktuellen Herausforderung benachrichtigt! Dieser sollte dich bzgl. Sponsoring demnächst kontaktieren.",
-                    "btn_ok": "Super!"
+                "challenge_almost_solved": {
+                    "title": "Beweis es",
+                    "msg": "Mach ein Foto, das dich beim Lösen der Challenge zeigt. Auch ein Selfie danach genügt. Bitte beachte, dass niemand ungefragt fotografiert werden möchte, d.h. es reicht ein Foto von dir alleine.",
+                    "btn": {
+                        "ok": "Weiter",
+                        "cancel": "Abbruch"
+                    }
                 },
                 "settings_not_set": {
                     "title": "Einen Moment noch",

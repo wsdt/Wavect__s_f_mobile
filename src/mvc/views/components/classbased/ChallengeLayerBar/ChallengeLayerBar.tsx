@@ -96,10 +96,6 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             } else {
                 this.storeChallengeSolved()
 
-                Alert.alert(t(s.dialog.sponsor_notified.title), t(s.dialog.sponsor_notified.msg), [{ text: t(s.dialog.sponsor_notified.btn_ok) }], {
-                    cancelable: true,
-                })
-
                 logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'Sent email to sponsor')
             }
         } catch (e) {
@@ -121,26 +117,33 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         }
 
         // Share it
-        try {
-            const res = await openFilePicker()
+        const shareChallengeSolved = async () => {
+            try {
+                const res = await openFilePicker()
 
-            if (res.error || res.didCancel) {
-                userAbortedProcedure()
-                logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'User did not choose a file')
-            } else {
-                const wasShareSuccessful = await shareMedia(this.props.headline, this.props.sponsorName, res)
+                if (res.error || res.didCancel) {
+                    userAbortedProcedure()
+                    logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'User did not choose a file')
+                } else {
+                    const wasShareSuccessful = await shareMedia(this.props.headline, this.props.sponsorName, res)
 
-                if (wasShareSuccessful) {
-                    this.sendChallengeSolvedEmailToSponsor()
+                    if (wasShareSuccessful) {
+                        this.sendChallengeSolvedEmailToSponsor()
+                    }
+                    this.setState({
+                        currChallengeSolved: wasShareSuccessful,
+                        isLoadingChallengeSolved: false,
+                    })
                 }
-                this.setState({
-                    currChallengeSolved: wasShareSuccessful,
-                    isLoadingChallengeSolved: false,
-                })
+            } catch (e) {
+                logEvent(LogType.ERROR, `${TAG}:challengeSolved`, `Couldn't open imagePicker -> ${JSON.stringify(e)}`)
             }
-        } catch (e) {
-            logEvent(LogType.ERROR, `${TAG}:challengeSolved`, `Couldn't open imagePicker -> ${JSON.stringify(e)}`)
         }
+        Alert.alert(t(s.dialog.challenge_almost_solved.title), t(s.dialog.challenge_almost_solved.msg), [
+            { text: t(s.dialog.challenge_almost_solved.btn.ok), onPress: () => shareChallengeSolved() },
+            { text: t(s.dialog.challenge_almost_solved.btn.cancel), onPress: () => userAbortedProcedure()}], {
+            cancelable: true,
+        })
     }
 
     private execBtnAccept = async () => {

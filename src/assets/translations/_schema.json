@@ -15,10 +15,13 @@
                     "msg": "homescreen.challengelayerbar.dialog.challenge_already_solved.msg",
                     "btn_ok": "homescreen.challengelayerbar.dialog.challenge_already_solved.btn_ok"
                 },
-                "sponsor_notified": {
-                    "title": "homescreen.challengelayerbar.dialog.sponsor_notified.title",
-                    "msg": "homescreen.challengelayerbar.dialog.sponsor_notified.msg",
-                    "btn_ok": "homescreen.challengelayerbar.dialog.sponsor_notified.btn_ok"
+                "challenge_almost_solved": {
+                    "title": "homescreen.challengelayerbar.dialog.challenge_almost_solved.title",
+                    "msg": "homescreen.challengelayerbar.dialog.challenge_almost_solved.msg",
+                    "btn": {
+                        "ok": "homescreen.challengelayerbar.dialog.challenge_almost_solved.btn.ok",
+                        "cancel": "homescreen.challengelayerbar.dialog.challenge_almost_solved.btn.cancel"
+                    }
                 },
                 "settings_not_set": {
                     "title": "homescreen.challengelayerbar.dialog.settings_not_set.title",
