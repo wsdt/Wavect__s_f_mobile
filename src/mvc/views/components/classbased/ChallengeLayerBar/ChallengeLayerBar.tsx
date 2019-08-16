@@ -139,11 +139,17 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                 logEvent(LogType.ERROR, `${TAG}:challengeSolved`, `Couldn't open imagePicker -> ${JSON.stringify(e)}`)
             }
         }
-        Alert.alert(t(s.dialog.challenge_almost_solved.title), t(s.dialog.challenge_almost_solved.msg), [
-            { text: t(s.dialog.challenge_almost_solved.btn.ok), onPress: () => shareChallengeSolved() },
-            { text: t(s.dialog.challenge_almost_solved.btn.cancel), onPress: () => userAbortedProcedure()}], {
-            cancelable: true,
-        })
+        Alert.alert(
+            t(s.dialog.challenge_almost_solved.title),
+            t(s.dialog.challenge_almost_solved.msg),
+            [
+                { text: t(s.dialog.challenge_almost_solved.btn.ok), onPress: () => shareChallengeSolved() },
+                { text: t(s.dialog.challenge_almost_solved.btn.cancel), onPress: () => userAbortedProcedure() },
+            ],
+            {
+                cancelable: true,
+            }
+        )
     }
 
     private execBtnAccept = async () => {

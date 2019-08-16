@@ -3,7 +3,6 @@ import App from './App'
 import { name as appName } from './app.json'
 import { useReactotron } from './src/globalConfiguration/globalConfig'
 import { logEvent, LogType, setCurrentUserId } from './src/mvc/controllers/LoggingController/LoggingController'
-import { setCurrentLanguageBundle } from './src/mvc/controllers/MultiLingualityController/MultiLingualityController'
 
 // Use reactotron if debug mode and activated
 if (useReactotron) {
