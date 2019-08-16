@@ -2,7 +2,6 @@ import ImagePicker, { ImagePickerOptions, ImagePickerResponse } from 'react-nati
 import { t } from '../MultiLingualityController/MultiLingualityController'
 import s from './FilePickerController.translations'
 
-
 export const openFilePicker = (): Promise<any> => {
     return new Promise((resolve, reject) => {
         const options: ImagePickerOptions = {

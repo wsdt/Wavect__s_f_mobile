@@ -7,10 +7,5 @@ export const functionalityNotAvailable = (msg: string) => {
 }
 
 export const noInternetAvailable = () => {
-    Alert.alert(
-        t(s.dialog.no_internet.title),
-        t(s.dialog.no_internet.msg),
-        [{ text: t(s.dialog.no_internet.btn_ok) }],
-        { cancelable: true }
-    )
+    Alert.alert(t(s.dialog.no_internet.title), t(s.dialog.no_internet.msg), [{ text: t(s.dialog.no_internet.btn_ok) }], { cancelable: true })
 }

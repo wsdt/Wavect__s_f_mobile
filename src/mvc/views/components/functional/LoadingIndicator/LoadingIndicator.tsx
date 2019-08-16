@@ -8,7 +8,7 @@ import { Fade } from '../../classbased/_animations/Fade/Fade'
 export const LoadingIndicator = () => {
     return (
         <Fade visible={true} fadeDuration={300} containerStyle={globalStyles.absoluteCenter}>
-            <ActivityIndicator size='large' color='#000000' />
+            <ActivityIndicator size="large" color="#000000" />
         </Fade>
     )
 }

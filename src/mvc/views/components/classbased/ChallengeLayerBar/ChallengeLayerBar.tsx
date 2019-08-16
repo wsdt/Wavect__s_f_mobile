@@ -52,9 +52,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                                 title={t(s.btn.finish)}
                                 btnType={MajorBtnType.PRIMARY}
                                 onLongPress={() => this.execBtnAccept()}
-                                onPress={() =>
-                                    ToastAndroid.show(t(s.toast.onclick_btn_finish), ToastAndroid.SHORT)
-                                }
+                                onPress={() => ToastAndroid.show(t(s.toast.onclick_btn_finish), ToastAndroid.SHORT)}
                                 isLoading={this.state.isLoadingChallengeSolved}
                             />
                         )}
@@ -98,14 +96,9 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             } else {
                 this.storeChallengeSolved()
 
-                Alert.alert(
-                    t(s.dialog.sponsor_notified.title),
-                    t(s.dialog.sponsor_notified.msg),
-                    [{ text: t(s.dialog.sponsor_notified.btn_ok) }],
-                    {
-                        cancelable: true,
-                    }
-                )
+                Alert.alert(t(s.dialog.sponsor_notified.title), t(s.dialog.sponsor_notified.msg), [{ text: t(s.dialog.sponsor_notified.btn_ok) }], {
+                    cancelable: true,
+                })
 
                 logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'Sent email to sponsor')
             }
@@ -194,7 +187,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
     }
 
     private getCurrentChallengeSolvedId = (): string => {
-        return `${this.props.challengeId}`
+        return `${this.props.challengeId}_${this.props.headline}_${this.props.sponsorName}_${this.props.subline}` // TODO: dirty workaround in the meantime (needs to be unique for each challenge, otherwise new challenge automatically done when previous one accomplished)
     }
 
     private storeChallengeSolved = async () => {
