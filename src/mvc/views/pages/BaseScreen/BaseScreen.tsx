@@ -3,7 +3,6 @@ import { RefreshControl, View } from 'react-native'
 import { Text } from 'react-native-elements'
 import SplashScreen from 'react-native-splash-screen'
 import { SafeAreaView, ScrollView } from 'react-navigation'
-import * as _schema from '../../../../assets/translations/_schema.json'
 import { logEvent, LogType } from '../../../controllers/LoggingController/LoggingController'
 import { t } from '../../../controllers/MultiLingualityController/MultiLingualityController'
 import { hasPerformedUpdateCheck, performAppUpdateProcedure } from '../../../controllers/UpdateController/UpdateController'
@@ -12,6 +11,7 @@ import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../components/sys
 import globalStyles from '../../GlobalStyles.css'
 import styles from './BaseScreen.css'
 import { IBaseScreenState } from './BaseScreen.state'
+import s from './BaseScreen.translations'
 
 const TAG = 'BaseScreen'
 
@@ -83,13 +83,13 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
                 return (
                     <>
                         <LoadingIndicator />
-                        {this.getCenteredText(t(_schema.basescreen.loading.preparing), { marginTop: 30 })}
+                        {this.getCenteredText(t(s.loading.preparing), { marginTop: 30 })}
                     </>
                 )
             case LoadingStatus.NOT_AVAILABLE:
-                return this.getCenteredText(t(_schema.basescreen.loading.not_available))
+                return this.getCenteredText(t(s.loading.not_available))
             case LoadingStatus.ERROR:
-                return this.getCenteredText(t(_schema.basescreen.loading.error))
+                return this.getCenteredText(t(s.loading.error))
             default:
                 return null
         }

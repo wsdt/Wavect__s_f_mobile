@@ -3,6 +3,9 @@
 import { ICO_ENVIRONMENT, ICO_HEALTH, ICO_SOCIETY } from '../../assets/AssetIndex'
 import * as _schema from '../../assets/translations/_schema.json'
 
+// Translation schema for typo safety
+const s = _schema.models.challenge_category // for readability
+
 export enum ChallengeCategory {
     ENVIRONMENT = 'ENVIRONMENT',
     HEALTH = 'HEALTH',
@@ -14,15 +17,15 @@ export enum ChallengeCategory {
 export const CHALLENGE_CATEGORIES = (t: any) => {
     return {
         [ChallengeCategory.ENVIRONMENT]: {
-            descr: t(_schema.models.challenge_category.environment.descr),
+            descr: t(s.environment.descr),
             icon: ICO_ENVIRONMENT,
         },
         [ChallengeCategory.HEALTH]: {
-            descr: t(_schema.models.challenge_category.health.descr),
+            descr: t(s.health.descr),
             icon: ICO_HEALTH,
         },
         [ChallengeCategory.SOCIETY]: {
-            descr: t(_schema.models.challenge_category.social.descr),
+            descr: t(s.social.descr),
             icon: ICO_SOCIETY,
         },
     }

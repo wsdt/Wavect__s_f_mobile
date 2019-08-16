@@ -3,13 +3,13 @@ import { Linking, ScrollView, Text, View } from 'react-native'
 import { brightness, ColorMatrix, grayscale } from 'react-native-color-matrix-image-filters'
 import FastImage from 'react-native-fast-image'
 import { withMappedNavigationParams } from 'react-navigation-props-mapper'
-import * as _schema from '../../../../../assets/translations/_schema.json'
 import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { BOTTOM_TABBAR_MARGIN } from '../../../GlobalStyles.css'
 import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
 import { TouchableIcon } from '../../functional/TouchableIcon/TouchableIcon'
 import { styles } from './SponsorFullpage.css'
 import { SponsorFullpageProps } from './SponsorFullpage.props'
+import s from './SponsorFullpage.translations'
 
 const getParagraph = (header: string, text: string) => {
     if (text) {
@@ -63,9 +63,9 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
             <ScrollView style={{ marginBottom: BOTTOM_TABBAR_MARGIN }}>
                 <View>
                     {getParagraph(name, shortDescr)}
-                    {getParagraph(t(_schema.homescreen.sponsor_fullpage.headers.whySponsor), props.whySponsor)}
-                    {getParagraph(t(_schema.homescreen.sponsor_fullpage.headers.aboutUs), aboutUs)}
-                    {getParagraph(t(_schema.homescreen.sponsor_fullpage.headers.misc), misc)}
+                    {getParagraph(t(s.headers.whySponsor), props.whySponsor)}
+                    {getParagraph(t(s.headers.aboutUs), aboutUs)}
+                    {getParagraph(t(s.headers.misc), misc)}
 
                     {website || email ? (
                         <>
@@ -73,7 +73,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                             <View style={styles.buttonContainer}>
                                 {website ? (
                                     <MajorButton
-                                        title={t(_schema.homescreen.sponsor_fullpage.btn.website)}
+                                        title={t(s.btn.website)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(website)}
                                         icon="globe"
@@ -81,7 +81,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                 ) : null}
                                 {email ? (
                                     <MajorButton
-                                        title={t(_schema.homescreen.sponsor_fullpage.btn.email)}
+                                        title={t(s.btn.email)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(`mailto:${email}`)}
                                         icon="envelope"

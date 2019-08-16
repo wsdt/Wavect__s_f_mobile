@@ -57,9 +57,9 @@
     },
     "basescreen": {
         "loading": {
-            "preparing": "Preparing..",
-            "not_available": "No data available",
-            "error": "Couldn't load"
+            "preparing": "Bereite vor..",
+            "not_available": "Daten nicht verfügbar",
+            "error": "Ladefehler"
         }
     },
     "system": {

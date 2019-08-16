@@ -1,23 +1,23 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import React from 'react'
-import {Alert, ToastAndroid, View} from 'react-native'
-import {Text} from 'react-native-elements'
-import {withNavigation} from 'react-navigation'
-import * as _schema from '../../../../../assets/translations/_schema.json'
-import {BACKEND_MOBILE_API} from '../../../../../globalConfiguration/globalConfig'
-import {getEmailMarked, getLocalUserId} from '../../../../controllers/LocalStorageController/LocalStorageController'
-import {logEvent, LogType} from '../../../../controllers/LoggingController/LoggingController'
-import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
-import {openFilePicker} from '../../../../controllers/SocialController/FilePickerController'
-import {shareMedia} from '../../../../controllers/SocialController/ShareController'
-import {noInternetAvailable} from '../../../../controllers/WarningsController'
-import {ApiResponse} from '../../../../models/ApiResponse'
-import {MajorBtnType, MajorButton} from '../../functional/MajorButton/MajorButton'
-import {routes} from '../../system/TabRouter/SettingsScreenRouter/SettingsRoutes'
-import {CHALLENGE_SOLVED_ID} from './ChallengeLayerBar.constants'
+import { Alert, ToastAndroid, View } from 'react-native'
+import { Text } from 'react-native-elements'
+import { withNavigation } from 'react-navigation'
+import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
+import { openFilePicker } from '../../../../controllers/FilePickerController/FilePickerController'
+import { getEmailMarked, getLocalUserId } from '../../../../controllers/LocalStorageController/LocalStorageController'
+import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
+import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { shareMedia } from '../../../../controllers/ShareController/ShareController'
+import { noInternetAvailable } from '../../../../controllers/WarningsController/WarningsController'
+import { ApiResponse } from '../../../../models/ApiResponse'
+import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
+import { routes } from '../../system/TabRouter/SettingsScreenRouter/SettingsRoutes'
+import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
 import styles from './ChallengeLayerBar.css'
-import {IChallengeLayerBarProps} from './ChallengeLayerBar.props'
-import {IChallengeLayerBarState} from './ChallengeLayerBar.state'
+import { IChallengeLayerBarProps } from './ChallengeLayerBar.props'
+import { IChallengeLayerBarState } from './ChallengeLayerBar.state'
+import s from './ChallengeLayerBar.translations'
 
 const TAG = 'ChallengeLayerBar'
 
@@ -43,17 +43,17 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                     <View style={styles.btnContainer}>
                         {this.state.currChallengeSolved ? (
                             <MajorButton
-                                title={t(_schema.homescreen.challengelayerbar.btn.accomplished)}
+                                title={t(s.btn.accomplished)}
                                 btnType={MajorBtnType.HIGHLIGHTED}
                                 onPress={() => this.challengeAlreadySolved()}
                             />
                         ) : (
                             <MajorButton
-                                title={t(_schema.homescreen.challengelayerbar.btn.finish)}
+                                title={t(s.btn.finish)}
                                 btnType={MajorBtnType.PRIMARY}
                                 onLongPress={() => this.execBtnAccept()}
                                 onPress={() =>
-                                    ToastAndroid.show(t(_schema.homescreen.challengelayerbar.toast.onclick_btn_finish), ToastAndroid.SHORT)
+                                    ToastAndroid.show(t(s.toast.onclick_btn_finish), ToastAndroid.SHORT)
                                 }
                                 isLoading={this.state.isLoadingChallengeSolved}
                             />
@@ -70,9 +70,9 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
     private challengeAlreadySolved = () => {
         Alert.alert(
-            t(_schema.homescreen.challengelayerbar.dialog.challenge_already_solved.title),
-            t(_schema.homescreen.challengelayerbar.dialog.challenge_already_solved.msg),
-            [{ text: t(_schema.homescreen.challengelayerbar.dialog.challenge_already_solved.btn_ok) }],
+            t(s.dialog.challenge_already_solved.title),
+            t(s.dialog.challenge_already_solved.msg),
+            [{ text: t(s.dialog.challenge_already_solved.btn_ok) }],
             {
                 cancelable: true,
             }
@@ -99,9 +99,9 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                 this.storeChallengeSolved()
 
                 Alert.alert(
-                    t(_schema.homescreen.challengelayerbar.dialog.sponsor_notified.title),
-                    t(_schema.homescreen.challengelayerbar.dialog.sponsor_notified.msg),
-                    [{ text: t(_schema.homescreen.challengelayerbar.dialog.sponsor_notified.btn_ok) }],
+                    t(s.dialog.sponsor_notified.title),
+                    t(s.dialog.sponsor_notified.msg),
+                    [{ text: t(s.dialog.sponsor_notified.btn_ok) }],
                     {
                         cancelable: true,
                     }
@@ -119,7 +119,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         this.setState({ isLoadingChallengeSolved: true })
 
         const userAbortedProcedure = () => {
-            ToastAndroid.show(t(_schema.homescreen.challengelayerbar.toast.onabort_imgpicker_share), ToastAndroid.SHORT)
+            ToastAndroid.show(t(s.toast.onabort_imgpicker_share), ToastAndroid.SHORT)
             this.setState({
                 currChallengeSolved: false,
                 isLoadingChallengeSolved: false,
@@ -155,11 +155,11 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             this.challengeSolved()
         } else {
             Alert.alert(
-                t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.title),
-                t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.msg),
+                t(s.dialog.settings_not_set.title),
+                t(s.dialog.settings_not_set.msg),
                 [
                     {
-                        text: t(_schema.homescreen.challengelayerbar.dialog.settings_not_set.btn_ok),
+                        text: t(s.dialog.settings_not_set.btn_ok),
                         onPress: () => this.props.navigation.navigate(routes.SettingsScreen),
                     },
                 ],
@@ -193,7 +193,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         }
     }
 
-    private getCurrentChallengeSolvedId = ():string => {
+    private getCurrentChallengeSolvedId = (): string => {
         return `${this.props.challengeId}`
     }
 

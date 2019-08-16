@@ -1,18 +1,18 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
 import { Button, CheckBox, Icon, Input, Text } from 'react-native-elements'
-import * as _schema from '../../../../../assets/translations/_schema.json'
 import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
 import { cachedFetch, putCache } from '../../../../controllers/CacheController/CacheController'
 import { CACHE_KEY_SETTINGS } from '../../../../controllers/CacheController/CacheController.constants'
 import { getLocalUserId, markEmailAsCreated } from '../../../../controllers/LocalStorageController/LocalStorageController'
 import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
 import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
-import { noInternetAvailable } from '../../../../controllers/WarningsController'
+import { noInternetAvailable } from '../../../../controllers/WarningsController/WarningsController'
 import globalStyles from '../../../GlobalStyles.css'
 import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/LoadingHoc'
 import styles from './SettingsFullpage.css'
 import { ISettingsFullpageState } from './SettingsFullpage.state'
+import s from './SettingsFullpage.translations'
 
 const TAG: string = 'SettingsFullpage'
 
@@ -55,32 +55,32 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
         const isFormSubmittable = this.isFormSubmittable()
         return (
             <ScrollView style={{ flex: 1, width: '100%' }}>
-                <Text style={styles.row}>{t(_schema.settingsscreen.fullpage.intro)}</Text>
+                <Text style={styles.row}>{t(s.intro)}</Text>
 
                 <Input
                     value={this.state.email}
                     onChangeText={text => this.emailValidation(text)}
                     containerStyle={styles.row}
                     style={styles.row}
-                    label={t(_schema.settingsscreen.fullpage.form.input_mail.lbl)}
-                    placeholder={t(_schema.settingsscreen.fullpage.form.input_mail.placeholder)}
+                    label={t(s.form.input_mail.lbl)}
+                    placeholder={t(s.form.input_mail.placeholder)}
                     leftIcon={<Icon name="envelope" type="font-awesome" />}
                     shake={true}
-                    errorMessage={this.state.validEmail ? '' : t(_schema.settingsscreen.fullpage.form.input_mail.errorMsg)}
+                    errorMessage={this.state.validEmail ? '' : t(s.form.input_mail.errorMsg)}
                 />
 
                 <CheckBox
                     checked={this.state.hasAcceptedDataPrivacy}
                     containerStyle={styles.row}
                     checkedColor="#000"
-                    title={t(_schema.settingsscreen.fullpage.form.checkbox_dataprivacy)}
+                    title={t(s.form.checkbox_dataprivacy)}
                     onPress={() => this.setState({ hasAcceptedDataPrivacy: !this.state.hasAcceptedDataPrivacy })}
                 />
 
                 <Button
                     containerStyle={styles.row}
                     type="outline"
-                    title={t(_schema.settingsscreen.fullpage.form.btn.save)}
+                    title={t(s.form.btn.save)}
                     raised={isFormSubmittable}
                     loading={this.state.isSavingSettings}
                     disabled={!isFormSubmittable}
