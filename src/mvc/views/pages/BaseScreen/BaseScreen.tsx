@@ -1,26 +1,26 @@
-import * as React from 'react'
-import { RefreshControl, View } from 'react-native'
-import { Text } from 'react-native-elements'
-import SplashScreen from 'react-native-splash-screen'
-import { SafeAreaView, ScrollView } from 'react-navigation'
-import { logEvent, LogType } from '../../../controllers/LoggingController/LoggingController'
-import { t } from '../../../controllers/MultiLingualityController/MultiLingualityController'
-import { hasPerformedUpdateCheck, performAppUpdateProcedure } from '../../../controllers/UpdateController/UpdateController'
-import { LoadingIndicator } from '../../components/functional/LoadingIndicator/LoadingIndicator'
-import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../components/system/HOCs/LoadingHoc'
-import globalStyles from '../../GlobalStyles.css'
-import styles from './BaseScreen.css'
-import { IBaseScreenState } from './BaseScreen.state'
-import s from './BaseScreen.translations'
+import * as React from "react"
+import { RefreshControl, View } from "react-native"
+import { Text } from "react-native-elements"
+import SplashScreen from "react-native-splash-screen"
+import { SafeAreaView, ScrollView } from "react-navigation"
+import { logEvent, LogType } from "../../../controllers/LoggingController/LoggingController"
+import { t } from "../../../controllers/MultiLingualityController/MultiLingualityController"
+import { hasPerformedUpdateCheck, performAppUpdateProcedure } from "../../../controllers/UpdateController/UpdateController"
+import { LoadingIndicator } from "../../components/functional/LoadingIndicator/LoadingIndicator"
+import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../components/system/HOCs/LoadingHoc"
+import globalStyles from "../../GlobalStyles.css"
+import styles from "./BaseScreen.css"
+import { IBaseScreenState } from "./BaseScreen.state"
+import s from "./BaseScreen.translations"
 
-const TAG = 'BaseScreen'
+const TAG = "BaseScreen"
 
 export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
     public state: IBaseScreenState = {
         loadingStatus: LoadingStatus.LOADING,
         isRefreshing: false,
         refreshCallback: (cb: () => void) => {
-            logEvent(LogType.WARN, `${TAG}:refreshCallback`, 'No refresh function provided')
+            logEvent(LogType.WARN, `${TAG}:refreshCallback`, "No refresh function provided")
             cb()
         },
     }
@@ -63,13 +63,13 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
         this.setState({ isRefreshing: true })
         this.state.refreshCallback(() => {
             this.setState({ isRefreshing: false })
-            logEvent(LogType.LOG, `${TAG}:onRefresh`, 'User refreshed screen')
+            logEvent(LogType.LOG, `${TAG}:onRefresh`, "User refreshed screen")
         })
     }
 
     private getCenteredText = (text: string, containerStyle?: any) => {
         return (
-            <View style={[{ justifyContent: 'center', height: '100%' }, containerStyle]}>
+            <View style={[{ justifyContent: "center", height: "100%" }, containerStyle]}>
                 <Text>{text}</Text>
             </View>
         )
@@ -96,6 +96,6 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
     }
 
     private getDisplayProp = (): null | {} => {
-        return this.state.loadingStatus !== LoadingStatus.DONE ? { display: 'none' } : null
+        return this.state.loadingStatus !== LoadingStatus.DONE ? { display: "none" } : null
     }
 }

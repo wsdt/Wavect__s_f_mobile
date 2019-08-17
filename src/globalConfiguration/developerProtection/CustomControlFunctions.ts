@@ -1,7 +1,7 @@
 export enum ControlFunctionType {
-    RELEASE = 'release',
-    DEBUG = 'debug',
-    ALL = 'all',
+    RELEASE = "release",
+    DEBUG = "debug",
+    ALL = "all",
 }
 
 export interface ICustomControlFunctions {

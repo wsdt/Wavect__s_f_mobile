@@ -1,14 +1,14 @@
-import {StyleSheet} from "react-native";
+import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
-    containerStyle:{
-        justifyContent: 'center'
+    containerStyle: {
+        justifyContent: "center",
     },
 
     headerText: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontWeight: 'bold',
+        justifyContent: "center",
+        alignItems: "center",
+        fontWeight: "bold",
         fontSize: 20,
     },
     blockText: {
@@ -18,6 +18,5 @@ const styles = StyleSheet.create({
         fontSize: 16,
     },
 })
-
 
 export default styles

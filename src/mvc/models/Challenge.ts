@@ -1,7 +1,7 @@
-import { ImageURISource } from 'react-native'
-import { ChallengeCategory } from './ChallengeCategory'
-import { Sponsor } from './Sponsor'
-import {ChallengeInformation} from "./ChallengeInformation";
+import { ImageURISource } from "react-native"
+import { ChallengeCategory } from "./ChallengeCategory"
+import { Sponsor } from "./Sponsor"
+import { ChallengeInformation } from "./ChallengeInformation"
 
 export class Challenge {
     get id(): string {
@@ -62,11 +62,11 @@ export class Challenge {
     }
 
     get challengeInformation(): ChallengeInformation {
-        return this._challengeInformation;
+        return this._challengeInformation
     }
 
     set challengeInformation(value: ChallengeInformation) {
-        this._challengeInformation = value;
+        this._challengeInformation = value
     }
 
     private _id!: string

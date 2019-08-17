@@ -1,25 +1,25 @@
-import AsyncStorage from '@react-native-community/async-storage'
-import React from 'react'
-import { Alert, ToastAndroid, View } from 'react-native'
-import { Text } from 'react-native-elements'
-import { withNavigation } from 'react-navigation'
-import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
-import { openFilePicker } from '../../../../controllers/FilePickerController/FilePickerController'
-import { getEmailMarked, getLocalUserId } from '../../../../controllers/LocalStorageController/LocalStorageController'
-import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
-import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
-import { shareMedia } from '../../../../controllers/ShareController/ShareController'
-import { noInternetAvailable } from '../../../../controllers/WarningsController/WarningsController'
-import { ApiResponse } from '../../../../models/ApiResponse'
-import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
-import { routes } from '../../system/TabRouter/SettingsScreenRouter/SettingsRoutes'
-import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
-import styles from './ChallengeLayerBar.css'
-import { IChallengeLayerBarProps } from './ChallengeLayerBar.props'
-import { IChallengeLayerBarState } from './ChallengeLayerBar.state'
-import s from './ChallengeLayerBar.translations'
+import AsyncStorage from "@react-native-community/async-storage"
+import React from "react"
+import { Alert, ToastAndroid, View } from "react-native"
+import { Text } from "react-native-elements"
+import { withNavigation } from "react-navigation"
+import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
+import { openFilePicker } from "../../../../controllers/FilePickerController/FilePickerController"
+import { getEmailMarked, getLocalUserId } from "../../../../controllers/LocalStorageController/LocalStorageController"
+import { logEvent, LogType } from "../../../../controllers/LoggingController/LoggingController"
+import { t } from "../../../../controllers/MultiLingualityController/MultiLingualityController"
+import { shareMedia } from "../../../../controllers/ShareController/ShareController"
+import { noInternetAvailable } from "../../../../controllers/WarningsController/WarningsController"
+import { ApiResponse } from "../../../../models/ApiResponse"
+import { MajorBtnType, MajorButton } from "../../functional/MajorButton/MajorButton"
+import { routes } from "../../system/TabRouter/SettingsScreenRouter/SettingsRoutes"
+import { CHALLENGE_SOLVED_ID } from "./ChallengeLayerBar.constants"
+import styles from "./ChallengeLayerBar.css"
+import { IChallengeLayerBarProps } from "./ChallengeLayerBar.props"
+import { IChallengeLayerBarState } from "./ChallengeLayerBar.state"
+import s from "./ChallengeLayerBar.translations"
 
-const TAG = 'ChallengeLayerBar'
+const TAG = "ChallengeLayerBar"
 
 class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, IChallengeLayerBarState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/email`
@@ -80,10 +80,10 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
     private sendChallengeSolvedEmailToSponsor = async () => {
         try {
             const apiRes: ApiResponse = await (await fetch(`${ChallengeLayerBar.API_ENDPOINT}/current/${await getLocalUserId()}`, {
-                method: 'POST',
+                method: "POST",
                 headers: {
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
                     email: this.props.sponsorEmail,
@@ -96,7 +96,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             } else {
                 this.storeChallengeSolved()
 
-                logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'Sent email to sponsor')
+                logEvent(LogType.LOG, `${TAG}:challengeSolved`, "Sent email to sponsor")
             }
         } catch (e) {
             console.error(e)
@@ -113,7 +113,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                 currChallengeSolved: false,
                 isLoadingChallengeSolved: false,
             })
-            logEvent(LogType.LOG, `${TAG}:userAbortedProcedure`, 'User aborted')
+            logEvent(LogType.LOG, `${TAG}:userAbortedProcedure`, "User aborted")
         }
 
         // Share it
@@ -123,7 +123,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
                 if (res.error || res.didCancel) {
                     userAbortedProcedure()
-                    logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'User did not choose a file')
+                    logEvent(LogType.LOG, `${TAG}:challengeSolved`, "User did not choose a file")
                 } else {
                     const wasShareSuccessful = await shareMedia(this.props.headline, this.props.sponsorName, res)
 
