@@ -1,5 +1,6 @@
 export interface ITouchableIconProps {
     icon: string;
     onPress?: () => void;
-    style?: any;
+    containerStyle?: any;
+    iconStyle?: any;
 }

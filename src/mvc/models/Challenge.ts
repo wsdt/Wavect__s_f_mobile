@@ -1,6 +1,7 @@
 import { ImageURISource } from 'react-native'
 import { ChallengeCategory } from './ChallengeCategory'
 import { Sponsor } from './Sponsor'
+import {ChallengeInformation} from "./ChallengeInformation";
 
 export class Challenge {
     get id(): string {
@@ -60,12 +61,21 @@ export class Challenge {
         this._headline = value
     }
 
+    get challengeInformation(): ChallengeInformation {
+        return this._challengeInformation;
+    }
+
+    set challengeInformation(value: ChallengeInformation) {
+        this._challengeInformation = value;
+    }
+
     private _id!: string
     private _headline!: string
     private _subline!: string
     private _whyDoesOrganizationSponsor!: string
     private _expirationInMs!: number
     private _sponsor!: Sponsor
+    private _challengeInformation!: ChallengeInformation
     private _majorCategory!: ChallengeCategory
     private _bgImage!: ImageURISource
 
@@ -77,12 +87,14 @@ export class Challenge {
         expirationInMs: number,
         majorCategory: ChallengeCategory,
         bgImage: ImageURISource,
-        sponsor: Sponsor
+        sponsor: Sponsor,
+        challengeInformation: ChallengeInformation
     ) {
         this.id = id
         this.bgImage = bgImage
         this.majorCategory = majorCategory
         this.sponsor = sponsor
+        this.challengeInformation = challengeInformation
         this.subline = subline
         this.headline = headline
         this.whyDoesOrganizationSponsor = whyDoesOrganizationSponsor

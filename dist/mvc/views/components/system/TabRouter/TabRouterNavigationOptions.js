@@ -7,7 +7,7 @@ exports.routerOptions = {
     swipeEnabled: true,
     animationEnabled: true,
     tabBarPosition: 'bottom',
-    lazy: true,
+    lazy: false,
     tabBarOptions: {
         activeTintColor: '#000',
         keyboardHidesTabBar: true,

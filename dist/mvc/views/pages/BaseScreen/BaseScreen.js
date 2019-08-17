@@ -18,10 +18,15 @@ var react_native_1 = require("react-native");
 var react_native_elements_1 = require("react-native-elements");
 var react_native_splash_screen_1 = require("react-native-splash-screen");
 var react_navigation_1 = require("react-navigation");
+var LoggingController_1 = require("../../../controllers/LoggingController/LoggingController");
+var MultiLingualityController_1 = require("../../../controllers/MultiLingualityController/MultiLingualityController");
+var UpdateController_1 = require("../../../controllers/UpdateController/UpdateController");
 var LoadingIndicator_1 = require("../../components/functional/LoadingIndicator/LoadingIndicator");
 var LoadingHoc_1 = require("../../components/system/HOCs/LoadingHoc");
 var GlobalStyles_css_1 = require("../../GlobalStyles.css");
 var BaseScreen_css_1 = require("./BaseScreen.css");
+var BaseScreen_translations_1 = require("./BaseScreen.translations");
+var TAG = 'BaseScreen';
 var BaseScreen = (function (_super) {
     __extends(BaseScreen, _super);
     function BaseScreen() {
@@ -30,7 +35,7 @@ var BaseScreen = (function (_super) {
             loadingStatus: LoadingHoc_1.LoadingStatus.LOADING,
             isRefreshing: false,
             refreshCallback: function (cb) {
-                console.warn('BaseScreen: No refresh function provided');
+                LoggingController_1.logEvent(LoggingController_1.LogType.WARN, TAG + ":refreshCallback", 'No refresh function provided');
                 cb();
             },
         };
@@ -38,11 +43,11 @@ var BaseScreen = (function (_super) {
             _this.setState({ isRefreshing: true });
             _this.state.refreshCallback(function () {
                 _this.setState({ isRefreshing: false });
-                console.log('BaseScreen:onRefresh: User refreshed screen.');
+                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":onRefresh", 'User refreshed screen');
             });
         };
-        _this.getCenteredText = function (text) {
-            return (<react_native_1.View style={{ justifyContent: 'center', height: '100%' }}>
+        _this.getCenteredText = function (text, containerStyle) {
+            return (<react_native_1.View style={[{ justifyContent: 'center', height: '100%' }, containerStyle]}>
                 <react_native_elements_1.Text>{text}</react_native_elements_1.Text>
             </react_native_1.View>);
         };
@@ -50,10 +55,15 @@ var BaseScreen = (function (_super) {
             switch (_this.state.loadingStatus) {
                 case LoadingHoc_1.LoadingStatus.LOADING:
                     return <LoadingIndicator_1.LoadingIndicator />;
+                case LoadingHoc_1.LoadingStatus.PREPARING:
+                    return (<>
+                        <LoadingIndicator_1.LoadingIndicator />
+                        {_this.getCenteredText(MultiLingualityController_1.t(BaseScreen_translations_1.default.loading.preparing), { marginTop: 30 })}
+                    </>);
                 case LoadingHoc_1.LoadingStatus.NOT_AVAILABLE:
-                    return _this.getCenteredText('No data available');
+                    return _this.getCenteredText(MultiLingualityController_1.t(BaseScreen_translations_1.default.loading.not_available));
                 case LoadingHoc_1.LoadingStatus.ERROR:
-                    return _this.getCenteredText("Couldn't load");
+                    return _this.getCenteredText(MultiLingualityController_1.t(BaseScreen_translations_1.default.loading.error));
                 default:
                     return null;
             }
@@ -64,7 +74,14 @@ var BaseScreen = (function (_super) {
         return _this;
     }
     BaseScreen.prototype.componentDidMount = function () {
+        var _this = this;
         react_native_splash_screen_1.default.hide();
+        if (!UpdateController_1.hasPerformedUpdateCheck) {
+            this.setState({ loadingStatus: LoadingHoc_1.LoadingStatus.PREPARING });
+            UpdateController_1.performAppUpdateProcedure().then(function () {
+                _this.setState({ loadingStatus: LoadingHoc_1.LoadingStatus.LOADING });
+            });
+        }
     };
     BaseScreen.prototype.render = function () {
         var _this = this;

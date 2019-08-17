@@ -5,6 +5,7 @@ export interface ILoadingContext {
 }
 export declare enum LoadingStatus {
     LOADING = "loading",
+    PREPARING = "preparing",
     DONE = "done",
     ERROR = "error",
     NOT_AVAILABLE = "not_available"

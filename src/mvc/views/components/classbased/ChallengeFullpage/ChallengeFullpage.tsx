@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View } from 'react-native'
+import {View} from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../../../GlobalStyles.css'
@@ -13,16 +13,18 @@ import ChallengeLayerBar from '../ChallengeLayerBar/ChallengeLayerBar'
 import styles from './ChallengeFullpage.css'
 import { IChallengeFullpageProps } from './ChallengeFullpage.props'
 import { IChallengeFullpageState } from './ChallengeFullpage.state'
+import {ChallengeInformationModal} from "../../functional/ChallengeInformationModal/ChallengeInformationModal";
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
         isGrayscale: true,
+        showChallengeHint: false
     }
     private loadingContext!: ILoadingContext
     private abortController: AbortController = new AbortController() // memory safety/leaks avoidance
 
     public render() {
-        const { bgImage } = this.props.challenge
+        const { bgImage, challengeInformation } = this.props.challenge
 
         return (
             <LoadingHoc.Consumer>
@@ -31,7 +33,10 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                     return (
                         <Fade visible={true} fadeDuration={200}>
                             <GrayColorImg isGrayscale={this.state.isGrayscale}>
-                                <>
+                                <View onTouchStart={() => this.setModalVisible(true)}>
+                                    <ChallengeInformationModal
+                                        isVisible={this.state.showChallengeHint}
+                                        information={challengeInformation} />
                                     <FastImage
                                         source={{
                                             priority: FastImage.priority.high,
@@ -43,7 +48,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                                         onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
                                     />
                                     {this.getChallengeView()}
-                                </>
+                                </View>
                             </GrayColorImg>
                         </Fade>
                     )
@@ -54,6 +59,10 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
 
     public componentWillUnmount(): void {
         this.abortController.abort()
+    }
+
+    private setModalVisible = (visible: boolean) => {
+        this.setState({showChallengeHint: visible})
     }
 
     private getChallengeView = (): React.ReactElement => {

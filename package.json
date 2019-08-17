@@ -17,7 +17,7 @@
         "i18n-js": "^3.3.0",
         "lodash.memoize": "^4.1.2",
         "react": "16.9.0",
-        "react-native": "^0.60.5",
+        "react-native": "^0.60.2",
         "react-native-cache": "^1.1.8",
         "react-native-color-matrix-image-filters": "^5.2.0",
         "react-native-elements": "^1.1.0",

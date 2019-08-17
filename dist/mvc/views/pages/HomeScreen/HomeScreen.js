@@ -53,7 +53,8 @@ var react_native_1 = require("react-native");
 var globalConfig_1 = require("../../../../globalConfiguration/globalConfig");
 var CacheController_1 = require("../../../controllers/CacheController/CacheController");
 var CacheController_constants_1 = require("../../../controllers/CacheController/CacheController.constants");
-var ChallengeFullpage_1 = require("../../components/stateful/ChallengeFullpage/ChallengeFullpage");
+var LoggingController_1 = require("../../../controllers/LoggingController/LoggingController");
+var ChallengeFullpage_1 = require("../../components/classbased/ChallengeFullpage/ChallengeFullpage");
 var LoadingHoc_1 = require("../../components/system/HOCs/LoadingHoc");
 var BaseScreen_1 = require("../BaseScreen/BaseScreen");
 var HomeScreen = (function (_super) {
@@ -63,6 +64,7 @@ var HomeScreen = (function (_super) {
         _this.state = {
             challenge: undefined,
         };
+        _this.abortController = new AbortController();
         _this.getChallengeComponent = function () {
             if (_this.state.challenge) {
                 return <ChallengeFullpage_1.default challenge={_this.state.challenge}/>;
@@ -75,15 +77,13 @@ var HomeScreen = (function (_super) {
                 return __generator(this, function (_a) {
                     switch (_a.label) {
                         case 0:
-                            console.log("Bumsen");
-                            _a.label = 1;
-                        case 1:
-                            _a.trys.push([1, 4, , 5]);
-                            return [4, fetch(globalConfig_1.BACKEND_MOBILE_API + "/challenge/current")];
-                        case 2: return [4, (_a.sent()).json()];
-                        case 3:
+                            _a.trys.push([0, 3, , 4]);
+                            return [4, fetch(globalConfig_1.BACKEND_MOBILE_API + "/challenge/current", {
+                                    signal: this.abortController.signal,
+                                })];
+                        case 1: return [4, (_a.sent()).json()];
+                        case 2:
                             data = _a.sent();
-                            console.log(data);
                             this.setState({ challenge: data.res });
                             if (this.state.challenge) {
                                 CacheController_1.putCache(CacheController_constants_1.CACHE_KEY_CHALLENGE, { challenge: data.res });
@@ -95,16 +95,16 @@ var HomeScreen = (function (_super) {
                             if (cb) {
                                 cb();
                             }
-                            return [3, 5];
-                        case 4:
+                            return [3, 4];
+                        case 3:
                             e_1 = _a.sent();
                             console.error(e_1);
                             this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR);
                             if (cb) {
                                 cb();
                             }
-                            return [3, 5];
-                        case 5: return [2];
+                            return [3, 4];
+                        case 4: return [2];
                     }
                 });
             }); });
@@ -127,7 +127,11 @@ var HomeScreen = (function (_super) {
                 </LoadingHoc_1.LoadingHoc.Consumer>
             </BaseScreen_1.BaseScreen>);
     };
+    HomeScreen.prototype.componentWillUnmount = function () {
+        this.abortController.abort();
+    };
     return HomeScreen;
 }(React.PureComponent));
 exports.HomeScreen = HomeScreen;
+LoggingController_1.setCurrentScreen('HomeScreen', HomeScreen.toString());
 //# sourceMappingURL=HomeScreen.js.map

@@ -1,6 +1,7 @@
 export declare const GREY = "#9b9b9b";
 export declare const FULL_WIDTH: number;
 export declare const FULL_HEIGHT: number;
+export declare const BOTTOM_TABBAR_MARGIN = 100;
 declare const globalStyles: {
     scrollViewContainer: {
         flexGrow: number;
