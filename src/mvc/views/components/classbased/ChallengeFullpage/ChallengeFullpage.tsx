@@ -34,7 +34,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                         <Fade visible={true} fadeDuration={200}>
                             <GrayColorImg isGrayscale={this.state.isGrayscale}>
                                 <View onTouchStart={() => this.setModalVisible(true)}>
-                                    <ChallengeInformationModal isVisible={this.state.showChallengeHint} information={challengeInformation} />
+                                    {challengeInformation ?<ChallengeInformationModal isVisible={this.state.showChallengeHint} information={challengeInformation} /> : null}
                                     <FastImage
                                         source={{
                                             priority: FastImage.priority.high,

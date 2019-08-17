@@ -2,7 +2,7 @@ import { tabRoutes } from "../mvc/views/components/system/TabRouter/TabRoutes"
 
 // NOTE: Following constants use the __DEV__ var to ensure that this only has an impact on debug builds!
 export const useLocalBackend: boolean = __DEV__ && false // please always set to false before pushing
-export const disableCache: boolean = __DEV__ && false // disables local app cache (only disable for debugging)
+export const disableCache: boolean = __DEV__ && true // disables local app cache (only disable for debugging)
 export const useReactotron: boolean = __DEV__ && true // strong debugging tool
 
 /**
