@@ -1,29 +1,24 @@
-import {Modal, View, Text} from "react-native"
-import * as React from "react"
-import styles from "./ChallengeInformationModal.css"
-import FastImage from "react-native-fast-image";
+import * as React from 'react'
+import { Modal, Text, View } from 'react-native'
+import FastImage from 'react-native-fast-image'
+import styles from './ChallengeInformationModal.css'
 
 export const ChallengeInformationModal: React.FunctionComponent<any> = props => {
     const { instruction, intention, privacy, misc } = props.information
     const { isVisible } = props
 
     return (
-        <Modal
-            presentationStyle={'fullScreen'}
-            animationType="slide"
-            transparent={false} visible={isVisible}
-            onRequestClose={() => null}
-            >
+        <Modal presentationStyle={'fullScreen'} animationType='slide' transparent={false} visible={isVisible} onRequestClose={() => null}>
             <View>
                 <View style={styles.containerStyle}>
                     <FastImage
-                        style={{width: '100%', height: '100%'}}
+                        style={{ width: '100%', height: '100%' }}
                         source={{
                             priority: FastImage.priority.normal,
-                            uri:'https://images.pexels.com/photos/925743/pexels-photo-925743.jpeg?cs=srgb&dl=art-background-backlit-925743.jpg&fm=jpg'
+                               uri: 'https://images.pexels.com/photos/2380451/pexels-photo-2380451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
                         }}
-                        resizeMode={FastImage.resizeMode.cover}>
-
+                        resizeMode={FastImage.resizeMode.cover}
+                    >
                         <Text style={styles.title}> Information </Text>
 
                         <View>
@@ -42,7 +37,6 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = props => 
                             <Text style={styles.headerText}> Ich will mehr wissen </Text>
                             <Text style={styles.blockText}> {misc} </Text>
                         </View>
-
                     </FastImage>
                 </View>
             </View>

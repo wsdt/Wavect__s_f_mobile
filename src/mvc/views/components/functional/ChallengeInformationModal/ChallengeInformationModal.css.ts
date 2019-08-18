@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     containerStyle: {
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         textShadowColor: 'rgba(0, 0, 0, 0.25)',
-        textShadowOffset: {width: 1, height: 1},
+        textShadowOffset: { width: 1, height: 1 },
         textShadowRadius: 10,
         marginBottom: 30,
         marginTop: 20,
@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     },
     headerText: {
         textAlign: 'center',
-        fontWeight: "bold",
+        fontWeight: 'bold',
         fontSize: 20,
     },
     blockText: {
@@ -30,11 +30,11 @@ const styles = StyleSheet.create({
         marginLeft: 10,
         marginRight: 10,
         fontSize: 16,
-        marginBottom: 25
+        marginBottom: 25,
     },
     backButton: {
-        justifyContent: 'flex-end'
-    }
+        justifyContent: 'flex-end',
+    },
 })
 
 export default styles

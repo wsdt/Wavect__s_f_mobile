@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { View } from 'react-native'
+import {TouchableWithoutFeedback, View} from 'react-native'
 import FastImage from 'react-native-fast-image'
 import { withNavigation } from 'react-navigation'
 import globalStyles from '../../../GlobalStyles.css'
@@ -14,6 +14,7 @@ import ChallengeLayerBar from '../ChallengeLayerBar/ChallengeLayerBar'
 import styles from './ChallengeFullpage.css'
 import { IChallengeFullpageProps } from './ChallengeFullpage.props'
 import { IChallengeFullpageState } from './ChallengeFullpage.state'
+
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
@@ -32,25 +33,26 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                     this.loadingContext = contextMethods
                     return (
                         <Fade visible={true} fadeDuration={200}>
-                            <GrayColorImg isGrayscale={this.state.isGrayscale}>
-                                <View onTouchStart={() => this.toggleModal()}>
-                                    {challengeInformation ? (
-                                        <ChallengeInformationModal isVisible={this.state.modalVisibility} information={challengeInformation} />
-                                    ) : null}
-                                    <FastImage
-                                        source={{
-                                            priority: FastImage.priority.high,
-                                            uri: bgImage.uri,
-                                        }}
-                                        style={[styles.backgroundImage, globalStyles.radius]}
-                                        onLoad={() => this.loadingContext.setLoading(LoadingStatus.DONE)}
-                                        // onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)} // TODO: onLoadStart is the only callback which is called (lib-bug presumbly)
-                                        onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
-                                    />
+                            <GrayColorImg isGrayscale={this.state.isGrayscale} >
+                                <View onTouchStart={() => this.state.modalVisibility ? this.setState({modalVisibility: false}) : null}>
+                                    {challengeInformation ? (<ChallengeInformationModal isVisible={this.state.modalVisibility} information={challengeInformation} />) : null}
+                                    <TouchableWithoutFeedback onPress={() => this.toggleModal()}>
+                                        <FastImage
+                                            source={{
+                                                priority: FastImage.priority.high,
+                                                uri: bgImage.uri,
+                                            }}
+                                            style={[styles.backgroundImage, globalStyles.radius]}
+                                            onLoad={() => this.loadingContext.setLoading(LoadingStatus.DONE)}
+                                            // onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)} // TODO: onLoadStart is the only callback which is called (lib-bug presumbly)
+                                            onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
+                                        />
+                                    </TouchableWithoutFeedback>
                                     {this.getChallengeView()}
                                 </View>
                             </GrayColorImg>
                         </Fade>
+
                     )
                 }}
             </LoadingHoc.Consumer>
@@ -62,7 +64,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     }
 
     private toggleModal = () => {
-        this.setState({ modalVisibility: !this.state.modalVisibility})
+        this.setState({ modalVisibility: !this.state.modalVisibility })
     }
 
     private getChallengeView = (): React.ReactElement => {
@@ -70,7 +72,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
 
         return (
             <>
-                <View style={styles.top}>
+                <View style={styles.top} >
                     <CompanyLogo
                         companyLogoUri={sponsor.logoUri}
                         isGrayscale={this.state.isGrayscale}
@@ -84,6 +86,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                     />
                     <ChallengeTypeIcon type={majorCategory} isGrayscale={this.state.isGrayscale} />
                 </View>
+
                 <ChallengeLayerBar
                     headline={headline}
                     sponsorName={sponsor.name}

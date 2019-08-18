@@ -1,11 +1,11 @@
-import React from "react"
-import { TouchableOpacity } from "react-native"
-import { Image, Text, Tooltip } from "react-native-elements"
-import { t } from "../../../../controllers/MultiLingualityController/MultiLingualityController"
-import { CHALLENGE_CATEGORIES } from "../../../../models/ChallengeCategory"
-import globalStyles, { GREY } from "../../../GlobalStyles.css"
-import styles, { BG_COLOR } from "./ChallengeTypeIcon.css"
-import { IChallengeTypeIconProps } from "./ChallengeTypeIcon.props"
+import React from 'react'
+import { TouchableOpacity } from 'react-native'
+import { Image, Text, Tooltip } from 'react-native-elements'
+import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { CHALLENGE_CATEGORIES } from '../../../../models/ChallengeCategory'
+import globalStyles, { GREY } from '../../../GlobalStyles.css'
+import styles, { BG_COLOR } from './ChallengeTypeIcon.css'
+import { IChallengeTypeIconProps } from './ChallengeTypeIcon.props'
 
 export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps> = props => {
     const currColor = props.isGrayscale ? GREY : BG_COLOR
