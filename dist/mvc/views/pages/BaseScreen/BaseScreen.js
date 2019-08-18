@@ -26,7 +26,7 @@ var LoadingHoc_1 = require("../../components/system/HOCs/LoadingHoc");
 var GlobalStyles_css_1 = require("../../GlobalStyles.css");
 var BaseScreen_css_1 = require("./BaseScreen.css");
 var BaseScreen_translations_1 = require("./BaseScreen.translations");
-var TAG = 'BaseScreen';
+var TAG = "BaseScreen";
 var BaseScreen = (function (_super) {
     __extends(BaseScreen, _super);
     function BaseScreen() {
@@ -35,7 +35,7 @@ var BaseScreen = (function (_super) {
             loadingStatus: LoadingHoc_1.LoadingStatus.LOADING,
             isRefreshing: false,
             refreshCallback: function (cb) {
-                LoggingController_1.logEvent(LoggingController_1.LogType.WARN, TAG + ":refreshCallback", 'No refresh function provided');
+                LoggingController_1.logEvent(LoggingController_1.LogType.WARN, TAG + ":refreshCallback", "No refresh function provided");
                 cb();
             },
         };
@@ -43,11 +43,11 @@ var BaseScreen = (function (_super) {
             _this.setState({ isRefreshing: true });
             _this.state.refreshCallback(function () {
                 _this.setState({ isRefreshing: false });
-                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":onRefresh", 'User refreshed screen');
+                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":onRefresh", "User refreshed screen");
             });
         };
         _this.getCenteredText = function (text, containerStyle) {
-            return (<react_native_1.View style={[{ justifyContent: 'center', height: '100%' }, containerStyle]}>
+            return (<react_native_1.View style={[{ justifyContent: "center", height: "100%" }, containerStyle]}>
                 <react_native_elements_1.Text>{text}</react_native_elements_1.Text>
             </react_native_1.View>);
         };
@@ -69,7 +69,7 @@ var BaseScreen = (function (_super) {
             }
         };
         _this.getDisplayProp = function () {
-            return _this.state.loadingStatus !== LoadingHoc_1.LoadingStatus.DONE ? { display: 'none' } : null;
+            return _this.state.loadingStatus !== LoadingHoc_1.LoadingStatus.DONE ? { display: "none" } : null;
         };
         return _this;
     }

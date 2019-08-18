@@ -30,5 +30,5 @@ var SettingsScreen = (function (_super) {
     return SettingsScreen;
 }(React.Component));
 exports.SettingsScreen = SettingsScreen;
-LoggingController_1.setCurrentScreen('SettingsScreen', SettingsScreen.toString());
+LoggingController_1.setCurrentScreen("SettingsScreen", SettingsScreen.toString());
 //# sourceMappingURL=SettingsScreen.js.map

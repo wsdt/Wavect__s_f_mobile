@@ -10,9 +10,9 @@ exports.routesConfig = (_a = {},
     _a[TabRoutes_1.tabRoutes.HomeScreen] = {
         screen: HomeScreenRouter_1.default,
         navigationOptions: {
-            tabBarLabel: '',
-            tabBarIcon: function () { return (<react_native_1.Image source={require('../../../../../assets/img/icons/ic_tab_challenges.png')} style={{ width: 20, height: 20, tintColor: 'black' }}/>); },
-            title: '',
+            tabBarLabel: "",
+            tabBarIcon: function () { return (<react_native_1.Image source={require("../../../../../assets/img/icons/ic_tab_challenges.png")} style={{ width: 20, height: 20, tintColor: "black" }}/>); },
+            title: "",
         },
     },
     _a[TabRoutes_1.tabRoutes.SettingsScreen] = {
@@ -21,8 +21,8 @@ exports.routesConfig = (_a = {},
         },
         screen: SettingsScreenRouter_1.default,
         navigationOptions: {
-            tabBarIcon: function () { return (<react_native_1.Image source={require('../../../../../assets/img/icons/ic_tab_settings.png')} style={{ width: 20, height: 20, tintColor: 'black' }}/>); },
-            title: '',
+            tabBarIcon: function () { return (<react_native_1.Image source={require("../../../../../assets/img/icons/ic_tab_settings.png")} style={{ width: 20, height: 20, tintColor: "black" }}/>); },
+            title: "",
         },
     },
     _a);

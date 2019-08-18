@@ -18,6 +18,7 @@ var react_native_1 = require("react-native");
 var react_native_fast_image_1 = require("react-native-fast-image");
 var react_navigation_1 = require("react-navigation");
 var GlobalStyles_css_1 = require("../../../GlobalStyles.css");
+var ChallengeInformationModal_1 = require("../../functional/ChallengeInformationModal/ChallengeInformationModal");
 var ChallengeTypeIcon_1 = require("../../functional/ChallengeTypeIcon/ChallengeTypeIcon");
 var CompanyLogo_1 = require("../../functional/CompanyLogo/CompanyLogo");
 var GrayColorImg_1 = require("../../functional/GrayColorImg/GrayColorImg");
@@ -26,7 +27,6 @@ var HomeRoutes_1 = require("../../system/TabRouter/HomeScreenRouter/HomeRoutes")
 var Fade_1 = require("../_animations/Fade/Fade");
 var ChallengeLayerBar_1 = require("../ChallengeLayerBar/ChallengeLayerBar");
 var ChallengeFullpage_css_1 = require("./ChallengeFullpage.css");
-var ChallengeInformationModal_1 = require("../../functional/ChallengeInformationModal/ChallengeInformationModal");
 var ChallengeFullpage = (function (_super) {
     __extends(ChallengeFullpage, _super);
     function ChallengeFullpage() {
@@ -66,7 +66,7 @@ var ChallengeFullpage = (function (_super) {
             return (<Fade_1.Fade visible={true} fadeDuration={200}>
                             <GrayColorImg_1.GrayColorImg isGrayscale={_this.state.isGrayscale}>
                                 <react_native_1.View onTouchStart={function () { return _this.setModalVisible(true); }}>
-                                    <ChallengeInformationModal_1.ChallengeInformationModal isVisible={_this.state.showChallengeHint} information={challengeInformation}/>
+                                    {challengeInformation ? (<ChallengeInformationModal_1.ChallengeInformationModal isVisible={_this.state.showChallengeHint} information={challengeInformation}/>) : null}
                                     <react_native_fast_image_1.default source={{
                 priority: react_native_fast_image_1.default.priority.high,
                 uri: bgImage.uri,

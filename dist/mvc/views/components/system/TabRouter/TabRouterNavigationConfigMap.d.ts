@@ -1,2 +1,2 @@
-import { NavigationRouteConfigMap } from 'react-navigation';
+import { NavigationRouteConfigMap } from "react-navigation";
 export declare const routesConfig: NavigationRouteConfigMap;
