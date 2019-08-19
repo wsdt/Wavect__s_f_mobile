@@ -1,9 +1,9 @@
-import { NavigationRouteConfigMap } from "react-navigation"
-import * as _schema from "../../../../../../assets/translations/_schema.json"
-import { t } from "../../../../../controllers/MultiLingualityController/MultiLingualityController"
-import { HomeScreen } from "../../../../pages/HomeScreen/HomeScreen"
-import SponsorFullpage from "../../../classbased/SponsorFullpage/SponsorFullpage"
-import { routes } from "./HomeRoutes"
+import { NavigationRouteConfigMap } from 'react-navigation'
+import * as _schema from '../../../../../../assets/translations/_schema.json'
+import { t } from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { HomeScreen } from '../../../../pages/HomeScreen/HomeScreen'
+import SponsorFullpage from '../../../classbased/SponsorFullpage/SponsorFullpage'
+import { routes } from './HomeRoutes'
 
 // Translation schema for typo safety
 const s = _schema.system.tabrouter.stackrouters.homescreen // for readability

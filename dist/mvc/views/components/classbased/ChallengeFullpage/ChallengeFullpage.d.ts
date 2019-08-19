@@ -7,7 +7,7 @@ declare class ChallengeFullpage extends React.PureComponent<IChallengeFullpagePr
     private abortController;
     render(): JSX.Element;
     componentWillUnmount(): void;
-    private setModalVisible;
+    private toggleModal;
     private getChallengeView;
 }
 declare const _default: React.ComponentType<Pick<IChallengeFullpageProps, "challenge"> & {

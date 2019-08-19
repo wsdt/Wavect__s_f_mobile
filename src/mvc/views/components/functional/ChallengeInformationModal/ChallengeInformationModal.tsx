@@ -8,15 +8,16 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = props => 
     const { isVisible } = props
 
     return (
-        <Modal presentationStyle={'fullScreen'} animationType='slide' transparent={false} visible={isVisible} onRequestClose={() => null}>
+        <Modal presentationStyle={'fullScreen'} animationType='fade' transparent={false} visible={isVisible} onRequestClose={() => null}>
             <View>
                 <View style={styles.containerStyle}>
                     <FastImage
                         style={{ width: '100%', height: '100%' }}
                         source={{
                             priority: FastImage.priority.normal,
-                               uri: 'https://images.pexels.com/photos/2380451/pexels-photo-2380451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260'
+                            uri: 'https://images.pexels.com/photos/2380451/pexels-photo-2380451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
                         }}
+
                         resizeMode={FastImage.resizeMode.cover}
                     >
                         <Text style={styles.title}> Information </Text>

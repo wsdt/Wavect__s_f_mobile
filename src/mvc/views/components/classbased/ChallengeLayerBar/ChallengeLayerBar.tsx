@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import React from 'react'
-import {Alert, ToastAndroid, View} from 'react-native'
-import {Text} from 'react-native-elements'
+import { Alert, ToastAndroid, View } from 'react-native'
+import { Text } from 'react-native-elements'
 import { withNavigation } from 'react-navigation'
 import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
 import { openFilePicker } from '../../../../controllers/FilePickerController/FilePickerController'
@@ -18,7 +18,6 @@ import styles from './ChallengeLayerBar.css'
 import { IChallengeLayerBarProps } from './ChallengeLayerBar.props'
 import { IChallengeLayerBarState } from './ChallengeLayerBar.state'
 import s from './ChallengeLayerBar.translations'
-
 
 const TAG = 'ChallengeLayerBar'
 
@@ -126,15 +125,21 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                     userAbortedProcedure()
                     logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'User did not choose a file')
                 } else {
-                    const wasShareSuccessful = await shareMedia(this.props.headline, this.props.sponsorName, res)
+                    // if using "whatsapp" the response will not finish!
+                    await shareMedia(this.props.headline, this.props.sponsorName, res)
+                        .then(response => {
+                            if (response) {
+                                this.sendChallengeSolvedEmailToSponsor()
 
-                    if (wasShareSuccessful) {
-                        this.sendChallengeSolvedEmailToSponsor()
-                    }
-                    this.setState({
-                        currChallengeSolved: wasShareSuccessful,
-                        isLoadingChallengeSolved: false,
-                    })
+                                this.setState({
+                                    currChallengeSolved: response,
+                                    isLoadingChallengeSolved: false,
+                                })
+                            }else{
+                                Alert.alert('Ausgabe' + response)
+                                this.sendChallengeSolvedEmailToSponsor()
+                            }
+                        })
                 }
             } catch (e) {
                 logEvent(LogType.ERROR, `${TAG}:challengeSolved`, `Couldn't open imagePicker -> ${JSON.stringify(e)}`)

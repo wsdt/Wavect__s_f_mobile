@@ -65,7 +65,7 @@ var SettingsRoutes_1 = require("../../system/TabRouter/SettingsScreenRouter/Sett
 var ChallengeLayerBar_constants_1 = require("./ChallengeLayerBar.constants");
 var ChallengeLayerBar_css_1 = require("./ChallengeLayerBar.css");
 var ChallengeLayerBar_translations_1 = require("./ChallengeLayerBar.translations");
-var TAG = "ChallengeLayerBar";
+var TAG = 'ChallengeLayerBar';
 var ChallengeLayerBar = (function (_super) {
     __extends(ChallengeLayerBar, _super);
     function ChallengeLayerBar() {
@@ -90,10 +90,10 @@ var ChallengeLayerBar = (function (_super) {
                         _b = ChallengeLayerBar.API_ENDPOINT + "/current/";
                         return [4, LocalStorageController_1.getLocalUserId()];
                     case 1: return [4, _a.apply(void 0, [_b + (_c.sent()), {
-                                method: "POST",
+                                method: 'POST',
                                 headers: {
-                                    Accept: "application/json",
-                                    "Content-Type": "application/json",
+                                    Accept: 'application/json',
+                                    'Content-Type': 'application/json',
                                 },
                                 body: JSON.stringify({
                                     email: this.props.sponsorEmail,
@@ -107,7 +107,7 @@ var ChallengeLayerBar = (function (_super) {
                         }
                         else {
                             this.storeChallengeSolved();
-                            LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", "Sent email to sponsor");
+                            LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", 'Sent email to sponsor');
                         }
                         return [3, 5];
                     case 4:
@@ -130,10 +130,11 @@ var ChallengeLayerBar = (function (_super) {
                         currChallengeSolved: false,
                         isLoadingChallengeSolved: false,
                     });
-                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":userAbortedProcedure", "User aborted");
+                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":userAbortedProcedure", 'User aborted');
                 };
                 shareChallengeSolved = function () { return __awaiter(_this, void 0, void 0, function () {
-                    var res, wasShareSuccessful, e_2;
+                    var res, e_2;
+                    var _this = this;
                     return __generator(this, function (_a) {
                         switch (_a.label) {
                             case 0:
@@ -143,18 +144,24 @@ var ChallengeLayerBar = (function (_super) {
                                 res = _a.sent();
                                 if (!(res.error || res.didCancel)) return [3, 2];
                                 userAbortedProcedure();
-                                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", "User did not choose a file");
+                                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", 'User did not choose a file');
                                 return [3, 4];
-                            case 2: return [4, ShareController_1.shareMedia(this.props.headline, this.props.sponsorName, res)];
+                            case 2: return [4, ShareController_1.shareMedia(this.props.headline, this.props.sponsorName, res)
+                                    .then(function (response) {
+                                    if (response) {
+                                        _this.sendChallengeSolvedEmailToSponsor();
+                                        _this.setState({
+                                            currChallengeSolved: response,
+                                            isLoadingChallengeSolved: false,
+                                        });
+                                    }
+                                    else {
+                                        react_native_1.Alert.alert('Ausgabe' + response);
+                                        _this.sendChallengeSolvedEmailToSponsor();
+                                    }
+                                })];
                             case 3:
-                                wasShareSuccessful = _a.sent();
-                                if (wasShareSuccessful) {
-                                    this.sendChallengeSolvedEmailToSponsor();
-                                }
-                                this.setState({
-                                    currChallengeSolved: wasShareSuccessful,
-                                    isLoadingChallengeSolved: false,
-                                });
+                                _a.sent();
                                 _a.label = 4;
                             case 4: return [3, 6];
                             case 5:

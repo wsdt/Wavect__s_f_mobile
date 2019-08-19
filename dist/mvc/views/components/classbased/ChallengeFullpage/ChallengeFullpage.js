@@ -33,11 +33,11 @@ var ChallengeFullpage = (function (_super) {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.state = {
             isGrayscale: true,
-            showChallengeHint: false,
+            modalVisibility: false,
         };
         _this.abortController = new AbortController();
-        _this.setModalVisible = function (visible) {
-            _this.setState({ showChallengeHint: visible });
+        _this.toggleModal = function () {
+            _this.setState({ modalVisibility: !_this.state.modalVisibility });
         };
         _this.getChallengeView = function () {
             var _a = _this.props.challenge, id = _a.id, headline = _a.headline, subline = _a.subline, sponsor = _a.sponsor, majorCategory = _a.majorCategory, expirationInMs = _a.expirationInMs, whyDoesOrganizationSponsor = _a.whyDoesOrganizationSponsor, bgImage = _a.bgImage;
@@ -52,6 +52,7 @@ var ChallengeFullpage = (function (_super) {
             }}/>
                     <ChallengeTypeIcon_1.ChallengeTypeIcon type={majorCategory} isGrayscale={_this.state.isGrayscale}/>
                 </react_native_1.View>
+
                 <ChallengeLayerBar_1.default headline={headline} sponsorName={sponsor.name} setGrayscale={function (isGrayscale) { return _this.setState({ isGrayscale: isGrayscale }); }} subline={subline} expirationInMs={expirationInMs} challengeId={id} sponsorEmail={sponsor.email}/>
             </>);
         };
@@ -65,12 +66,14 @@ var ChallengeFullpage = (function (_super) {
             _this.loadingContext = contextMethods;
             return (<Fade_1.Fade visible={true} fadeDuration={200}>
                             <GrayColorImg_1.GrayColorImg isGrayscale={_this.state.isGrayscale}>
-                                <react_native_1.View onTouchStart={function () { return _this.setModalVisible(true); }}>
-                                    {challengeInformation ? (<ChallengeInformationModal_1.ChallengeInformationModal isVisible={_this.state.showChallengeHint} information={challengeInformation}/>) : null}
-                                    <react_native_fast_image_1.default source={{
+                                <react_native_1.View onTouchStart={function () { return (_this.state.modalVisibility ? _this.setState({ modalVisibility: false }) : null); }}>
+                                    {challengeInformation ? (<ChallengeInformationModal_1.ChallengeInformationModal isVisible={_this.state.modalVisibility} information={challengeInformation}/>) : null}
+                                    <react_native_1.TouchableWithoutFeedback onPress={function () { return _this.toggleModal(); }}>
+                                        <react_native_fast_image_1.default source={{
                 priority: react_native_fast_image_1.default.priority.high,
                 uri: bgImage.uri,
             }} style={[ChallengeFullpage_css_1.default.backgroundImage, GlobalStyles_css_1.default.radius]} onLoad={function () { return _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE); }} onError={function () { return _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR); }}/>
+                                    </react_native_1.TouchableWithoutFeedback>
                                     {_this.getChallengeView()}
                                 </react_native_1.View>
                             </GrayColorImg_1.GrayColorImg>

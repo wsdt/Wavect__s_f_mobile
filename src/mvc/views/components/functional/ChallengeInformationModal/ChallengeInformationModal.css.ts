@@ -1,18 +1,18 @@
-import { StyleSheet } from 'react-native'
+import { StyleSheet } from "react-native"
 
 const styles = StyleSheet.create({
     containerStyle: {
-        height: '100%',
-        alignItems: 'center',
-        justifyContent: 'center',
+        height: "100%",
+        alignItems: "center",
+        justifyContent: "center",
     },
 
     title: {
         fontSize: 50,
-        alignItems: 'center',
-        fontWeight: 'bold',
-        textAlign: 'center',
-        textShadowColor: 'rgba(0, 0, 0, 0.25)',
+        alignItems: "center",
+        fontWeight: "bold",
+        textAlign: "center",
+        textShadowColor: "rgba(0, 0, 0, 0.25)",
         textShadowOffset: { width: 1, height: 1 },
         textShadowRadius: 10,
         marginBottom: 30,
@@ -20,12 +20,12 @@ const styles = StyleSheet.create({
         letterSpacing: 5,
     },
     headerText: {
-        textAlign: 'center',
-        fontWeight: 'bold',
+        textAlign: "center",
+        fontWeight: "bold",
         fontSize: 20,
     },
     blockText: {
-        textAlign: 'center',
+        textAlign: "center",
         padding: 10,
         marginLeft: 10,
         marginRight: 10,
@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
         marginBottom: 25,
     },
     backButton: {
-        justifyContent: 'flex-end',
+        justifyContent: "flex-end",
     },
 })
 
