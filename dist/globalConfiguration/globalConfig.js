@@ -5,6 +5,6 @@ exports.useLocalBackend = __DEV__ && true;
 exports.disableCache = __DEV__ && true;
 exports.useReactotron = __DEV__ && true;
 exports.START_PAGE = TabRoutes_1.tabRoutes.HomeScreen;
-exports.BACKEND_URL = exports.useLocalBackend ? 'http://261a866d.ngrok.io' : 'https://api.dev.wavect.io';
+exports.BACKEND_URL = exports.useLocalBackend ? 'https://90ba99ab.ngrok.io' : 'https://api.dev.wavect.io';
 exports.BACKEND_MOBILE_API = exports.BACKEND_URL + "/api/mobile/v1";
 //# sourceMappingURL=globalConfig.js.map

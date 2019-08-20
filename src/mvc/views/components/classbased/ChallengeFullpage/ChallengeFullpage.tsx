@@ -47,7 +47,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                                             onLoad={() => this.loadingContext.setLoading(LoadingStatus.DONE)}
                                             // onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)} // TODO: onLoadStart is the only callback which is called (lib-bug presumbly)
                                             onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
-
                                         />
                                     </TouchableWithoutFeedback>
                                     {this.getChallengeView()}

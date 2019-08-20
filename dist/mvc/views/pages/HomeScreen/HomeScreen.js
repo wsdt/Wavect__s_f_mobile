@@ -133,5 +133,5 @@ var HomeScreen = (function (_super) {
     return HomeScreen;
 }(React.PureComponent));
 exports.HomeScreen = HomeScreen;
-LoggingController_1.setCurrentScreen("HomeScreen", HomeScreen.toString());
+LoggingController_1.setCurrentScreen('HomeScreen', HomeScreen.toString());
 //# sourceMappingURL=HomeScreen.js.map

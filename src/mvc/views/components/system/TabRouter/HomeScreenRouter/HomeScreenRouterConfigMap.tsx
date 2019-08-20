@@ -3,6 +3,7 @@ import * as _schema from '../../../../../../assets/translations/_schema.json'
 import { t } from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { HomeScreen } from '../../../../pages/HomeScreen/HomeScreen'
 import SponsorFullpage from '../../../classbased/SponsorFullpage/SponsorFullpage'
+import styles from './../TabRouter.css'
 import { routes } from './HomeRoutes'
 
 // Translation schema for typo safety
@@ -13,6 +14,7 @@ export const routesConfig: NavigationRouteConfigMap = {
         screen: HomeScreen, // which component to load
         navigationOptions: () => ({
             title: t(s.home.title), // which title to show in navbar
+            headerTitleStyle: styles.headerTitleStyle
         }),
     },
     [routes.SponsorFullpage]: {

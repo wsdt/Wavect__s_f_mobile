@@ -1,46 +1,46 @@
 import * as React from 'react'
-import { Modal, Text, View } from 'react-native'
-import FastImage from 'react-native-fast-image'
+import {View} from 'react-native'
+import {Image} from 'react-native-elements'
+import Modal from 'react-native-modal'
+import {AppText} from '../AppText/AppText'
 import styles from './ChallengeInformationModal.css'
 
+
 export const ChallengeInformationModal: React.FunctionComponent<any> = props => {
-    const { instruction, intention, privacy, misc } = props.information
+    // const { instruction, intention, privacy, misc } = props.information
     const { isVisible } = props
+    // add the reward [Backend]!
+    const { instruction } = props.information
 
     return (
-        <Modal presentationStyle={'fullScreen'} animationType='fade' transparent={false} visible={isVisible} onRequestClose={() => null}>
-            <View>
-                <View style={styles.containerStyle}>
-                    <FastImage
-                        style={{ width: '100%', height: '100%' }}
-                        source={{
-                            priority: FastImage.priority.normal,
-                            uri: 'https://images.pexels.com/photos/2380451/pexels-photo-2380451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-                        }}
+        <View>
+            <Modal
+                isVisible={isVisible}
+                propagateSwipe={true}>
+                <View style={styles.innerContent}>
 
-                        resizeMode={FastImage.resizeMode.cover}
-                    >
-                        <Text style={styles.title}> Information </Text>
+                    <View style={styles.closeIcon}>
+                        <Image source={{uri: 'https://cdn.pixabay.com/photo/2014/09/26/10/45/delete-462216_960_720.png'}} style={styles.image} />
+                    </View>
 
-                        <View>
-                            <Text style={styles.headerText}> Wie kann diese Challenge gelöst werden? </Text>
-                            <Text style={styles.blockText}> {instruction}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.headerText}> Was soll diese Challenge bewirken?</Text>
-                            <Text style={styles.blockText}> {intention}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.headerText}> Was passiert mit meinen Daten?</Text>
-                            <Text style={styles.blockText}> {privacy}</Text>
-                        </View>
-                        <View>
-                            <Text style={styles.headerText}> Ich will mehr wissen </Text>
-                            <Text style={styles.blockText}> {misc} </Text>
-                        </View>
-                    </FastImage>
+                    <View style={styles.centeredInnerContent}>
+                        <Image source={{uri: 'https://cdn.icon-icons.com/icons2/67/PNG/512/info_13213.png'}} style={styles.image} />
+                        <AppText style={styles.centeredText}> {instruction} </AppText>
+                        <View
+                            style={{
+                                borderBottomColor: 'black',
+                                borderBottomWidth: 2,
+                                width: '90%',
+                                margin: 15
+                            }}
+                        />
+
+                        <Image source={{uri: 'https://icon-library.net/images/gift-png-icon/gift-png-icon-2.jpg'}} style={styles.image} />
+                        <AppText style={styles.centeredText}> Unter allen gelösten Challenges wird ein € 5,00 Gutschein von Amazon verlost.</AppText>
+                        <AppText style={styles.ending}> Viel Glück! </AppText>
+                    </View>
                 </View>
-            </View>
-        </Modal>
+            </Modal>
+        </View>
     )
 }

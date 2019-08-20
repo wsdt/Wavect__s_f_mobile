@@ -29,10 +29,10 @@ var SponsorFullpage = function (props) {
         uri: props.challengeBgImage.uri,
     }}>
                     <react_native_1.View style={SponsorFullpage_css_1.styles.socialMedia}>
-                        {linkedin ? <TouchableIcon_1.TouchableIcon icon={"linkedin"} onPress={function () { return react_native_1.Linking.openURL(linkedin); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
-                        {facebook ? <TouchableIcon_1.TouchableIcon icon={"facebook"} onPress={function () { return react_native_1.Linking.openURL(facebook); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
-                        {instagram ? (<TouchableIcon_1.TouchableIcon icon={"instagram"} onPress={function () { return react_native_1.Linking.openURL(instagram); }} containerStyle={SponsorFullpage_css_1.styles.icon}/>) : null}
-                        {youtube ? <TouchableIcon_1.TouchableIcon icon={"youtube"} onPress={function () { return react_native_1.Linking.openURL(youtube); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {linkedin ? <TouchableIcon_1.TouchableIcon icon={'linkedin'} onPress={function () { return react_native_1.Linking.openURL(linkedin); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {facebook ? <TouchableIcon_1.TouchableIcon icon={'facebook'} onPress={function () { return react_native_1.Linking.openURL(facebook); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {instagram ? (<TouchableIcon_1.TouchableIcon icon={'instagram'} onPress={function () { return react_native_1.Linking.openURL(instagram); }} containerStyle={SponsorFullpage_css_1.styles.icon}/>) : null}
+                        {youtube ? <TouchableIcon_1.TouchableIcon icon={'youtube'} onPress={function () { return react_native_1.Linking.openURL(youtube); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
                     </react_native_1.View>
 
                     <react_native_1.Text style={SponsorFullpage_css_1.styles.sponsorName}> #{name.toLowerCase()} </react_native_1.Text>
@@ -41,7 +41,7 @@ var SponsorFullpage = function (props) {
                         <react_native_fast_image_1.default source={{
         priority: react_native_fast_image_1.default.priority.high,
         uri: logoUri.uri,
-    }} style={SponsorFullpage_css_1.styles.imageStyle} resizeMode={"contain"}/>
+    }} style={SponsorFullpage_css_1.styles.imageStyle} resizeMode={'contain'}/>
                     </react_native_1.View>
                 </react_native_fast_image_1.default>
             </react_native_color_matrix_image_filters_1.ColorMatrix>
@@ -56,8 +56,8 @@ var SponsorFullpage = function (props) {
                     {website || email ? (<>
                             <react_native_1.Text style={SponsorFullpage_css_1.styles.boldHeadline}> Kontakt</react_native_1.Text>
                             <react_native_1.View style={SponsorFullpage_css_1.styles.buttonContainer}>
-                                {website ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(SponsorFullpage_translations_1.default.btn.website)} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL(website); }} icon="globe"/>) : null}
-                                {email ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(SponsorFullpage_translations_1.default.btn.email)} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL("mailto:" + email); }} icon="envelope"/>) : null}
+                                {website ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(SponsorFullpage_translations_1.default.btn.website)} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL(website); }} icon='globe'/>) : null}
+                                {email ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(SponsorFullpage_translations_1.default.btn.email)} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL("mailto:" + email); }} icon='envelope'/>) : null}
                             </react_native_1.View>
                         </>) : null}
                 </react_native_1.View>

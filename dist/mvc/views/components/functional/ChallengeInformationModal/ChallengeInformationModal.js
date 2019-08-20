@@ -2,39 +2,31 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_native_1 = require("react-native");
-var react_native_fast_image_1 = require("react-native-fast-image");
+var react_native_elements_1 = require("react-native-elements");
+var react_native_modal_1 = require("react-native-modal");
+var AppText_1 = require("../AppText/AppText");
 var ChallengeInformationModal_css_1 = require("./ChallengeInformationModal.css");
 exports.ChallengeInformationModal = function (props) {
-    var _a = props.information, instruction = _a.instruction, intention = _a.intention, privacy = _a.privacy, misc = _a.misc;
     var isVisible = props.isVisible;
-    return (<react_native_1.Modal presentationStyle={'fullScreen'} animationType='slide' transparent={false} visible={isVisible} onRequestClose={function () { return null; }}>
-            <react_native_1.View>
-                <react_native_1.View style={ChallengeInformationModal_css_1.default.containerStyle}>
-                    <react_native_fast_image_1.default style={{ width: '100%', height: '100%' }} source={{
-        priority: react_native_fast_image_1.default.priority.normal,
-        uri: 'https://images.pexels.com/photos/2380451/pexels-photo-2380451.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    }} resizeMode={react_native_fast_image_1.default.resizeMode.cover}>
-                        <react_native_1.Text style={ChallengeInformationModal_css_1.default.title}> Information </react_native_1.Text>
+    var instruction = props.information.instruction;
+    return (<react_native_1.View>
+            <react_native_elements_1.Image source={{ uri: 'https://cdn.pixabay.com/photo/2014/09/26/10/45/delete-462216_960_720.png' }}/>
+            <react_native_modal_1.default isVisible={isVisible} propagateSwipe={true}>
+                <react_native_1.View style={ChallengeInformationModal_css_1.default.innerContent}>
+                    <react_native_elements_1.Image source={{ uri: 'https://cdn.icon-icons.com/icons2/67/PNG/512/info_13213.png' }} style={ChallengeInformationModal_css_1.default.image}/>
+                    <AppText_1.AppText style={ChallengeInformationModal_css_1.default.centeredText}> {instruction} </AppText_1.AppText>
+                    <react_native_1.View style={{
+        borderBottomColor: 'black',
+        borderBottomWidth: 2,
+        width: '90%',
+        margin: 15
+    }}/>
 
-                        <react_native_1.View>
-                            <react_native_1.Text style={ChallengeInformationModal_css_1.default.headerText}> Wie kann diese Challenge gelöst werden? </react_native_1.Text>
-                            <react_native_1.Text style={ChallengeInformationModal_css_1.default.blockText}> {instruction}</react_native_1.Text>
-                        </react_native_1.View>
-                        <react_native_1.View>
-                            <react_native_1.Text style={ChallengeInformationModal_css_1.default.headerText}> Was soll diese Challenge bewirken?</react_native_1.Text>
-                            <react_native_1.Text style={ChallengeInformationModal_css_1.default.blockText}> {intention}</react_native_1.Text>
-                        </react_native_1.View>
-                        <react_native_1.View>
-                            <react_native_1.Text style={ChallengeInformationModal_css_1.default.headerText}> Was passiert mit meinen Daten?</react_native_1.Text>
-                            <react_native_1.Text style={ChallengeInformationModal_css_1.default.blockText}> {privacy}</react_native_1.Text>
-                        </react_native_1.View>
-                        <react_native_1.View>
-                            <react_native_1.Text style={ChallengeInformationModal_css_1.default.headerText}> Ich will mehr wissen </react_native_1.Text>
-                            <react_native_1.Text style={ChallengeInformationModal_css_1.default.blockText}> {misc} </react_native_1.Text>
-                        </react_native_1.View>
-                    </react_native_fast_image_1.default>
+                    <react_native_elements_1.Image source={{ uri: 'https://icon-library.net/images/gift-png-icon/gift-png-icon-2.jpg' }} style={ChallengeInformationModal_css_1.default.image}/>
+                    <AppText_1.AppText style={ChallengeInformationModal_css_1.default.centeredText}> Unter allen gelösten Challenges wird ein € 5,00 Gutschein von Amazon verlost.</AppText_1.AppText>
+                    <AppText_1.AppText style={ChallengeInformationModal_css_1.default.ending}> Viel Glück! </AppText_1.AppText>
                 </react_native_1.View>
-            </react_native_1.View>
-        </react_native_1.Modal>);
+            </react_native_modal_1.default>
+        </react_native_1.View>);
 };
 //# sourceMappingURL=ChallengeInformationModal.js.map

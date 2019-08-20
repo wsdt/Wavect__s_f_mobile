@@ -1,39 +1,37 @@
 declare const styles: {
     containerStyle: {
-        height: string;
         alignItems: "center";
         justifyContent: "center";
+        backgroundColor: string;
     };
-    title: {
-        fontSize: number;
+    innerContent: {
         alignItems: "center";
-        fontWeight: "bold";
         textAlign: "center";
-        textShadowColor: string;
-        textShadowOffset: {
-            width: number;
-            height: number;
-        };
-        textShadowRadius: number;
-        marginBottom: number;
-        marginTop: number;
-        letterSpacing: number;
-    };
-    headerText: {
-        textAlign: "center";
-        fontWeight: "bold";
-        fontSize: number;
-    };
-    blockText: {
-        textAlign: "center";
+        backgroundColor: string;
+        opacity: number;
         padding: number;
-        marginLeft: number;
-        marginRight: number;
-        fontSize: number;
-        marginBottom: number;
+        borderRadius: number;
+        borderWidth: number;
+        borderColor: string;
     };
-    backButton: {
-        justifyContent: "flex-end";
+    centeredText: {
+        textAlign: "center";
+        fontSize: number;
+        margin: number;
+    };
+    ending: {
+        textAlign: "center";
+        fontSize: number;
+        margin: number;
+    };
+    horizontalLine: {
+        borderBottomColor: string;
+        borderBottomWidth: number;
+    };
+    image: {
+        width: number;
+        height: number;
+        margin: number;
     };
 };
 export default styles;

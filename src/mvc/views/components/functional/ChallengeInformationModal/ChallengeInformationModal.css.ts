@@ -1,40 +1,42 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-    containerStyle: {
-        height: "100%",
-        alignItems: "center",
-        justifyContent: "center",
+    innerContent: {
+        backgroundColor: 'white',
+        opacity: 0.90,
+        padding: 5,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#fff'
     },
-
-    title: {
-        fontSize: 50,
-        alignItems: "center",
-        fontWeight: "bold",
-        textAlign: "center",
-        textShadowColor: "rgba(0, 0, 0, 0.25)",
-        textShadowOffset: { width: 1, height: 1 },
-        textShadowRadius: 10,
-        marginBottom: 30,
-        marginTop: 20,
-        letterSpacing: 5,
+    centeredInnerContent: {
+        alignItems: 'center',
+        justifyContent: 'center',
     },
-    headerText: {
-        textAlign: "center",
-        fontWeight: "bold",
-        fontSize: 20,
+    centeredText: {
+        textAlign: 'center',
+        fontSize: 23,
+        margin: 10,
+        lineHeight: 40,
     },
-    blockText: {
-        textAlign: "center",
-        padding: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        fontSize: 16,
-        marginBottom: 25,
+    ending: {
+        textAlign: 'center',
+        fontSize: 23,
+        margin: 15
     },
-    backButton: {
-        justifyContent: "flex-end",
+    horizontalLine: {
+        borderBottomColor: 'black',
+        borderBottomWidth: 1,
     },
+    image:{
+        width: 30,
+        height: 30,
+        margin: 10
+    },
+    closeIcon: {
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end'
+    }
 })
 
 export default styles

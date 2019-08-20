@@ -1,22 +1,26 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import React from 'react'
-import { Alert, ToastAndroid, View } from 'react-native'
-import { Text } from 'react-native-elements'
-import { withNavigation } from 'react-navigation'
-import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
-import { openFilePicker } from '../../../../controllers/FilePickerController/FilePickerController'
-import { getEmailMarked, getLocalUserId } from '../../../../controllers/LocalStorageController/LocalStorageController'
-import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
-import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
-import { shareMedia } from '../../../../controllers/ShareController/ShareController'
-import { noInternetAvailable } from '../../../../controllers/WarningsController/WarningsController'
-import { ApiResponse } from '../../../../models/ApiResponse'
-import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
-import { routes } from '../../system/TabRouter/SettingsScreenRouter/SettingsRoutes'
-import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
+import {Alert, ToastAndroid, View} from 'react-native'
+import {withNavigation} from 'react-navigation'
+import {BACKEND_MOBILE_API} from '../../../../../globalConfiguration/globalConfig'
+import {openFilePicker} from '../../../../controllers/FilePickerController/FilePickerController'
+import {
+    getEmailMarked,
+    getLocalUserId
+} from '../../../../controllers/LocalStorageController/LocalStorageController'
+import {logEvent, LogType} from '../../../../controllers/LoggingController/LoggingController'
+import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import {shareMedia} from '../../../../controllers/ShareController/ShareController'
+import {noInternetAvailable} from '../../../../controllers/WarningsController/WarningsController'
+import {ApiResponse} from '../../../../models/ApiResponse'
+import {AppText} from '../../functional/AppText/AppText'
+import {FontType} from '../../functional/AppText/AppText.enum'
+import {MajorBtnType, MajorButton} from '../../functional/MajorButton/MajorButton'
+import {routes} from '../../system/TabRouter/SettingsScreenRouter/SettingsRoutes'
+import {CHALLENGE_SOLVED_ID} from './ChallengeLayerBar.constants'
 import styles from './ChallengeLayerBar.css'
-import { IChallengeLayerBarProps } from './ChallengeLayerBar.props'
-import { IChallengeLayerBarState } from './ChallengeLayerBar.state'
+import {IChallengeLayerBarProps} from './ChallengeLayerBar.props'
+import {IChallengeLayerBarState} from './ChallengeLayerBar.state'
 import s from './ChallengeLayerBar.translations'
 
 const TAG = 'ChallengeLayerBar'
@@ -37,8 +41,10 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         return (
             <View style={styles.mainComponent}>
                 <View style={styles.bottomActionContainer}>
-                    <Text style={styles.headline}>{headline}</Text>
-                    <Text style={styles.subline}>{subline}</Text>
+                    <View style={{padding: 10}}>
+                        <AppText style={styles.headline} font={FontType.HEAVY}>{headline}</AppText>
+                        <AppText style={styles.subline}>{subline}</AppText>
+                    </View>
 
                     <View style={styles.btnContainer}>
                         {this.state.currChallengeSolved ? (
@@ -57,6 +63,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                             />
                         )}
                     </View>
+
                 </View>
             </View>
         )
@@ -126,20 +133,19 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                     logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'User did not choose a file')
                 } else {
                     // if using "whatsapp" the response will not finish!
-                    await shareMedia(this.props.headline, this.props.sponsorName, res)
-                        .then(response => {
-                            if (response) {
-                                this.sendChallengeSolvedEmailToSponsor()
+                    await shareMedia(this.props.headline, this.props.sponsorName, res).then(response => {
+                        if (response) {
+                            this.sendChallengeSolvedEmailToSponsor()
 
-                                this.setState({
-                                    currChallengeSolved: response,
-                                    isLoadingChallengeSolved: false,
-                                })
-                            }else{
-                                Alert.alert('Ausgabe' + response)
-                                this.sendChallengeSolvedEmailToSponsor()
-                            }
-                        })
+                            this.setState({
+                                currChallengeSolved: response,
+                                isLoadingChallengeSolved: false,
+                            })
+                        } else {
+                            Alert.alert('Ausgabe' + response)
+                            this.sendChallengeSolvedEmailToSponsor()
+                        }
+                    })
                 }
             } catch (e) {
                 logEvent(LogType.ERROR, `${TAG}:challengeSolved`, `Couldn't open imagePicker -> ${JSON.stringify(e)}`)
