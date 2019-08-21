@@ -16,3 +16,5 @@ Please refer to the documentation of the base repository as it contains the dock
 
 ## Notes
 * No need to run react-native link at any time. We use auto-linking.
+
+If your intending to use the < Text > Component of react-native, please dont forget to use the new **< AppText >** Component to automatically use our **Futura-Font** Package.
