@@ -1,13 +1,13 @@
-import * as React from 'react'
-import * as RNLocalize from 'react-native-localize'
-import { createAppContainer } from 'react-navigation'
-import { IAppState } from './App.state'
-import { watchConfiguration } from './src/globalConfiguration/developerProtection/developerProtection'
-import { logEvent, LogType } from './src/mvc/controllers/LoggingController/LoggingController'
-import { setCurrentLanguageBundle } from './src/mvc/controllers/MultiLingualityController/MultiLingualityController'
-import Router from './src/mvc/views/components/system/TabRouter/TabRouter'
+import * as React from "react"
+import * as RNLocalize from "react-native-localize"
+import { createAppContainer } from "react-navigation"
+import { IAppState } from "./App.state"
+import { watchConfiguration } from "./src/globalConfiguration/developerProtection/developerProtection"
+import { logEvent, LogType } from "./src/mvc/controllers/LoggingController/LoggingController"
+import { setCurrentLanguageBundle } from "./src/mvc/controllers/MultiLingualityController/MultiLingualityController"
+import Router from "./src/mvc/views/components/system/TabRouter/TabRouter"
 
-const TAG = 'App'
+const TAG = "App"
 
 // Start developer protection
 watchConfiguration()
@@ -30,22 +30,22 @@ class App extends React.Component<any, IAppState> {
         setCurrentLanguageBundle() // set initial config
             .then(() => {
                 this.setState({ isTranslationBundleLoaded: true })
-                RNLocalize.addEventListener('change', this.handleLocalizationChange)
+                RNLocalize.addEventListener("change", this.handleLocalizationChange)
             })
             .catch((error: Error) => {
-                logEvent(LogType.ERROR, `${TAG}:constructor:setCurrentLanguageBundle`, 'Could not set current language bundle.', error)
+                logEvent(LogType.ERROR, `${TAG}:constructor:setCurrentLanguageBundle`, "Could not set current language bundle.", error)
             })
     }
 
     public componentWillUnmount() {
-        RNLocalize.removeEventListener('change', this.handleLocalizationChange)
+        RNLocalize.removeEventListener("change", this.handleLocalizationChange)
     }
 
     public handleLocalizationChange = () => {
         setCurrentLanguageBundle()
             .then(() => this.forceUpdate())
             .catch((error: Error) => {
-                logEvent(LogType.ERROR, `${TAG}:constructor:setCurrentLanguageBundle`, 'Could not set current language bundle.', error)
+                logEvent(LogType.ERROR, `${TAG}:constructor:setCurrentLanguageBundle`, "Could not set current language bundle.", error)
             })
     }
 

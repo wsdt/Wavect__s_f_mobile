@@ -62,7 +62,7 @@ var GlobalStyles_css_1 = require("../../../GlobalStyles.css");
 var LoadingHoc_1 = require("../../system/HOCs/LoadingHoc");
 var SettingsFullpage_css_1 = require("./SettingsFullpage.css");
 var SettingsFullpage_translations_1 = require("./SettingsFullpage.translations");
-var TAG = "SettingsFullpage";
+var TAG = "PersonalSettingsFullpage";
 var SettingsFullpage = (function (_super) {
     __extends(SettingsFullpage, _super);
     function SettingsFullpage() {
@@ -220,4 +220,4 @@ var SettingsFullpage = (function (_super) {
     return SettingsFullpage;
 }(react_1.default.PureComponent));
 exports.SettingsFullpage = SettingsFullpage;
-//# sourceMappingURL=SettingsFullpage.js.map
+//# sourceMappingURL=PersonalSettingsFullpage.js.map

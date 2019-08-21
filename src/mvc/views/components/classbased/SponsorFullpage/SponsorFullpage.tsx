@@ -1,29 +1,23 @@
 import React from 'react'
-import {Linking, ScrollView, View} from 'react-native'
-import {brightness, ColorMatrix, grayscale} from 'react-native-color-matrix-image-filters'
-import {Card} from 'react-native-elements'
+import { Linking, ScrollView, View } from 'react-native'
+import { brightness, ColorMatrix, grayscale } from 'react-native-color-matrix-image-filters'
+import { Card } from 'react-native-elements'
 import FastImage from 'react-native-fast-image'
-import {withMappedNavigationParams} from 'react-navigation-props-mapper'
-import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
-import {BOTTOM_TABBAR_MARGIN} from '../../../GlobalStyles.css'
-import {AppText} from '../../functional/AppText/AppText'
-import {FontType} from '../../functional/AppText/AppText.enum'
-import {MajorBtnType, MajorButton} from '../../functional/MajorButton/MajorButton'
-import {TouchableIcon} from '../../functional/TouchableIcon/TouchableIcon'
-import {styles} from './SponsorFullpage.css'
-import {SponsorFullpageProps} from './SponsorFullpage.props'
+import { withMappedNavigationParams } from 'react-navigation-props-mapper'
+import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { BOTTOM_TABBAR_MARGIN } from '../../../GlobalStyles.css'
+import { AppText } from '../../functional/AppText/AppText'
+import { FontType } from '../../functional/AppText/AppText.enum'
+import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
+import { TouchableIcon } from '../../functional/TouchableIcon/TouchableIcon'
+import { styles } from './SponsorFullpage.css'
+import { SponsorFullpageProps } from './SponsorFullpage.props'
 import s from './SponsorFullpage.translations'
-
 
 const getParagraph = (header: string, text: string) => {
     if (text) {
         return (
-            <Card
-                title={header}
-                containerStyle={styles.cardStyle}
-                titleStyle={styles.cardTitleStyle}
-                dividerStyle={styles.cardDivider}>
-
+            <Card title={header} containerStyle={styles.cardStyle} titleStyle={styles.cardTitleStyle} dividerStyle={styles.cardDivider}>
                 <AppText style={styles.cardText}>{text}</AppText>
             </Card>
         )
@@ -53,7 +47,10 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                         {youtube ? <TouchableIcon icon={'youtube'} onPress={() => Linking.openURL(youtube)} containerStyle={styles.icon} /> : null}
                     </View>
 
-                    <AppText style={styles.sponsorName} font={FontType.COND_LIGHT_OBL}> #{name.toLowerCase()} </AppText>
+                    <AppText style={styles.sponsorName} font={FontType.COND_LIGHT_OBL}>
+                        {' '}
+                        #{name.toLowerCase()}{' '}
+                    </AppText>
 
                     <View style={[styles.roundImageContainer, styles.shadow]}>
                         <FastImage

@@ -1,14 +1,14 @@
 import { StyleSheet } from "react-native"
-import {FontType} from "../../functional/AppText/AppText.enum";
+import { FontType } from "../../functional/AppText/AppText.enum"
 
 export const styles = StyleSheet.create({
     containerStyle: {
-        textAlign: 'center'
+        textAlign: "center",
     },
     cardStyle: {
-        backgroundColor: '#f9f9f9',
+        backgroundColor: "#f9f9f9",
         borderWidth: 1,
-        borderColor: '#ccc'
+        borderColor: "#ccc",
     },
     topBar: {
         position: "relative",
@@ -61,7 +61,7 @@ export const styles = StyleSheet.create({
     boldHeadline: {
         fontSize: 35,
         color: "gray",
-        textAlign: 'center'
+        textAlign: "center",
     },
     buttonContainer: {
         margin: 15,
@@ -95,19 +95,19 @@ export const styles = StyleSheet.create({
     },
     cardTitleStyle: {
         fontFamily: FontType.BOLD,
-        fontSize: 30
+        fontSize: 30,
     },
     cardContainerStyle: {
-        textAlign: 'center',
-        justifyContent: 'center',
-        alignItems: 'center',
+        textAlign: "center",
+        justifyContent: "center",
+        alignItems: "center",
     },
     cardDivider: {
-        width: '100%',
+        width: "100%",
         margin: 5,
     },
     cardText: {
         fontSize: 20,
-        textAlign: 'center',
-    }
+        textAlign: "center",
+    },
 })

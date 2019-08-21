@@ -1,6 +1,7 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
-import { Button, CheckBox, Icon, Input, Text } from 'react-native-elements'
+import { Button, CheckBox, Icon, Input} from 'react-native-elements'
+import { withMappedNavigationParams } from 'react-navigation-props-mapper'
 import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
 import { cachedFetch, putCache } from '../../../../controllers/CacheController/CacheController'
 import { CACHE_KEY_SETTINGS } from '../../../../controllers/CacheController/CacheController.constants'
@@ -9,16 +10,17 @@ import { logEvent, LogType } from '../../../../controllers/LoggingController/Log
 import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { noInternetAvailable } from '../../../../controllers/WarningsController/WarningsController'
 import globalStyles from '../../../GlobalStyles.css'
-import {AppText} from '../../functional/AppText/AppText'
-import {FontType} from '../../functional/AppText/AppText.enum'
+import { AppText } from '../../functional/AppText/AppText'
+import { FontType } from '../../functional/AppText/AppText.enum'
 import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/LoadingHoc'
-import styles from './SettingsFullpage.css'
-import { ISettingsFullpageState } from './SettingsFullpage.state'
-import s from './SettingsFullpage.translations'
+import styles from './PersonalSettingsFullpage.css'
+import { ISettingsFullpageState } from './PersonalSettingsFullpage.state'
+import s from './PersonalSettingsFullpage.translations'
 
-const TAG: string = 'SettingsFullpage'
 
-export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpageState> {
+const TAG: string = 'PersonalSettingsFullpage'
+
+export class PersonalSettingsFullpage extends React.PureComponent<any, ISettingsFullpageState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/settings`
     private static EMAIL_REGEX: RegExp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
     public state: ISettingsFullpageState = {
@@ -56,8 +58,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     private getSettingsView = () => {
         const isFormSubmittable = this.isFormSubmittable()
         return (
-            <ScrollView style={{ flex: 1, width: '100%', margin: 10, }}>
-
+            <ScrollView style={{ flex: 1, width: '100%', margin: 10 }}>
                 <AppText style={styles.row}>{t(s.intro)}</AppText>
 
                 <Input
@@ -65,11 +66,11 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     onChangeText={text => this.emailValidation(text)}
                     containerStyle={styles.row}
                     style={styles.input}
-                    inputStyle={{fontFamily: FontType.STANDARD}}
-                    errorStyle={{fontFamily: FontType.STANDARD}}
+                    inputStyle={{ fontFamily: FontType.STANDARD }}
+                    errorStyle={{ fontFamily: FontType.STANDARD }}
                     label={t(s.form.input_mail.lbl)}
                     placeholder={t(s.form.input_mail.placeholder)}
-                    leftIcon={<Icon name='envelope' type='font-awesome' iconStyle={styles.icon}/>}
+                    leftIcon={<Icon name='envelope' type='font-awesome' iconStyle={styles.icon} />}
                     shake={true}
                     errorMessage={this.state.validEmail ? '' : t(s.form.input_mail.errorMsg)}
                 />
@@ -79,7 +80,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     containerStyle={[styles.row]}
                     checkedColor='#000'
                     title={t(s.form.checkbox_dataprivacy)}
-                    textStyle={{fontFamily: FontType.BOLD}}
+                    textStyle={{ fontFamily: FontType.BOLD }}
                     onPress={() => this.setState({ hasAcceptedDataPrivacy: !this.state.hasAcceptedDataPrivacy })}
                 />
 
@@ -87,7 +88,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
                     containerStyle={styles.row}
                     type='outline'
                     title={t(s.form.btn.save)}
-                    titleStyle={{fontFamily: FontType.STANDARD, marginLeft: 10}}
+                    titleStyle={{ fontFamily: FontType.STANDARD, marginLeft: 10 }}
                     raised={isFormSubmittable}
                     loading={this.state.isSavingSettings}
                     disabled={!isFormSubmittable}
@@ -110,7 +111,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     // Not recommended, use superior cache implementation please
     private getUserSettings = (reload: boolean, cb?: () => void) => {
         cachedFetch(this, CACHE_KEY_SETTINGS, this.loadingContext, reload, async () => {
-            fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, { signal: this.abortController.signal })
+            fetch(`${PersonalSettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, { signal: this.abortController.signal })
                 .then(res => res.json())
                 .then(data => {
                     if (data.res) {
@@ -147,7 +148,7 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     private postUserSettings = () => {
         this.setState({ isSavingSettings: true }, async () => {
             try {
-                const rawResp = await fetch(`${SettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, {
+                const rawResp = await fetch(`${PersonalSettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, {
                     method: 'POST',
                     headers: {
                         Accept: 'application/json',
@@ -175,10 +176,12 @@ export class SettingsFullpage extends React.PureComponent<any, ISettingsFullpage
     }
 
     private emailValidation = (email: string) => {
-        this.setState({ email, validEmail: SettingsFullpage.EMAIL_REGEX.test(email) })
+        this.setState({ email, validEmail: PersonalSettingsFullpage.EMAIL_REGEX.test(email) })
     }
 
     private isFormSubmittable = (): boolean => {
         return this.state.validEmail && this.state.hasAcceptedDataPrivacy
     }
 }
+
+export default withMappedNavigationParams()(PersonalSettingsFullpage)

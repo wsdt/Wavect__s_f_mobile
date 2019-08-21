@@ -5,4 +5,4 @@ var SettingsScreenRouterConfigMap_1 = require("./SettingsScreenRouterConfigMap")
 var SettingsScreenRouterOptions_1 = require("./SettingsScreenRouterOptions");
 var SettingsScreenRouter = react_navigation_1.createStackNavigator(SettingsScreenRouterConfigMap_1.routesConfig, SettingsScreenRouterOptions_1.routerOptions);
 exports.default = SettingsScreenRouter;
-//# sourceMappingURL=SettingsScreenRouter.js.map
+//# sourceMappingURL=GeneralSettingsScreenRouter.js.map

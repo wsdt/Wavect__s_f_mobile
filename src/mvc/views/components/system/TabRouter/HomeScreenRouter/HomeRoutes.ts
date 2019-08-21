@@ -2,5 +2,6 @@
 
 export const routes = {
     HomeScreen: "HomeScreen",
-    SponsorFullpage: "SponsorFullpage2",
+    SponsorFullpage: "SponsorFullpage",
+    PersonalSettingsFullpage: "PersonalSettingsFullpage"
 }

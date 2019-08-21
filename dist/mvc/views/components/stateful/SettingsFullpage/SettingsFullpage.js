@@ -121,10 +121,10 @@ var SettingsFullpage = (function (_super) {
                                     };
                                     _this.setState(apiRes);
                                     CacheController_1.putCache(CacheController_constants_1.CACHE_KEY_SETTINGS, apiRes);
-                                    console.log('SettingsFullpage:getUserSettings: Received user settings.');
+                                    console.log('PersonalSettingsFullpage:getUserSettings: Received user settings.');
                                 }
                                 else {
-                                    console.log('SettingsFullpage:getUserSettings: No user settings previously saved');
+                                    console.log('PersonalSettingsFullpage:getUserSettings: No user settings previously saved');
                                 }
                                 _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE);
                                 if (cb) {
@@ -170,7 +170,7 @@ var SettingsFullpage = (function (_super) {
                         case 3:
                             res = _c.sent();
                             LocalStorageController_1.markEmailAsCreated();
-                            console.log('SettingsFullpage:postUserSettings: Tried to save userSettings -> ' + JSON.stringify(res));
+                            console.log('PersonalSettingsFullpage:postUserSettings: Tried to save userSettings -> ' + JSON.stringify(res));
                             return [3, 6];
                         case 4:
                             e_1 = _c.sent();
@@ -214,4 +214,4 @@ var SettingsFullpage = (function (_super) {
     return SettingsFullpage;
 }(react_1.default.PureComponent));
 exports.SettingsFullpage = SettingsFullpage;
-//# sourceMappingURL=SettingsFullpage.js.map
+//# sourceMappingURL=PersonalSettingsFullpage.js.map

@@ -2,5 +2,5 @@
 
 export const tabRoutes = {
     HomeScreen: "HomeScreen",
-    SettingsScreen: "SettingsScreen",
+    SettingsScreen: "GeneralSettingsFullpage",
 }

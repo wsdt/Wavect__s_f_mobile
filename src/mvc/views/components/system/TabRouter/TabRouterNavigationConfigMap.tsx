@@ -2,7 +2,7 @@ import * as React from "react"
 import { Image } from "react-native"
 import { NavigationRouteConfigMap } from "react-navigation"
 import HomeScreenRouter from "./HomeScreenRouter/HomeScreenRouter"
-import SettingsScreenRouter from "./SettingsScreenRouter/SettingsScreenRouter"
+import GeneralSettingsScreenRouter from "./GeneralSettingsScreenRouter/GeneralSettingsScreenRouter"
 import { tabRoutes } from "./TabRoutes"
 
 /**
@@ -29,7 +29,7 @@ export const routesConfig: NavigationRouteConfigMap = {
         tabBarOptions: {
             showIcon: true,
         },
-        screen: SettingsScreenRouter,
+        screen: GeneralSettingsScreenRouter,
         navigationOptions: {
             tabBarIcon: () => (
                 <Image

@@ -12,4 +12,4 @@ var styles = react_native_1.StyleSheet.create({
     },
 });
 exports.default = styles;
-//# sourceMappingURL=SettingsFullpage.css.js.map
+//# sourceMappingURL=PersonalSettingsFullpage.css.js.map

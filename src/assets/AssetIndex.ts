@@ -16,6 +16,6 @@ export import INFO = require('./img/icons/info.png')
 export import INFOBUTTON = require('./img/icons/infobutton.png')
 // @ts-ignore
 export import ICO_SOCIETY = require('./img/icons/society.png')
-
-
+// @ts-ignore
+export import LOGO = require('./img/logo_w.png')
 
