@@ -78,6 +78,7 @@ import com.android.build.OutputFile
 project.ext.react = [
     entryFile: "index.js",
     enableHermes: true,  // clean and rebuild if changing (WORKS!)
+    hermesCommand: "../../node_modules/hermes-engine/%OS-BIN%/hermes", //TODO inserted that line, but somehow not found in .AAB build!
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -131,8 +132,8 @@ android {
         applicationId "com.wavect"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 19
-        versionName "0.1.4"
+        versionCode 22
+        versionName "0.1.6"
     }
     splits {
         abi {

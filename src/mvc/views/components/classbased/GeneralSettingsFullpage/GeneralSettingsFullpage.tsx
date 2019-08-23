@@ -22,11 +22,21 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
                 </View>
 
                 <View style={styles.navigationView}>
-                    <AppText style={styles.navText} onPress={() => this.props.navigation.navigate(routes.PersonalSettingsFullpage)}>Persönliche Daten hinterlegen</AppText>
-                    <AppText style={styles.navText} onPress={() => Linking.openURL('https://wordpress.dev.wavect.io/')}>Idee für Challenge einreichen</AppText>
-                    <AppText style={styles.navText} onPress={() => Linking.openURL('https://wordpress.dev.wavect.io/')}>Homepage besuchen</AppText>
-                    <AppText style={styles.navText} onPress={() => Linking.openURL('https://wordpress.dev.wavect.io/privacy-policy/')}>Teilnahmebedingungen </AppText>
-                    <AppText style={styles.navText} onPress={() => Linking.openURL('https://wordpress.dev.wavect.io/privacy-policy/')}>AGB</AppText>
+                    <AppText style={styles.navText} onPress={() => this.props.navigation.navigate(routes.PersonalSettingsFullpage)}>
+                        Persönliche Daten hinterlegen
+                    </AppText>
+                    <AppText style={styles.navText} onPress={() => Linking.openURL('https://wordpress.dev.wavect.io/')}>
+                        Idee für Challenge einreichen
+                    </AppText>
+                    <AppText style={styles.navText} onPress={() => Linking.openURL('https://wordpress.dev.wavect.io/')}>
+                        Homepage besuchen
+                    </AppText>
+                    <AppText style={styles.navText} onPress={() => Linking.openURL('https://wordpress.dev.wavect.io/privacy-policy/')}>
+                        Teilnahmebedingungen{' '}
+                    </AppText>
+                    <AppText style={styles.navText} onPress={() => Linking.openURL('https://wordpress.dev.wavect.io/privacy-policy/')}>
+                        AGB
+                    </AppText>
                 </View>
             </View>
         )
