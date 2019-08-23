@@ -1,6 +1,6 @@
 import React from 'react'
 import { ScrollView, View } from 'react-native'
-import { Button, CheckBox, Icon, Input} from 'react-native-elements'
+import {Button, Card, CheckBox, Icon, Input} from 'react-native-elements'
 import { withMappedNavigationParams } from 'react-navigation-props-mapper'
 import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
 import { cachedFetch, putCache } from '../../../../controllers/CacheController/CacheController'
@@ -16,7 +16,6 @@ import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/Lo
 import styles from './PersonalSettingsFullpage.css'
 import { ISettingsFullpageState } from './PersonalSettingsFullpage.state'
 import s from './PersonalSettingsFullpage.translations'
-
 
 const TAG: string = 'PersonalSettingsFullpage'
 
@@ -58,26 +57,25 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
     private getSettingsView = () => {
         const isFormSubmittable = this.isFormSubmittable()
         return (
-            <ScrollView style={{ flex: 1, width: '100%', margin: 10 }}>
-                <AppText style={styles.row}>{t(s.intro)}</AppText>
+            <ScrollView contentContainerStyle={styles.containerStyle} style={styles.scrollStyle}>
+                <AppText style={styles.introText}>{t(s.intro)}</AppText>
 
-                <Input
-                    value={this.state.email}
-                    onChangeText={text => this.emailValidation(text)}
-                    containerStyle={styles.row}
-                    style={styles.input}
-                    inputStyle={{ fontFamily: FontType.STANDARD }}
-                    errorStyle={{ fontFamily: FontType.STANDARD }}
-                    label={t(s.form.input_mail.lbl)}
-                    placeholder={t(s.form.input_mail.placeholder)}
-                    leftIcon={<Icon name='envelope' type='font-awesome' iconStyle={styles.icon} />}
-                    shake={true}
-                    errorMessage={this.state.validEmail ? '' : t(s.form.input_mail.errorMsg)}
-                />
+                <Card containerStyle={styles.cardStyle}>
+                    <Input
+                        value={this.state.email}
+                        onChangeText={text => this.emailValidation(text)}
+                        inputStyle={{ fontFamily: FontType.STANDARD }}
+                        errorStyle={{ fontFamily: FontType.STANDARD }}
+                        label={t(s.form.input_mail.lbl)}
+                        placeholder={t(s.form.input_mail.placeholder)}
+                        leftIcon={<Icon name='envelope' type='font-awesome' iconStyle={styles.icon} />}
+                        shake={true}
+                        errorMessage={this.state.validEmail ? '' : t(s.form.input_mail.errorMsg)}
+                    />
+                </Card>
 
                 <CheckBox
                     checked={this.state.hasAcceptedDataPrivacy}
-                    containerStyle={[styles.row]}
                     checkedColor='#000'
                     title={t(s.form.checkbox_dataprivacy)}
                     textStyle={{ fontFamily: FontType.BOLD }}
@@ -85,11 +83,11 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
                 />
 
                 <Button
-                    containerStyle={styles.row}
                     type='outline'
                     title={t(s.form.btn.save)}
-                    titleStyle={{ fontFamily: FontType.STANDARD, marginLeft: 10 }}
+                    titleStyle={ styles.buttonTextStyle }
                     raised={isFormSubmittable}
+                    containerStyle={styles.buttonStyle}
                     loading={this.state.isSavingSettings}
                     disabled={!isFormSubmittable}
                     icon={<Icon name='save' type='font-awesome' />}

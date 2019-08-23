@@ -1,3 +1,3 @@
-/// <reference types="react" />
-import AppTextEnum from './AppText.enum';
-export declare const AppText: (styles: any, font: AppTextEnum, props: any) => JSX.Element;
+import * as React from "react";
+import { IAPPProps } from "./AppText.props";
+export declare const AppText: React.FunctionComponent<IAPPProps>;

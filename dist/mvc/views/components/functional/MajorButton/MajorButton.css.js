@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_native_1 = require("react-native");
 var globalConstants_css_1 = require("../../../../../globalConfiguration/globalConstants.css");
+var AppText_enum_1 = require("../AppText/AppText.enum");
 var styles = react_native_1.StyleSheet.create({
     primaryBtnContainer: {
         backgroundColor: "#f3f3ee",
@@ -22,6 +23,7 @@ var styles = react_native_1.StyleSheet.create({
     btnTitleStandard: {
         color: "#000",
         fontSize: 20,
+        fontFamily: AppText_enum_1.FontType.BOLD,
         padding: 10,
     },
     btnStyleWithBorder: {
@@ -30,6 +32,7 @@ var styles = react_native_1.StyleSheet.create({
     },
     btnTitleHighlighted: {
         color: globalConstants_css_1.secondaryColor,
+        fontFamily: AppText_enum_1.FontType.BOLD,
         fontSize: 20,
         padding: 10,
     },

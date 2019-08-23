@@ -2,6 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.tabRoutes = {
     HomeScreen: "HomeScreen",
-    SettingsScreen: "SettingsScreen",
+    SettingsScreen: "GeneralSettingsFullpage",
 };
 //# sourceMappingURL=TabRoutes.js.map

@@ -8,4 +8,5 @@ exports.ICO_TAB_SETTINGS = require("./img/icons/ic_tab_settings.png");
 exports.INFO = require("./img/icons/info.png");
 exports.INFOBUTTON = require("./img/icons/infobutton.png");
 exports.ICO_SOCIETY = require("./img/icons/society.png");
+exports.LOGO = require("./img/logo_w.png");
 //# sourceMappingURL=AssetIndex.js.map

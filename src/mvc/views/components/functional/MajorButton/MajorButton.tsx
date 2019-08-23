@@ -1,8 +1,8 @@
-import React from 'react'
-import { View } from 'react-native'
-import { Button, Icon } from 'react-native-elements'
-import styles from './MajorButton.css'
-import { IMajorButtonProps } from './MajorButton.props'
+import React from "react"
+import { View } from "react-native"
+import { Button, Icon } from "react-native-elements"
+import styles from "./MajorButton.css"
+import { IMajorButtonProps } from "./MajorButton.props"
 
 export const MajorButton: React.FunctionComponent<IMajorButtonProps> = props => {
     // TODO: Allow to provide custom style obj (merge here) e.g. flex dynamic
@@ -27,13 +27,13 @@ export const MajorButton: React.FunctionComponent<IMajorButtonProps> = props => 
         <View style={containerStyle}>
             <Button
                 title={title}
-                type='outline'
+                type="outline"
                 titleStyle={titleStyle}
                 buttonStyle={styles.btnStyleWithBorder}
                 onPress={onPress}
                 onLongPress={onLongPress}
                 loading={props.isLoading}
-                icon={icon ? <Icon name={icon} type='font-awesome' /> : undefined}
+                icon={icon ? <Icon name={icon} type="font-awesome" /> : undefined}
             />
         </View>
     )

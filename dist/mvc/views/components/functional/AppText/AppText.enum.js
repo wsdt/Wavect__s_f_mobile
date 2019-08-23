@@ -2,6 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var FontType;
 (function (FontType) {
+    FontType["STANDARD"] = "FuturaStd-Medium";
+    FontType["STANDARD_BOLD"] = "FuturaStd-Bold";
     FontType["BOLD"] = "FuturaStd-Bold";
     FontType["COND"] = "FuturaStd-Condensed";
     FontType["HEAVY"] = "FuturaStd-Heavy";
@@ -13,7 +15,7 @@ var FontType;
     FontType["COND_EX_BD"] = "FuturaStd-CondensedExtraB";
     FontType["COND_LIGHT"] = "FuturaStd-CondensedLight";
     FontType["COND_LIGHT_OBL"] = "FuturaStd-CondensedLight";
-    FontType["COND_OBL"] = "FuturaStd-CondensedOblique";
+    FontType["COND_OBL"] = "FuturaStd-CondensedLightObl";
     FontType["COND_EX_BD_OBL"] = "FuturaStd-CondExtraBoldObl";
     FontType["EX_BD"] = "FuturaStd-ExtraBold";
     FontType["EX_BD_OBL"] = "FuturaStd-ExtraBoldOblique";
@@ -21,5 +23,4 @@ var FontType;
     FontType["LIGHT_OBL"] = "FuturaStd-LightOblique";
     FontType["MEDIUM_OBL"] = "FuturaStd-MediumOblique";
 })(FontType = exports.FontType || (exports.FontType = {}));
-exports.default = FontType;
 //# sourceMappingURL=AppText.enum.js.map

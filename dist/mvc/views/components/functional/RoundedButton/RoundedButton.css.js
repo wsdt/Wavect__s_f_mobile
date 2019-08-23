@@ -12,6 +12,7 @@ var styles = react_native_1.StyleSheet.create({
     },
     title: {
         color: "#fff",
+        fontSize: 12,
     },
 });
 exports.default = styles;

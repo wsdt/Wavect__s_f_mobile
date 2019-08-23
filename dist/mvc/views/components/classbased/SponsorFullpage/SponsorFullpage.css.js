@@ -1,11 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_native_1 = require("react-native");
+var AppText_enum_1 = require("../../functional/AppText/AppText.enum");
 exports.styles = react_native_1.StyleSheet.create({
-    container: {
-        flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
+    containerStyle: {
+        textAlign: "center",
+    },
+    cardStyle: {
+        backgroundColor: "#f9f9f9",
+        borderWidth: 1,
+        borderColor: "#ccc",
     },
     topBar: {
         position: "relative",
@@ -52,14 +56,9 @@ exports.styles = react_native_1.StyleSheet.create({
         padding: 10,
     },
     boldHeadline: {
-        fontSize: 30,
-        fontWeight: "bold",
+        fontSize: 35,
         color: "gray",
-        justifyContent: "center",
-        alignContent: "center",
-        marginTop: 20,
-        paddingLeft: 10,
-        paddingRight: 10,
+        textAlign: "center",
     },
     buttonContainer: {
         margin: 15,
@@ -91,11 +90,22 @@ exports.styles = react_native_1.StyleSheet.create({
         marginRight: 20,
         marginTop: 20,
     },
-    blockText: {
-        padding: 10,
-        marginLeft: 10,
-        marginRight: 10,
-        fontSize: 16,
+    cardTitleStyle: {
+        fontFamily: AppText_enum_1.FontType.BOLD,
+        fontSize: 30,
+    },
+    cardContainerStyle: {
+        textAlign: "center",
+        justifyContent: "center",
+        alignItems: "center",
+    },
+    cardDivider: {
+        width: "100%",
+        margin: 5,
+    },
+    cardText: {
+        fontSize: 20,
+        textAlign: "center",
     },
 });
 //# sourceMappingURL=SponsorFullpage.css.js.map

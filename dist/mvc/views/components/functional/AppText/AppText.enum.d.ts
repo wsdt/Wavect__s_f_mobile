@@ -1,4 +1,6 @@
 export declare enum FontType {
+    STANDARD = "FuturaStd-Medium",
+    STANDARD_BOLD = "FuturaStd-Bold",
     BOLD = "FuturaStd-Bold",
     COND = "FuturaStd-Condensed",
     HEAVY = "FuturaStd-Heavy",
@@ -10,7 +12,7 @@ export declare enum FontType {
     COND_EX_BD = "FuturaStd-CondensedExtraB",
     COND_LIGHT = "FuturaStd-CondensedLight",
     COND_LIGHT_OBL = "FuturaStd-CondensedLight",
-    COND_OBL = "FuturaStd-CondensedOblique",
+    COND_OBL = "FuturaStd-CondensedLightObl",
     COND_EX_BD_OBL = "FuturaStd-CondExtraBoldObl",
     EX_BD = "FuturaStd-ExtraBold",
     EX_BD_OBL = "FuturaStd-ExtraBoldOblique",
@@ -18,4 +20,3 @@ export declare enum FontType {
     LIGHT_OBL = "FuturaStd-LightOblique",
     MEDIUM_OBL = "FuturaStd-MediumOblique"
 }
-export default FontType;

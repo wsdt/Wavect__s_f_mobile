@@ -3,8 +3,8 @@
  *
  */
 
-import {Alert} from "react-native";
+import { Alert } from "react-native"
 
 export const notImplementedYet = () => {
-    return Alert.alert('Hi there! :-) This feature hasn\'t been implemented yet!')
+    return Alert.alert("Hi there! :-) This feature hasn't been implemented yet!")
 }

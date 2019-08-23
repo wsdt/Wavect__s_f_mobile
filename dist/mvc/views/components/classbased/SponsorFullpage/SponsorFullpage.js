@@ -3,20 +3,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var react_1 = require("react");
 var react_native_1 = require("react-native");
 var react_native_color_matrix_image_filters_1 = require("react-native-color-matrix-image-filters");
+var react_native_elements_1 = require("react-native-elements");
 var react_native_fast_image_1 = require("react-native-fast-image");
 var react_navigation_props_mapper_1 = require("react-navigation-props-mapper");
 var MultiLingualityController_1 = require("../../../../controllers/MultiLingualityController/MultiLingualityController");
 var GlobalStyles_css_1 = require("../../../GlobalStyles.css");
+var AppText_1 = require("../../functional/AppText/AppText");
+var AppText_enum_1 = require("../../functional/AppText/AppText.enum");
 var MajorButton_1 = require("../../functional/MajorButton/MajorButton");
 var TouchableIcon_1 = require("../../functional/TouchableIcon/TouchableIcon");
 var SponsorFullpage_css_1 = require("./SponsorFullpage.css");
 var SponsorFullpage_translations_1 = require("./SponsorFullpage.translations");
 var getParagraph = function (header, text) {
     if (text) {
-        return (<>
-                <react_native_1.Text style={SponsorFullpage_css_1.styles.boldHeadline}> {header}</react_native_1.Text>
-                <react_native_1.Text style={SponsorFullpage_css_1.styles.blockText}>{text}</react_native_1.Text>
-            </>);
+        return (<react_native_elements_1.Card title={header} containerStyle={SponsorFullpage_css_1.styles.cardStyle} titleStyle={SponsorFullpage_css_1.styles.cardTitleStyle} dividerStyle={SponsorFullpage_css_1.styles.cardDivider}>
+                <AppText_1.AppText style={SponsorFullpage_css_1.styles.cardText}>{text}</AppText_1.AppText>
+            </react_native_elements_1.Card>);
     }
     return null;
 };
@@ -29,19 +31,22 @@ var SponsorFullpage = function (props) {
         uri: props.challengeBgImage.uri,
     }}>
                     <react_native_1.View style={SponsorFullpage_css_1.styles.socialMedia}>
-                        {linkedin ? <TouchableIcon_1.TouchableIcon icon={'linkedin'} onPress={function () { return react_native_1.Linking.openURL(linkedin); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
-                        {facebook ? <TouchableIcon_1.TouchableIcon icon={'facebook'} onPress={function () { return react_native_1.Linking.openURL(facebook); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
-                        {instagram ? (<TouchableIcon_1.TouchableIcon icon={'instagram'} onPress={function () { return react_native_1.Linking.openURL(instagram); }} containerStyle={SponsorFullpage_css_1.styles.icon}/>) : null}
-                        {youtube ? <TouchableIcon_1.TouchableIcon icon={'youtube'} onPress={function () { return react_native_1.Linking.openURL(youtube); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {linkedin ? <TouchableIcon_1.TouchableIcon icon={"linkedin"} onPress={function () { return react_native_1.Linking.openURL(linkedin); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {facebook ? <TouchableIcon_1.TouchableIcon icon={"facebook"} onPress={function () { return react_native_1.Linking.openURL(facebook); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {instagram ? (<TouchableIcon_1.TouchableIcon icon={"instagram"} onPress={function () { return react_native_1.Linking.openURL(instagram); }} containerStyle={SponsorFullpage_css_1.styles.icon}/>) : null}
+                        {youtube ? <TouchableIcon_1.TouchableIcon icon={"youtube"} onPress={function () { return react_native_1.Linking.openURL(youtube); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
                     </react_native_1.View>
 
-                    <react_native_1.Text style={SponsorFullpage_css_1.styles.sponsorName}> #{name.toLowerCase()} </react_native_1.Text>
+                    <AppText_1.AppText style={SponsorFullpage_css_1.styles.sponsorName} font={AppText_enum_1.FontType.COND_LIGHT_OBL}>
+                        {" "}
+                        #{name.toLowerCase()}{" "}
+                    </AppText_1.AppText>
 
                     <react_native_1.View style={[SponsorFullpage_css_1.styles.roundImageContainer, SponsorFullpage_css_1.styles.shadow]}>
                         <react_native_fast_image_1.default source={{
         priority: react_native_fast_image_1.default.priority.high,
         uri: logoUri.uri,
-    }} style={SponsorFullpage_css_1.styles.imageStyle} resizeMode={'contain'}/>
+    }} style={SponsorFullpage_css_1.styles.imageStyle} resizeMode={"contain"}/>
                     </react_native_1.View>
                 </react_native_fast_image_1.default>
             </react_native_color_matrix_image_filters_1.ColorMatrix>
@@ -53,13 +58,12 @@ var SponsorFullpage = function (props) {
                     {getParagraph(MultiLingualityController_1.t(SponsorFullpage_translations_1.default.headers.aboutUs), aboutUs)}
                     {getParagraph(MultiLingualityController_1.t(SponsorFullpage_translations_1.default.headers.misc), misc)}
 
-                    {website || email ? (<>
-                            <react_native_1.Text style={SponsorFullpage_css_1.styles.boldHeadline}> Kontakt</react_native_1.Text>
+                    {website || email ? (<react_native_elements_1.Card title="Kontakt" titleStyle={SponsorFullpage_css_1.styles.cardTitleStyle} containerStyle={SponsorFullpage_css_1.styles.cardStyle}>
                             <react_native_1.View style={SponsorFullpage_css_1.styles.buttonContainer}>
-                                {website ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(SponsorFullpage_translations_1.default.btn.website)} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL(website); }} icon='globe'/>) : null}
-                                {email ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(SponsorFullpage_translations_1.default.btn.email)} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL("mailto:" + email); }} icon='envelope'/>) : null}
+                                {website ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(SponsorFullpage_translations_1.default.btn.website)} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL(website); }} icon="globe"/>) : null}
+                                {email ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(SponsorFullpage_translations_1.default.btn.email)} btnType={MajorButton_1.MajorBtnType.SECONDARY} onPress={function () { return react_native_1.Linking.openURL("mailto:" + email); }} icon="envelope"/>) : null}
                             </react_native_1.View>
-                        </>) : null}
+                        </react_native_elements_1.Card>) : null}
                 </react_native_1.View>
             </react_native_1.ScrollView>
         </react_native_1.View>);

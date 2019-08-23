@@ -23,5 +23,9 @@ export const AppText: React.FunctionComponent<IAPPProps> = props => {
 
     const textStyle = props.font ? styleSheet.custom : styleSheet.standard
 
-    return <Text style={[textStyle, props.style]} onPress={props.onPress}>{props.children}</Text>
+    return (
+        <Text style={[textStyle, props.style]} onPress={props.onPress}>
+            {props.children}
+        </Text>
+    )
 }

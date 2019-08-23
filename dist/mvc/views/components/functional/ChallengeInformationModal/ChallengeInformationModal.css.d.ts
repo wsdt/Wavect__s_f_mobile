@@ -1,12 +1,5 @@
 declare const styles: {
-    containerStyle: {
-        alignItems: "center";
-        justifyContent: "center";
-        backgroundColor: string;
-    };
     innerContent: {
-        alignItems: "center";
-        textAlign: "center";
         backgroundColor: string;
         opacity: number;
         padding: number;
@@ -14,10 +7,15 @@ declare const styles: {
         borderWidth: number;
         borderColor: string;
     };
+    centeredInnerContent: {
+        alignItems: "center";
+        justifyContent: "center";
+    };
     centeredText: {
         textAlign: "center";
         fontSize: number;
         margin: number;
+        lineHeight: number;
     };
     ending: {
         textAlign: "center";
@@ -32,6 +30,10 @@ declare const styles: {
         width: number;
         height: number;
         margin: number;
+    };
+    closeIcon: {
+        justifyContent: "flex-end";
+        alignItems: "flex-end";
     };
 };
 export default styles;

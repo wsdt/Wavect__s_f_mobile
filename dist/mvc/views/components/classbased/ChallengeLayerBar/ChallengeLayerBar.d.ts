@@ -1,6 +1,6 @@
-import React from 'react';
-import { IChallengeLayerBarProps } from './ChallengeLayerBar.props';
-import { IChallengeLayerBarState } from './ChallengeLayerBar.state';
+import React from "react";
+import { IChallengeLayerBarProps } from "./ChallengeLayerBar.props";
+import { IChallengeLayerBarState } from "./ChallengeLayerBar.state";
 declare class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, IChallengeLayerBarState> {
     private static API_ENDPOINT;
     state: IChallengeLayerBarState;

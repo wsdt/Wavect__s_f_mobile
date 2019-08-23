@@ -1,3 +1,4 @@
+import { FontType } from "../AppText/AppText.enum";
 declare const styles: {
     primaryBtnContainer: {
         backgroundColor: string;
@@ -18,6 +19,7 @@ declare const styles: {
     btnTitleStandard: {
         color: string;
         fontSize: number;
+        fontFamily: FontType;
         padding: number;
     };
     btnStyleWithBorder: {
@@ -26,6 +28,7 @@ declare const styles: {
     };
     btnTitleHighlighted: {
         color: string;
+        fontFamily: FontType;
         fontSize: number;
         padding: number;
     };

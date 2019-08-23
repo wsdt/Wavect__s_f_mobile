@@ -27,13 +27,16 @@ declare const styles: {
         margin: number;
     };
     headline: {
-        fontSize: number;
-        fontWeight: "bold";
         margin: number;
+        fontSize: number;
+        letterSpacing: number;
     };
     subline: {
-        fontSize: number;
         margin: number;
+        textAlign: "left";
+        justifyContent: "flex-start";
+        fontSize: number;
+        lineHeight: number;
     };
     bottomActionContainer: {
         height: number;

@@ -2,39 +2,41 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_native_1 = require("react-native");
 var styles = react_native_1.StyleSheet.create({
-    containerStyle: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'transparent',
-    },
     innerContent: {
-        alignItems: 'center',
-        textAlign: 'center',
-        backgroundColor: 'white',
-        opacity: 0.75,
+        backgroundColor: "white",
+        opacity: 0.9,
         padding: 5,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#fff'
+        borderColor: "#fff",
+    },
+    centeredInnerContent: {
+        alignItems: "center",
+        justifyContent: "center",
     },
     centeredText: {
-        textAlign: 'center',
+        textAlign: "center",
         fontSize: 23,
         margin: 10,
+        lineHeight: 40,
     },
     ending: {
-        textAlign: 'center',
+        textAlign: "center",
         fontSize: 23,
-        margin: 10
+        margin: 15,
     },
     horizontalLine: {
-        borderBottomColor: 'black',
+        borderBottomColor: "black",
         borderBottomWidth: 1,
     },
     image: {
         width: 30,
         height: 30,
-        margin: 15
+        margin: 10,
+    },
+    closeIcon: {
+        justifyContent: "flex-end",
+        alignItems: "flex-end",
     },
 });
 exports.default = styles;

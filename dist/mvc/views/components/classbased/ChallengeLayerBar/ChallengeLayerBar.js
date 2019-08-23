@@ -59,13 +59,14 @@ var LoggingController_1 = require("../../../../controllers/LoggingController/Log
 var MultiLingualityController_1 = require("../../../../controllers/MultiLingualityController/MultiLingualityController");
 var ShareController_1 = require("../../../../controllers/ShareController/ShareController");
 var WarningsController_1 = require("../../../../controllers/WarningsController/WarningsController");
+var AppText_1 = require("../../functional/AppText/AppText");
+var AppText_enum_1 = require("../../functional/AppText/AppText.enum");
 var MajorButton_1 = require("../../functional/MajorButton/MajorButton");
-var SettingsRoutes_1 = require("../../system/TabRouter/SettingsScreenRouter/SettingsRoutes");
+var HomeRoutes_1 = require("../../system/TabRouter/HomeScreenRouter/HomeRoutes");
 var ChallengeLayerBar_constants_1 = require("./ChallengeLayerBar.constants");
 var ChallengeLayerBar_css_1 = require("./ChallengeLayerBar.css");
 var ChallengeLayerBar_translations_1 = require("./ChallengeLayerBar.translations");
-var AppText_1 = require("../../functional/AppText/AppText");
-var TAG = 'ChallengeLayerBar';
+var TAG = "ChallengeLayerBar";
 var ChallengeLayerBar = (function (_super) {
     __extends(ChallengeLayerBar, _super);
     function ChallengeLayerBar() {
@@ -90,10 +91,10 @@ var ChallengeLayerBar = (function (_super) {
                         _b = ChallengeLayerBar.API_ENDPOINT + "/current/";
                         return [4, LocalStorageController_1.getLocalUserId()];
                     case 1: return [4, _a.apply(void 0, [_b + (_c.sent()), {
-                                method: 'POST',
+                                method: "POST",
                                 headers: {
-                                    Accept: 'application/json',
-                                    'Content-Type': 'application/json',
+                                    Accept: "application/json",
+                                    "Content-Type": "application/json",
                                 },
                                 body: JSON.stringify({
                                     email: this.props.sponsorEmail,
@@ -107,7 +108,7 @@ var ChallengeLayerBar = (function (_super) {
                         }
                         else {
                             this.storeChallengeSolved();
-                            LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", 'Sent email to sponsor');
+                            LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", "Sent email to sponsor");
                         }
                         return [3, 5];
                     case 4:
@@ -130,7 +131,7 @@ var ChallengeLayerBar = (function (_super) {
                         currChallengeSolved: false,
                         isLoadingChallengeSolved: false,
                     });
-                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":userAbortedProcedure", 'User aborted');
+                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":userAbortedProcedure", "User aborted");
                 };
                 shareChallengeSolved = function () { return __awaiter(_this, void 0, void 0, function () {
                     var res, e_2;
@@ -144,7 +145,7 @@ var ChallengeLayerBar = (function (_super) {
                                 res = _a.sent();
                                 if (!(res.error || res.didCancel)) return [3, 2];
                                 userAbortedProcedure();
-                                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", 'User did not choose a file');
+                                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", "User did not choose a file");
                                 return [3, 4];
                             case 2: return [4, ShareController_1.shareMedia(this.props.headline, this.props.sponsorName, res).then(function (response) {
                                     if (response) {
@@ -155,7 +156,7 @@ var ChallengeLayerBar = (function (_super) {
                                         });
                                     }
                                     else {
-                                        react_native_1.Alert.alert('Ausgabe' + response);
+                                        react_native_1.Alert.alert("Ausgabe" + response);
                                         _this.sendChallengeSolvedEmailToSponsor();
                                     }
                                 })];
@@ -193,12 +194,12 @@ var ChallengeLayerBar = (function (_super) {
                             react_native_1.Alert.alert(MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.dialog.settings_not_set.title), MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.dialog.settings_not_set.msg), [
                                 {
                                     text: MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.dialog.settings_not_set.btn_ok),
-                                    onPress: function () { return _this.props.navigation.navigate(SettingsRoutes_1.routes.SettingsScreen); },
+                                    onPress: function () { return _this.props.navigation.navigate(HomeRoutes_1.routes.PersonalSettingsFullpage); },
                                 },
                             ], {
                                 cancelable: true,
                             });
-                            this.props.navigation.navigate(SettingsRoutes_1.routes.SettingsScreen);
+                            this.props.navigation.navigate(HomeRoutes_1.routes.PersonalSettingsFullpage);
                         }
                         return [2];
                 }
@@ -263,8 +264,12 @@ var ChallengeLayerBar = (function (_super) {
         var _a = this.props, headline = _a.headline, subline = _a.subline;
         return (<react_native_1.View style={ChallengeLayerBar_css_1.default.mainComponent}>
                 <react_native_1.View style={ChallengeLayerBar_css_1.default.bottomActionContainer}>
-                    <AppText_1.AppText style={ChallengeLayerBar_css_1.default.headline}>{headline}</AppText_1.AppText>
-                    <AppText_1.AppText style={ChallengeLayerBar_css_1.default.subline}>{subline}</AppText_1.AppText>
+                    <react_native_1.View style={{ padding: 10 }}>
+                        <AppText_1.AppText style={ChallengeLayerBar_css_1.default.headline} font={AppText_enum_1.FontType.HEAVY}>
+                            {headline}
+                        </AppText_1.AppText>
+                        <AppText_1.AppText style={ChallengeLayerBar_css_1.default.subline}>{subline}</AppText_1.AppText>
+                    </react_native_1.View>
 
                     <react_native_1.View style={ChallengeLayerBar_css_1.default.btnContainer}>
                         {this.state.currChallengeSolved ? (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.btn.accomplished)} btnType={MajorButton_1.MajorBtnType.HIGHLIGHTED} onPress={function () { return _this.challengeAlreadySolved(); }}/>) : (<MajorButton_1.MajorButton title={MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.btn.finish)} btnType={MajorButton_1.MajorBtnType.PRIMARY} onLongPress={function () { return _this.execBtnAccept(); }} onPress={function () { return react_native_1.ToastAndroid.show(MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.toast.onclick_btn_finish), react_native_1.ToastAndroid.SHORT); }} isLoading={this.state.isLoadingChallengeSolved}/>)}

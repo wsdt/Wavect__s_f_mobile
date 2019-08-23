@@ -4,11 +4,12 @@ var react_native_1 = require("react-native");
 exports.GREY = "#9b9b9b";
 exports.FULL_WIDTH = react_native_1.Dimensions.get("window").width;
 exports.FULL_HEIGHT = react_native_1.Dimensions.get("window").height;
-exports.BOTTOM_TABBAR_MARGIN = 100;
+exports.BOTTOM_TABBAR_MARGIN = 150;
 var globalStyles = react_native_1.StyleSheet.create({
     scrollViewContainer: {
         flexGrow: 1,
         width: "100%",
+        height: "100%",
     },
     absoluteCenter: {
         position: "absolute",
@@ -21,7 +22,7 @@ var globalStyles = react_native_1.StyleSheet.create({
     },
     pageContainer: {
         flex: 1,
-        height: exports.FULL_HEIGHT - exports.BOTTOM_TABBAR_MARGIN,
+        height: "100%",
         margin: 5,
         justifyContent: "flex-start",
     },

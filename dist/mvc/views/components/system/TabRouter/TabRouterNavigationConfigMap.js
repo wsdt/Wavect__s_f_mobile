@@ -4,7 +4,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var react_native_1 = require("react-native");
 var HomeScreenRouter_1 = require("./HomeScreenRouter/HomeScreenRouter");
-var SettingsScreenRouter_1 = require("./SettingsScreenRouter/SettingsScreenRouter");
+var GeneralSettingsScreenRouter_1 = require("./GeneralSettingsScreenRouter/GeneralSettingsScreenRouter");
 var TabRoutes_1 = require("./TabRoutes");
 exports.routesConfig = (_a = {},
     _a[TabRoutes_1.tabRoutes.HomeScreen] = {
@@ -19,7 +19,7 @@ exports.routesConfig = (_a = {},
         tabBarOptions: {
             showIcon: true,
         },
-        screen: SettingsScreenRouter_1.default,
+        screen: GeneralSettingsScreenRouter_1.default,
         navigationOptions: {
             tabBarIcon: function () { return (<react_native_1.Image source={require("../../../../../assets/img/icons/ic_tab_settings.png")} style={{ width: 20, height: 20, tintColor: "black" }}/>); },
             title: "",

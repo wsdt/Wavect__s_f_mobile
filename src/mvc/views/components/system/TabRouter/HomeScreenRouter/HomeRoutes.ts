@@ -3,5 +3,5 @@
 export const routes = {
     HomeScreen: "HomeScreen",
     SponsorFullpage: "SponsorFullpage",
-    PersonalSettingsFullpage: "PersonalSettingsFullpage"
+    PersonalSettingsFullpage: "PersonalSettingsFullpage",
 }

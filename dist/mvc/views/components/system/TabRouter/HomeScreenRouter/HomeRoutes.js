@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.routes = {
     HomeScreen: "HomeScreen",
-    SponsorFullpage: "SponsorFullpage2",
+    SponsorFullpage: "SponsorFullpage",
+    PersonalSettingsFullpage: "PersonalSettingsFullpage",
 };
 //# sourceMappingURL=HomeRoutes.js.map

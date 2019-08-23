@@ -8,6 +8,7 @@ declare const styles: {
     };
     title: {
         color: string;
+        fontSize: number;
     };
 };
 export default styles;

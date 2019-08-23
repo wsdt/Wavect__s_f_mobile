@@ -1,8 +1,12 @@
+import { FontType } from "../../functional/AppText/AppText.enum";
 export declare const styles: {
-    container: {
-        flex: number;
-        alignItems: "center";
-        justifyContent: "center";
+    containerStyle: {
+        textAlign: "center";
+    };
+    cardStyle: {
+        backgroundColor: string;
+        borderWidth: number;
+        borderColor: string;
     };
     topBar: {
         position: "relative";
@@ -50,13 +54,8 @@ export declare const styles: {
     };
     boldHeadline: {
         fontSize: number;
-        fontWeight: "bold";
         color: string;
-        justifyContent: "center";
-        alignContent: "center";
-        marginTop: number;
-        paddingLeft: number;
-        paddingRight: number;
+        textAlign: "center";
     };
     buttonContainer: {
         margin: number;
@@ -88,10 +87,21 @@ export declare const styles: {
         marginRight: number;
         marginTop: number;
     };
-    blockText: {
-        padding: number;
-        marginLeft: number;
-        marginRight: number;
+    cardTitleStyle: {
+        fontFamily: FontType;
         fontSize: number;
+    };
+    cardContainerStyle: {
+        textAlign: "center";
+        justifyContent: "center";
+        alignItems: "center";
+    };
+    cardDivider: {
+        width: string;
+        margin: number;
+    };
+    cardText: {
+        fontSize: number;
+        textAlign: "center";
     };
 };
