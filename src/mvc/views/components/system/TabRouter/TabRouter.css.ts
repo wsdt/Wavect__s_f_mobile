@@ -7,7 +7,7 @@ import { FontType } from "../../functional/AppText/AppText.enum"
 
 export const styles = StyleSheet.create({
     headerTitleStyle: {
-        fontSize: 25,
+        fontSize: 20,
         fontFamily: FontType.STANDARD_BOLD,
     },
 })

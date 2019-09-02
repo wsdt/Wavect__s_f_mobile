@@ -12,6 +12,6 @@ export const useReactotron: boolean = __DEV__ && true // strong debugging tool
 export const START_PAGE = tabRoutes.HomeScreen
 
 /** How do we reach our backend API/GraphQL */
-export const BACKEND_URL = useLocalBackend ? "https://8555b904.ngrok.io" : "https://api.dev.wavect.io"
+export const BACKEND_URL = useLocalBackend ? "https://0f6c6d22.ngrok.io" : "https://api.dev.wavect.io"
 
 export const BACKEND_MOBILE_API = `${BACKEND_URL}/api/mobile/v1`

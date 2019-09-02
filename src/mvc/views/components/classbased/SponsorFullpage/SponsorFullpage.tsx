@@ -1,18 +1,17 @@
-import React from "react"
-import { Linking, ScrollView, View } from "react-native"
-import { brightness, ColorMatrix, grayscale } from "react-native-color-matrix-image-filters"
-import { Card } from "react-native-elements"
-import FastImage from "react-native-fast-image"
-import { withMappedNavigationParams } from "react-navigation-props-mapper"
-import { t } from "../../../../controllers/MultiLingualityController/MultiLingualityController"
-import { BOTTOM_TABBAR_MARGIN } from "../../../GlobalStyles.css"
-import { AppText } from "../../functional/AppText/AppText"
-import { FontType } from "../../functional/AppText/AppText.enum"
-import { MajorBtnType, MajorButton } from "../../functional/MajorButton/MajorButton"
-import { TouchableIcon } from "../../functional/TouchableIcon/TouchableIcon"
-import { styles } from "./SponsorFullpage.css"
-import { SponsorFullpageProps } from "./SponsorFullpage.props"
-import s from "./SponsorFullpage.translations"
+import React from 'react'
+import { Linking, ScrollView, View } from 'react-native'
+import { brightness, ColorMatrix, grayscale } from 'react-native-color-matrix-image-filters'
+import { Card } from 'react-native-elements'
+import FastImage from 'react-native-fast-image'
+import { withMappedNavigationParams } from 'react-navigation-props-mapper'
+import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { AppText } from '../../functional/AppText/AppText'
+import { FontType } from '../../functional/AppText/AppText.enum'
+import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
+import { TouchableIcon } from '../../functional/TouchableIcon/TouchableIcon'
+import { styles } from './SponsorFullpage.css'
+import { SponsorFullpageProps } from './SponsorFullpage.props'
+import s from './SponsorFullpage.translations'
 
 const getParagraph = (header: string, text: string) => {
     if (text) {
@@ -39,17 +38,17 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     }}
                 >
                     <View style={styles.socialMedia}>
-                        {linkedin ? <TouchableIcon icon={"linkedin"} onPress={() => Linking.openURL(linkedin)} containerStyle={styles.icon} /> : null}
-                        {facebook ? <TouchableIcon icon={"facebook"} onPress={() => Linking.openURL(facebook)} containerStyle={styles.icon} /> : null}
+                        {linkedin ? <TouchableIcon icon={'linkedin'} onPress={() => Linking.openURL(linkedin)} containerStyle={styles.icon} /> : null}
+                        {facebook ? <TouchableIcon icon={'facebook'} onPress={() => Linking.openURL(facebook)} containerStyle={styles.icon} /> : null}
                         {instagram ? (
-                            <TouchableIcon icon={"instagram"} onPress={() => Linking.openURL(instagram)} containerStyle={styles.icon} />
+                            <TouchableIcon icon={'instagram'} onPress={() => Linking.openURL(instagram)} containerStyle={styles.icon} />
                         ) : null}
-                        {youtube ? <TouchableIcon icon={"youtube"} onPress={() => Linking.openURL(youtube)} containerStyle={styles.icon} /> : null}
+                        {youtube ? <TouchableIcon icon={'youtube'} onPress={() => Linking.openURL(youtube)} containerStyle={styles.icon} /> : null}
                     </View>
 
                     <AppText style={styles.sponsorName} font={FontType.COND_LIGHT_OBL}>
-                        {" "}
-                        #{name.toLowerCase()}{" "}
+                        {' '}
+                        #{name.toLowerCase()}{' '}
                     </AppText>
 
                     <View style={[styles.roundImageContainer, styles.shadow]}>
@@ -59,28 +58,29 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                 uri: logoUri.uri,
                             }}
                             style={styles.imageStyle}
-                            resizeMode={"contain"}
+                            resizeMode={'contain'}
                         />
                     </View>
                 </FastImage>
             </ColorMatrix>
 
-            <ScrollView style={{ marginBottom: BOTTOM_TABBAR_MARGIN }}>
-                <View>
+            <ScrollView>
+
+                <View style={{marginBottom: 150}}>
                     {getParagraph(name, shortDescr)}
                     {getParagraph(t(s.headers.whySponsor), props.whySponsor)}
                     {getParagraph(t(s.headers.aboutUs), aboutUs)}
                     {getParagraph(t(s.headers.misc), misc)}
 
                     {website || email ? (
-                        <Card title="Kontakt" titleStyle={styles.cardTitleStyle} containerStyle={styles.cardStyle}>
+                        <Card title='Kontakt' titleStyle={styles.cardTitleStyle} containerStyle={styles.cardStyle}>
                             <View style={styles.buttonContainer}>
                                 {website ? (
                                     <MajorButton
                                         title={t(s.btn.website)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(website)}
-                                        icon="globe"
+                                        icon='globe'
                                     />
                                 ) : null}
                                 {email ? (
@@ -88,7 +88,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                         title={t(s.btn.email)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(`mailto:${email}`)}
-                                        icon="envelope"
+                                        icon='envelope'
                                     />
                                 ) : null}
                             </View>

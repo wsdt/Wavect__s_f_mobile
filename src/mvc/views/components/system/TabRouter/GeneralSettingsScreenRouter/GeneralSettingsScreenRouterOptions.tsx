@@ -11,7 +11,7 @@ import { routes } from "./GeneralSettingsScreenRoutes"
 
 /** You can define additional options for our router here */
 export const routerOptions: StackNavigatorConfig = {
-    initialRouteName: routes.SettingsScreen, // Start page
+    initialRouteName: routes.GeneralSettingsScreen, // Start page
     defaultNavigationOptions: {
         headerRight: (
             <RoundedButton
