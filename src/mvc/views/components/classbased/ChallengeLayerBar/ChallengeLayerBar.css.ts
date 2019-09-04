@@ -1,36 +1,36 @@
-import { StyleSheet } from 'react-native'
-import globalStyles from '../../../GlobalStyles.css'
+import { StyleSheet } from "react-native"
+import globalStyles from "../../../GlobalStyles.css"
 
 const radius = globalStyles.radius.borderRadius
 
 const styles = StyleSheet.create({
     mainComponent: {
-        height: '100%',
-        justifyContent: 'flex-end',
+        height: "100%",
+        justifyContent: "flex-end",
     },
     btnStyleTransparent: {
-        borderColor: 'transparent',
+        borderColor: "transparent",
     },
 
     btnStyleWithBorder: {
-        borderColor: '#000',
+        borderColor: "#000",
         height: 60,
     },
 
     btnTitleStandard: {
-        color: '#000',
+        color: "#000",
         fontSize: 20,
         padding: 10,
     },
     btnTitleWhiteColor: {
-        color: '#fff',
+        color: "#fff",
         fontSize: 20,
         padding: 10,
     },
     btnContainer: {
-        alignItems: 'center',
+        alignItems: "center",
         flex: 1,
-        flexDirection: 'row',
+        flexDirection: "row",
         margin: 5,
     },
 
@@ -41,18 +41,18 @@ const styles = StyleSheet.create({
     },
     subline: {
         margin: 3,
-        textAlign: 'left',
-        justifyContent: 'flex-start',
+        textAlign: "left",
+        justifyContent: "flex-start",
         fontSize: 25,
         lineHeight: 35,
     },
     bottomActionContainer: {
         height: 220,
-        backgroundColor: '#ccc',
+        backgroundColor: "#ccc",
         borderRadius: radius,
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
-        justifyContent: 'flex-end',
+        justifyContent: "flex-end",
         opacity: 0.7,
     },
 })

@@ -78,6 +78,7 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
                     checked={this.state.hasAcceptedDataPrivacy}
                     checkedColor="#000"
                     title={t(s.form.checkbox_dataprivacy)}
+                    containerStyle={styles.checkBoxStyle}
                     textStyle={{ fontFamily: FontType.BOLD }}
                     onPress={() => this.setState({ hasAcceptedDataPrivacy: !this.state.hasAcceptedDataPrivacy })}
                 />

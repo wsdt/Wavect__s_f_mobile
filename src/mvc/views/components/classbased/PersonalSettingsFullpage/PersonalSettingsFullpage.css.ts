@@ -33,6 +33,9 @@ const styles = StyleSheet.create({
         fontFamily: FontType.STANDARD,
         marginLeft: 15,
     },
+    checkBoxStyle: {
+        width: '100%'
+    }
 })
 
 export default styles
