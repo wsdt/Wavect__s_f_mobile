@@ -1,8 +1,8 @@
-import * as React from "react"
-import { ActivityIndicator } from "react-native"
+import * as React from 'react'
+import { ActivityIndicator } from 'react-native'
 
-import globalStyles from "../../../GlobalStyles.css"
-import { Fade } from "../../classbased/_animations/Fade/Fade"
+import globalStyles from '../../../GlobalStyles.css'
+import { Fade } from '../../classbased/_animations/Fade/Fade'
 
 /** Convenience component to make loadingIndicator more concise. */
 export const LoadingIndicator = () => {

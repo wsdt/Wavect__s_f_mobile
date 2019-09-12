@@ -1,6 +1,6 @@
-import analytics from "@react-native-firebase/analytics"
-import crashlytics from "@react-native-firebase/crashlytics"
-import { getLocalUserId } from "../LocalStorageController/LocalStorageController"
+import analytics from '@react-native-firebase/analytics'
+import crashlytics from '@react-native-firebase/crashlytics'
+import { getLocalUserId } from '../LocalStorageController/LocalStorageController'
 
 const analyticsInstance = analytics()
 const crashlyticsInstance = crashlytics()
@@ -10,11 +10,11 @@ analyticsInstance.setAnalyticsCollectionEnabled(true)
 
 /** Used to send different events and logging to console. */
 export enum LogType {
-    ERROR = "Error",
-    WARN = "Warn",
-    LOG = "Log",
-    INFO = "Info",
-    EVENT = "Event", // separate Event type to log event to analytics
+    ERROR = 'Error',
+    WARN = 'Warn',
+    LOG = 'Log',
+    INFO = 'Info',
+    EVENT = 'Event', // separate Event type to log event to analytics
 }
 
 /**

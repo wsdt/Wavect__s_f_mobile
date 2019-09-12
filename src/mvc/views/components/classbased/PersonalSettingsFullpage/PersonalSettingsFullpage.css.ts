@@ -1,11 +1,11 @@
-import { StyleSheet } from "react-native"
-import { FontType } from "../../functional/AppText/AppText.enum"
+import { StyleSheet } from 'react-native'
+import { FontType } from '../../functional/AppText/AppText.enum'
 
 const styles = StyleSheet.create({
     containerStyle: {
-        width: "100%",
-        justifyContent: "center",
-        alignItems: "center",
+        width: '100%',
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     scrollStyle: {
         padding: 10,
@@ -16,16 +16,16 @@ const styles = StyleSheet.create({
         padding: 0,
     },
     cardStyle: {
-        width: "100%",
+        width: '100%',
         marginTop: 15,
         marginBottom: 15,
     },
     introText: {
         lineHeight: 30,
-        textAlign: "left",
+        textAlign: 'left',
     },
     buttonStyle: {
-        width: "100%",
+        width: '100%',
         marginTop: 15,
     },
     buttonTextStyle: {
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
         marginLeft: 15,
     },
     checkBoxStyle: {
-        width: '100%'
-    }
+        width: '100%',
+    },
 })
 
 export default styles

@@ -1,10 +1,10 @@
-import AppVersion from "react-native-version-number"
-import { getLocalItem, setLocalItem } from "../LocalStorageController/LocalStorageController"
-import { logEvent, LogType } from "../LoggingController/LoggingController"
-import { ON_UPDATE_TASKS } from "./UpdateController.tasks"
+import AppVersion from 'react-native-version-number'
+import { getLocalItem, setLocalItem } from '../LocalStorageController/LocalStorageController'
+import { logEvent, LogType } from '../LoggingController/LoggingController'
+import { ON_UPDATE_TASKS } from './UpdateController.tasks'
 
-const TAG = "UpdateController"
-const PACKAGE_VERSION_KEY = "app_version"
+const TAG = 'UpdateController'
+const PACKAGE_VERSION_KEY = 'app_version'
 
 /* Temporary var for runtime to avoid evaluating update everytime.
  * Export not necessary, but provided for better UX as special LoadingScreen might be shown for a very short time, although
@@ -21,7 +21,7 @@ export const performAppUpdateProcedure = async (): Promise<void> => {
     if (appVersion) {
         if (appVersion !== buildVersion) {
             // new update received
-            logEvent(LogType.INFO, `${TAG}:main`, "User updated app.")
+            logEvent(LogType.INFO, `${TAG}:main`, 'User updated app.')
 
             for (const task of ON_UPDATE_TASKS) {
                 // run update task list
@@ -32,7 +32,7 @@ export const performAppUpdateProcedure = async (): Promise<void> => {
         } // otherwise regular run
     } else {
         setLocalItem(PACKAGE_VERSION_KEY, buildVersion) // set for future updates
-        logEvent(LogType.INFO, `${TAG}:main`, "User has ran the app for the first time.")
+        logEvent(LogType.INFO, `${TAG}:main`, 'User has ran the app for the first time.')
     }
     hasPerformedUpdateCheck = true
 }

@@ -1,4 +1,4 @@
-import { FontType } from "./AppText.enum"
+import { FontType } from './AppText.enum'
 
 export interface IAPPProps {
     font?: FontType

@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native"
-import { FontType } from "../../functional/AppText/AppText.enum"
+import { StyleSheet } from 'react-native'
+import { FontType } from '../../functional/AppText/AppText.enum'
 
 /**
  * Define Header styles here (Challenge | Settings etc.)

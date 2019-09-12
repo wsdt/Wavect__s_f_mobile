@@ -1,8 +1,8 @@
-import { PureComponent } from "react"
-import * as React from "react"
-import { Animated } from "react-native"
-import { IFadeProps } from "./Fade.props"
-import { IFadeState } from "./Fade.state"
+import { PureComponent } from 'react'
+import * as React from 'react'
+import { Animated } from 'react-native'
+import { IFadeProps } from './Fade.props'
+import { IFadeState } from './Fade.state'
 
 export class Fade extends PureComponent<IFadeProps, IFadeState> {
     public state: IFadeState = {

@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Linking } from "react-native"
-import { StackNavigatorConfig } from "react-navigation"
-import { START_PAGE } from "../../../../../../globalConfiguration/globalConfig"
-import { RoundedButton } from "../../../functional/RoundedButton/RoundedButton"
+import * as React from 'react'
+import { Linking } from 'react-native'
+import { StackNavigatorConfig } from 'react-navigation'
+import { START_PAGE } from '../../../../../../globalConfiguration/globalConfig'
+import { RoundedButton } from '../../../functional/RoundedButton/RoundedButton'
 
 /**
  * You can provide custom navigationoptions for your nav bar for each page.
@@ -17,18 +17,18 @@ export const routerOptions: StackNavigatorConfig = {
             <RoundedButton
                 containerStyle={{ marginRight: 5 }}
                 title="Feedback"
-                press={() => Linking.openURL("mailto:support@wavect.io?subject=Wavect-Feedback&body=Was könnten wir verbessern?")}
+                press={() => Linking.openURL('mailto:support@wavect.io?subject=Wavect-Feedback&body=Was könnten wir verbessern?')}
             />
         ),
         headerStyle: {
-            backgroundColor: "#fff",
+            backgroundColor: '#fff',
             elevation: 0,
             shadowOpacity: 0,
             shadowRadius: 0,
         },
-        headerTintColor: "#111" /* tintColor is used by title and back btn etc. */,
+        headerTintColor: '#111' /* tintColor is used by title and back btn etc. */,
         headerTitleStyle: {
-            fontWeight: "bold",
+            fontWeight: 'bold',
         },
     },
 }

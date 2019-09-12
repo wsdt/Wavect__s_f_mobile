@@ -1,15 +1,15 @@
 /** Enum does not allow require or dynamic strings. But useful for type-safety. */
 
-import { ICO_ENVIRONMENT, ICO_HEALTH, ICO_SOCIETY } from "../../assets/AssetIndex"
-import * as _schema from "../../assets/translations/_schema.json"
+import { ICO_ENVIRONMENT, ICO_HEALTH, ICO_SOCIETY } from '../../assets/AssetIndex'
+import * as _schema from '../../assets/translations/_schema.json'
 
 // Translation schema for typo safety
 const s = _schema.models.challenge_category // for readability
 
 export enum ChallengeCategory {
-    ENVIRONMENT = "ENVIRONMENT",
-    HEALTH = "HEALTH",
-    SOCIETY = "SOCIETY",
+    ENVIRONMENT = 'ENVIRONMENT',
+    HEALTH = 'HEALTH',
+    SOCIETY = 'SOCIETY',
 }
 
 /** Require does not allow dynamic strings!

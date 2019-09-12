@@ -1,34 +1,34 @@
-import React from "react"
-import { ScrollView, View } from "react-native"
-import { Button, Card, CheckBox, Icon, Input } from "react-native-elements"
-import { withMappedNavigationParams } from "react-navigation-props-mapper"
-import { BACKEND_MOBILE_API } from "../../../../../globalConfiguration/globalConfig"
-import { cachedFetch, putCache } from "../../../../controllers/CacheController/CacheController"
-import { CACHE_KEY_SETTINGS } from "../../../../controllers/CacheController/CacheController.constants"
-import { getLocalUserId, markEmailAsCreated } from "../../../../controllers/LocalStorageController/LocalStorageController"
-import { logEvent, LogType } from "../../../../controllers/LoggingController/LoggingController"
-import { t } from "../../../../controllers/MultiLingualityController/MultiLingualityController"
-import { noInternetAvailable } from "../../../../controllers/WarningsController/WarningsController"
-import globalStyles from "../../../GlobalStyles.css"
-import { AppText } from "../../functional/AppText/AppText"
-import { FontType } from "../../functional/AppText/AppText.enum"
-import { ILoadingContext, LoadingHoc, LoadingStatus } from "../../system/HOCs/LoadingHoc"
-import styles from "./PersonalSettingsFullpage.css"
-import { ISettingsFullpageState } from "./PersonalSettingsFullpage.state"
-import s from "./PersonalSettingsFullpage.translations"
+import React from 'react'
+import { ScrollView, View } from 'react-native'
+import { Button, Card, CheckBox, Icon, Input } from 'react-native-elements'
+import { withMappedNavigationParams } from 'react-navigation-props-mapper'
+import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
+import { cachedFetch, putCache } from '../../../../controllers/CacheController/CacheController'
+import { CACHE_KEY_SETTINGS } from '../../../../controllers/CacheController/CacheController.constants'
+import { getLocalUserId, markEmailAsCreated } from '../../../../controllers/LocalStorageController/LocalStorageController'
+import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
+import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { noInternetAvailable } from '../../../../controllers/WarningsController/WarningsController'
+import globalStyles from '../../../GlobalStyles.css'
+import { AppText } from '../../functional/AppText/AppText'
+import { FontType } from '../../functional/AppText/AppText.enum'
+import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/LoadingHoc'
+import styles from './PersonalSettingsFullpage.css'
+import { ISettingsFullpageState } from './PersonalSettingsFullpage.state'
+import s from './PersonalSettingsFullpage.translations'
 
-const TAG: string = "PersonalSettingsFullpage"
+const TAG: string = 'PersonalSettingsFullpage'
 
 export class PersonalSettingsFullpage extends React.PureComponent<any, ISettingsFullpageState> {
     private static API_ENDPOINT = `${BACKEND_MOBILE_API}/settings`
     private static EMAIL_REGEX: RegExp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
     public state: ISettingsFullpageState = {
         hasAcceptedDataPrivacy: false,
-        email: "",
+        email: '',
         validEmail: false,
         isSavingSettings: false,
     }
-    private userId: string = ""
+    private userId: string = ''
     private loadingContext!: ILoadingContext
     private abortController: AbortController = new AbortController() // memory safety/leaks avoidance
 
@@ -70,7 +70,7 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
                         placeholder={t(s.form.input_mail.placeholder)}
                         leftIcon={<Icon name="envelope" type="font-awesome" iconStyle={styles.icon} />}
                         shake={true}
-                        errorMessage={this.state.validEmail ? "" : t(s.form.input_mail.errorMsg)}
+                        errorMessage={this.state.validEmail ? '' : t(s.form.input_mail.errorMsg)}
                     />
                 </Card>
 
@@ -122,9 +122,9 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
                         this.setState(apiRes)
                         putCache(CACHE_KEY_SETTINGS, apiRes)
 
-                        logEvent(LogType.LOG, `${TAG}:getUserSettings`, "Received user settings")
+                        logEvent(LogType.LOG, `${TAG}:getUserSettings`, 'Received user settings')
                     } else {
-                        logEvent(LogType.LOG, `${TAG}:getUserSettings`, "No user settings previously saved")
+                        logEvent(LogType.LOG, `${TAG}:getUserSettings`, 'No user settings previously saved')
                     }
 
                     // Do NOT set LoadingStatus.NOT_AVAILABLE as Settings might be null
@@ -148,10 +148,10 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
         this.setState({ isSavingSettings: true }, async () => {
             try {
                 const rawResp = await fetch(`${PersonalSettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                        Accept: "application/json",
-                        "Content-Type": "application/json",
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
                         email: this.state.email,

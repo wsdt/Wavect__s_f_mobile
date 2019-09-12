@@ -1,10 +1,10 @@
-import i18n from "i18n-js"
-import memoize from "lodash.memoize"
-import { I18nManager } from "react-native"
-import * as RNLocalize from "react-native-localize"
-import TranslationBundle, { fallbackLanguagePack } from "../../../assets/translations/TranslationBundler"
-import { ControlFunctionType } from "../../../globalConfiguration/developerProtection/CustomControlFunctions"
-import { addCustomControlFunction } from "../../../globalConfiguration/developerProtection/developerProtection"
+import i18n from 'i18n-js'
+import memoize from 'lodash.memoize'
+import { I18nManager } from 'react-native'
+import * as RNLocalize from 'react-native-localize'
+import TranslationBundle, { fallbackLanguagePack } from '../../../assets/translations/TranslationBundler'
+import { ControlFunctionType } from '../../../globalConfiguration/developerProtection/CustomControlFunctions'
+import { addCustomControlFunction } from '../../../globalConfiguration/developerProtection/developerProtection'
 
 /** Enhances performance seemingly (better than "translate" method from I18 or similar.
  * NOTE: This view is ONLY working in a view! If you need it somewhere else you have to provide it as parameter.
@@ -41,7 +41,7 @@ addCustomControlFunction(ControlFunctionType.DEBUG, (): Error | null => {
     // evaluate whether all keys equal
     if (!keyArr.every((val, _, arr) => val === arr[0])) {
         throw new Error(
-            "MultiLingualityController:addCustomControlFunction: Not all language-packs have the same keys. This means that you did not provide translations for some languages."
+            'MultiLingualityController:addCustomControlFunction: Not all language-packs have the same keys. This means that you did not provide translations for some languages.'
         )
     }
 

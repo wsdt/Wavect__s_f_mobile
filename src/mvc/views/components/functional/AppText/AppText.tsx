@@ -4,10 +4,10 @@
  * IF you change the STANDARD Font, always change it in the ENUM.ts
  */
 
-import * as React from "react"
-import { StyleSheet, Text } from "react-native"
-import { FontType } from "./AppText.enum"
-import { IAPPProps } from "./AppText.props"
+import * as React from 'react'
+import { StyleSheet, Text } from 'react-native'
+import { FontType } from './AppText.enum'
+import { IAPPProps } from './AppText.props'
 
 export const AppText: React.FunctionComponent<IAPPProps> = props => {
     const styleSheet = StyleSheet.create({

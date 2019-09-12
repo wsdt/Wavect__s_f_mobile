@@ -1,7 +1,7 @@
 // Should work as listed in devDependencies
 
 // tslint:disable-next-line:no-implicit-dependencies
-import Reactotron from "reactotron-react-native"
+import Reactotron from 'reactotron-react-native'
 
 if (Reactotron.clear) {
     Reactotron.clear()

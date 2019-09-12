@@ -1,9 +1,9 @@
-import { Alert } from "react-native"
-import { t } from "../MultiLingualityController/MultiLingualityController"
-import s from "./WarningsController.translations"
+import { Alert } from 'react-native'
+import { t } from '../MultiLingualityController/MultiLingualityController'
+import s from './WarningsController.translations'
 
 export const functionalityNotAvailable = (msg: string) => {
-    Alert.alert("Nicht verfügbar", msg, [{ text: "Ok" }], { cancelable: true })
+    Alert.alert('Nicht verfügbar', msg, [{ text: 'Ok' }], { cancelable: true })
 }
 
 export const noInternetAvailable = () => {

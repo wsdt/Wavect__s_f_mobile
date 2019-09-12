@@ -1,31 +1,31 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
     innerContent: {
-        backgroundColor: "white",
+        backgroundColor: 'white',
         opacity: 0.9,
         padding: 5,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: "#fff",
+        borderColor: '#fff',
     },
     centeredInnerContent: {
-        alignItems: "center",
-        justifyContent: "center",
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     centeredText: {
-        textAlign: "center",
+        textAlign: 'center',
         fontSize: 23,
         margin: 10,
         lineHeight: 40,
     },
     ending: {
-        textAlign: "center",
+        textAlign: 'center',
         fontSize: 23,
         margin: 15,
     },
     horizontalLine: {
-        borderBottomColor: "black",
+        borderBottomColor: 'black',
         borderBottomWidth: 1,
     },
     image: {
@@ -34,8 +34,8 @@ const styles = StyleSheet.create({
         margin: 10,
     },
     closeIcon: {
-        justifyContent: "flex-end",
-        alignItems: "flex-end",
+        justifyContent: 'flex-end',
+        alignItems: 'flex-end',
     },
 })
 
