@@ -1,4 +1,4 @@
-import { createStackNavigator } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
 import { routesConfig } from './HomeScreenRouterConfigMap'
 import { routerOptions } from './HomeScreenRouterOptions'
 

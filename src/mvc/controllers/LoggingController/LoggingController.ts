@@ -1,6 +1,7 @@
+import AsyncStorage from '@react-native-community/async-storage'
 import analytics from '@react-native-firebase/analytics'
 import crashlytics from '@react-native-firebase/crashlytics'
-import { getLocalUserId } from '../LocalStorageController/LocalStorageController'
+import {USER_ID} from '../LocalStorageController/LocalStorageController.constants'
 
 const analyticsInstance = analytics()
 const crashlyticsInstance = crashlytics()
@@ -15,6 +16,12 @@ export enum LogType {
     LOG = 'Log',
     INFO = 'Info',
     EVENT = 'Event', // separate Event type to log event to analytics
+}
+
+/** Similar function available via LocalStorageController.ts, but to avoid require cycles a minimized version is added here. */
+const getLocalUserId = async (): Promise<string> => {
+    const userId:string|null = await AsyncStorage.getItem(USER_ID)
+    return userId ? userId : 'UNKNOWN'
 }
 
 /**

@@ -1,4 +1,4 @@
-import { createMaterialTopTabNavigator } from 'react-navigation'
+import { createMaterialTopTabNavigator } from 'react-navigation-tabs'
 import { routesConfig } from './TabRouterNavigationConfigMap'
 import { routerOptions } from './TabRouterNavigationOptions'
 
