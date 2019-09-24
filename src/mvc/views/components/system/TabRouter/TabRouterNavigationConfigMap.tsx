@@ -1,8 +1,8 @@
 import * as React from 'react'
 import { Image } from 'react-native'
 import { NavigationRouteConfigMap } from 'react-navigation'
-import HomeScreenRouter from './HomeScreenRouter/HomeScreenRouter'
 import GeneralSettingsScreenRouter from './GeneralSettingsScreenRouter/GeneralSettingsScreenRouter'
+import HomeScreenRouter from './HomeScreenRouter/HomeScreenRouter'
 import { tabRoutes } from './TabRoutes'
 
 /**

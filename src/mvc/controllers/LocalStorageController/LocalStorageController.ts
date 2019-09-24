@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import { logEvent, LogType } from '../LoggingController/LoggingController'
-import {EMAIL_MARKED, USER_ID} from "./LocalStorageController.constants";
+import { EMAIL_MARKED, USER_ID } from './LocalStorageController.constants'
 
 const TAG = 'LocalStorageController'
 

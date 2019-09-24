@@ -18,19 +18,19 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
         },
         {
             name: 'Idee für Challenge einreichen',
-            action: () => Linking.openURL('https://wordpress.dev.wavect.io/'),
+            action: () => Linking.openURL('https://wavect.io/'),
         },
         {
             name: 'Homepage besuchen',
-            action: () => Linking.openURL('https://wordpress.dev.wavect.io/'),
+            action: () => Linking.openURL('https://wavect.io/'),
         },
         {
             name: 'Teilnahmebedingungen',
-            action: () => Linking.openURL('https://wordpress.dev.wavect.io/privacy-policy/'),
+            action: () => Linking.openURL('https:/wavect.io/privacy-policy/'),
         },
         {
             name: 'AGB',
-            action: () => Linking.openURL('https://wordpress.dev.wavect.io/privacy-policy/'),
+            action: () => Linking.openURL('https://wavect.io/privacy-policy/'),
         },
     ]
 

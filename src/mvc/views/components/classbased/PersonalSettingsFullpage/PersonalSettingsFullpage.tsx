@@ -69,7 +69,6 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
                         label={t(s.form.input_mail.lbl)}
                         placeholder={t(s.form.input_mail.placeholder)}
                         leftIcon={<Icon name='envelope' type='font-awesome' iconStyle={styles.icon} />}
-                        shake={true}
                         errorMessage={this.state.validEmail ? '' : t(s.form.input_mail.errorMsg)}
                     />
                 </Card>
