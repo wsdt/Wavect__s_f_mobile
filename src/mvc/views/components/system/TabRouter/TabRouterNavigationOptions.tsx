@@ -1,4 +1,3 @@
-import { TabNavigatorConfig } from 'react-navigation'
 import * as globalConfig from '../../../../../globalConfiguration/globalConfig'
 
 /**
@@ -6,7 +5,7 @@ import * as globalConfig from '../../../../../globalConfiguration/globalConfig'
  * But if you don't provide any, then these default options are set.
  */
 /** You can define additional options for our router here */
-export const routerOptions: TabNavigatorConfig = {
+export const routerOptions = {
     initialRouteName: globalConfig.START_PAGE, // Start page
     backBehavior: 'history',
     swipeEnabled: true,

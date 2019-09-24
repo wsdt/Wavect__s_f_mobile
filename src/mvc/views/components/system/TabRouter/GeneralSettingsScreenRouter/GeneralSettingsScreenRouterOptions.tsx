@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Linking } from 'react-native'
-import { StackNavigatorConfig } from 'react-navigation'
 import { RoundedButton } from '../../../functional/RoundedButton/RoundedButton'
 import { routes } from './GeneralSettingsScreenRoutes'
 
@@ -10,14 +9,14 @@ import { routes } from './GeneralSettingsScreenRoutes'
  */
 
 /** You can define additional options for our router here */
-export const routerOptions: StackNavigatorConfig = {
+export const routerOptions = {
     initialRouteName: routes.GeneralSettingsScreen, // Start page
     defaultNavigationOptions: {
         headerRight: (
             <RoundedButton
                 containerStyle={{ marginRight: 5 }}
-                title="Feedback"
-                press={() => Linking.openURL('mailto:support@bekind.com?subject=BeKind-Feedback&body=Was könnten wir verbessern?')}
+                title='Feedback'
+                press={() => Linking.openURL('mailto:support@wavect.io?subject=BeKind-Feedback&body=Was könnten wir verbessern?')}
             />
         ),
         headerStyle: {

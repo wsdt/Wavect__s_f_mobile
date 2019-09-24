@@ -1,6 +1,5 @@
 import * as React from 'react'
 import { Linking } from 'react-native'
-import { StackNavigatorConfig } from 'react-navigation'
 import { START_PAGE } from '../../../../../../globalConfiguration/globalConfig'
 import { RoundedButton } from '../../../functional/RoundedButton/RoundedButton'
 
@@ -10,7 +9,7 @@ import { RoundedButton } from '../../../functional/RoundedButton/RoundedButton'
  */
 
 /** You can define additional options for our router here */
-export const routerOptions: StackNavigatorConfig = {
+export const routerOptions = {
     initialRouteName: START_PAGE, // Start page
     defaultNavigationOptions: {
         headerRight: (
