@@ -1,4 +1,6 @@
 // @ts-ignore
+import {NavigationParams, NavigationRoute, NavigationRouteConfigMap} from 'react-navigation'
+import {NavigationStackOptions, NavigationStackProp} from 'react-navigation-stack'
 import * as _schema from '../../../../../../assets/translations/_schema.json'
 import { t } from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { HomeScreen } from '../../../../pages/HomeScreen/HomeScreen'
@@ -8,9 +10,9 @@ import styles from './../TabRouter.css'
 import { routes } from './HomeRoutes'
 
 // Translation schema for typo safety
-const s = _schema.system.tabrouter.stackrouters // for readabilit
+const s = _schema.system.tabrouter.stackrouters // for readability
 
-export const routesConfig = {
+export const routesConfig:NavigationRouteConfigMap<NavigationStackOptions,NavigationStackProp<NavigationRoute<NavigationParams>>> = {
     [routes.HomeScreen]: {
         screen: HomeScreen, // which component to load
         navigationOptions: () => ({

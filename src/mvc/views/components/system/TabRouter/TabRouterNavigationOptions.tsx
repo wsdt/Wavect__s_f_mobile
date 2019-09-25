@@ -1,3 +1,5 @@
+import {CreateNavigatorConfig, NavigationTabRouterConfig} from 'react-navigation'
+import {NavigationTabProp} from 'react-navigation-tabs'
 import * as globalConfig from '../../../../../globalConfiguration/globalConfig'
 
 /**
@@ -5,7 +7,7 @@ import * as globalConfig from '../../../../../globalConfiguration/globalConfig'
  * But if you don't provide any, then these default options are set.
  */
 /** You can define additional options for our router here */
-export const routerOptions = {
+export const routerOptions:CreateNavigatorConfig<Partial<any>,NavigationTabRouterConfig,Partial<any>,NavigationTabProp> = {
     initialRouteName: globalConfig.START_PAGE, // Start page
     backBehavior: 'history',
     swipeEnabled: true,

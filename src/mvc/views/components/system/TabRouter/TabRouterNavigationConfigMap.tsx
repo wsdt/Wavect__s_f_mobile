@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Image } from 'react-native'
-import { NavigationRouteConfigMap } from 'react-navigation'
+import {NavigationParams, NavigationRoute, NavigationRouteConfigMap} from 'react-navigation'
+import {NavigationMaterialTabOptions, NavigationTabProp} from 'react-navigation-tabs'
 import GeneralSettingsScreenRouter from './GeneralSettingsScreenRouter/GeneralSettingsScreenRouter'
 import HomeScreenRouter from './HomeScreenRouter/HomeScreenRouter'
 import { tabRoutes } from './TabRoutes'
@@ -11,7 +12,7 @@ import { tabRoutes } from './TabRoutes'
  *
  * Keys are variables to avoid all sort of typing errors (aboves object should be used).
  */
-export const routesConfig: NavigationRouteConfigMap = {
+export const routesConfig: NavigationRouteConfigMap<NavigationMaterialTabOptions, NavigationTabProp<NavigationRoute<NavigationParams>>> = {
     [tabRoutes.HomeScreen]: {
         screen: HomeScreenRouter, // which component to load
         navigationOptions: {
@@ -26,9 +27,6 @@ export const routesConfig: NavigationRouteConfigMap = {
         },
     },
     [tabRoutes.SettingsScreen]: {
-        tabBarOptions: {
-            showIcon: true,
-        },
         screen: GeneralSettingsScreenRouter,
         navigationOptions: {
             tabBarIcon: () => (
