@@ -132,8 +132,8 @@ android {
         applicationId "com.wavect"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 23
-        versionName "0.1.5"
+        versionCode 24
+        versionName "0.1.6"
     }
     splits {
         abi {
