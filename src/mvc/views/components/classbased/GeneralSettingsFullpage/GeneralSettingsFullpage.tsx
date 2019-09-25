@@ -2,8 +2,8 @@ import * as React from 'react'
 import { Linking, TouchableOpacity, View } from 'react-native'
 import { Icon } from 'react-native-elements'
 import FastImage from 'react-native-fast-image'
+import VersionNumber from 'react-native-version-number'
 import { withNavigation } from 'react-navigation'
-import { version } from '../../../../../../package.json'
 import * as _schema from '../../../../../assets/translations/_schema.json'
 import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import globalStyles from '../../../GlobalStyles.css'
@@ -54,7 +54,7 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
                         </View>
                     ))}
                 </View>
-                <AppText style={styles.versionFont}>v. {version}</AppText>
+                <AppText style={styles.versionFont}>v. {VersionNumber.appVersion}</AppText>
             </View>
         )
     }

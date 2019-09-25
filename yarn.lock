@@ -835,10 +835,10 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@react-native-community/async-storage@^1.6.1":
-  version "1.6.1"
-  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.6.1.tgz#19be07fc1d65c77bdeb20f46108ba12076aad1c5"
-  integrity sha512-1WA28xfdhG+unkTEk/lXnqI2izv6belo0CYw7UdvaeHm8TIYT6eTmIIdGR7oiCa2xSKEnaPQqRMH6h7gyLNbww==
+"@react-native-community/async-storage@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.6.2.tgz#a19ca7149c4dfe8216f2330e6b1ebfe2d075ef92"
+  integrity sha512-EJGsbrHubK1mGxPjWB74AaHAd5m9I+Gg2RRPZzMK6org7QOU9WOBnIMFqoeVto3hKOaEPlk8NV74H6G34/2pZQ==
 
 "@react-native-community/cli-platform-android@^2.6.0", "@react-native-community/cli-platform-android@^2.9.0":
   version "2.9.0"
@@ -911,29 +911,29 @@
     shell-quote "1.6.1"
     ws "^1.1.0"
 
-"@react-native-firebase/analytics@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-0.5.4.tgz#0c52277d41b205ad5d67a831b6a8dcbf64bc62f3"
-  integrity sha512-PyVjs4a803K/MWn82NRNVdkpmjO5iRCBmQUR3ZfOqYFthexZj34p+J3h2wKhxQSRmhm+uiKiTvO2sGGegwJn/Q==
+"@react-native-firebase/analytics@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/analytics/-/analytics-6.0.0.tgz#d36537fa96d9fe7f7a1d5024aad627269a4c960c"
+  integrity sha512-3JvqTtelLYd8pVS4v1aIaR0HixXcm5QK2ahtjmDy68v1sFz/Y6tgKmbWpj90cWS9Pe1R71bKuT5L0wu1vfvLtg==
 
-"@react-native-firebase/app-types@0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-0.5.4.tgz#1d28976e7af0b4b462420a92f113264955803ee5"
-  integrity sha512-5lDqyJUWSXXjQeMuBN2J8k4G7/EThA0LHLliXAk85Q+BjD0xIzdAH8w62dGARjRQwF6T7ICiNPVbjVkvVWrveg==
+"@react-native-firebase/app-types@6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app-types/-/app-types-6.0.0.tgz#f254a289db5acf83983107b5f4e6836f4bf8c220"
+  integrity sha512-hrTQhrkhvLi9kquol/bFBgByfl3rwCk/kTPZ1ad2O3i+Iy0VgWHyFuo55HIMocVIe3471br++bao+Df1qBKTdQ==
 
-"@react-native-firebase/app@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-0.5.4.tgz#9fac7f1bccc4e88079b09fd91a0180be1ec85d92"
-  integrity sha512-l7cWDSI/WCQMBhaCAyjOo6f8gVEiu9OihIQETGwRMKGwVInVJXSNe2RvOxuI9If19OVW3JOp5LsJsaOY/Qj0kA==
+"@react-native-firebase/app@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/app/-/app-6.0.0.tgz#b60fc9da3f8af20ae0072abadde39f511c555f84"
+  integrity sha512-ND1mFZ8UkgPDkXlqUBWhQQrFgkFSwdy8ay5cWZiCAJMFYgN7lfgHyNPkHGMYxlnYJVp7rlxR4e2W+sSWz7pF/Q==
   dependencies:
-    "@react-native-firebase/app-types" "0.5.4"
+    "@react-native-firebase/app-types" "6.0.0"
     opencollective-postinstall "^2.0.1"
     superstruct "^0.6.2"
 
-"@react-native-firebase/crashlytics@^0.5.4":
-  version "0.5.4"
-  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-0.5.4.tgz#bc79193578501242bfd1a7c3338bd675f205fae5"
-  integrity sha512-qr/9ACdIwB3yGx1aZsNHzpU1WPx+kOHr4aPlh4+2SZ5k7dQUzbgipJR9ut/meyJ6ok0SjQnbUhSuOq9A4IfKkA==
+"@react-native-firebase/crashlytics@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@react-native-firebase/crashlytics/-/crashlytics-6.0.0.tgz#555cb923f43d3a7204f3b5556801e7db982b1a4c"
+  integrity sha512-cwozq/+pouoZf4X87wRZ1DFtD4yA4CzRNm1ypT9UY8BLTPhDEEZU6/7yuX6UKNUM9ZC3u8O3QvHjtVJ/RM2nJQ==
   dependencies:
     stacktrace-js "^2.0.0"
 
@@ -5614,7 +5614,7 @@ react-navigation-tabs@^2.5.5:
     react-native-safe-area-view "^0.14.6"
     react-native-tab-view "^2.9.0"
 
-react-navigation@^4.0.8:
+react-navigation@^4.0.9:
   version "4.0.9"
   resolved "https://registry.yarnpkg.com/react-navigation/-/react-navigation-4.0.9.tgz#2fb7547d1888442eb94aa33fa40f72e4b26cc915"
   integrity sha512-IfqqAd18VQzg9c1yvHPy5eV6EI6jEzbZ7uUFvL3o5yW9h1ygNvWt06wUp1d3M7uWSUuDbYPOKRA8GCaepERnKw==
