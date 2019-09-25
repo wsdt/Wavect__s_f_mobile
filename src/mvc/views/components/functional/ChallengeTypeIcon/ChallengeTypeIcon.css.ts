@@ -5,8 +5,8 @@ export const BG_COLOR = '#008B8B' // color used for tooltip and image-bg when us
 
 const styles = StyleSheet.create({
     image: {
-        height: '75%',
-        width: '75%',
+        height: '100%',
+        width: '100%',
     },
     imageContainer: {
         alignItems: 'center',

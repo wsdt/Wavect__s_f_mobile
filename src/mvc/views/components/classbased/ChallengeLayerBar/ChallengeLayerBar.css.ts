@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         margin: 3,
         textAlign: 'left',
         justifyContent: 'flex-start',
-        fontSize: 25,
+        fontSize: 20,
         lineHeight: 35,
     },
     bottomActionContainer: {

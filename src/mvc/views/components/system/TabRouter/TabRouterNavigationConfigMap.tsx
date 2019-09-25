@@ -16,14 +16,12 @@ export const routesConfig: NavigationRouteConfigMap<NavigationMaterialTabOptions
     [tabRoutes.HomeScreen]: {
         screen: HomeScreenRouter, // which component to load
         navigationOptions: {
-            tabBarLabel: '',
             tabBarIcon: () => (
                 <Image
                     source={require('../../../../../assets/img/icons/ic_tab_challenges.png')}
                     style={{ width: 20, height: 20, tintColor: 'black' }}
                 />
             ),
-            title: '',
         },
     },
     [tabRoutes.SettingsScreen]: {
@@ -35,7 +33,6 @@ export const routesConfig: NavigationRouteConfigMap<NavigationMaterialTabOptions
                     style={{ width: 20, height: 20, tintColor: 'black' }}
                 />
             ),
-            title: '',
         },
     },
 }
