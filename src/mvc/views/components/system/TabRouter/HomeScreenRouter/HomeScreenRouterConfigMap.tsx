@@ -1,6 +1,6 @@
 // @ts-ignore
-import {NavigationParams, NavigationRoute, NavigationRouteConfigMap} from 'react-navigation'
-import {NavigationStackOptions, NavigationStackProp} from 'react-navigation-stack'
+import { NavigationParams, NavigationRoute, NavigationRouteConfigMap } from 'react-navigation'
+import { NavigationStackOptions, NavigationStackProp } from 'react-navigation-stack'
 import * as _schema from '../../../../../../assets/translations/_schema.json'
 import { t } from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { HomeScreen } from '../../../../pages/HomeScreen/HomeScreen'
@@ -11,7 +11,7 @@ import { routes } from './HomeRoutes'
 // Translation schema for typo safety
 const s = _schema.system.tabrouter.stackrouters // for readability
 
-export const routesConfig:NavigationRouteConfigMap<NavigationStackOptions,NavigationStackProp<NavigationRoute<NavigationParams>>> = {
+export const routesConfig: NavigationRouteConfigMap<NavigationStackOptions, NavigationStackProp<NavigationRoute<NavigationParams>>> = {
     [routes.HomeScreen]: {
         screen: HomeScreen, // which component to load
         navigationOptions: () => ({

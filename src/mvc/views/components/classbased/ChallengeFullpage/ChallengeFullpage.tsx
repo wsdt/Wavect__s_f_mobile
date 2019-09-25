@@ -30,26 +30,26 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                 {contextMethods => {
                     this.loadingContext = contextMethods
                     return (
-                            <GrayColorImg isGrayscale={this.state.isGrayscale}>
-                                <View onTouchStart={() => (this.state.modalVisibility ? this.setState({ modalVisibility: false }) : null)}>
-                                    {challengeInformation ? (
-                                        <ChallengeInformationModal isVisible={this.state.modalVisibility} information={challengeInformation} />
-                                    ) : null}
-                                    <TouchableWithoutFeedback onPress={() => this.toggleModal()}>
-                                        <FastImage
-                                            source={{
-                                                priority: FastImage.priority.high,
-                                                uri: bgImage.uri,
-                                            }}
-                                            style={[styles.backgroundImage, globalStyles.radius]}
-                                            onLoad={() => this.loadingContext.setLoading(LoadingStatus.DONE)}
-                                            // onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)} // TODO: onLoadStart is the only callback which is called (lib-bug presumbly)
-                                            onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
-                                        />
-                                    </TouchableWithoutFeedback>
-                                    {this.getChallengeView()}
-                                </View>
-                            </GrayColorImg>
+                        <GrayColorImg isGrayscale={this.state.isGrayscale}>
+                            <View onTouchStart={() => (this.state.modalVisibility ? this.setState({ modalVisibility: false }) : null)}>
+                                {challengeInformation ? (
+                                    <ChallengeInformationModal isVisible={this.state.modalVisibility} information={challengeInformation} />
+                                ) : null}
+                                <TouchableWithoutFeedback onPress={() => this.toggleModal()}>
+                                    <FastImage
+                                        source={{
+                                            priority: FastImage.priority.high,
+                                            uri: bgImage.uri,
+                                        }}
+                                        style={[styles.backgroundImage, globalStyles.radius]}
+                                        onLoad={() => this.loadingContext.setLoading(LoadingStatus.DONE)}
+                                        // onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)} // TODO: onLoadStart is the only callback which is called (lib-bug presumbly)
+                                        onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
+                                    />
+                                </TouchableWithoutFeedback>
+                                {this.getChallengeView()}
+                            </View>
+                        </GrayColorImg>
                     )
                 }}
             </LoadingHoc.Consumer>

@@ -15,7 +15,7 @@ import { FontType } from '../../functional/AppText/AppText.enum'
 import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
 
 // IMPORT THE OLD SETTINGS HERE... WE STILL HAVE TO NAVIGATE DOWN THERE
-import { routes as homeRoutes } from '../../system/TabRouter/HomeScreenRouter/HomeRoutes'
+import { routes as settingsRoutes } from '../../system/TabRouter/GeneralSettingsScreenRouter/GeneralSettingsScreenRoutes'
 
 import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
 import styles from './ChallengeLayerBar.css'
@@ -175,7 +175,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                 [
                     {
                         text: t(s.dialog.settings_not_set.btn_ok),
-                        onPress: () => this.props.navigation.navigate(homeRoutes.PersonalSettingsFullpage),
+                        onPress: () => this.props.navigation.navigate(settingsRoutes.PersonalSettingsFullpage),
                     },
                 ],
                 {
@@ -183,7 +183,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                 }
             )
             // Usability: User leaves the UI Field without pressing OK
-            this.props.navigation.navigate(homeRoutes.PersonalSettingsFullpage)
+            this.props.navigation.navigate(settingsRoutes.PersonalSettingsFullpage)
         }
     }
 

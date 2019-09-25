@@ -5,7 +5,7 @@ import FastImage from 'react-native-fast-image'
 import VersionNumber from 'react-native-version-number'
 import { withNavigation } from 'react-navigation'
 import * as _schema from '../../../../../assets/translations/_schema.json'
-import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import globalStyles from '../../../GlobalStyles.css'
 import { AppText } from '../../functional/AppText/AppText'
 import { FontType } from '../../functional/AppText/AppText.enum'
@@ -27,7 +27,7 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
             name: t(_schema.settingsscreen.generalsettings.list.privacy_policy),
             action: () => Linking.openURL('https:/wavect.io/privacy-policy/'),
         },
-      /* TODO: Create AGB {
+        /* TODO: Create AGB {
             name: t(_schema.settingsscreen.generalsettings.list.agb),
             action: () => Linking.openURL('https://wavect.io/privacy-policy/'),
         },*/

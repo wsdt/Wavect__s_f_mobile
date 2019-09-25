@@ -1,5 +1,5 @@
-import {CreateNavigatorConfig, NavigationTabRouterConfig} from 'react-navigation'
-import {NavigationTabProp} from 'react-navigation-tabs'
+import { CreateNavigatorConfig, NavigationTabRouterConfig } from 'react-navigation'
+import { NavigationTabProp } from 'react-navigation-tabs'
 import * as globalConfig from '../../../../../globalConfiguration/globalConfig'
 
 /**
@@ -7,7 +7,8 @@ import * as globalConfig from '../../../../../globalConfiguration/globalConfig'
  * But if you don't provide any, then these default options are set.
  */
 /** You can define additional options for our router here */
-export const routerOptions: CreateNavigatorConfig<Partial<any>,NavigationTabRouterConfig,Partial<any>,NavigationTabProp> = { // TODO: make typing stricter
+export const routerOptions: CreateNavigatorConfig<Partial<any>, NavigationTabRouterConfig, Partial<any>, NavigationTabProp> = {
+    // TODO: make typing stricter
     initialRouteName: globalConfig.START_PAGE, // Start page
     backBehavior: 'history',
     swipeEnabled: true,
@@ -21,8 +22,8 @@ export const routerOptions: CreateNavigatorConfig<Partial<any>,NavigationTabRout
         activeTintColor: '#000',
         keyboardHidesTabBar: true, // not working, currently achieved with native properties (e.g. android manifest)
         inactiveTintColor: '#888',
-        style: {backgroundColor: '#fff'},
-        indicatorStyle: {backgroundColor: '#000'},
+        style: { backgroundColor: '#fff' },
+        indicatorStyle: { backgroundColor: '#000' },
         allowFontScaling: true,
         showIcon: true,
         showLabel: false,

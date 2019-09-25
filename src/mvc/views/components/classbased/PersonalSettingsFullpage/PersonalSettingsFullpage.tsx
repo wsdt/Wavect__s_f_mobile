@@ -68,14 +68,14 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
                         errorStyle={{ fontFamily: FontType.STANDARD }}
                         label={t(s.form.input_mail.lbl)}
                         placeholder={t(s.form.input_mail.placeholder)}
-                        leftIcon={<Icon name='envelope' type='font-awesome' iconStyle={styles.icon} />}
+                        leftIcon={<Icon name="envelope" type="font-awesome" iconStyle={styles.icon} />}
                         errorMessage={this.state.validEmail ? '' : t(s.form.input_mail.errorMsg)}
                     />
                 </Card>
 
                 <CheckBox
                     checked={this.state.hasAcceptedDataPrivacy}
-                    checkedColor='#000'
+                    checkedColor="#000"
                     title={t(s.form.checkbox_dataprivacy)}
                     containerStyle={styles.checkBoxStyle}
                     textStyle={{ fontFamily: FontType.BOLD }}
@@ -83,14 +83,14 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
                 />
 
                 <Button
-                    type='outline'
+                    type="outline"
                     title={t(s.form.btn.save)}
                     titleStyle={styles.buttonTextStyle}
                     raised={isFormSubmittable}
                     containerStyle={styles.buttonStyle}
                     loading={this.state.isSavingSettings}
                     disabled={!isFormSubmittable}
-                    icon={<Icon name='save' type='font-awesome' />}
+                    icon={<Icon name="save" type="font-awesome" />}
                     onPress={this.postUserSettings}
                 />
             </ScrollView>
