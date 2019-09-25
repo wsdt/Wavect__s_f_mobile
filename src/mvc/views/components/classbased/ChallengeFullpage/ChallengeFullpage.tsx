@@ -9,7 +9,6 @@ import { CompanyLogo } from '../../functional/CompanyLogo/CompanyLogo'
 import { GrayColorImg } from '../../functional/GrayColorImg/GrayColorImg'
 import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/LoadingHoc'
 import { routes } from '../../system/TabRouter/HomeScreenRouter/HomeRoutes'
-import { Fade } from '../_animations/Fade/Fade'
 import ChallengeLayerBar from '../ChallengeLayerBar/ChallengeLayerBar'
 import styles from './ChallengeFullpage.css'
 import { IChallengeFullpageProps } from './ChallengeFullpage.props'
@@ -31,7 +30,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                 {contextMethods => {
                     this.loadingContext = contextMethods
                     return (
-                        <Fade visible={true} fadeDuration={200}>
                             <GrayColorImg isGrayscale={this.state.isGrayscale}>
                                 <View onTouchStart={() => (this.state.modalVisibility ? this.setState({ modalVisibility: false }) : null)}>
                                     {challengeInformation ? (
@@ -52,7 +50,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                                     {this.getChallengeView()}
                                 </View>
                             </GrayColorImg>
-                        </Fade>
                     )
                 }}
             </LoadingHoc.Consumer>
