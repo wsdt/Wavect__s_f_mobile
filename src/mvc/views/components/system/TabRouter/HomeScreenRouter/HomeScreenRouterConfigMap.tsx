@@ -4,7 +4,6 @@ import {NavigationStackOptions, NavigationStackProp} from 'react-navigation-stac
 import * as _schema from '../../../../../../assets/translations/_schema.json'
 import { t } from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { HomeScreen } from '../../../../pages/HomeScreen/HomeScreen'
-import { PersonalSettingsFullpage } from '../../../classbased/PersonalSettingsFullpage/PersonalSettingsFullpage'
 import SponsorFullpage from '../../../classbased/SponsorFullpage/SponsorFullpage'
 import styles from './../TabRouter.css'
 import { routes } from './HomeRoutes'
@@ -24,13 +23,6 @@ export const routesConfig:NavigationRouteConfigMap<NavigationStackOptions,Naviga
         screen: SponsorFullpage,
         navigationOptions: () => ({
             title: t(s.homescreen.sponsor.title), // which title to show in navbar
-        }),
-    },
-    [routes.PersonalSettingsFullpage]: {
-        screen: PersonalSettingsFullpage,
-        navigationOptions: () => ({
-            title: t(s.settingsscreen.settings.title),
-            headerTitleStyle: styles.headerTitleStyle,
         }),
     },
 }

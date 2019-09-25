@@ -56,6 +56,15 @@
                     "save": "Speichern"
                 }
             }
+        },
+        "generalsettings": {
+            "list": {
+                "personal_settings": "Persönliche Daten hinterlegen",
+                "challenge_idea": "Idee für Challenge einreichen",
+                "visit_hp": "Homepage besuchen",
+                "privacy_policy": "Datenschutz",
+                "agb": "AGB"
+            }
         }
     },
     "basescreen": {

@@ -1,13 +1,24 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
+    versionFont: {
+        fontSize: 12,
+        alignSelf: 'flex-end',
+        position: 'absolute',
+        bottom: 0,
+        paddingEnd: 5,
+        paddingBottom: 5,
+    },
+    itemFont: {
+        fontSize: 22,
+    },
     mainView: {
         width: '100%',
         height: '100%',
     },
     image: {
-        width: 200,
-        height: 200,
+        width: 150,
+        height: 150,
     },
     imageView: {
         alignItems: 'center',

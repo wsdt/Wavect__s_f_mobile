@@ -56,6 +56,15 @@
                     "save": "settingsscreen.fullpage.form.btn.save"
                 }
             }
+        },
+        "generalsettings": {
+            "list": {
+                "personal_settings": "settingsscreen.generalsettings.list.personal_settings",
+                "challenge_idea": "settingsscreen.generalsettings.list.challenge_idea",
+                "visit_hp": "settingsscreen.generalsettings.list.visit_hp",
+                "privacy_policy": "settingsscreen.generalsettings.list.privacy_policy",
+                "agb": "settingsscreen.generalsettings.list.agb"
+            }
         }
     },
     "basescreen": {

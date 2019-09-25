@@ -1,37 +1,36 @@
 import * as React from 'react'
 import { Linking, TouchableOpacity, View } from 'react-native'
+import { Icon } from 'react-native-elements'
 import FastImage from 'react-native-fast-image'
 import { withNavigation } from 'react-navigation'
+import { version } from '../../../../../../package.json'
+import * as _schema from '../../../../../assets/translations/_schema.json'
+import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import globalStyles from '../../../GlobalStyles.css'
 import { AppText } from '../../functional/AppText/AppText'
 import { FontType } from '../../functional/AppText/AppText.enum'
-import { routes } from '../../system/TabRouter/HomeScreenRouter/HomeRoutes'
+import { routes } from '../../system/TabRouter/GeneralSettingsScreenRouter/GeneralSettingsScreenRoutes'
 import styles from './GeneralSettingsFullpage.css'
-import { Icon } from 'react-native-elements'
 
 export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
     // proper condition of data, todo change the frontend!
     private listItems = [
         {
-            name: 'Persönliche Daten hinterlegen',
+            name: t(_schema.settingsscreen.generalsettings.list.personal_settings),
             action: () => this.props.navigation.navigate(routes.PersonalSettingsFullpage),
         },
         {
-            name: 'Idee für Challenge einreichen',
+            name: t(_schema.settingsscreen.generalsettings.list.visit_hp),
             action: () => Linking.openURL('https://wavect.io/'),
         },
         {
-            name: 'Homepage besuchen',
-            action: () => Linking.openURL('https://wavect.io/'),
-        },
-        {
-            name: 'Teilnahmebedingungen',
+            name: t(_schema.settingsscreen.generalsettings.list.privacy_policy),
             action: () => Linking.openURL('https:/wavect.io/privacy-policy/'),
         },
-        {
-            name: 'AGB',
+      /* TODO: Create AGB {
+            name: t(_schema.settingsscreen.generalsettings.list.agb),
             action: () => Linking.openURL('https://wavect.io/privacy-policy/'),
-        },
+        },*/
     ]
 
     public render() {
@@ -40,7 +39,6 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
                 <View style={styles.imageView}>
                     <FastImage source={require('../../../../../assets/img/logo_w.png')} style={[styles.image, globalStyles.radius]} />
 
-                    <AppText style={{ fontSize: 10 }}> v.0.5</AppText>
                     <AppText font={FontType.STANDARD_BOLD} style={{ fontSize: 25 }}>
                         Wavect
                     </AppText>
@@ -51,11 +49,12 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
                         <View style={styles.row} key={item.name}>
                             <Icon name={'angle-double-right'} type={'font-awesome'} />
                             <TouchableOpacity style={styles.navItem} key={item.name} onPress={item.action}>
-                                <AppText style={{ fontSize: 30 }}>{item.name}</AppText>
+                                <AppText style={styles.itemFont}>{item.name}</AppText>
                             </TouchableOpacity>
                         </View>
                     ))}
                 </View>
+                <AppText style={styles.versionFont}>v. {version}</AppText>
             </View>
         )
     }

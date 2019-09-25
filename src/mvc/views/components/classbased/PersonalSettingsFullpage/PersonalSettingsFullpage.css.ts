@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
         marginTop: 15,
     },
     buttonTextStyle: {
-        fontSize: 25,
+        fontSize: 20,
         fontFamily: FontType.STANDARD,
         marginLeft: 15,
     },

@@ -3,6 +3,7 @@ import {NavigationStackOptions, NavigationStackProp} from 'react-navigation-stac
 import * as _schema from '../../../../../../assets/translations/_schema.json'
 import { t } from '../../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { GeneralSettingsFullpage } from '../../../classbased/GeneralSettingsFullpage/GeneralSettingsFullpage'
+import {PersonalSettingsFullpage} from '../../../classbased/PersonalSettingsFullpage/PersonalSettingsFullpage'
 import styles from '../TabRouter.css'
 import { routes } from './GeneralSettingsScreenRoutes'
 
@@ -15,6 +16,13 @@ export const routesConfig: NavigationRouteConfigMap<NavigationStackOptions,Navig
 
         navigationOptions: () => ({
             title: t(s.settings.title), // which title to show in navbar
+            headerTitleStyle: styles.headerTitleStyle,
+        }),
+    },
+    [routes.PersonalSettingsFullpage]: {
+        screen: PersonalSettingsFullpage,
+        navigationOptions: () => ({
+            title: t(s.settings.title),
             headerTitleStyle: styles.headerTitleStyle,
         }),
     },

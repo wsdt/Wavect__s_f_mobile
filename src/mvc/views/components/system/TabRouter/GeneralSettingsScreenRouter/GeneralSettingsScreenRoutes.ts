@@ -2,4 +2,5 @@
 
 export const routes = {
     GeneralSettingsScreen: 'GeneralSettingsFullpage',
+    PersonalSettingsFullpage: 'PersonalSettingsFullpage',
 }
