@@ -15,10 +15,11 @@ const styles = StyleSheet.create({
     },
     centeredText: {
         textAlign: 'center',
-        fontSize: 23,
+        fontSize: 18,
         margin: 10,
-        lineHeight: 40,
+        lineHeight: 30,
     },
+
     ending: {
         textAlign: 'center',
         fontSize: 23,

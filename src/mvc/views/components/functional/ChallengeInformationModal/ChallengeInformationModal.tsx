@@ -33,7 +33,6 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = props => 
 
                         <Image source={{ uri: 'https://icon-library.net/images/gift-png-icon/gift-png-icon-2.jpg' }} style={styles.image} />
                         <AppText style={styles.centeredText}> Unter allen gelösten Challenges wird ein € 5,00 Gutschein von Amazon verlost.</AppText>
-                        <AppText style={styles.ending}> Viel Glück! </AppText>
                     </View>
                 </View>
             </Modal>

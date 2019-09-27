@@ -1,27 +1,27 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import React from 'react'
-import { Alert, ToastAndroid, View } from 'react-native'
-import { withNavigation } from 'react-navigation'
-import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
-import { openFilePicker } from '../../../../controllers/FilePickerController/FilePickerController'
-import { getEmailMarked, getLocalUserId } from '../../../../controllers/LocalStorageController/LocalStorageController'
-import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
-import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
-import { shareMedia } from '../../../../controllers/ShareController/ShareController'
-import { noInternetAvailable } from '../../../../controllers/WarningsController/WarningsController'
-import { ApiResponse } from '../../../../models/ApiResponse'
-import { AppText } from '../../functional/AppText/AppText'
-import { FontType } from '../../functional/AppText/AppText.enum'
-import { MajorBtnType, MajorButton } from '../../functional/MajorButton/MajorButton'
-
+import {Alert, ToastAndroid, View} from 'react-native'
+import {withNavigation} from 'react-navigation'
+import {BACKEND_MOBILE_API} from '../../../../../globalConfiguration/globalConfig'
+import {openFilePicker} from '../../../../controllers/FilePickerController/FilePickerController'
+import {getEmailMarked, getLocalUserId} from '../../../../controllers/LocalStorageController/LocalStorageController'
+import {logEvent, LogType} from '../../../../controllers/LoggingController/LoggingController'
+import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import {shareMedia} from '../../../../controllers/ShareController/ShareController'
+import {noInternetAvailable} from '../../../../controllers/WarningsController/WarningsController'
+import {ApiResponse} from '../../../../models/ApiResponse'
+import {AppText} from '../../functional/AppText/AppText'
+import {FontType} from '../../functional/AppText/AppText.enum'
+import {MajorBtnType, MajorButton} from '../../functional/MajorButton/MajorButton'
 // IMPORT THE OLD SETTINGS HERE... WE STILL HAVE TO NAVIGATE DOWN THERE
-import { routes as settingsRoutes } from '../../system/TabRouter/GeneralSettingsScreenRouter/GeneralSettingsScreenRoutes'
+import {routes as settingsRoutes} from '../../system/TabRouter/GeneralSettingsScreenRouter/GeneralSettingsScreenRoutes'
 
-import { CHALLENGE_SOLVED_ID } from './ChallengeLayerBar.constants'
+import {CHALLENGE_SOLVED_ID} from './ChallengeLayerBar.constants'
 import styles from './ChallengeLayerBar.css'
-import { IChallengeLayerBarProps } from './ChallengeLayerBar.props'
-import { IChallengeLayerBarState } from './ChallengeLayerBar.state'
+import {IChallengeLayerBarProps} from './ChallengeLayerBar.props'
+import {IChallengeLayerBarState} from './ChallengeLayerBar.state'
 import s from './ChallengeLayerBar.translations'
+import {ImagePickerResponse} from "react-native-image-picker";
 
 const TAG = 'ChallengeLayerBar'
 
@@ -127,26 +127,39 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         // Share it
         const shareChallengeSolved = async () => {
             try {
-                const res = await openFilePicker()
+                const res:ImagePickerResponse = await openFilePicker()
 
                 if (res.error || res.didCancel) {
                     userAbortedProcedure()
                     logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'User did not choose a file')
                 } else {
-                    // if using "whatsapp" the response will not finish!
-                    await shareMedia(this.props.headline, this.props.sponsorName, res).then(response => {
-                        if (response) {
-                            this.sendChallengeSolvedEmailToSponsor()
 
-                            this.setState({
-                                currChallengeSolved: response,
-                                isLoadingChallengeSolved: false,
-                            })
-                        } else {
-                            Alert.alert('Ausgabe' + response)
-                            this.sendChallengeSolvedEmailToSponsor()
-                        }
-                    })
+                    //console.error("## 0 "+JSON.stringify({uri:res.uri}) + " "+ JSON.stringify(this.props.sponsorLogo))
+
+
+                    //const path:null|ImageURISource = await addWatermarkToImage({uri:res.uri}, {uri:res.uri}) //this.props.sponsorLogo)
+                    //console.error("## "+path)
+                   // const path = Platform.OS === 'android' ? 'file://'+res.uri : res.uri
+
+                   // if (path) {
+                        //console.warn("# "+path)
+                        await shareMedia(this.props.headline, this.props.sponsorName, res).then(response => {
+                            if (response) {
+                                this.sendChallengeSolvedEmailToSponsor()
+
+                                this.setState({
+                                    currChallengeSolved: response,
+                                    isLoadingChallengeSolved: false,
+                                })
+                            } else {
+                                userAbortedProcedure()
+                                logEvent(LogType.LOG, `${TAG}:shareMedia`, 'Could not share img.')
+                            }
+                        })
+                    /*} else {
+                        userAbortedProcedure()
+                        logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'Could not add watermark to img.')
+                    }*/
                 }
             } catch (e) {
                 logEvent(LogType.ERROR, `${TAG}:challengeSolved`, `Couldn't open imagePicker -> ${JSON.stringify(e)}`)
