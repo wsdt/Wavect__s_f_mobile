@@ -36,6 +36,8 @@ const styles = StyleSheet.create({
     closeIcon: {
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
+        padding: 0,
+        marginTop: 10,
     },
 })
 
