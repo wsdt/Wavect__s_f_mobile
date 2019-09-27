@@ -92,6 +92,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                     expirationInMs={expirationInMs}
                     challengeId={id}
                     sponsorEmail={sponsor.email}
+                    sponsorLogo={sponsor.logoUri}
                 />
             </>
         )

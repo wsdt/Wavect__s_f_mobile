@@ -1,3 +1,4 @@
+import {ImageURISource} from 'react-native'
 import { NavigationInjectedProps, NavigationParams, NavigationRoute, NavigationScreenProp } from 'react-navigation'
 
 export interface IChallengeLayerBarProps {
@@ -8,5 +9,6 @@ export interface IChallengeLayerBarProps {
     expirationInMs: number
     sponsorEmail: string
     sponsorName: string
+    sponsorLogo: ImageURISource
     navigation: NavigationInjectedProps<NavigationParams> & NavigationScreenProp<NavigationRoute<NavigationParams>, NavigationParams>
 }
