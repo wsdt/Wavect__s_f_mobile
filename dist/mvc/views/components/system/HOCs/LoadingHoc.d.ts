@@ -1,4 +1,4 @@
-import * as React from "react";
+import * as React from 'react';
 export interface ILoadingContext {
     setLoading: (_: LoadingStatus) => void;
     setRefresh: (func: (cb: () => void) => void) => void;

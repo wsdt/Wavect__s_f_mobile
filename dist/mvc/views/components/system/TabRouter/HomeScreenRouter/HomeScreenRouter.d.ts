@@ -1,2 +1,2 @@
-declare const HomeScreenRouter: import("react-navigation").NavigationContainer;
+declare const HomeScreenRouter: any;
 export default HomeScreenRouter;

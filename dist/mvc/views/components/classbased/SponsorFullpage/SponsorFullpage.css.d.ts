@@ -1,4 +1,4 @@
-import { FontType } from "../../functional/AppText/AppText.enum";
+import { FontType } from '../../functional/AppText/AppText.enum';
 export declare const styles: {
     containerStyle: {
         textAlign: "center";
@@ -67,6 +67,10 @@ export declare const styles: {
         marginRight: number;
         marginLeft: number;
         marginBottom: number;
+    };
+    iconProps: {
+        width: number;
+        height: number;
     };
     socialMedia: {
         position: "absolute";

@@ -1,4 +1,4 @@
-import { FontType } from "../AppText/AppText.enum";
+import { FontType } from '../AppText/AppText.enum';
 declare const styles: {
     primaryBtnContainer: {
         backgroundColor: string;

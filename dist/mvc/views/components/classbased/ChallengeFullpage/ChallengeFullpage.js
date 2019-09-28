@@ -24,7 +24,6 @@ var CompanyLogo_1 = require("../../functional/CompanyLogo/CompanyLogo");
 var GrayColorImg_1 = require("../../functional/GrayColorImg/GrayColorImg");
 var LoadingHoc_1 = require("../../system/HOCs/LoadingHoc");
 var HomeRoutes_1 = require("../../system/TabRouter/HomeScreenRouter/HomeRoutes");
-var Fade_1 = require("../_animations/Fade/Fade");
 var ChallengeLayerBar_1 = require("../ChallengeLayerBar/ChallengeLayerBar");
 var ChallengeFullpage_css_1 = require("./ChallengeFullpage.css");
 var ChallengeFullpage = (function (_super) {
@@ -53,7 +52,7 @@ var ChallengeFullpage = (function (_super) {
                     <ChallengeTypeIcon_1.ChallengeTypeIcon type={majorCategory} isGrayscale={_this.state.isGrayscale}/>
                 </react_native_1.View>
 
-                <ChallengeLayerBar_1.default headline={headline} sponsorName={sponsor.name} setGrayscale={function (isGrayscale) { return _this.setState({ isGrayscale: isGrayscale }); }} subline={subline} expirationInMs={expirationInMs} challengeId={id} sponsorEmail={sponsor.email}/>
+                <ChallengeLayerBar_1.default headline={headline} sponsorName={sponsor.name} setGrayscale={function (isGrayscale) { return _this.setState({ isGrayscale: isGrayscale }); }} subline={subline} expirationInMs={expirationInMs} challengeId={id} sponsorEmail={sponsor.email} sponsorLogo={sponsor.logoUri}/>
             </>);
         };
         return _this;
@@ -64,20 +63,18 @@ var ChallengeFullpage = (function (_super) {
         return (<LoadingHoc_1.LoadingHoc.Consumer>
                 {function (contextMethods) {
             _this.loadingContext = contextMethods;
-            return (<Fade_1.Fade visible={true} fadeDuration={200}>
-                            <GrayColorImg_1.GrayColorImg isGrayscale={_this.state.isGrayscale}>
-                                <react_native_1.View onTouchStart={function () { return (_this.state.modalVisibility ? _this.setState({ modalVisibility: false }) : null); }}>
-                                    {challengeInformation ? (<ChallengeInformationModal_1.ChallengeInformationModal isVisible={_this.state.modalVisibility} information={challengeInformation}/>) : null}
-                                    <react_native_1.TouchableWithoutFeedback onPress={function () { return _this.toggleModal(); }}>
-                                        <react_native_fast_image_1.default source={{
+            return (<GrayColorImg_1.GrayColorImg isGrayscale={_this.state.isGrayscale}>
+                            <react_native_1.View onTouchStart={function () { return (_this.state.modalVisibility ? _this.setState({ modalVisibility: false }) : null); }}>
+                                {challengeInformation ? (<ChallengeInformationModal_1.ChallengeInformationModal isVisible={_this.state.modalVisibility} information={challengeInformation}/>) : null}
+                                <react_native_1.TouchableWithoutFeedback onPress={function () { return _this.toggleModal(); }}>
+                                    <react_native_fast_image_1.default source={{
                 priority: react_native_fast_image_1.default.priority.high,
                 uri: bgImage.uri,
             }} style={[ChallengeFullpage_css_1.default.backgroundImage, GlobalStyles_css_1.default.radius]} onLoad={function () { return _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE); }} onError={function () { return _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.ERROR); }}/>
-                                    </react_native_1.TouchableWithoutFeedback>
-                                    {_this.getChallengeView()}
-                                </react_native_1.View>
-                            </GrayColorImg_1.GrayColorImg>
-                        </Fade_1.Fade>);
+                                </react_native_1.TouchableWithoutFeedback>
+                                {_this.getChallengeView()}
+                            </react_native_1.View>
+                        </GrayColorImg_1.GrayColorImg>);
         }}
             </LoadingHoc_1.LoadingHoc.Consumer>);
     };

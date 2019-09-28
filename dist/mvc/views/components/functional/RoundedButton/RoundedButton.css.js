@@ -11,8 +11,8 @@ var styles = react_native_1.StyleSheet.create({
         marginTop: 10,
     },
     title: {
-        color: "#fff",
-        fontSize: 12,
+        color: '#fff',
+        fontSize: 17,
     },
 });
 exports.default = styles;

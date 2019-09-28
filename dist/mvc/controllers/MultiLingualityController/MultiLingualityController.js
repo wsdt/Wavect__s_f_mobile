@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -34,7 +35,6 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var i18n_js_1 = require("i18n-js");
 var lodash_memoize_1 = require("lodash.memoize");
@@ -50,7 +50,7 @@ exports.t = lodash_memoize_1.default(function (key, config) {
     if (config === void 0) { config = {}; }
     return (config ? key + JSON.stringify(config) : key);
 });
-exports.setCurrentLanguageBundle = function () { return __awaiter(_this, void 0, void 0, function () {
+exports.setCurrentLanguageBundle = function () { return __awaiter(void 0, void 0, void 0, function () {
     var _a, languageTag, isRTL;
     return __generator(this, function (_b) {
         _a = RNLocalize.findBestAvailableLanguage(Object.keys(TranslationBundler_1.default)) || TranslationBundler_1.fallbackLanguagePack, languageTag = _a.languageTag, isRTL = _a.isRTL;
@@ -70,7 +70,7 @@ developerProtection_1.addCustomControlFunction(CustomControlFunctions_1.ControlF
         keyArr.push(JSON.stringify(Object.keys(langPack).sort()));
     }
     if (!keyArr.every(function (val, _, arr) { return val === arr[0]; })) {
-        throw new Error("MultiLingualityController:addCustomControlFunction: Not all language-packs have the same keys. This means that you did not provide translations for some languages.");
+        throw new Error('MultiLingualityController:addCustomControlFunction: Not all language-packs have the same keys. This means that you did not provide translations for some languages.');
     }
     return null;
 });

@@ -3,7 +3,7 @@ var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 var globalConfig_1 = require("../globalConfig");
 var CustomControlFunctions_1 = require("./CustomControlFunctions");
-var TAG = "DeveloperProtection";
+var TAG = 'DeveloperProtection';
 var customControlFunctions = (_a = {},
     _a[CustomControlFunctions_1.ControlFunctionType.ALL] = [],
     _a[CustomControlFunctions_1.ControlFunctionType.DEBUG] = [],
@@ -33,7 +33,7 @@ exports.watchConfiguration = function () {
             throw new Error(TAG + ": You must not use Reactotron in a release build!");
         evaluateCustomControlFunctions(CustomControlFunctions_1.ControlFunctionType.RELEASE);
     }
-    if (globalConfig_1.BACKEND_URL.slice(-1) === "/")
+    if (globalConfig_1.BACKEND_URL.slice(-1) === '/')
         throw new Error(TAG + ": All api calls assume that the backend-url has NO backslash at the end!");
     evaluateCustomControlFunctions(CustomControlFunctions_1.ControlFunctionType.ALL);
 };

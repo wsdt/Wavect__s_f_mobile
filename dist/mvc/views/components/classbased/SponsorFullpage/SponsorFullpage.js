@@ -7,7 +7,6 @@ var react_native_elements_1 = require("react-native-elements");
 var react_native_fast_image_1 = require("react-native-fast-image");
 var react_navigation_props_mapper_1 = require("react-navigation-props-mapper");
 var MultiLingualityController_1 = require("../../../../controllers/MultiLingualityController/MultiLingualityController");
-var GlobalStyles_css_1 = require("../../../GlobalStyles.css");
 var AppText_1 = require("../../functional/AppText/AppText");
 var AppText_enum_1 = require("../../functional/AppText/AppText.enum");
 var MajorButton_1 = require("../../functional/MajorButton/MajorButton");
@@ -31,28 +30,28 @@ var SponsorFullpage = function (props) {
         uri: props.challengeBgImage.uri,
     }}>
                     <react_native_1.View style={SponsorFullpage_css_1.styles.socialMedia}>
-                        {linkedin ? <TouchableIcon_1.TouchableIcon icon={"linkedin"} onPress={function () { return react_native_1.Linking.openURL(linkedin); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
-                        {facebook ? <TouchableIcon_1.TouchableIcon icon={"facebook"} onPress={function () { return react_native_1.Linking.openURL(facebook); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
-                        {instagram ? (<TouchableIcon_1.TouchableIcon icon={"instagram"} onPress={function () { return react_native_1.Linking.openURL(instagram); }} containerStyle={SponsorFullpage_css_1.styles.icon}/>) : null}
-                        {youtube ? <TouchableIcon_1.TouchableIcon icon={"youtube"} onPress={function () { return react_native_1.Linking.openURL(youtube); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {linkedin ? <TouchableIcon_1.TouchableIcon icon={'linkedin'} onPress={function () { return react_native_1.Linking.openURL(linkedin); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {facebook ? <TouchableIcon_1.TouchableIcon icon={'facebook'} onPress={function () { return react_native_1.Linking.openURL(facebook); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
+                        {instagram ? (<TouchableIcon_1.TouchableIcon icon={'instagram'} onPress={function () { return react_native_1.Linking.openURL(instagram); }} containerStyle={SponsorFullpage_css_1.styles.icon}/>) : null}
+                        {youtube ? <TouchableIcon_1.TouchableIcon icon={'youtube'} onPress={function () { return react_native_1.Linking.openURL(youtube); }} containerStyle={SponsorFullpage_css_1.styles.icon}/> : null}
                     </react_native_1.View>
 
                     <AppText_1.AppText style={SponsorFullpage_css_1.styles.sponsorName} font={AppText_enum_1.FontType.COND_LIGHT_OBL}>
-                        {" "}
-                        #{name.toLowerCase()}{" "}
+                        {' '}
+                        #{name.toLowerCase()}{' '}
                     </AppText_1.AppText>
 
                     <react_native_1.View style={[SponsorFullpage_css_1.styles.roundImageContainer, SponsorFullpage_css_1.styles.shadow]}>
                         <react_native_fast_image_1.default source={{
         priority: react_native_fast_image_1.default.priority.high,
         uri: logoUri.uri,
-    }} style={SponsorFullpage_css_1.styles.imageStyle} resizeMode={"contain"}/>
+    }} style={SponsorFullpage_css_1.styles.imageStyle} resizeMode={'contain'}/>
                     </react_native_1.View>
                 </react_native_fast_image_1.default>
             </react_native_color_matrix_image_filters_1.ColorMatrix>
 
-            <react_native_1.ScrollView style={{ marginBottom: GlobalStyles_css_1.BOTTOM_TABBAR_MARGIN }}>
-                <react_native_1.View>
+            <react_native_1.ScrollView>
+                <react_native_1.View style={{ marginBottom: 150 }}>
                     {getParagraph(name, shortDescr)}
                     {getParagraph(MultiLingualityController_1.t(SponsorFullpage_translations_1.default.headers.whySponsor), props.whySponsor)}
                     {getParagraph(MultiLingualityController_1.t(SponsorFullpage_translations_1.default.headers.aboutUs), aboutUs)}

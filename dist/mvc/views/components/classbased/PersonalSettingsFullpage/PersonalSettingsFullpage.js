@@ -13,10 +13,11 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -65,29 +66,31 @@ var AppText_enum_1 = require("../../functional/AppText/AppText.enum");
 var LoadingHoc_1 = require("../../system/HOCs/LoadingHoc");
 var PersonalSettingsFullpage_css_1 = require("./PersonalSettingsFullpage.css");
 var PersonalSettingsFullpage_translations_1 = require("./PersonalSettingsFullpage.translations");
-var TAG = "PersonalSettingsFullpage";
+var TAG = 'PersonalSettingsFullpage';
 var PersonalSettingsFullpage = (function (_super) {
     __extends(PersonalSettingsFullpage, _super);
     function PersonalSettingsFullpage() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.state = {
             hasAcceptedDataPrivacy: false,
-            email: "",
+            email: '',
             validEmail: false,
             isSavingSettings: false,
         };
-        _this.userId = "";
+        _this.userId = '';
         _this.abortController = new AbortController();
         _this.getSettingsView = function () {
             var isFormSubmittable = _this.isFormSubmittable();
-            return (<react_native_1.ScrollView style={{ flex: 1, width: "100%", margin: 10 }}>
-                <AppText_1.AppText style={PersonalSettingsFullpage_css_1.default.row}>{MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.intro)}</AppText_1.AppText>
+            return (<react_native_1.ScrollView contentContainerStyle={PersonalSettingsFullpage_css_1.default.containerStyle} style={PersonalSettingsFullpage_css_1.default.scrollStyle}>
+                <AppText_1.AppText style={PersonalSettingsFullpage_css_1.default.introText}>{MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.intro)}</AppText_1.AppText>
 
-                <react_native_elements_1.Input value={_this.state.email} onChangeText={function (text) { return _this.emailValidation(text); }} containerStyle={PersonalSettingsFullpage_css_1.default.row} style={PersonalSettingsFullpage_css_1.default.input} inputStyle={{ fontFamily: AppText_enum_1.FontType.STANDARD }} errorStyle={{ fontFamily: AppText_enum_1.FontType.STANDARD }} label={MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.input_mail.lbl)} placeholder={MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.input_mail.placeholder)} leftIcon={<react_native_elements_1.Icon name="envelope" type="font-awesome" iconStyle={PersonalSettingsFullpage_css_1.default.icon}/>} shake={true} errorMessage={_this.state.validEmail ? "" : MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.input_mail.errorMsg)}/>
+                <react_native_elements_1.Card containerStyle={PersonalSettingsFullpage_css_1.default.cardStyle}>
+                    <react_native_elements_1.Input value={_this.state.email} onChangeText={function (text) { return _this.emailValidation(text); }} inputStyle={{ fontFamily: AppText_enum_1.FontType.STANDARD }} errorStyle={{ fontFamily: AppText_enum_1.FontType.STANDARD }} label={MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.input_mail.lbl)} placeholder={MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.input_mail.placeholder)} leftIcon={<react_native_elements_1.Icon name="envelope" type="font-awesome" iconStyle={PersonalSettingsFullpage_css_1.default.icon}/>} errorMessage={_this.state.validEmail ? '' : MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.input_mail.errorMsg)}/>
+                </react_native_elements_1.Card>
 
-                <react_native_elements_1.CheckBox checked={_this.state.hasAcceptedDataPrivacy} containerStyle={[PersonalSettingsFullpage_css_1.default.row]} checkedColor="#000" title={MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.checkbox_dataprivacy)} textStyle={{ fontFamily: AppText_enum_1.FontType.BOLD }} onPress={function () { return _this.setState({ hasAcceptedDataPrivacy: !_this.state.hasAcceptedDataPrivacy }); }}/>
+                <react_native_elements_1.CheckBox checked={_this.state.hasAcceptedDataPrivacy} checkedColor="#000" title={MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.checkbox_dataprivacy)} containerStyle={PersonalSettingsFullpage_css_1.default.checkBoxStyle} textStyle={{ fontFamily: AppText_enum_1.FontType.BOLD }} onPress={function () { return _this.setState({ hasAcceptedDataPrivacy: !_this.state.hasAcceptedDataPrivacy }); }}/>
 
-                <react_native_elements_1.Button containerStyle={PersonalSettingsFullpage_css_1.default.row} type="outline" title={MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.btn.save)} titleStyle={{ fontFamily: AppText_enum_1.FontType.STANDARD, marginLeft: 10 }} raised={isFormSubmittable} loading={_this.state.isSavingSettings} disabled={!isFormSubmittable} icon={<react_native_elements_1.Icon name="save" type="font-awesome"/>} onPress={_this.postUserSettings}/>
+                <react_native_elements_1.Button type="outline" title={MultiLingualityController_1.t(PersonalSettingsFullpage_translations_1.default.form.btn.save)} titleStyle={PersonalSettingsFullpage_css_1.default.buttonTextStyle} raised={isFormSubmittable} containerStyle={PersonalSettingsFullpage_css_1.default.buttonStyle} loading={_this.state.isSavingSettings} disabled={!isFormSubmittable} icon={<react_native_elements_1.Icon name="save" type="font-awesome"/>} onPress={_this.postUserSettings}/>
             </react_native_1.ScrollView>);
         };
         _this.getUserId = function () { return __awaiter(_this, void 0, void 0, function () {
@@ -127,10 +130,10 @@ var PersonalSettingsFullpage = (function (_super) {
                                     };
                                     _this.setState(apiRes);
                                     CacheController_1.putCache(CacheController_constants_1.CACHE_KEY_SETTINGS, apiRes);
-                                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":getUserSettings", "Received user settings");
+                                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":getUserSettings", 'Received user settings');
                                 }
                                 else {
-                                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":getUserSettings", "No user settings previously saved");
+                                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":getUserSettings", 'No user settings previously saved');
                                 }
                                 _this.loadingContext.setLoading(LoadingHoc_1.LoadingStatus.DONE);
                                 if (cb) {
@@ -160,10 +163,10 @@ var PersonalSettingsFullpage = (function (_super) {
                             _b = PersonalSettingsFullpage.API_ENDPOINT + "/";
                             return [4, this.getUserId()];
                         case 1: return [4, _a.apply(void 0, [_b + (_c.sent()), {
-                                    method: "POST",
+                                    method: 'POST',
                                     headers: {
-                                        Accept: "application/json",
-                                        "Content-Type": "application/json",
+                                        Accept: 'application/json',
+                                        'Content-Type': 'application/json',
                                     },
                                     body: JSON.stringify({
                                         email: this.state.email,

@@ -1,4 +1,4 @@
-import {ImageURISource} from 'react-native'
+import { ImageURISource } from 'react-native'
 import { NavigationInjectedProps, NavigationParams, NavigationRoute, NavigationScreenProp } from 'react-navigation'
 
 export interface IChallengeLayerBarProps {

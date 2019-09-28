@@ -1,6 +1,6 @@
-import * as React from "react";
-import { ILoadingContext } from "../../views/components/system/HOCs/LoadingHoc";
-import { IUpdateTask } from "../UpdateController/UpdateController.tasks";
+import * as React from 'react';
+import { ILoadingContext } from '../../views/components/system/HOCs/LoadingHoc';
+import { IUpdateTask } from '../UpdateController/UpdateController.tasks';
 export declare const onAppUpdate: IUpdateTask;
 export declare const putCache: (key: string, val: any) => Promise<any>;
 export declare const getCache: (key: string) => Promise<any>;

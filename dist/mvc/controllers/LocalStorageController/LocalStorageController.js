@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -34,14 +35,12 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var async_storage_1 = require("@react-native-community/async-storage");
 var LoggingController_1 = require("../LoggingController/LoggingController");
-var TAG = "LocalStorageController";
-var USER_ID = "user_id";
-var EMAIL_MARKED = "email_marked";
-exports.getLocalItem = function (key) { return __awaiter(_this, void 0, void 0, function () {
+var LocalStorageController_constants_1 = require("./LocalStorageController.constants");
+var TAG = 'LocalStorageController';
+exports.getLocalItem = function (key) { return __awaiter(void 0, void 0, void 0, function () {
     var queriedValue, e_1;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -62,7 +61,7 @@ exports.getLocalItem = function (key) { return __awaiter(_this, void 0, void 0, 
         }
     });
 }); };
-exports.setLocalItem = function (key, val) { return __awaiter(_this, void 0, void 0, function () {
+exports.setLocalItem = function (key, val) { return __awaiter(void 0, void 0, void 0, function () {
     var e_2;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -80,7 +79,7 @@ exports.setLocalItem = function (key, val) { return __awaiter(_this, void 0, voi
         }
     });
 }); };
-var generateNewUserId = function () { return __awaiter(_this, void 0, void 0, function () {
+var generateNewUserId = function () { return __awaiter(void 0, void 0, void 0, function () {
     var newUserId, e_3;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -91,7 +90,7 @@ var generateNewUserId = function () { return __awaiter(_this, void 0, void 0, fu
                 _a.label = 1;
             case 1:
                 _a.trys.push([1, 3, , 4]);
-                return [4, async_storage_1.default.setItem(USER_ID, newUserId)];
+                return [4, async_storage_1.default.setItem(LocalStorageController_constants_1.USER_ID, newUserId)];
             case 2:
                 _a.sent();
                 return [3, 4];
@@ -103,35 +102,35 @@ var generateNewUserId = function () { return __awaiter(_this, void 0, void 0, fu
         }
     });
 }); };
-exports.getLocalUserId = function () { return __awaiter(_this, void 0, void 0, function () {
+exports.getLocalUserId = function () { return __awaiter(void 0, void 0, void 0, function () {
     var localUserId;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, async_storage_1.default.getItem(USER_ID)];
+            case 0: return [4, async_storage_1.default.getItem(LocalStorageController_constants_1.USER_ID)];
             case 1:
                 localUserId = _a.sent();
                 return [2, localUserId === null ? generateNewUserId() : localUserId];
         }
     });
 }); };
-exports.doesLocalUserIDExist = function () { return __awaiter(_this, void 0, void 0, function () {
+exports.doesLocalUserIDExist = function () { return __awaiter(void 0, void 0, void 0, function () {
     var localUserId;
     return __generator(this, function (_a) {
         switch (_a.label) {
-            case 0: return [4, async_storage_1.default.getItem(USER_ID)];
+            case 0: return [4, async_storage_1.default.getItem(LocalStorageController_constants_1.USER_ID)];
             case 1:
                 localUserId = _a.sent();
                 return [2, localUserId !== null];
         }
     });
 }); };
-exports.markEmailAsCreated = function () { return __awaiter(_this, void 0, void 0, function () {
+exports.markEmailAsCreated = function () { return __awaiter(void 0, void 0, void 0, function () {
     var e_4;
     return __generator(this, function (_a) {
         switch (_a.label) {
             case 0:
                 _a.trys.push([0, 2, , 3]);
-                return [4, async_storage_1.default.setItem(EMAIL_MARKED, "true")];
+                return [4, async_storage_1.default.setItem(LocalStorageController_constants_1.EMAIL_MARKED, 'true')];
             case 1:
                 _a.sent();
                 return [2, true];
@@ -143,9 +142,9 @@ exports.markEmailAsCreated = function () { return __awaiter(_this, void 0, void 
         }
     });
 }); };
-exports.getEmailMarked = function () { return __awaiter(_this, void 0, void 0, function () {
+exports.getEmailMarked = function () { return __awaiter(void 0, void 0, void 0, function () {
     return __generator(this, function (_a) {
-        return [2, async_storage_1.default.getItem(EMAIL_MARKED)];
+        return [2, async_storage_1.default.getItem(LocalStorageController_constants_1.EMAIL_MARKED)];
     });
 }); };
 //# sourceMappingURL=LocalStorageController.js.map

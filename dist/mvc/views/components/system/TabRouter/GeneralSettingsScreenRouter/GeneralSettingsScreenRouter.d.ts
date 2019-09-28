@@ -1,2 +1,2 @@
-declare const GeneralSettingsScreenRouter: import("react-navigation").NavigationContainer;
+declare const GeneralSettingsScreenRouter: any;
 export default GeneralSettingsScreenRouter;

@@ -10,7 +10,7 @@ var ChallengeTypeIcon_css_1 = require("./ChallengeTypeIcon.css");
 exports.ChallengeTypeIcon = function (props) {
     var currColor = props.isGrayscale ? GlobalStyles_css_1.GREY : ChallengeTypeIcon_css_1.BG_COLOR;
     return (<react_native_1.TouchableOpacity style={ChallengeTypeIcon_css_1.default.touchableContainer}>
-            <react_native_elements_1.Tooltip popover={<react_native_elements_1.Text style={GlobalStyles_css_1.default.tooltipText}>{ChallengeCategory_1.CHALLENGE_CATEGORIES(MultiLingualityController_1.t)[props.type].descr}</react_native_elements_1.Text>} backgroundColor={currColor} height={120}>
+            <react_native_elements_1.Tooltip popover={<react_native_elements_1.Text style={GlobalStyles_css_1.default.tooltipText}>{ChallengeCategory_1.CHALLENGE_CATEGORIES(MultiLingualityController_1.t)[props.type].descr}</react_native_elements_1.Text>} backgroundColor={currColor} height={110}>
                 <react_native_elements_1.Image source={ChallengeCategory_1.CHALLENGE_CATEGORIES(MultiLingualityController_1.t)[props.type].icon} containerStyle={[ChallengeTypeIcon_css_1.default.imageContainer, { backgroundColor: currColor }]} style={ChallengeTypeIcon_css_1.default.image}/>
             </react_native_elements_1.Tooltip>
         </react_native_1.TouchableOpacity>);

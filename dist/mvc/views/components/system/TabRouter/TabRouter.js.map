@@ -1,1 +1,1 @@
-{"version":3,"file":"TabRouter.js","sourceRoot":"","sources":["../../../../../../src/mvc/views/components/system/TabRouter/TabRouter.ts"],"names":[],"mappings":";;AAAA,qDAAgE;AAChE,+EAA6D;AAC7D,2EAA4D;AAM5D,IAAM,YAAY,GAAG,gDAA6B,CAAC,2CAAY,EAAE,0CAAa,CAAC,CAAA;AAE/E,kBAAe,YAAY,CAAA"}
+{"version":3,"file":"TabRouter.js","sourceRoot":"","sources":["../../../../../../src/mvc/views/components/system/TabRouter/TabRouter.ts"],"names":[],"mappings":";;AAAA,+DAAqE;AACrE,+EAA6D;AAC7D,2EAA4D;AAM5D,IAAM,YAAY,GAAG,qDAA6B,CAAC,2CAAY,EAAE,0CAAa,CAAC,CAAA;AAE/E,kBAAe,YAAY,CAAA"}

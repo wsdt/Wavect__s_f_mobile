@@ -39,17 +39,27 @@ export class ChallengeInformation {
         this._misc = value
     }
 
+    get reward(): string {
+        return this._reward
+    }
+
+    set reward(reward: string) {
+        this._reward = reward
+    }
+
     private _id!: string
     private _instruction!: string
     private _privacy!: string
     private _intention!: string
     private _misc!: string
+    private _reward!: string
 
-    public constructor(id: string, instruction: string, privacy: string, intention: string, misc: string) {
+    public constructor(id: string, instruction: string, privacy: string, intention: string, misc: string, reward: string) {
         this.id = id
         this.instruction = instruction
         this.privacy = privacy
         this.intention = intention
         this.misc = misc
+        this.reward = reward
     }
 }

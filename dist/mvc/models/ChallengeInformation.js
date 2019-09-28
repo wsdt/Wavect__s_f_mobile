@@ -1,12 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var ChallengeInformation = (function () {
-    function ChallengeInformation(id, instruction, privacy, intention, misc) {
+    function ChallengeInformation(id, instruction, privacy, intention, misc, reward) {
         this.id = id;
         this.instruction = instruction;
         this.privacy = privacy;
         this.intention = intention;
         this.misc = misc;
+        this.reward = reward;
     }
     Object.defineProperty(ChallengeInformation.prototype, "id", {
         get: function () {
@@ -54,6 +55,16 @@ var ChallengeInformation = (function () {
         },
         set: function (value) {
             this._misc = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(ChallengeInformation.prototype, "reward", {
+        get: function () {
+            return this._reward;
+        },
+        set: function (reward) {
+            this._reward = reward;
         },
         enumerable: true,
         configurable: true

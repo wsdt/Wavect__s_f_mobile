@@ -1,4 +1,4 @@
-import { ImageURISource } from "react-native";
+import { ImageURISource } from 'react-native';
 export declare class Sponsor {
     private _id;
     private _name;

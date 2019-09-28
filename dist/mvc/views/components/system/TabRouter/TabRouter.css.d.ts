@@ -1,4 +1,4 @@
-import { FontType } from "../../functional/AppText/AppText.enum";
+import { FontType } from '../../functional/AppText/AppText.enum';
 export declare const styles: {
     headerTitleStyle: {
         fontSize: number;

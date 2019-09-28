@@ -1,3 +1,4 @@
+/*
 import {ImageURISource, Platform} from 'react-native'
 // @ts-ignore
 import Marker from 'react-native-image-marker'
@@ -8,8 +9,8 @@ const TAG = 'WatermarkController'
 
 // TODO: https://github.com/JimmyDaddy/react-native-image-marker
 
-/** @param userImage: base64 string (also other formats possible)
- * @param sponsorLogo: Logo to add on userImage. */
+ @param userImage: base64 string (also other formats possible)
+ * @param sponsorLogo: Logo to add on userImage.
 export const addWatermarkToImage = async (userImage:ImageURISource, sponsorLogo:ImageURISource): Promise<null|ImageURISource> => {
     try {
         console.log("## 1")
@@ -30,3 +31,4 @@ export const addWatermarkToImage = async (userImage:ImageURISource, sponsorLogo:
 
     return null
 }
+*/

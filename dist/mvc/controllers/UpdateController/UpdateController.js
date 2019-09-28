@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -34,17 +35,16 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var _this = this;
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_native_version_number_1 = require("react-native-version-number");
 var LocalStorageController_1 = require("../LocalStorageController/LocalStorageController");
 var LoggingController_1 = require("../LoggingController/LoggingController");
 var UpdateController_tasks_1 = require("./UpdateController.tasks");
-var TAG = "UpdateController";
-var PACKAGE_VERSION_KEY = "app_version";
+var TAG = 'UpdateController';
+var PACKAGE_VERSION_KEY = 'app_version';
 exports.hasPerformedUpdateCheck = false;
 var buildVersion = react_native_version_number_1.default.buildVersion.toString();
-exports.performAppUpdateProcedure = function () { return __awaiter(_this, void 0, void 0, function () {
+exports.performAppUpdateProcedure = function () { return __awaiter(void 0, void 0, void 0, function () {
     var appVersion, _i, ON_UPDATE_TASKS_1, task;
     return __generator(this, function (_a) {
         switch (_a.label) {
@@ -56,7 +56,7 @@ exports.performAppUpdateProcedure = function () { return __awaiter(_this, void 0
                 appVersion = _a.sent();
                 if (appVersion) {
                     if (appVersion !== buildVersion) {
-                        LoggingController_1.logEvent(LoggingController_1.LogType.INFO, TAG + ":main", "User updated app.");
+                        LoggingController_1.logEvent(LoggingController_1.LogType.INFO, TAG + ":main", 'User updated app.');
                         for (_i = 0, ON_UPDATE_TASKS_1 = UpdateController_tasks_1.ON_UPDATE_TASKS; _i < ON_UPDATE_TASKS_1.length; _i++) {
                             task = ON_UPDATE_TASKS_1[_i];
                             task.onAppUpdate(appVersion, buildVersion);
@@ -66,7 +66,7 @@ exports.performAppUpdateProcedure = function () { return __awaiter(_this, void 0
                 }
                 else {
                     LocalStorageController_1.setLocalItem(PACKAGE_VERSION_KEY, buildVersion);
-                    LoggingController_1.logEvent(LoggingController_1.LogType.INFO, TAG + ":main", "User has ran the app for the first time.");
+                    LoggingController_1.logEvent(LoggingController_1.LogType.INFO, TAG + ":main", 'User has ran the app for the first time.');
                 }
                 exports.hasPerformedUpdateCheck = true;
                 return [2];

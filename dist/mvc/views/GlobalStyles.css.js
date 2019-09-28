@@ -1,44 +1,44 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var react_native_1 = require("react-native");
-exports.GREY = "#9b9b9b";
-exports.FULL_WIDTH = react_native_1.Dimensions.get("window").width;
-exports.FULL_HEIGHT = react_native_1.Dimensions.get("window").height;
+exports.GREY = '#9b9b9b';
+exports.FULL_WIDTH = react_native_1.Dimensions.get('window').width;
+exports.FULL_HEIGHT = react_native_1.Dimensions.get('window').height;
 exports.BOTTOM_TABBAR_MARGIN = 150;
 var globalStyles = react_native_1.StyleSheet.create({
     scrollViewContainer: {
         flexGrow: 1,
-        width: "100%",
-        height: "100%",
+        width: '100%',
+        height: '100%',
     },
     absoluteCenter: {
-        position: "absolute",
+        position: 'absolute',
         left: 0,
         top: 0,
         right: 0,
         bottom: 0,
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
     pageContainer: {
         flex: 1,
-        height: "100%",
+        height: '100%',
         margin: 5,
-        justifyContent: "flex-start",
+        justifyContent: 'flex-start',
     },
     tooltipText: {
-        color: "#fff",
+        color: '#fff',
     },
     fullSize: {
-        height: "100%",
-        width: "100%",
+        height: '100%',
+        width: '100%',
     },
     radius: {
         borderRadius: 15,
     },
     center: {
-        justifyContent: "center",
-        alignItems: "center",
+        justifyContent: 'center',
+        alignItems: 'center',
     },
 });
 exports.default = globalStyles;

@@ -13,10 +13,11 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -62,11 +63,11 @@ var WarningsController_1 = require("../../../../controllers/WarningsController/W
 var AppText_1 = require("../../functional/AppText/AppText");
 var AppText_enum_1 = require("../../functional/AppText/AppText.enum");
 var MajorButton_1 = require("../../functional/MajorButton/MajorButton");
-var HomeRoutes_1 = require("../../system/TabRouter/HomeScreenRouter/HomeRoutes");
+var GeneralSettingsScreenRoutes_1 = require("../../system/TabRouter/GeneralSettingsScreenRouter/GeneralSettingsScreenRoutes");
 var ChallengeLayerBar_constants_1 = require("./ChallengeLayerBar.constants");
 var ChallengeLayerBar_css_1 = require("./ChallengeLayerBar.css");
 var ChallengeLayerBar_translations_1 = require("./ChallengeLayerBar.translations");
-var TAG = "ChallengeLayerBar";
+var TAG = 'ChallengeLayerBar';
 var ChallengeLayerBar = (function (_super) {
     __extends(ChallengeLayerBar, _super);
     function ChallengeLayerBar() {
@@ -91,10 +92,10 @@ var ChallengeLayerBar = (function (_super) {
                         _b = ChallengeLayerBar.API_ENDPOINT + "/current/";
                         return [4, LocalStorageController_1.getLocalUserId()];
                     case 1: return [4, _a.apply(void 0, [_b + (_c.sent()), {
-                                method: "POST",
+                                method: 'POST',
                                 headers: {
-                                    Accept: "application/json",
-                                    "Content-Type": "application/json",
+                                    Accept: 'application/json',
+                                    'Content-Type': 'application/json',
                                 },
                                 body: JSON.stringify({
                                     email: this.props.sponsorEmail,
@@ -108,7 +109,7 @@ var ChallengeLayerBar = (function (_super) {
                         }
                         else {
                             this.storeChallengeSolved();
-                            LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", "Sent email to sponsor");
+                            LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", 'Sent email to sponsor');
                         }
                         return [3, 5];
                     case 4:
@@ -131,7 +132,7 @@ var ChallengeLayerBar = (function (_super) {
                         currChallengeSolved: false,
                         isLoadingChallengeSolved: false,
                     });
-                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":userAbortedProcedure", "User aborted");
+                    LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":userAbortedProcedure", 'User aborted');
                 };
                 shareChallengeSolved = function () { return __awaiter(_this, void 0, void 0, function () {
                     var res, e_2;
@@ -145,7 +146,7 @@ var ChallengeLayerBar = (function (_super) {
                                 res = _a.sent();
                                 if (!(res.error || res.didCancel)) return [3, 2];
                                 userAbortedProcedure();
-                                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", "User did not choose a file");
+                                LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":challengeSolved", 'User did not choose a file');
                                 return [3, 4];
                             case 2: return [4, ShareController_1.shareMedia(this.props.headline, this.props.sponsorName, res).then(function (response) {
                                     if (response) {
@@ -156,8 +157,8 @@ var ChallengeLayerBar = (function (_super) {
                                         });
                                     }
                                     else {
-                                        react_native_1.Alert.alert("Ausgabe" + response);
-                                        _this.sendChallengeSolvedEmailToSponsor();
+                                        userAbortedProcedure();
+                                        LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":shareMedia", 'Could not share img.');
                                     }
                                 })];
                             case 3:
@@ -194,12 +195,12 @@ var ChallengeLayerBar = (function (_super) {
                             react_native_1.Alert.alert(MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.dialog.settings_not_set.title), MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.dialog.settings_not_set.msg), [
                                 {
                                     text: MultiLingualityController_1.t(ChallengeLayerBar_translations_1.default.dialog.settings_not_set.btn_ok),
-                                    onPress: function () { return _this.props.navigation.navigate(HomeRoutes_1.routes.PersonalSettingsFullpage); },
+                                    onPress: function () { return _this.props.navigation.navigate(GeneralSettingsScreenRoutes_1.routes.PersonalSettingsFullpage); },
                                 },
                             ], {
                                 cancelable: true,
                             });
-                            this.props.navigation.navigate(HomeRoutes_1.routes.PersonalSettingsFullpage);
+                            this.props.navigation.navigate(GeneralSettingsScreenRoutes_1.routes.PersonalSettingsFullpage);
                         }
                         return [2];
                 }

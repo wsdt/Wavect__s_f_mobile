@@ -34,6 +34,8 @@ declare const styles: {
     closeIcon: {
         justifyContent: "flex-end";
         alignItems: "flex-end";
+        padding: number;
+        marginTop: number;
     };
 };
 export default styles;

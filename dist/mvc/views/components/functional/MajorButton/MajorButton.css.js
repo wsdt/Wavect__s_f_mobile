@@ -5,7 +5,7 @@ var globalConstants_css_1 = require("../../../../../globalConfiguration/globalCo
 var AppText_enum_1 = require("../AppText/AppText.enum");
 var styles = react_native_1.StyleSheet.create({
     primaryBtnContainer: {
-        backgroundColor: "#f3f3ee",
+        backgroundColor: '#f3f3ee',
         borderRadius: 3,
         flex: 1.5,
         margin: 5,
@@ -21,13 +21,13 @@ var styles = react_native_1.StyleSheet.create({
         margin: 5,
     },
     btnTitleStandard: {
-        color: "#000",
+        color: '#000',
         fontSize: 20,
         fontFamily: AppText_enum_1.FontType.BOLD,
         padding: 10,
     },
     btnStyleWithBorder: {
-        borderColor: "#000",
+        borderColor: '#000',
         height: 60,
     },
     btnTitleHighlighted: {

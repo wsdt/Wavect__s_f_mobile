@@ -7,10 +7,10 @@ exports.openFilePicker = function () {
     return new Promise(function (resolve, reject) {
         var options = {
             title: MultiLingualityController_1.t(FilePickerController_translations_1.default.dialog.title),
-            mediaType: "photo",
+            mediaType: 'photo',
             storageOptions: {
                 skipBackup: true,
-                path: "photo",
+                path: 'images',
             },
         };
         try {

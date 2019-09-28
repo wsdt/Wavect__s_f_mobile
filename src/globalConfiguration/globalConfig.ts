@@ -1,7 +1,7 @@
 import { tabRoutes } from '../mvc/views/components/system/TabRouter/TabRoutes'
 
 // NOTE: Following constants use the __DEV__ var to ensure that this only has an impact on debug builds!
-export const useLocalBackend: boolean = __DEV__ && true // please always set to false before pushing
+export const useLocalBackend: boolean = __DEV__ && false // please always set to false before pushing
 export const disableCache: boolean = __DEV__ && false // disables local app cache (only disable for debugging)
 export const useReactotron: boolean = __DEV__ && true // strong debugging tool
 
@@ -12,6 +12,6 @@ export const useReactotron: boolean = __DEV__ && true // strong debugging tool
 export const START_PAGE = tabRoutes.HomeScreen
 
 /** How do we reach our backend API/GraphQL */
-export const BACKEND_URL = useLocalBackend ? 'https://f237bd61.ngrok.io' : 'https://api.dev.wavect.io'
+export const BACKEND_URL = useLocalBackend ? 'https://74969350.ngrok.io' : 'https://api.dev.wavect.io'
 
 export const BACKEND_MOBILE_API = `${BACKEND_URL}/api/mobile/v1`

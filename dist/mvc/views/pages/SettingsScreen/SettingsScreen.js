@@ -15,6 +15,7 @@ var __extends = (this && this.__extends) || (function () {
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
 var LoggingController_1 = require("../../../controllers/LoggingController/LoggingController");
+var GeneralSettingsFullpage_1 = require("../../components/classbased/GeneralSettingsFullpage/GeneralSettingsFullpage");
 var BaseScreen_1 = require("../BaseScreen/BaseScreen");
 var SettingsScreen = (function (_super) {
     __extends(SettingsScreen, _super);
@@ -23,11 +24,11 @@ var SettingsScreen = (function (_super) {
     }
     SettingsScreen.prototype.render = function () {
         return (<BaseScreen_1.BaseScreen>
-                <SettingsScreen />
+                <GeneralSettingsFullpage_1.default />
             </BaseScreen_1.BaseScreen>);
     };
     return SettingsScreen;
 }(React.Component));
 exports.SettingsScreen = SettingsScreen;
-LoggingController_1.setCurrentScreen("SettingsScreen", SettingsScreen.toString());
+LoggingController_1.setCurrentScreen('SettingsScreen', SettingsScreen.toString());
 //# sourceMappingURL=SettingsScreen.js.map

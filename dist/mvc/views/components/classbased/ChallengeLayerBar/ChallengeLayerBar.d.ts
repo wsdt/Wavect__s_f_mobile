@@ -1,6 +1,6 @@
-import React from "react";
-import { IChallengeLayerBarProps } from "./ChallengeLayerBar.props";
-import { IChallengeLayerBarState } from "./ChallengeLayerBar.state";
+import React from 'react';
+import { IChallengeLayerBarProps } from './ChallengeLayerBar.props';
+import { IChallengeLayerBarState } from './ChallengeLayerBar.state';
 declare class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, IChallengeLayerBarState> {
     private static API_ENDPOINT;
     state: IChallengeLayerBarState;
@@ -15,7 +15,7 @@ declare class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarPr
     private getCurrentChallengeSolvedId;
     private storeChallengeSolved;
 }
-declare const _default: React.ComponentType<Pick<IChallengeLayerBarProps, "headline" | "subline" | "setGrayscale" | "challengeId" | "expirationInMs" | "sponsorEmail" | "sponsorName"> & {
+declare const _default: React.ComponentType<Pick<IChallengeLayerBarProps, "headline" | "setGrayscale" | "challengeId" | "subline" | "expirationInMs" | "sponsorEmail" | "sponsorName" | "sponsorLogo"> & {
     onRef?: ((instance: ChallengeLayerBar | null) => void) | React.RefObject<ChallengeLayerBar> | null | undefined;
 }>;
 export default _default;
