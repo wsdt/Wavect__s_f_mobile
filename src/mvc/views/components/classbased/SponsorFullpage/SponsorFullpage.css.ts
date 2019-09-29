@@ -92,13 +92,13 @@ export const styles = StyleSheet.create({
         color: '#eee',
         fontWeight: 'bold',
         fontStyle: 'italic',
-        fontSize: 50,
-        marginRight: 20,
+        fontSize: 25,
+        marginRight: 12,
         marginTop: 20,
     },
     cardTitleStyle: {
         fontFamily: FontType.BOLD,
-        fontSize: 30,
+        fontSize: 25,
     },
     cardContainerStyle: {
         textAlign: 'center',
@@ -110,7 +110,7 @@ export const styles = StyleSheet.create({
         margin: 5,
     },
     cardText: {
-        fontSize: 20,
-        textAlign: 'center',
+        fontSize: 18,
+        textAlign: 'justify',
     },
 })

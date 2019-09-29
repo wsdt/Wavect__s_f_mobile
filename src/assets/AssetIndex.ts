@@ -1,20 +1,22 @@
 // Paths work, but I don't know why IntelliJ underlines it red
 
 // @ts-ignore
-export import ICO_ENVIRONMENT = require('./img/icons/environment.png')
+export {default as ICO_ENVIRONMENT} from './img/icons/environment.png'
 // @ts-ignore
-export import GIFT = require('./img/icons/gift.png')
+export {default as GIFT} from './img/icons/gift.png'
 // @ts-ignore
-export import ICO_HEALTH = require('./img/icons/health.png')
+export {default as ICO_HEALTH} from './img/icons/health.png'
 // @ts-ignore
-export import ICO_TAB_CHALLENGE = require('./img/icons/ic_tab_challenges.png')
+export {default as ICO_TAB_CHALLENGE} from './img/icons/ic_tab_challenges.png'
 // @ts-ignore
-export import ICO_TAB_SETTINGS = require('./img/icons/ic_tab_settings.png')
+export {default as ICO_TAB_SETTINGS} from './img/icons/ic_tab_settings.png'
 // @ts-ignore
-export import INFO = require('./img/icons/info.png')
+export {default as INFO} from './img/icons/info.png'
 // @ts-ignore
-export import INFOBUTTON = require('./img/icons/infobutton.png')
+export {default as PRIVACY} from './img/icons/privacy.png'
 // @ts-ignore
-export import ICO_SOCIETY = require('./img/icons/society.png')
+export {default as INFOBUTTON} from './img/icons/infobutton.png'
 // @ts-ignore
-export import LOGO = require('./img/logo_w.png')
+export {default as ICO_SOCIETY} from './img/icons/society.png'
+// @ts-ignore
+export {default as LOGO} from './img/logo_w.png'

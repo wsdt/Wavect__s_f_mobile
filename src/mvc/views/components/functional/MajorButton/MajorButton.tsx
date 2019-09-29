@@ -15,6 +15,7 @@ export const MajorButton: React.FunctionComponent<IMajorButtonProps> = props => 
             break
         case MajorBtnType.SECONDARY:
             containerStyle = styles.secondaryBtnContainer
+            titleStyle = styles.btnTitleSecondary
             break
         case MajorBtnType.HIGHLIGHTED:
             containerStyle = styles.highlightedBtnContainer
@@ -27,13 +28,13 @@ export const MajorButton: React.FunctionComponent<IMajorButtonProps> = props => 
         <View style={containerStyle}>
             <Button
                 title={title}
-                type="outline"
+                type='outline'
                 titleStyle={titleStyle}
                 buttonStyle={styles.btnStyleWithBorder}
                 onPress={onPress}
                 onLongPress={onLongPress}
                 loading={props.isLoading}
-                icon={icon ? <Icon name={icon} type="font-awesome" /> : undefined}
+                icon={icon ? <Icon name={icon} type='font-awesome' /> : undefined}
             />
         </View>
     )

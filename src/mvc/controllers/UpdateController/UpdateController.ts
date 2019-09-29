@@ -6,7 +6,7 @@ import { ON_UPDATE_TASKS } from './UpdateController.tasks'
 const TAG = 'UpdateController'
 const PACKAGE_VERSION_KEY = 'app_version'
 
-/* Temporary var for runtime to avoid evaluating update everytime.
+/** Temporary var for runtime to avoid evaluating update everytime.
  * Export not necessary, but provided for better UX as special LoadingScreen might be shown for a very short time, although
  * check has been already done. See BaseScreen.tsx */
 export let hasPerformedUpdateCheck: boolean = false

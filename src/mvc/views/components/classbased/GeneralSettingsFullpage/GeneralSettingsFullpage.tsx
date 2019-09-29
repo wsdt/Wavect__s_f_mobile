@@ -11,6 +11,7 @@ import { AppText } from '../../functional/AppText/AppText'
 import { FontType } from '../../functional/AppText/AppText.enum'
 import { routes } from '../../system/TabRouter/GeneralSettingsScreenRouter/GeneralSettingsScreenRoutes'
 import styles from './GeneralSettingsFullpage.css'
+import {LOGO} from "../../../../../assets/AssetIndex";
 
 export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
     // proper condition of data, todo change the frontend!
@@ -37,7 +38,7 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
         return (
             <View style={styles.mainView}>
                 <View style={styles.imageView}>
-                    <FastImage source={require('../../../../../assets/img/logo_w.png')} style={[styles.image, globalStyles.radius]} />
+                    <FastImage source={LOGO} style={[styles.image, globalStyles.radius]} />
 
                     <AppText font={FontType.STANDARD_BOLD} style={{ fontSize: 25 }}>
                         Wavect

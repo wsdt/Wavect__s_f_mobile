@@ -9,15 +9,16 @@ import { IChallengeTypeIconProps } from './ChallengeTypeIcon.props'
 
 export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps> = props => {
     const currColor = props.isGrayscale ? GREY : BG_COLOR
+    const category = CHALLENGE_CATEGORIES(t, props.type)
     return (
         <TouchableOpacity style={styles.touchableContainer}>
             <Tooltip
-                popover={<Text style={globalStyles.tooltipText}>{CHALLENGE_CATEGORIES(t)[props.type].descr}</Text>}
+                popover={<Text style={globalStyles.tooltipText}>{category.descr}</Text>}
                 backgroundColor={currColor}
                 height={110}
             >
                 <Image
-                    source={CHALLENGE_CATEGORIES(t)[props.type].icon}
+                    source={category.icon}
                     containerStyle={[styles.imageContainer, { backgroundColor: currColor }]}
                     style={styles.image}
                 />

@@ -12,12 +12,13 @@ const styles = StyleSheet.create({
     centeredInnerContent: {
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: -40,
     },
     centeredText: {
         textAlign: 'center',
-        fontSize: 18,
+        fontSize: 16,
         margin: 10,
-        lineHeight: 30,
+        lineHeight: 23,
     },
 
     ending: {
@@ -38,7 +39,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
         padding: 0,
-        marginTop: 10,
+        marginTop: 5,
     },
 })
 

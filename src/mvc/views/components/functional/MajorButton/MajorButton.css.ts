@@ -26,6 +26,12 @@ const styles = StyleSheet.create({
         fontFamily: FontType.BOLD,
         padding: 10,
     },
+    btnTitleSecondary: {
+        color: '#000',
+        fontSize: 15,
+        fontFamily: FontType.BOLD,
+        padding: 5,
+    },
     btnStyleWithBorder: {
         borderColor: '#000',
         height: 60,

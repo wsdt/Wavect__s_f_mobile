@@ -5,6 +5,7 @@ import { NavigationMaterialTabOptions, NavigationTabProp } from 'react-navigatio
 import GeneralSettingsScreenRouter from './GeneralSettingsScreenRouter/GeneralSettingsScreenRouter'
 import HomeScreenRouter from './HomeScreenRouter/HomeScreenRouter'
 import { tabRoutes } from './TabRoutes'
+import {ICO_TAB_CHALLENGE, ICO_TAB_SETTINGS} from "../../../../../assets/AssetIndex";
 
 /**
  * Add here your routes as key-value pairs (if key == value, you can
@@ -18,7 +19,7 @@ export const routesConfig: NavigationRouteConfigMap<NavigationMaterialTabOptions
         navigationOptions: {
             tabBarIcon: () => (
                 <Image
-                    source={require('../../../../../assets/img/icons/ic_tab_challenges.png')}
+                    source={ICO_TAB_CHALLENGE}
                     style={{ width: 20, height: 20, tintColor: 'black' }}
                 />
             ),
@@ -29,7 +30,7 @@ export const routesConfig: NavigationRouteConfigMap<NavigationMaterialTabOptions
         navigationOptions: {
             tabBarIcon: () => (
                 <Image
-                    source={require('../../../../../assets/img/icons/ic_tab_settings.png')}
+                    source={ICO_TAB_SETTINGS}
                     style={{ width: 20, height: 20, tintColor: 'black' }}
                 />
             ),
