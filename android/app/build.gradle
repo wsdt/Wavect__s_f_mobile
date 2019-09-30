@@ -204,6 +204,10 @@ dependencies {
     implementation "com.facebook.react:react-native:+"  // From node_modules
 	implementation 'com.google.firebase:firebase-core:17.2.0'
 
+    // for react-navigation swipe enabled (appcompat and swiperefreshlayout) --> no idea if working at the moment as not needed below rn-navigation 4
+    implementation 'androidx.appcompat:appcompat:1.1.0-rc01'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02'
+
     if (enableHermes) {
       def hermesPath = "../../node_modules/hermesvm/android/";
       debugImplementation files(hermesPath + "hermes-debug.aar")
