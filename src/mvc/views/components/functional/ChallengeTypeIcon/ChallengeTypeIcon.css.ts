@@ -5,27 +5,24 @@ export const BG_COLOR = '#008B8B' // color used for tooltip and image-bg when us
 
 const styles = StyleSheet.create({
     image: {
-        height: '100%',
-        width: '100%',
+        height: '95%',
+        width: '95%',
     },
     imageContainer: {
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: roundRadius,
-        width: 47,
-        height: 47,
+        width: 50,
+        height: 50,
+        borderWidth: 4,
+        borderColor: '#fff',
+
     },
     touchableContainer: {
         alignSelf: 'flex-end',
         position: 'absolute',
-        alignItems: 'center',
-        justifyContent: 'center',
-        marginTop: -5,
-        marginRight: -3,
-        borderRadius: roundRadius,
         width: 60,
-        height: 60,
-        backgroundColor: '#fff',
+        marginTop: 15,
     },
 })
 

@@ -1,28 +1,33 @@
 import * as React from 'react'
-import { View } from 'react-native'
+import {View} from 'react-native'
 import FastImage from 'react-native-fast-image'
 import Modal from 'react-native-modal'
-import {GIFT, INFO, PRIVACY} from '../../../../../assets/AssetIndex'
-import { AppText } from '../AppText/AppText'
+import {ASSET_URL} from '../../../../../globalConfiguration/globalConfig'
+import {AppText} from '../AppText/AppText'
 import styles from './ChallengeInformationModal.css'
 import {IChallengeInformationModalProps} from './ChallengeInformationModal.props'
 
-export const ChallengeInformationModal: React.FunctionComponent<any> = (props:IChallengeInformationModalProps) => {
+export const ChallengeInformationModal: React.FunctionComponent<any> = (props: IChallengeInformationModalProps) => {
     // const { instruction, intention, privacy, misc } = props.information
-    const { isVisible } = props
+    const {isVisible} = props
     // add the reward [Backend]!
-    const { instruction, reward, privacy, misc } = props.information
+    const {instruction, reward, privacy, misc} = props.information
 
     return (
         <View>
             <Modal isVisible={isVisible} propagateSwipe={true}>
                 <View style={styles.innerContent}>
                     <View style={styles.closeIcon}>
-                        <FastImage source={{ uri: 'https://cdn.pixabay.com/photo/2014/09/26/10/45/delete-462216_960_720.png' }} style={styles.image} />
+                        <FastImage source={{
+                            priority: FastImage.priority.high,
+                            uri: `${ASSET_URL}/img/icons/dialog/close.png`}} style={styles.image}/>
                     </View>
 
                     <View style={styles.centeredInnerContent}>
-                        <FastImage source={INFO} style={styles.image} resizeMode='contain' />
+                        <FastImage source={{
+                            priority: FastImage.priority.normal,
+                            uri: `${ASSET_URL}/img/icons/dialog/info.png`}} style={styles.image}
+                                   resizeMode='contain'/>
                         <AppText style={styles.centeredText}>{instruction}</AppText>
                         {/* add intention when enough space -> {misc}*/}
                         <View
@@ -34,7 +39,10 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = (props:IC
                             }}
                         />
 
-                        <FastImage source={PRIVACY} style={styles.image} />
+                        <FastImage source={{
+                                priority: FastImage.priority.normal,
+                                uri: `${ASSET_URL}/img/icons/dialog/privacy.png`
+                            }} style={styles.image}/>
                         <AppText style={styles.centeredText}>{privacy}</AppText>
 
                         <View
@@ -46,7 +54,10 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = (props:IC
 
                             }}
                         />
-                        <FastImage source={GIFT} style={styles.image} resizeMode='contain' />
+                        <FastImage source={{
+                            priority: FastImage.priority.normal,
+                            uri: `${ASSET_URL}/img/icons/dialog/gift.png`}} style={styles.image}
+                                   resizeMode='contain'/>
                         <AppText style={styles.centeredText}>{reward} {misc}</AppText>
                     </View>
                 </View>

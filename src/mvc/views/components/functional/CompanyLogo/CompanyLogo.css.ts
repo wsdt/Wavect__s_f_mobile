@@ -14,9 +14,12 @@ const styles = StyleSheet.create({
         borderRadius: radius,
     },
     image: {
-        width: 75,
-        height: 50,
+        width: 60,
+        height: 60,
         resizeMode: 'contain',
+        borderRadius: radius,
+        borderWidth: 4,
+        borderColor: '#fff'
     },
 })
 

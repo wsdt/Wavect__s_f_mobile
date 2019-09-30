@@ -1,8 +1,7 @@
 /** Enum does not allow require or dynamic strings. But useful for type-safety. */
-
-import {ICO_ENVIRONMENT, ICO_HEALTH, ICO_SOCIETY} from '../../assets/AssetIndex'
 import * as _schema from '../../assets/translations/_schema.json'
-import {logEvent, LogType} from "../controllers/LoggingController/LoggingController";
+import {ASSET_URL} from '../../globalConfiguration/globalConfig'
+import {logEvent, LogType} from '../controllers/LoggingController/LoggingController'
 
 // Translation schema for typo safety
 const s = _schema.models.challenge_category // for readability
@@ -20,15 +19,15 @@ export const CHALLENGE_CATEGORIES = (t: any, category:string) => {
     const schema:any = {
         [ChallengeCategory.ENVIRONMENT]: {
             descr: t(s.environment.descr),
-            icon: ICO_ENVIRONMENT,
+            icon: `${ASSET_URL}/img/icons/challenge_type/environment.png`,
         },
         [ChallengeCategory.HEALTH]: {
             descr: t(s.health.descr),
-            icon: ICO_HEALTH,
+            icon: `${ASSET_URL}/img/icons/challenge_type/health.png`,
         },
         [ChallengeCategory.SOCIETY]: {
             descr: t(s.social.descr),
-            icon: ICO_SOCIETY,
+            icon: `${ASSET_URL}/img/icons/challenge_type/society.png`,
         },
     }
     try {
