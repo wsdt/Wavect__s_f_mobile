@@ -57,7 +57,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                 uri: logoUri.uri,
                             }}
                             style={styles.imageStyle}
-                            resizeMode='contain'
+                            resizeMode="contain"
                         />
                     </View>
                 </FastImage>
@@ -71,14 +71,14 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     {getParagraph(t(s.headers.misc), misc)}
 
                     {website || email ? (
-                        <Card title='Kontakt' titleStyle={styles.cardTitleStyle} containerStyle={styles.cardStyle}>
+                        <Card title="Kontakt" titleStyle={styles.cardTitleStyle} containerStyle={styles.cardStyle}>
                             <View style={styles.buttonContainer}>
                                 {website ? (
                                     <MajorButton
                                         title={t(s.btn.website)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(website)}
-                                        icon='globe'
+                                        icon="globe"
                                     />
                                 ) : null}
                                 {email ? (
@@ -86,7 +86,7 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                                         title={t(s.btn.email)}
                                         btnType={MajorBtnType.SECONDARY}
                                         onPress={() => Linking.openURL(`mailto:${email}`)}
-                                        icon='envelope'
+                                        icon="envelope"
                                     />
                                 ) : null}
                             </View>

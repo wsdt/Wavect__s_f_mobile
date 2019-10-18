@@ -8,6 +8,6 @@ parentScripts.scripts.android =
     'yarn start genLangSchema && ' +
     'react-native run-android && ' +
     'react-native log-android' // adb for reactotron (each time necessary), rimraf for android build dir bug (no permission)
-parentScripts.scripts.genLangSchema = 'python ./src/assets/translations/generate_schema.py'
+parentScripts.scripts.genLangSchema = 'python ./src/assets/translations/generate_schema.py || python3 ./src/assets/translations/generate_schema.py'
 
 module.exports = parentScripts

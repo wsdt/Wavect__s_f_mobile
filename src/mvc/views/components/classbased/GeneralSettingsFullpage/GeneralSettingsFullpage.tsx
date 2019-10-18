@@ -5,7 +5,7 @@ import FastImage from 'react-native-fast-image'
 import VersionNumber from 'react-native-version-number'
 import { withNavigation } from 'react-navigation'
 import * as _schema from '../../../../../assets/translations/_schema.json'
-import {ASSET_URL} from '../../../../../globalConfiguration/globalConfig'
+import { ASSET_URL } from '../../../../../globalConfiguration/globalConfig'
 import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import globalStyles from '../../../GlobalStyles.css'
 import { AppText } from '../../functional/AppText/AppText'
@@ -38,11 +38,17 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
         return (
             <View style={styles.mainView}>
                 <View style={styles.imageView}>
-                    <FastImage source={{
-                        priority: FastImage.priority.low,
-                        uri: `${ASSET_URL}/img/logo.png`}} style={[styles.image, globalStyles.radius]} />
+                    <FastImage
+                        source={{
+                            priority: FastImage.priority.low,
+                            uri: `${ASSET_URL}/img/logo.png`,
+                        }}
+                        style={[styles.image, globalStyles.radius]}
+                    />
 
-                    <AppText font={FontType.STANDARD_BOLD} style={{ fontSize: 25 }}>Wavect</AppText>
+                    <AppText font={FontType.STANDARD_BOLD} style={{ fontSize: 25 }}>
+                        Wavect
+                    </AppText>
                 </View>
 
                 <View style={styles.navigationView}>

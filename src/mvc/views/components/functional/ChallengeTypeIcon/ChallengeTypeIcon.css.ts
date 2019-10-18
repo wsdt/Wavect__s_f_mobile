@@ -16,7 +16,6 @@ const styles = StyleSheet.create({
         height: 50,
         borderWidth: 4,
         borderColor: '#fff',
-
     },
     touchableContainer: {
         alignSelf: 'flex-end',

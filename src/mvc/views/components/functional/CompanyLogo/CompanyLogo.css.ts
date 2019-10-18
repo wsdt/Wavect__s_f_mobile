@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
         resizeMode: 'contain',
         borderRadius: radius,
         borderWidth: 4,
-        borderColor: '#fff'
+        borderColor: '#fff',
     },
 })
 

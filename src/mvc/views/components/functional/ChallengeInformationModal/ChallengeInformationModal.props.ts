@@ -1,6 +1,6 @@
-import {ChallengeInformation} from '../../../../models/ChallengeInformation'
+import { ChallengeInformation } from '../../../../models/ChallengeInformation'
 
 export interface IChallengeInformationModalProps {
-    isVisible: boolean,
+    isVisible: boolean
     information: ChallengeInformation
 }

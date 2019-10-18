@@ -158,7 +158,7 @@ var ChallengeLayerBar = (function (_super) {
                                     }
                                     else {
                                         userAbortedProcedure();
-                                        LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":shareMedia", 'Could not share img.');
+                                        LoggingController_1.logEvent(LoggingController_1.LogType.LOG, TAG + ":shareMedia", 'Could not share src.');
                                     }
                                 })];
                             case 3:

@@ -151,12 +151,12 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                             })
                         } else {
                             userAbortedProcedure()
-                            logEvent(LogType.LOG, `${TAG}:shareMedia`, 'Could not share img.')
+                            logEvent(LogType.LOG, `${TAG}:shareMedia`, 'Could not share src.')
                         }
                     })
                     /*} else {
                         userAbortedProcedure()
-                        logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'Could not add watermark to img.')
+                        logEvent(LogType.LOG, `${TAG}:challengeSolved`, 'Could not add watermark to src.')
                     }*/
                 }
             } catch (e) {
