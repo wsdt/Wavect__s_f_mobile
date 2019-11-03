@@ -13,7 +13,10 @@ export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps>
     const category = CHALLENGE_CATEGORIES(t, props.type)
 
     return (
-        <TouchableOpacity style={styles.touchableContainer}>
+        <TouchableOpacity style={styles.touchableContainer}
+                          accessible={true} accessibilityLabel='Challenge Typ'
+                          accessibilityRole='imagebutton'
+                          accessibilityHint='Kategorie bzw. Fokus der Herausforderung'>
             <Tooltip popover={<Text style={globalStyles.tooltipText}>{category.descr}</Text>} backgroundColor={currColor} height={105}>
                 <View style={[styles.imageContainer, { backgroundColor: currColor }]}>
                     <FastImage
