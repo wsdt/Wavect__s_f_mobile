@@ -17,7 +17,7 @@
         "i18n-js": "^3.3.0",
         "lodash.memoize": "^4.1.2",
         "react": "16.10.1",
-        "react-native": "^0.61.1",
+        "react-native": "^0.61.4",
         "react-native-cache": "^1.1.8",
         "react-native-color-matrix-image-filters": "^5.2.0",
         "react-native-elements": "^1.2.3",
@@ -36,7 +36,8 @@
         "react-navigation": "^4.0.10",
         "react-navigation-props-mapper": "^1.0.1",
         "react-navigation-stack": "^1.9.1",
-        "react-navigation-tabs": "^2.5.5"
+        "react-navigation-tabs": "^2.5.5",
+        "react-native-fa-icons": "^4.1.1"
     },
     "devDependencies": {
         "@babel/core": "^7.6.2",
