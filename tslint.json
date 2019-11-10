@@ -1,3 +1,20 @@
 {
-    "extends": ["tslint-react-native", "tslint-react", "../../_base/tslint.json"]
+    "defaultSeverity": "warn",
+    "extends": ["tslint:recommended", "tslint-eslint-rules", "tslint-config-prettier", "tslint-react-native", "tslint-react"],
+    "jsRules": {
+        "semicolon": [true, "never"] /* Semicolons are not free, remove them */
+    },
+    "rules": {
+        "jsx-no-lambda": false,
+        "object-literal-sort-keys": false,
+        "curly": [true, "ignore-same-line"],
+        "no-console": [false],
+        "variable-name": [true, "check-format", "ban-keywords", "allow-pascal-case", "allow-leading-underscore"],
+        "quotemark": [true, "single", "avoid-escape", "jsx-single", "avoid-template"],
+        "semicolon": [true, "never"] /* Semicolons are not free, remove them */
+    },
+    "rulesDirectory": [],
+    "linterOptions": {
+        "exclude": ["node_modules"]
+    }
 }
