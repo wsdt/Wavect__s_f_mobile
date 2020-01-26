@@ -1,16 +1,21 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import * as React from 'react'
-// @ts-ignore
-import { Cache } from 'react-native-cache'
-import { disableCache } from '../../../globalConfiguration/globalConfig'
-import { ILoadingContext, LoadingStatus } from '../../views/components/system/HOCs/LoadingHoc'
-import { logEvent, LogType } from '../LoggingController/LoggingController'
-import { IUpdateTask } from '../UpdateController/UpdateController.tasks'
-import { getLocalItem, setLocalItem } from '../LocalStorageController/LocalStorageController'
+import {Cache} from 'react-native-cache'
+import {disableCache} from '../../../globalConfiguration/globalConfig'
+import {
+    ILoadingContext,
+    LoadingStatus,
+} from '../../views/components/system/HOCs/LoadingHoc'
+import {logEvent, LogType} from '../LoggingController/LoggingController'
+import {IUpdateTask} from '../UpdateController/UpdateController.tasks'
+import {
+    getLocalItem,
+    setLocalItem,
+} from '../LocalStorageController/LocalStorageController'
 
 const TAG = 'CacheController'
 const CACHED_TIMESTAMP_EXPIRATION = 'CACHED_TS_EXPR'
-const MIN_TIME_PASSED = 20000
+const MIN_TIME_PASSED = 86_400_000
 
 const cache = new Cache({
     backend: AsyncStorage,
@@ -23,7 +28,10 @@ const cache = new Cache({
 /** Called by UpdateController on App-Update. */
 export const onAppUpdate: IUpdateTask = new (class implements IUpdateTask {
     // @ts-ignore
-    public onAppUpdate = async (oldVersion: string, newVersion: string): Promise<void> => {
+    public onAppUpdate = async (
+        oldVersion: string,
+        newVersion: string,
+    ): Promise<void> => {
         try {
             await clearCache()
         } catch (e) {
@@ -36,7 +44,13 @@ export const putCache = (key: string, val: any): Promise<any> => {
     return new Promise((resolve, reject) => {
         cache.setItem(key, val, (err: any) => {
             if (err) {
-                logEvent(LogType.ERROR, `${TAG}:putCache`, `Cannot push element in cache -> '${key}':'${val}', err below: \n${JSON.stringify(err)}`)
+                logEvent(
+                    LogType.ERROR,
+                    `${TAG}:putCache`,
+                    `Cannot push element in cache -> '${key}':'${val}', err below: \n${JSON.stringify(
+                        err,
+                    )}`,
+                )
                 reject(err)
             } else {
                 resolve(true)
@@ -49,7 +63,11 @@ export const getCache = (key: string): Promise<any> => {
     return new Promise((resolve, reject) => {
         cache.getItem(key, (err: any, val: any) => {
             if (err) {
-                console.error(`${TAG}:getCache: Cannot get element with key -> '${key}', err below: \n${JSON.stringify(err)}`)
+                console.error(
+                    `${TAG}:getCache: Cannot get element with key -> '${key}', err below: \n${JSON.stringify(
+                        err,
+                    )}`,
+                )
                 reject(err)
             } else {
                 resolve(val)
@@ -62,7 +80,11 @@ export const deleteCache = (key: string): Promise<any> => {
     return new Promise((resolve, reject) => {
         cache.removeItem(key, (err: any) => {
             if (err) {
-                console.error(`${TAG}:deleteCache: Cannot delete element with key -> '${key}', err below: \n${JSON.stringify(err)}`)
+                console.error(
+                    `${TAG}:deleteCache: Cannot delete element with key -> '${key}', err below: \n${JSON.stringify(
+                        err,
+                    )}`,
+                )
                 reject(err)
             }
             resolve(true)
@@ -74,7 +96,11 @@ export const sneakCache = (key: string): Promise<any> => {
     return new Promise((resolve, reject) => {
         cache.peekItem(key, (err: any, val: any) => {
             if (err) {
-                console.error(`${TAG}:sneakCache: Cannot get element with key -> '${key}', err below: \n${JSON.stringify(err)}`)
+                console.error(
+                    `${TAG}:sneakCache: Cannot get element with key -> '${key}', err below: \n${JSON.stringify(
+                        err,
+                    )}`,
+                )
                 reject(err)
             } else {
                 resolve(val)
@@ -87,7 +113,11 @@ export const getAllFromCache = (): Promise<any> => {
     return new Promise((resolve, reject) => {
         cache.getAll((err: any, entries: any) => {
             if (err) {
-                console.error(`${TAG}:getAllFromCache: Cannot read cache, err below: \n${JSON.stringify(err)}`)
+                console.error(
+                    `${TAG}:getAllFromCache: Cannot read cache, err below: \n${JSON.stringify(
+                        err,
+                    )}`,
+                )
                 reject(err)
             } else {
                 resolve(entries)
@@ -100,7 +130,11 @@ export const clearCache = (): Promise<any> => {
     return new Promise<boolean>((resolve, reject) => {
         cache.clearAll((err: any) => {
             if (err) {
-                console.error(`${TAG}:clearCache: Could not clear cache, err below: \n${JSON.stringify(err)}`)
+                console.error(
+                    `${TAG}:clearCache: Could not clear cache, err below: \n${JSON.stringify(
+                        err,
+                    )}`,
+                )
                 return reject(err)
             } else {
                 console.log(`${TAG}:clearCache: Cleared cache successfully.`)
@@ -116,12 +150,15 @@ export const cachedFetch = async (
     cacheKey: string,
     loadingContext: ILoadingContext,
     reload: boolean,
-    fetchFunction: () => void
+    fetchFunction: () => void,
 ) => {
     // if user reloads
     if (reload || disableCache) {
         fetchFunction()
-        await setLocalItem(CACHED_TIMESTAMP_EXPIRATION, new Date().getTime().toString())
+        await setLocalItem(
+            CACHED_TIMESTAMP_EXPIRATION,
+            new Date().getTime().toString(),
+        )
     } else {
         const cachedData = await getCache(cacheKey)
         if (cachedData && (await checkIfCacheValid())) {
@@ -129,7 +166,10 @@ export const cachedFetch = async (
             loadingContext.setLoading(LoadingStatus.DONE)
         } else {
             fetchFunction()
-            await setLocalItem(CACHED_TIMESTAMP_EXPIRATION, new Date().getMilliseconds().toString())
+            await setLocalItem(
+                CACHED_TIMESTAMP_EXPIRATION,
+                new Date().getMilliseconds().toString(),
+            )
         }
     }
 }
