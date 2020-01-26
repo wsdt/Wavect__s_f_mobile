@@ -1,12 +1,12 @@
 import AsyncStorage from '@react-native-community/async-storage'
 import * as React from 'react'
 // @ts-ignore
-import {Cache} from 'react-native-cache'
-import {disableCache} from '../../../globalConfiguration/globalConfig'
-import {ILoadingContext, LoadingStatus} from '../../views/components/system/HOCs/LoadingHoc'
-import {logEvent, LogType} from '../LoggingController/LoggingController'
-import {IUpdateTask} from '../UpdateController/UpdateController.tasks'
-import {getLocalItem, setLocalItem} from "../LocalStorageController/LocalStorageController";
+import { Cache } from 'react-native-cache'
+import { disableCache } from '../../../globalConfiguration/globalConfig'
+import { ILoadingContext, LoadingStatus } from '../../views/components/system/HOCs/LoadingHoc'
+import { logEvent, LogType } from '../LoggingController/LoggingController'
+import { IUpdateTask } from '../UpdateController/UpdateController.tasks'
+import { getLocalItem, setLocalItem } from '../LocalStorageController/LocalStorageController'
 
 const TAG = 'CacheController'
 const CACHED_TIMESTAMP_EXPIRATION = 'CACHED_TS_EXPR'
@@ -122,24 +122,20 @@ export const cachedFetch = async (
     if (reload || disableCache) {
         fetchFunction()
         await setLocalItem(CACHED_TIMESTAMP_EXPIRATION, new Date().getTime().toString())
-
     } else {
         const cachedData = await getCache(cacheKey)
         if (cachedData && (await checkIfCacheValid())) {
-
-            component.setState(cachedData)  // TODO: might cause problems in future if also non-cacheable state is in state (avoid overriding, ...)
+            component.setState(cachedData) // TODO: might cause problems in future if also non-cacheable state is in state (avoid overriding, ...)
             loadingContext.setLoading(LoadingStatus.DONE)
-
-        }else {
+        } else {
             fetchFunction()
             await setLocalItem(CACHED_TIMESTAMP_EXPIRATION, new Date().getMilliseconds().toString())
         }
     }
 }
 
-
-const checkIfCacheValid = async () :Promise<boolean> => {
-    const latest:string | null = await getLocalItem(CACHED_TIMESTAMP_EXPIRATION)
+const checkIfCacheValid = async (): Promise<boolean> => {
+    const latest: string | null = await getLocalItem(CACHED_TIMESTAMP_EXPIRATION)
 
     logEvent(LogType.LOG, `${TAG}:cachedFetch`, latest)
 

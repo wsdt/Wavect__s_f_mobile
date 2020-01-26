@@ -18,7 +18,8 @@ module.exports = {
     scripts: {
         default: 'react-native start',
         ios: 'yarn start genLangSchema && ' + 'react-native run-ios && ' + 'react-native log-ios',
-        android:  'adb reverse tcp:9090 tcp:9090 && ' +
+        android:
+            'adb reverse tcp:9090 tcp:9090 && ' +
             'rimraf ./android/app/build && ' +
             'yarn start genLangSchema && ' +
             'react-native run-android && ' +
