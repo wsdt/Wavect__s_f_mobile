@@ -1,15 +1,12 @@
-import AsyncStorage from '@react-native-community/async-storage'
-import analytics from '@react-native-firebase/analytics'
-import crashlytics from '@react-native-firebase/crashlytics'
+import * as SecureStore from 'expo-secure-store';
 import { USER_ID } from '../LocalStorageController/LocalStorageController.constants'
 
-const analyticsInstance = analytics()
-const crashlyticsInstance = crashlytics()
 
-// Send data to Firebase # TODO: Data meant for us or really Google? If second disable!
-analyticsInstance.setAnalyticsCollectionEnabled(true)
-
-/** Used to send different events and logging to console. */
+/*
+ *
+ * TODO implement logging functionality
+ *
+ */
 export enum LogType {
     ERROR = 'Error',
     WARN = 'Warn',
@@ -20,20 +17,13 @@ export enum LogType {
 
 /** Similar function available via LocalStorageController.ts, but to avoid require cycles a minimized version is added here. */
 const getLocalUserId = async (): Promise<string> => {
-    const userId: string | null = await AsyncStorage.getItem(USER_ID)
+    const userId: string | null = await SecureStore.getItemAsync(USER_ID)
     return userId ? userId : 'UNKNOWN'
 }
 
-/**
- * Log sth. to firebase.
- * @param logType: Which event has been fired? How should we react?
- * @param event: Event names should contain 1 to 32 alphanumeric characters or underscores.
- * @param params: Up to 100 characters is the maximum character length supported for event parameters.
- * @param error: Used by crashlytics to submit the stacktrace (optional)
- */
 export const logEvent = (logType: LogType, event: string, params: any, error?: Error): void => {
     if (!__DEV__) {
-        params = JSON.stringify(params) // assuming that firebase does this already as they allow objects
+        params = JSON.stringify(params)
         switch (logType) {
             case LogType.ERROR:
                 console.error(`${event}: ${params}`)
@@ -56,14 +46,14 @@ export const logEvent = (logType: LogType, event: string, params: any, error?: E
         /* Log analytics events to analyze how our app is used */
         if (logType === LogType.EVENT) {
             // NOTE: Events might need to be created manually online!
-            analyticsInstance.logEvent(event, params) // don't push log/debug
+
         }
 
         /* Crashlytics, send Reports, only get's submitted in error case as far as I understand */
-        crashlyticsInstance.log(`${event}: ${params}`)
+
         if (error) {
             // do not if via logtype, as maybe also warnings provided
-            crashlyticsInstance.recordError(error) // error-obj with stacktrace
+
         }
     }
 }
@@ -75,7 +65,7 @@ export const logEvent = (logType: LogType, event: string, params: any, error?: E
  * as 'MainActivity' if not specified.
  */
 export const setCurrentScreen = (screenName: string, screenClassOverride: string): void => {
-    analyticsInstance.setCurrentScreen(screenName, screenClassOverride)
+
 }
 
 /**
@@ -84,8 +74,6 @@ export const setCurrentScreen = (screenName: string, screenClassOverride: string
  */
 export const setCurrentUserId = async (): Promise<void> => {
     const userId = await getLocalUserId()
-    analyticsInstance.setUserId(userId)
-    crashlyticsInstance.setUserId(userId)
 }
 
 // many more functions available

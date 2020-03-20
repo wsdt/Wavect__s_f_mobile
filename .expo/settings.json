@@ -1,0 +1,8 @@
+{
+  "urlRandomness": "it-6ys",
+  "hostType": "tunnel",
+  "lanType": "ip",
+  "dev": true,
+  "minify": false,
+  "https": false
+}

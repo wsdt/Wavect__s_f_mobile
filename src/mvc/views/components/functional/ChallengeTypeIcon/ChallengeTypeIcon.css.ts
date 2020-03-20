@@ -23,6 +23,6 @@ const styles = StyleSheet.create({
         width: 60,
         marginTop: 15,
     },
-})
+});
 
 export default styles

@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage'
+import * as SecureStore from 'expo-secure-store';
 import * as React from 'react'
 import {Cache} from 'react-native-cache'
 import {disableCache} from '../../../globalConfiguration/globalConfig'
@@ -15,10 +15,10 @@ import {
 
 const TAG = 'CacheController'
 const CACHED_TIMESTAMP_EXPIRATION = 'CACHED_TS_EXPR'
-const MIN_TIME_PASSED = 86_400_000
+const MIN_TIME_PASSED = 86400000
 
 const cache = new Cache({
-    backend: AsyncStorage,
+    backend: SecureStore,
     namespace: 'wavect_cache',
     policy: {
         maxEntries: 5,

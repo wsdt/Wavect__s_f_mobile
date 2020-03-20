@@ -1,13 +1,13 @@
 import React from 'react'
-import { TouchableOpacity } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import { GrayColorImg } from '../GrayColorImg/GrayColorImg'
+import {
+    Image,
+    View,
+    TouchableOpacity
+} from 'react-native'
 import styles from './CompanyLogo.css'
 import { ICompanyLogoProps } from './CompanyLogo.props'
 
 export const CompanyLogo: React.FunctionComponent<ICompanyLogoProps> = props => {
-    // props.companyLogoUri.cache = "only-if-cached" // works only on ios
-
     return (
         <TouchableOpacity
             style={styles.topLeftCompany}
@@ -17,16 +17,16 @@ export const CompanyLogo: React.FunctionComponent<ICompanyLogoProps> = props => 
             accessibilityRole="imagebutton"
             accessibilityHint="Weitere Informationen zum Sponsor"
         >
-            <GrayColorImg isGrayscale={props.isGrayscale}>
-                <FastImage
+            <View>
+                <Image
                     resizeMode={'contain'}
                     source={{
-                        priority: FastImage.priority.normal,
-                        uri: props.companyLogoUri.uri,
+                        // TODO markus wimmer image seems to be corrupt too ?! or not suitable
+                        uri: "https://images.pexels.com/photos/267355/pexels-photo-267355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                     }}
                     style={styles.image}
                 />
-            </GrayColorImg>
+            </View>
         </TouchableOpacity>
     )
 }

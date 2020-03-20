@@ -1,7 +1,5 @@
 import * as React from 'react'
-import { View } from 'react-native'
-import FastImage from 'react-native-fast-image'
-import Modal from 'react-native-modal'
+import { View, Image, Modal, Alert } from 'react-native'
 import { ASSET_URL } from '../../../../../globalConfiguration/globalConfig'
 import { AppText } from '../AppText/AppText'
 import styles from './ChallengeInformationModal.css'
@@ -15,22 +13,25 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = (props: I
 
     return (
         <View>
-            <Modal isVisible={isVisible} propagateSwipe={true}>
+            <Modal
+                animationType="fade"
+                transparent={false}
+                visible={isVisible}
+                onRequestClose={() => {
+                    Alert.alert('Modal has been closed!')
+                }}>
                 <View style={styles.innerContent}>
                     <View style={styles.closeIcon}>
-                        <FastImage
+                        <Image
                             source={{
-                                priority: FastImage.priority.high,
                                 uri: `${ASSET_URL}/img/icons/dialog/close.png`,
                             }}
-                            style={styles.image}
                         />
                     </View>
 
                     <View style={styles.centeredInnerContent}>
-                        <FastImage
+                        <Image
                             source={{
-                                priority: FastImage.priority.normal,
                                 uri: `${ASSET_URL}/img/icons/dialog/info.png`,
                             }}
                             style={styles.image}
@@ -47,9 +48,8 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = (props: I
                             }}
                         />
 
-                        <FastImage
+                        <Image
                             source={{
-                                priority: FastImage.priority.normal,
                                 uri: `${ASSET_URL}/img/icons/dialog/privacy.png`,
                             }}
                             style={styles.image}
@@ -64,9 +64,8 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = (props: I
                                 margin: 10,
                             }}
                         />
-                        <FastImage
+                        <Image
                             source={{
-                                priority: FastImage.priority.normal,
                                 uri: `${ASSET_URL}/img/icons/dialog/gift.png`,
                             }}
                             style={styles.image}

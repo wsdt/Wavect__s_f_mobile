@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { View } from 'react-native'
 import { BACKEND_MOBILE_API } from '../../../../globalConfiguration/globalConfig'
-import { cachedFetch, putCache } from '../../../controllers/CacheController/CacheController'
+import {cachedFetch, deleteCache, putCache} from '../../../controllers/CacheController/CacheController'
 import { CACHE_KEY_CHALLENGE } from '../../../controllers/CacheController/CacheController.constants'
 import { setCurrentScreen } from '../../../controllers/LoggingController/LoggingController'
 import { ApiResponse } from '../../../models/ApiResponse'
@@ -19,8 +19,9 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
     private abortController: AbortController = new AbortController() // memory safety/leaks avoidance
 
     public componentDidMount(): void {
-        this.fetchChallenge(false)
+        this.fetchChallenge(true)
         this.loadingContext.setRefresh((cb: () => void) => this.fetchChallenge(true, cb))
+        deleteCache
     }
 
     public render() {
@@ -56,7 +57,7 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
 
                 this.setState({ challenge: data.res as Challenge })
                 if (this.state.challenge) {
-                    putCache(CACHE_KEY_CHALLENGE, { challenge: data.res as Challenge })
+                    // putCache(CACHE_KEY_CHALLENGE, { challenge: data.res as Challenge })
                     this.loadingContext.setLoading(LoadingStatus.DONE)
                 } else {
                     this.loadingContext.setLoading(LoadingStatus.NOT_AVAILABLE)
@@ -75,5 +76,4 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
     }
 }
 
-// For logging tool (firebase)
 setCurrentScreen('HomeScreen', HomeScreen.toString())

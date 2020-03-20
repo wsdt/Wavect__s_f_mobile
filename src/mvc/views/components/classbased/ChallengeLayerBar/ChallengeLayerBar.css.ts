@@ -7,7 +7,10 @@ const styles = StyleSheet.create({
     mainComponent: {
         height: '100%',
         justifyContent: 'flex-end',
+        zIndex: -1
+
     },
+
     btnStyleTransparent: {
         borderColor: 'transparent',
     },
@@ -53,7 +56,7 @@ const styles = StyleSheet.create({
         borderTopLeftRadius: 0,
         borderTopRightRadius: 0,
         justifyContent: 'flex-end',
-        opacity: 0.7,
+        opacity: 0.8,
     },
 })
 

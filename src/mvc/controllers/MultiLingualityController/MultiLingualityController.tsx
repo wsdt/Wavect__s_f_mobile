@@ -1,10 +1,10 @@
 import i18n from 'i18n-js'
 import memoize from 'lodash.memoize'
-import { I18nManager } from 'react-native'
-import * as RNLocalize from 'react-native-localize'
+import * as Localization from 'expo-localization'
 import TranslationBundle, { fallbackLanguagePack } from '../../../assets/translations/TranslationBundler'
 import { ControlFunctionType } from '../../../globalConfiguration/developerProtection/CustomControlFunctions'
 import { addCustomControlFunction } from '../../../globalConfiguration/developerProtection/developerProtection'
+import { I18nManager } from "react-native";
 
 /** Enhances performance seemingly (better than "translate" method from I18 or similar.
  * NOTE: This view is ONLY working in a view! If you need it somewhere else you have to provide it as parameter.
@@ -13,17 +13,23 @@ export let t = memoize((key, config = {}) => i18n.t(key, config), (key, config =
 
 /** Called when new configuration has to be set (e.g. when user changes language or similar during app execution or when app ist started) */
 export const setCurrentLanguageBundle = async () => {
-    const { languageTag, isRTL } = RNLocalize.findBestAvailableLanguage(Object.keys(TranslationBundle)) || fallbackLanguagePack
+    // todo ask kevin
+    //const { languageTag, isRTL } = Localization.findBestAvailableLanguage(Object.keys(TranslationBundle)) || fallbackLanguagePack
 
     // clear translation cache (annotated with '?')
     if (t.cache.clear) t.cache.clear()
 
-    // update layout direction
-    I18nManager.forceRTL(isRTL)
+    // update layout direction todo ask kevin
+    // I18nManager.forceRTL(isRTL)
 
     // set i18n-js config
-    i18n.translations = TranslationBundle
-    i18n.locale = languageTag
+     i18n.translations = TranslationBundle
+
+    if (Localization.locale  == 'de-AT' || Localization.locale == 'de-DE'){
+        i18n.locale = 'de'
+    }else{
+        i18n.locale = Localization.locale
+    }
 }
 
 /** NOTE: Should be only used by developerProtection.ts (bc. of performance no usage in

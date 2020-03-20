@@ -16,3 +16,4 @@ export const BACKEND_URL = useLocalBackend ? 'https://e0a7931b.ngrok.io' : 'http
 export const ASSET_URL = `${BACKEND_URL}/files/mobile`
 
 export const BACKEND_MOBILE_API = `${BACKEND_URL}/api/mobile/v1`
+

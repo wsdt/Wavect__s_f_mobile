@@ -1,8 +1,7 @@
 import React from 'react'
-import { Linking, ScrollView, View } from 'react-native'
+import {Linking, ScrollView, View, Image, ImageBackground} from 'react-native'
 import { brightness, ColorMatrix, grayscale } from 'react-native-color-matrix-image-filters'
 import { Card } from 'react-native-elements'
-import FastImage from 'react-native-fast-image'
 import { withMappedNavigationParams } from 'react-navigation-props-mapper'
 import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { AppText } from '../../functional/AppText/AppText'
@@ -29,12 +28,10 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
 
     return (
         <View>
-            <ColorMatrix matrix={[grayscale(1), brightness(0.5)]}>
-                <FastImage
+            <ImageBackground
                     style={[styles.topBar, styles.shadow]}
                     source={{
-                        priority: FastImage.priority.normal,
-                        uri: props.challengeBgImage.uri,
+                        uri: "https://images.pexels.com/photos/3681653/pexels-photo-3681653.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
                     }}
                 >
                     <View style={styles.socialMedia}>
@@ -51,17 +48,15 @@ const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => 
                     </AppText>
 
                     <View style={[styles.roundImageContainer, styles.shadow]}>
-                        <FastImage
+                        <Image
                             source={{
-                                priority: FastImage.priority.high,
                                 uri: logoUri.uri,
                             }}
                             style={styles.imageStyle}
                             resizeMode="contain"
                         />
                     </View>
-                </FastImage>
-            </ColorMatrix>
+            </ImageBackground>
 
             <ScrollView>
                 <View style={{ marginBottom: 150 }}>

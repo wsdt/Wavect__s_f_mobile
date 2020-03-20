@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { RefreshControl, View } from 'react-native'
 import { Text } from 'react-native-elements'
-import SplashScreen from 'react-native-splash-screen'
 import { SafeAreaView, ScrollView } from 'react-navigation'
 import { logEvent, LogType } from '../../../controllers/LoggingController/LoggingController'
 import { t } from '../../../controllers/MultiLingualityController/MultiLingualityController'
@@ -26,8 +25,6 @@ export class BaseScreen extends React.PureComponent<any, IBaseScreenState> {
     }
 
     public componentDidMount() {
-        SplashScreen.hide()
-
         if (!hasPerformedUpdateCheck) {
             // only for UX improvement (do not show "preparing" when already done
             // Perform update tasks if new app update

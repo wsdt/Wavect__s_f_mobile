@@ -1,8 +1,6 @@
 import * as React from 'react'
-import { Linking, TouchableOpacity, View } from 'react-native'
+import { Linking, TouchableOpacity, View, Image } from 'react-native'
 import { Icon } from 'react-native-elements'
-import FastImage from 'react-native-fast-image'
-import VersionNumber from 'react-native-version-number'
 import { withNavigation } from 'react-navigation'
 import * as _schema from '../../../../../assets/translations/_schema.json'
 import { ASSET_URL } from '../../../../../globalConfiguration/globalConfig'
@@ -32,15 +30,14 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
             name: t(_schema.settingsscreen.generalsettings.list.agb),
             action: () => Linking.openURL('https://wavect.io/privacy-policy/'),
         },*/
-    ]
+    ];
 
     public render() {
         return (
             <View style={styles.mainView}>
                 <View style={styles.imageView}>
-                    <FastImage
+                    <Image
                         source={{
-                            priority: FastImage.priority.low,
                             uri: `${ASSET_URL}/img/logo.png`,
                         }}
                         style={[styles.image, globalStyles.radius]}
@@ -61,7 +58,7 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
                         </View>
                     ))}
                 </View>
-                <AppText style={styles.versionFont}>v. {VersionNumber.appVersion}</AppText>
+                <AppText style={styles.versionFont}>v. ---</AppText>
             </View>
         )
     }

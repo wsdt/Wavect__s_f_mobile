@@ -1,4 +1,4 @@
-import AsyncStorage from '@react-native-community/async-storage'
+import * as SecureStore from 'expo-secure-store';
 import { logEvent, LogType } from '../LoggingController/LoggingController'
 import { EMAIL_MARKED, USER_ID } from './LocalStorageController.constants'
 
@@ -8,7 +8,7 @@ const TAG = 'LocalStorageController'
 export const getLocalItem = async (key: string): Promise<string | null> => {
     let queriedValue: string | null = null
     try {
-        queriedValue = await AsyncStorage.getItem(key)
+        queriedValue = await SecureStore.getItemAsync(key)
     } catch (e) {
         logEvent(LogType.ERROR, `${TAG}:getLocalItem`, `Could not query item with key '${key}' from local storage.`)
     }
@@ -17,7 +17,7 @@ export const getLocalItem = async (key: string): Promise<string | null> => {
 
 export const setLocalItem = async (key: string, val: string): Promise<void> => {
     try {
-        await AsyncStorage.setItem(key, val)
+        await SecureStore.setItemAsync(key, val)
     } catch (e) {
         logEvent(LogType.ERROR, `${TAG}:setLocalItem`, `Could not save item with key '${key}' and value '${val}'.`)
     }
@@ -28,7 +28,7 @@ const generateNewUserId = async (): Promise<string> => {
         .toString(36)
         .substring(7)
     try {
-        await AsyncStorage.setItem(USER_ID, newUserId)
+        await SecureStore.setItemAsync(USER_ID, newUserId)
     } catch (e) {
         logEvent(LogType.ERROR, `${TAG}:markEmailAsCreated`, e)
     }
@@ -36,18 +36,18 @@ const generateNewUserId = async (): Promise<string> => {
 }
 
 export const getLocalUserId = async (): Promise<string> => {
-    const localUserId: string | null = await AsyncStorage.getItem(USER_ID)
+    const localUserId: string | null = await SecureStore.getItemAsync(USER_ID);
     return localUserId === null ? generateNewUserId() : localUserId
 }
 
 export const doesLocalUserIDExist = async (): Promise<boolean> => {
-    const localUserId: string | null = await AsyncStorage.getItem(USER_ID)
+    const localUserId: string | null = await SecureStore.getItemAsync(USER_ID)
     return localUserId !== null
 }
 
 export const markEmailAsCreated = async (): Promise<boolean> => {
     try {
-        await AsyncStorage.setItem(EMAIL_MARKED, 'true')
+        await SecureStore.setItemAsync(EMAIL_MARKED, 'true')
         return true
     } catch (e) {
         logEvent(LogType.ERROR, `${TAG}:markEmailAsCreated`, e)
@@ -56,5 +56,5 @@ export const markEmailAsCreated = async (): Promise<boolean> => {
 }
 
 export const getEmailMarked = async (): Promise<string | null> => {
-    return AsyncStorage.getItem(EMAIL_MARKED)
+    return SecureStore.getItemAsync(EMAIL_MARKED);
 }

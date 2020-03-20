@@ -1,22 +1,24 @@
 import * as React from 'react'
-import { TouchableWithoutFeedback, View } from 'react-native'
-import FastImage from 'react-native-fast-image'
+import {
+    TouchableWithoutFeedback,
+    View,
+    Image,
+} from 'react-native'
 import { withNavigation } from 'react-navigation'
-import globalStyles from '../../../GlobalStyles.css'
 import { ChallengeInformationModal } from '../../functional/ChallengeInformationModal/ChallengeInformationModal'
 import { ChallengeTypeIcon } from '../../functional/ChallengeTypeIcon/ChallengeTypeIcon'
 import { CompanyLogo } from '../../functional/CompanyLogo/CompanyLogo'
-import { GrayColorImg } from '../../functional/GrayColorImg/GrayColorImg'
-import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/LoadingHoc'
+import { ILoadingContext, LoadingHoc } from '../../system/HOCs/LoadingHoc'
 import { routes } from '../../system/TabRouter/HomeScreenRouter/HomeRoutes'
 import ChallengeLayerBar from '../ChallengeLayerBar/ChallengeLayerBar'
 import styles from './ChallengeFullpage.css'
 import { IChallengeFullpageProps } from './ChallengeFullpage.props'
 import { IChallengeFullpageState } from './ChallengeFullpage.state'
+import globalStyles from "../../../GlobalStyles.css";
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
-        isGrayscale: true,
+        isGrayscale: true, // TODO
         modalVisibility: false,
     }
     private loadingContext!: ILoadingContext
@@ -24,32 +26,25 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
 
     public render() {
         const { bgImage, challengeInformation } = this.props.challenge
-
         return (
             <LoadingHoc.Consumer>
                 {contextMethods => {
                     this.loadingContext = contextMethods
                     return (
-                        <GrayColorImg isGrayscale={this.state.isGrayscale}>
-                            <View onTouchStart={() => (this.state.modalVisibility ? this.setState({ modalVisibility: false }) : null)}>
-                                {challengeInformation ? (
-                                    <ChallengeInformationModal isVisible={this.state.modalVisibility} information={challengeInformation} />
-                                ) : null}
-                                <TouchableWithoutFeedback onPress={() => this.toggleModal()}>
-                                    <FastImage
-                                        source={{
-                                            priority: FastImage.priority.high,
-                                            uri: bgImage.uri,
-                                        }}
-                                        style={[styles.backgroundImage, globalStyles.radius]}
-                                        onLoad={() => this.loadingContext.setLoading(LoadingStatus.DONE)}
-                                        // onLoadStart={() => this.loadingContext.setLoading(LoadingStatus.LOADING)} // TODO: onLoadStart is the only callback which is called (lib-bug presumbly)
-                                        onError={() => this.loadingContext.setLoading(LoadingStatus.ERROR)}
-                                    />
-                                </TouchableWithoutFeedback>
-                                {this.getChallengeView()}
-                            </View>
-                        </GrayColorImg>
+                        <View onTouchStart={() => (this.state.modalVisibility ? this.setState({ modalVisibility: false }) : null)}>
+                            {challengeInformation ? (
+                                <ChallengeInformationModal isVisible={this.state.modalVisibility} information={challengeInformation} />
+                            ) : null}
+
+                            <TouchableWithoutFeedback onPress={() => this.toggleModal()}>
+                                <Image
+                                    // TODO: the pexels image in our backend is corrupt (i guess not corrupt, bus iOS does not show the img!)
+                                    source={{ uri: 'https://images.pexels.com/photos/3812417/pexels-photo-3812417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' }}
+                                    style={[styles.backgroundImage, globalStyles.radius]}
+                                />
+                            </TouchableWithoutFeedback>
+                            {this.getChallengeView()}
+                        </View>
                     )
                 }}
             </LoadingHoc.Consumer>
@@ -61,6 +56,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     }
 
     private toggleModal = () => {
+        console.log("Toggled!")
         this.setState({ modalVisibility: !this.state.modalVisibility })
     }
 
