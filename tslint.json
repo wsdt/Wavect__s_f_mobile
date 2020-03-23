@@ -5,6 +5,8 @@
         "semicolon": [true, "never"] /* Semicolons are not free, remove them */
     },
     "rules": {
+        "jsx-no-multiline-js": false,
+        "jsx-alignment": false,
         "jsx-no-lambda": false,
         "object-literal-sort-keys": false,
         "curly": [true, "ignore-same-line"],

@@ -1,10 +1,10 @@
 import * as React from 'react'
 import {
-    TouchableWithoutFeedback,
-    View,
     Image,
+    TouchableOpacity, View,
 } from 'react-native'
 import { withNavigation } from 'react-navigation'
+import globalStyles from '../../../GlobalStyles.css'
 import { ChallengeInformationModal } from '../../functional/ChallengeInformationModal/ChallengeInformationModal'
 import { ChallengeTypeIcon } from '../../functional/ChallengeTypeIcon/ChallengeTypeIcon'
 import { CompanyLogo } from '../../functional/CompanyLogo/CompanyLogo'
@@ -14,7 +14,6 @@ import ChallengeLayerBar from '../ChallengeLayerBar/ChallengeLayerBar'
 import styles from './ChallengeFullpage.css'
 import { IChallengeFullpageProps } from './ChallengeFullpage.props'
 import { IChallengeFullpageState } from './ChallengeFullpage.state'
-import globalStyles from "../../../GlobalStyles.css";
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
@@ -32,18 +31,19 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
                 {contextMethods => {
                     this.loadingContext = contextMethods
                     return (
-                        <View onTouchStart={() => (this.state.modalVisibility ? this.setState({ modalVisibility: false }) : null)}>
+                        <View onTouchStart={() => (this.state.modalVisibility ? this.setState({ modalVisibility: false }) : null)} >
                             {challengeInformation ? (
                                 <ChallengeInformationModal isVisible={this.state.modalVisibility} information={challengeInformation} />
                             ) : null}
 
-                            <TouchableWithoutFeedback onPress={() => this.toggleModal()}>
+                            <TouchableOpacity style={globalStyles.fullSize} onPress={() => this.toggleModal()}>
                                 <Image
                                     source={bgImage}
                                     style={[styles.backgroundImage, globalStyles.radius]}
                                 />
-                            </TouchableWithoutFeedback>
+
                             {this.getChallengeView()}
+                            </TouchableOpacity>
                         </View>
                     )
                 }}
@@ -56,7 +56,6 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     }
 
     private toggleModal = () => {
-        console.warn("Toggled!")
         this.setState({ modalVisibility: !this.state.modalVisibility })
     }
 
