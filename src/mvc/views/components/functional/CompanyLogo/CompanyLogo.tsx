@@ -20,10 +20,7 @@ export const CompanyLogo: React.FunctionComponent<ICompanyLogoProps> = props => 
             <View>
                 <Image
                     resizeMode={'contain'}
-                    source={{
-                        // TODO markus wimmer image seems to be corrupt too ?! or not suitable
-                        uri: "https://images.pexels.com/photos/267355/pexels-photo-267355.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-                    }}
+                    source={props.companyLogoUri}
                     style={styles.image}
                 />
             </View>
