@@ -1,7 +1,9 @@
 import { FontType } from './AppText.enum'
 
-export interface IAPPProps {
+export interface IAppTextProps {
     font?: FontType
-    style?: object
+    style?: any
+    size?: number
     onPress?: () => void
+    children:any
 }

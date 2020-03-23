@@ -1,6 +1,5 @@
 import React from 'react'
 import {Linking, ScrollView, View, Image, ImageBackground} from 'react-native'
-import { brightness, ColorMatrix, grayscale } from 'react-native-color-matrix-image-filters'
 import { Card } from 'react-native-elements'
 import { withMappedNavigationParams } from 'react-navigation-props-mapper'
 import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'

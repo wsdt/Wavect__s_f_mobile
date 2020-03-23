@@ -18,7 +18,7 @@ import globalStyles from "../../../GlobalStyles.css";
 
 class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, IChallengeFullpageState> {
     public state: IChallengeFullpageState = {
-        isGrayscale: true, // TODO
+        isGrayscale: true, // TODO See https://blog.expo.io/filtering-images-with-expo-ffd8f053bc85
         modalVisibility: false,
     }
     private loadingContext!: ILoadingContext
@@ -26,6 +26,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
 
     public render() {
         const { bgImage, challengeInformation } = this.props.challenge
+
         return (
             <LoadingHoc.Consumer>
                 {contextMethods => {
@@ -38,8 +39,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
 
                             <TouchableWithoutFeedback onPress={() => this.toggleModal()}>
                                 <Image
-                                    // TODO: the pexels image in our backend is corrupt (i guess not corrupt, bus iOS does not show the img!)
-                                    source={{ uri: 'https://images.pexels.com/photos/3812417/pexels-photo-3812417.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260' }}
+                                    source={bgImage}
                                     style={[styles.backgroundImage, globalStyles.radius]}
                                 />
                             </TouchableWithoutFeedback>
@@ -56,7 +56,7 @@ class ChallengeFullpage extends React.PureComponent<IChallengeFullpageProps, ICh
     }
 
     private toggleModal = () => {
-        console.log("Toggled!")
+        console.warn("Toggled!")
         this.setState({ modalVisibility: !this.state.modalVisibility })
     }
 

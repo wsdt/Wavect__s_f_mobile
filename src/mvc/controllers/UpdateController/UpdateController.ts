@@ -9,11 +9,12 @@ const PACKAGE_VERSION_KEY = 'app_version'
  * Export not necessary, but provided for better UX as special LoadingScreen might be shown for a very short time, although
  * check has been already done. See BaseScreen.tsx */
 export let hasPerformedUpdateCheck: boolean = false
-const buildVersion: string = "0.0.1"
+const buildVersion: string = '0.0.1'
 
 /** What tasks should be executed when the app updates? Uses the package.json-version and not the native versionName/-code! */
 export const performAppUpdateProcedure = async (): Promise<void> => {
-    if (hasPerformedUpdateCheck) return // end method as already executed
+    console.warn("UpdateController:performAppUpdateProcedure: Updates might be handled by Expo now, but please verify before deleting UpdateController.")
+    /*if (hasPerformedUpdateCheck) return // end method as already executed
 
     const appVersion: string | null = await getLocalItem(PACKAGE_VERSION_KEY)
 
@@ -33,5 +34,5 @@ export const performAppUpdateProcedure = async (): Promise<void> => {
         setLocalItem(PACKAGE_VERSION_KEY, buildVersion) // set for future updates
         logEvent(LogType.INFO, `${TAG}:main`, 'User has ran the app for the first time.')
     }
-    hasPerformedUpdateCheck = true
+    hasPerformedUpdateCheck = true*/
 }

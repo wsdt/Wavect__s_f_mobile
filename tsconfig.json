@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "target": "ES5",
     "paths": { "*": ["types/*"] },
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",

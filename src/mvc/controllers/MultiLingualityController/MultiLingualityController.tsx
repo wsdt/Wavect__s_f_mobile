@@ -1,10 +1,10 @@
+import * as Localization from 'expo-localization'
 import i18n from 'i18n-js'
 import memoize from 'lodash.memoize'
-import * as Localization from 'expo-localization'
-import TranslationBundle, { fallbackLanguagePack } from '../../../assets/translations/TranslationBundler'
-import { ControlFunctionType } from '../../../globalConfiguration/developerProtection/CustomControlFunctions'
-import { addCustomControlFunction } from '../../../globalConfiguration/developerProtection/developerProtection'
-import { I18nManager } from "react-native";
+import {I18nManager} from 'react-native'
+import TranslationBundle, {fallbackLanguagePack} from '../../../assets/translations/TranslationBundler'
+import {ControlFunctionType} from '../../../globalConfiguration/developerProtection/CustomControlFunctions'
+import {addCustomControlFunction} from '../../../globalConfiguration/developerProtection/developerProtection'
 
 /** Enhances performance seemingly (better than "translate" method from I18 or similar.
  * NOTE: This view is ONLY working in a view! If you need it somewhere else you have to provide it as parameter.
@@ -13,23 +13,16 @@ export let t = memoize((key, config = {}) => i18n.t(key, config), (key, config =
 
 /** Called when new configuration has to be set (e.g. when user changes language or similar during app execution or when app ist started) */
 export const setCurrentLanguageBundle = async () => {
-    // todo ask kevin
-    //const { languageTag, isRTL } = Localization.findBestAvailableLanguage(Object.keys(TranslationBundle)) || fallbackLanguagePack
-
     // clear translation cache (annotated with '?')
     if (t.cache.clear) t.cache.clear()
 
-    // update layout direction todo ask kevin
-    // I18nManager.forceRTL(isRTL)
+    // update layout direction
+    I18nManager.forceRTL(Localization.isRTL)
 
     // set i18n-js config
-     i18n.translations = TranslationBundle
-
-    if (Localization.locale  == 'de-AT' || Localization.locale == 'de-DE'){
-        i18n.locale = 'de'
-    }else{
-        i18n.locale = Localization.locale
-    }
+    i18n.translations = TranslationBundle
+    i18n.fallbacks = true // language fallback to other bundle when string not available
+    i18n.locale = Localization.locale.substr(0, 2) // e.g. de from de-AT
 }
 
 /** NOTE: Should be only used by developerProtection.ts (bc. of performance no usage in

@@ -1,8 +1,13 @@
-import * as SecureStore from 'expo-secure-store';
+import {ImagePickerResult} from 'expo-image-picker'
+import * as Permissions from 'expo-permissions'
+import * as SecureStore from 'expo-secure-store'
 import React from 'react'
 import {Alert, View} from 'react-native'
 import {withNavigation} from 'react-navigation'
 import {BACKEND_MOBILE_API} from '../../../../../globalConfiguration/globalConfig'
+import {
+    getPermissionAsync, pickImage, takeImage,
+} from '../../../../controllers/FilePickerController/FilePickerController'
 import {getEmailMarked, getLocalUserId} from '../../../../controllers/LocalStorageController/LocalStorageController'
 import {logEvent, LogType} from '../../../../controllers/LoggingController/LoggingController'
 import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
@@ -19,11 +24,6 @@ import styles from './ChallengeLayerBar.css'
 import {IChallengeLayerBarProps} from './ChallengeLayerBar.props'
 import {IChallengeLayerBarState} from './ChallengeLayerBar.state'
 import s from './ChallengeLayerBar.translations'
-import {
-    getPermissionAsync, pickImage, takeImage,
-} from "../../../../controllers/FilePickerController/FilePickerController";
-import {ImagePickerResult} from "expo-image-picker";
-import * as Permissions from 'expo-permissions'
 
 const TAG = 'ChallengeLayerBar'
 
@@ -44,7 +44,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
             <View style={styles.mainComponent}>
                 <View style={styles.bottomActionContainer}>
                     <View style={{padding: 10}}>
-                        <AppText style={styles.headline} font={FontType.HEAVY}>
+                        <AppText style={styles.headline} font={FontType.HEAVY} size={23}>
                             {headline}
                         </AppText>
                         <AppText style={styles.subline}>{subline}</AppText>
@@ -62,7 +62,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
                                 title={t(s.btn.finish)}
                                 btnType={MajorBtnType.PRIMARY}
                                 onLongPress={() => this.execBtnAccept()}
-                                //onPress={() => ToastAndroid.show(t(s.toast.onclick_btn_finish), ToastAndroid.SHORT)}
+                                // onPress={() => ToastAndroid.show(t(s.toast.onclick_btn_finish), ToastAndroid.SHORT)}
                                 isLoading={this.state.isLoadingChallengeSolved}
                             />
                         )}
@@ -117,7 +117,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         this.setState({isLoadingChallengeSolved: true})
 
         const userAbortedProcedure = () => {
-            Alert.alert("User aborted!")
+            Alert.alert('User aborted!')
             this.setState({
                 currChallengeSolved: false,
                 isLoadingChallengeSolved: false,
@@ -127,10 +127,10 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
         const openCameraGallery = () => {
             Alert.alert(
-                "Beweis es",
-                "Mach ein Foto oder Video!",
-                [{text: "Kamera öffnen", onPress: async () => shareChallengeSolved(await takeImage())},
-                    {text: "Galerie", onPress: async () => shareChallengeSolved(await pickImage())}],
+                'Beweis es',
+                'Mach ein Foto oder Video!',
+                [{text: 'Kamera öffnen', onPress: async () => shareChallengeSolved(await takeImage())},
+                    {text: 'Galerie', onPress: async () => shareChallengeSolved(await pickImage())}],
                 {
                     cancelable: false,
                 },
@@ -141,7 +141,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
         const shareChallengeSolved = async (result: ImagePickerResult) => {
             try {
                 // @ts-ignore (bug in the lib)
-                const response = await shareMedia(this.props.headline, this.props.sponsorName, result);
+                const response = await shareMedia(this.props.headline, this.props.sponsorName, result)
                 if (response) {
                     this.sendChallengeSolvedEmailToSponsor()
 
@@ -193,7 +193,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
     }
 
     private retrieveChallengeSolved = async () => {
-        let currChallengeSolved: boolean = false
+        const currChallengeSolved: boolean = false
         try {
             this.lastChallengeIdSolved = await SecureStore.getItemAsync(CHALLENGE_SOLVED_ID)
 
@@ -202,7 +202,7 @@ class ChallengeLayerBar extends React.PureComponent<IChallengeLayerBarProps, ICh
 
                 if (this.lastChallengeIdSolved === this.getCurrentChallengeSolvedId()) {
                     // current challenge already accepted
-                    //TODO currChallengeSolved = true  de-comment, if cache should affect the challenge status!
+                    // TODO currChallengeSolved = true  de-comment, if cache should affect the challenge status!
                 }
             }
 

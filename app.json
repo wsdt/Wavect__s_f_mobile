@@ -4,7 +4,6 @@
     "description": "Do sth. good and win prizes based on your interests!",
     "slug": "wavect",
     "privacy": "unlisted",
-    "sdkVersion": "36.0.0",
     "platforms": [
       "ios",
       "android",
