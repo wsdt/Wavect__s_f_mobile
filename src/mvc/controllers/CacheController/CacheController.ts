@@ -1,4 +1,4 @@
-import * as SecureStore from 'expo-secure-store';
+import * as SecureStore from 'expo-secure-store'
 import * as React from 'react'
 import {Cache} from 'react-native-cache'
 import {disableCache} from '../../../globalConfiguration/globalConfig'
@@ -152,26 +152,26 @@ export const cachedFetch = async (
     reload: boolean,
     fetchFunction: () => void,
 ) => {
-    // if user reloads
-    if (reload || disableCache) {
-        fetchFunction()
-        await setLocalItem(
-            CACHED_TIMESTAMP_EXPIRATION,
-            new Date().getTime().toString(),
-        )
-    } else {
-        const cachedData = await getCache(cacheKey)
-        if (cachedData && (await checkIfCacheValid())) {
-            component.setState(cachedData) // TODO: might cause problems in future if also non-cacheable state is in state (avoid overriding, ...)
-            loadingContext.setLoading(LoadingStatus.DONE)
-        } else {
+        // if user reloads
+        if (reload || disableCache) {
             fetchFunction()
             await setLocalItem(
                 CACHED_TIMESTAMP_EXPIRATION,
-                new Date().getMilliseconds().toString(),
+                new Date().getTime().toString(),
             )
+        } else {
+            const cachedData = await getCache(cacheKey)
+            if (cachedData && (await checkIfCacheValid())) {
+                component.setState(cachedData) // TODO: might cause problems in future if also non-cacheable state is in state (avoid overriding, ...)
+                loadingContext.setLoading(LoadingStatus.DONE)
+            } else {
+                fetchFunction()
+                await setLocalItem(
+                    CACHED_TIMESTAMP_EXPIRATION,
+                    new Date().getMilliseconds().toString(),
+                )
+            }
         }
-    }
 }
 
 const checkIfCacheValid = async (): Promise<boolean> => {

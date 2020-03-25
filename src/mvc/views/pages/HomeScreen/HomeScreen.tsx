@@ -1,15 +1,15 @@
 import * as React from 'react'
-import { View } from 'react-native'
-import { BACKEND_MOBILE_API } from '../../../../globalConfiguration/globalConfig'
-import {cachedFetch, deleteCache, putCache} from '../../../controllers/CacheController/CacheController'
-import { CACHE_KEY_CHALLENGE } from '../../../controllers/CacheController/CacheController.constants'
-import { setCurrentScreen } from '../../../controllers/LoggingController/LoggingController'
-import { ApiResponse } from '../../../models/ApiResponse'
-import { Challenge } from '../../../models/Challenge'
+import {View} from 'react-native'
+import {BACKEND_MOBILE_API} from '../../../../globalConfiguration/globalConfig'
+import {cachedFetch, deleteCache} from '../../../controllers/CacheController/CacheController'
+import {CACHE_KEY_CHALLENGE} from '../../../controllers/CacheController/CacheController.constants'
+import {logEvent, LogType, setCurrentScreen} from '../../../controllers/LoggingController/LoggingController'
+import {ApiResponse} from '../../../models/ApiResponse'
+import {Challenge} from '../../../models/Challenge'
 import ChallengeFullpage from '../../components/classbased/ChallengeFullpage/ChallengeFullpage'
-import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../components/system/HOCs/LoadingHoc'
-import { BaseScreen } from '../BaseScreen/BaseScreen'
-import { IHomeScreenState } from './HomeScreen.state'
+import {ILoadingContext, LoadingHoc, LoadingStatus} from '../../components/system/HOCs/LoadingHoc'
+import {BaseScreen} from '../BaseScreen/BaseScreen'
+import {IHomeScreenState} from './HomeScreen.state'
 
 export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
     public state: IHomeScreenState = {
@@ -48,31 +48,35 @@ export class HomeScreen extends React.PureComponent<any, IHomeScreenState> {
         return null
     }
 
-    private fetchChallenge = (reload: boolean, cb?: () => void) => {
-        cachedFetch(this, CACHE_KEY_CHALLENGE, this.loadingContext, reload, async () => {
-            try {
-                const data: ApiResponse = await (await fetch(`${BACKEND_MOBILE_API}/challenge/current`, {
-                    signal: this.abortController.signal,
-                })).json()
+    private fetchChallenge = async (reload: boolean, cb?: () => void) => {
+        try {
+            await cachedFetch(this, CACHE_KEY_CHALLENGE, this.loadingContext, reload, async () => {
+                try {
+                    const data: ApiResponse = await (await fetch(`${BACKEND_MOBILE_API}/challenge/current`, {
+                        signal: this.abortController.signal,
+                    })).json()
 
-                this.setState({ challenge: data.res as Challenge })
-                if (this.state.challenge) {
-                    // putCache(CACHE_KEY_CHALLENGE, { challenge: data.res as Challenge })
-                    this.loadingContext.setLoading(LoadingStatus.DONE)
-                } else {
-                    this.loadingContext.setLoading(LoadingStatus.NOT_AVAILABLE)
+                    this.setState({challenge: data.res as Challenge})
+                    if (this.state.challenge) {
+                        // putCache(CACHE_KEY_CHALLENGE, { challenge: data.res as Challenge })
+                        this.loadingContext.setLoading(LoadingStatus.DONE)
+                    } else {
+                        this.loadingContext.setLoading(LoadingStatus.NOT_AVAILABLE)
+                    }
+                    if (cb) {
+                        cb()
+                    }
+                } catch (e) {
+                    console.error(e)
+                    this.loadingContext.setLoading(LoadingStatus.ERROR)
+                    if (cb) {
+                        cb()
+                    }
                 }
-                if (cb) {
-                    cb()
-                }
-            } catch (e) {
-                console.error(e)
-                this.loadingContext.setLoading(LoadingStatus.ERROR)
-                if (cb) {
-                    cb()
-                }
-            }
-        })
+            })
+        } catch (e) {
+            logEvent(LogType.ERROR, 'HomeScreen:fetchChallenge','Error during cachedFetch occurred.', e)
+        }
     }
 }
 

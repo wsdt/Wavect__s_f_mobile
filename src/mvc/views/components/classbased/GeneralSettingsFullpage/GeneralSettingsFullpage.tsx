@@ -12,7 +12,7 @@ import { routes } from '../../system/TabRouter/GeneralSettingsScreenRouter/Gener
 import styles from './GeneralSettingsFullpage.css'
 
 export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
-    // proper condition of data, todo change the frontend!
+
     private listItems = [
         {
             name: t(_schema.settingsscreen.generalsettings.list.personal_settings),
@@ -24,7 +24,7 @@ export class GeneralSettingsFullpage extends React.PureComponent<any, any> {
         },
         {
             name: t(_schema.settingsscreen.generalsettings.list.privacy_policy),
-            action: () => Linking.openURL('https:/wavect.io/privacy-policy/'),
+            action: () => Linking.openURL('https://wavect.io/data-privacy'),
         },
         /* TODO: Create AGB {
             name: t(_schema.settingsscreen.generalsettings.list.agb),

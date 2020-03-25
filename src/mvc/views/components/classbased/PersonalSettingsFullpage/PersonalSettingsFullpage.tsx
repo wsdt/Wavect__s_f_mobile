@@ -1,20 +1,20 @@
 import React from 'react'
-import { ScrollView, View } from 'react-native'
-import { Button, Card, CheckBox, Icon, Input } from 'react-native-elements'
-import { withMappedNavigationParams } from 'react-navigation-props-mapper'
-import { BACKEND_MOBILE_API } from '../../../../../globalConfiguration/globalConfig'
-import { cachedFetch, putCache } from '../../../../controllers/CacheController/CacheController'
-import { CACHE_KEY_SETTINGS } from '../../../../controllers/CacheController/CacheController.constants'
-import { getLocalUserId, markEmailAsCreated } from '../../../../controllers/LocalStorageController/LocalStorageController'
-import { logEvent, LogType } from '../../../../controllers/LoggingController/LoggingController'
-import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
-import { noInternetAvailable } from '../../../../controllers/WarningsController/WarningsController'
+import {ScrollView, View} from 'react-native'
+import {Button, Card, CheckBox, Icon, Input} from 'react-native-elements'
+import {withMappedNavigationParams} from 'react-navigation-props-mapper'
+import {BACKEND_MOBILE_API} from '../../../../../globalConfiguration/globalConfig'
+import {cachedFetch, putCache} from '../../../../controllers/CacheController/CacheController'
+import {CACHE_KEY_SETTINGS} from '../../../../controllers/CacheController/CacheController.constants'
+import {getLocalUserId, markEmailAsCreated} from '../../../../controllers/LocalStorageController/LocalStorageController'
+import {logEvent, LogType} from '../../../../controllers/LoggingController/LoggingController'
+import {t} from '../../../../controllers/MultiLingualityController/MultiLingualityController'
+import {noInternetAvailable} from '../../../../controllers/WarningsController/WarningsController'
 import globalStyles from '../../../GlobalStyles.css'
-import { AppText } from '../../functional/AppText/AppText'
-import { FontType } from '../../functional/AppText/AppText.enum'
-import { ILoadingContext, LoadingHoc, LoadingStatus } from '../../system/HOCs/LoadingHoc'
+import {AppText} from '../../functional/AppText/AppText'
+import {FontType} from '../../functional/AppText/AppText.enum'
+import {ILoadingContext, LoadingHoc, LoadingStatus} from '../../system/HOCs/LoadingHoc'
 import styles from './PersonalSettingsFullpage.css'
-import { ISettingsFullpageState } from './PersonalSettingsFullpage.state'
+import {ISettingsFullpageState} from './PersonalSettingsFullpage.state'
 import s from './PersonalSettingsFullpage.translations'
 
 const TAG: string = 'PersonalSettingsFullpage'
@@ -106,41 +106,44 @@ export class PersonalSettingsFullpage extends React.PureComponent<any, ISettings
         return this.userId
     }
 
-    // Not recommended, use superior cache implementation please
-    private getUserSettings = (reload: boolean, cb?: () => void) => {
-        cachedFetch(this, CACHE_KEY_SETTINGS, this.loadingContext, reload, async () => {
-            fetch(`${PersonalSettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, { signal: this.abortController.signal })
-                .then(res => res.json())
-                .then(data => {
-                    if (data.res) {
-                        const apiRes = {
-                            hasAcceptedDataPrivacy: data.res.hasAcceptedDataPrivacy,
-                            email: data.res.email,
-                            validEmail: true,
+    private getUserSettings = async (reload: boolean, cb?: () => void) => {
+        try {
+            await cachedFetch(this, CACHE_KEY_SETTINGS, this.loadingContext, reload, async () => {
+                fetch(`${PersonalSettingsFullpage.API_ENDPOINT}/${await this.getUserId()}`, {signal: this.abortController.signal})
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.res) {
+                            const apiRes = {
+                                hasAcceptedDataPrivacy: data.res.hasAcceptedDataPrivacy,
+                                email: data.res.email,
+                                validEmail: true,
+                            }
+                            this.setState(apiRes)
+                            putCache(CACHE_KEY_SETTINGS, apiRes)
+
+                            logEvent(LogType.LOG, `${TAG}:getUserSettings`, 'Received user settings')
+                        } else {
+                            logEvent(LogType.LOG, `${TAG}:getUserSettings`, 'No user settings previously saved')
                         }
-                        this.setState(apiRes)
-                        putCache(CACHE_KEY_SETTINGS, apiRes)
 
-                        logEvent(LogType.LOG, `${TAG}:getUserSettings`, 'Received user settings')
-                    } else {
-                        logEvent(LogType.LOG, `${TAG}:getUserSettings`, 'No user settings previously saved')
-                    }
+                        // Do NOT set LoadingStatus.NOT_AVAILABLE as Settings might be null
+                        this.loadingContext.setLoading(LoadingStatus.DONE)
 
-                    // Do NOT set LoadingStatus.NOT_AVAILABLE as Settings might be null
-                    this.loadingContext.setLoading(LoadingStatus.DONE)
-
-                    if (cb) {
-                        cb()
-                    }
-                })
-                .catch(e => {
-                    console.error(e)
-                    this.loadingContext.setLoading(LoadingStatus.ERROR)
-                    if (cb) {
-                        cb()
-                    }
-                })
-        })
+                        if (cb) {
+                            cb()
+                        }
+                    })
+                    .catch(e => {
+                        console.error(e)
+                        this.loadingContext.setLoading(LoadingStatus.ERROR)
+                        if (cb) {
+                            cb()
+                        }
+                    })
+            })
+        } catch (e) {
+            logEvent(LogType.ERROR, 'PersonalSettingsFullpage:getUserSettings', 'Error during cachedFetch occurred.', e)
+        }
     }
 
     private postUserSettings = () => {
