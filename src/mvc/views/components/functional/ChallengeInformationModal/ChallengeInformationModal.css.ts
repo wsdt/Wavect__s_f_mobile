@@ -7,12 +7,24 @@ const styles = StyleSheet.create({
         padding: 5,
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: '#fff',
+        width: '92%',
+        borderColor: '#000',
+        marginTop: 70,
+        alignSelf: 'center',
+
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+
+        elevation: 6,
     },
     centeredInnerContent: {
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: -40,
     },
     centeredText: {
         textAlign: 'center',
@@ -38,8 +50,6 @@ const styles = StyleSheet.create({
     closeIcon: {
         justifyContent: 'flex-end',
         alignItems: 'flex-end',
-        padding: 0,
-        marginTop: 5,
     },
 })
 
