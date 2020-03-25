@@ -17,7 +17,7 @@ export const ChallengeInformationModal: React.FunctionComponent<any> = (props: I
             transparent={true}
             hardwareAccelerated={true}
             visible={isVisible}>
-            <View style={styles.innerContent}>
+            <View style={[styles.innerContent, globalStyles.shadow]}>
                 <View style={styles.closeIcon}>
                     <Image
                         source={{

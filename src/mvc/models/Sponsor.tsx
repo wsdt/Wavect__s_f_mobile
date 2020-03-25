@@ -4,6 +4,7 @@ export class Sponsor {
     private _id!: string
     private _name!: string
     private _logoUri!: ImageURISource
+    private _coverUri!: ImageURISource
     private _shortDescr!: string
     private _website!: string
     private _email!: string
@@ -18,6 +19,7 @@ export class Sponsor {
         id: string,
         name: string,
         logoUri: ImageURISource,
+        coverUri: ImageURISource,
         shortDescr: string,
         website: string,
         email: string,
@@ -31,6 +33,7 @@ export class Sponsor {
         this.id = id
         this.name = name
         this.logoUri = logoUri
+        this.coverUri = coverUri
         this.shortDescr = shortDescr
         this.website = website
         this.email = email
@@ -40,6 +43,14 @@ export class Sponsor {
         this.instagram = instagram
         this.facebook = facebook
         this.linkedin = linkedin
+    }
+
+    get coverUri(): ImageURISource {
+        return this._coverUri
+    }
+
+    set coverUri(value: ImageURISource) {
+        this._coverUri = value
     }
 
     set id(sponsorId: string) {

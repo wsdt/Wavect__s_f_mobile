@@ -11,6 +11,17 @@ const globalStyles = StyleSheet.create({
         width: '100%', // width: FULL_WIDTH,
         height: '100%',
     },
+    shadow: {
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+
+        elevation: 6,
+    },
     absoluteCenter: {
         position: 'absolute',
         left: 0,

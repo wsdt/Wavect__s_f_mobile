@@ -1,5 +1,5 @@
 import React from 'react'
-import { TouchableOpacity, View, Image } from 'react-native'
+import { Image, TouchableOpacity, View } from 'react-native'
 import { Text, Tooltip } from 'react-native-elements'
 import { t } from '../../../../controllers/MultiLingualityController/MultiLingualityController'
 import { CHALLENGE_CATEGORIES } from '../../../../models/ChallengeCategory'
@@ -15,12 +15,11 @@ export const ChallengeTypeIcon: React.FunctionComponent<IChallengeTypeIconProps>
         <TouchableOpacity
             style={styles.touchableContainer}
             accessible={true}
-            accessibilityLabel="Challenge Typ"
-            accessibilityRole="imagebutton"
-            accessibilityHint="Kategorie bzw. Fokus der Herausforderung"
-        >
+            accessibilityLabel='Challenge Typ'
+            accessibilityRole='imagebutton'
+            accessibilityHint='Kategorie bzw. Fokus der Herausforderung'>
             <Tooltip popover={<Text style={globalStyles.tooltipText}>{category.descr}</Text>} backgroundColor={currColor} height={105}>
-                <View style={[styles.imageContainer, { backgroundColor: currColor }]}>
+                <View style={[styles.imageContainer, { backgroundColor: currColor }, globalStyles.shadow]}>
                     <Image
                         source={{  uri: category.icon }}
                         style={styles.image}

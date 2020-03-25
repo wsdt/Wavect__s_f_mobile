@@ -23,16 +23,13 @@ const getParagraph = (header: string, text: string) => {
 }
 
 const SponsorFullpage: React.FunctionComponent<SponsorFullpageProps> = props => {
-    const { shortDescr, name, logoUri, misc, aboutUs, email, website, youtube, facebook, linkedin, instagram } = props.sponsor
+    const { shortDescr, name, logoUri, misc, aboutUs, email, website, youtube, facebook, linkedin, instagram, coverUri } = props.sponsor
 
     return (
         <View>
             <ImageBackground
                     style={[styles.topBar, styles.shadow]}
-                    source={{
-                        uri: "https://images.pexels.com/photos/3681653/pexels-photo-3681653.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-                    }}
-                >
+                    source={coverUri}>
                     <View style={styles.socialMedia}>
                         {linkedin ? <TouchableIcon icon={'linkedin'} onPress={() => Linking.openURL(linkedin)} containerStyle={styles.icon} /> : null}
                         {facebook ? <TouchableIcon icon={'facebook'} onPress={() => Linking.openURL(facebook)} containerStyle={styles.icon} /> : null}
