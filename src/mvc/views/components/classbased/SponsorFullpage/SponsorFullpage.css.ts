@@ -24,8 +24,6 @@ export const styles = StyleSheet.create({
         width: 100,
         height: 100,
         backgroundColor: 'transparent',
-        borderWidth: 1,
-        borderColor: '#ccc',
         borderRadius: 500,
         overflow: 'hidden',
     },
@@ -33,18 +31,6 @@ export const styles = StyleSheet.create({
         top: 0,
         position: 'absolute',
         margin: 10,
-    },
-    shadow: {
-        // TODO: Not working yet
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-
-        elevation: 3,
     },
     centered: {
         flex: 1,
