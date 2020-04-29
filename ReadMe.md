@@ -1,4 +1,12 @@
-# Mobile Frontend
+# Mobile Frontend [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://bitbucket.org/lbesson/ansi-colors) [![GitHub license](https://img.shields.io/github/license/wsdt/Wavect__s_f_mobile/.svg)](https://github.com/wsdt/Wavect__s_f_mobile//blob/master/LICENSE) 
+[![Generic badge](https://img.shields.io/badge/ReactNative-Made%20with%20React%20Native-green)](https://reactnative.dev/)
+
+Core app made with React Native. 
+
+**Don't be confused by browsing our commit-history**
+Our requirements have changed drastically over time, thus we ejected our Expo app to pure React-Native and moved back to a non-ejected Expo-App in 2020. 
+
+# How tu use?
 Please use **Yarn** instead of **Npm** as Npm might cause problems in combination with Expo. 
 
 ## How to run?
