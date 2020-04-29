@@ -2,7 +2,7 @@
 
 Core app made with React Native. 
 
-**Don't be confused by browsing our commit-history**
+**Don't be confused by browsing our commit-history:** 
 Our requirements have changed drastically over time, thus we ejected our Expo app to pure React-Native and moved back to a non-ejected Expo-App in 2020. 
 
 # How tu use?
