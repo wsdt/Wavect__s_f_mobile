@@ -1,5 +1,4 @@
-# Mobile Frontend [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://bitbucket.org/lbesson/ansi-colors) [![GitHub license](https://img.shields.io/github/license/wsdt/Wavect__s_f_mobile/.svg)](https://github.com/wsdt/Wavect__s_f_mobile//blob/master/LICENSE) 
-[![Generic badge](https://img.shields.io/badge/ReactNative-Made%20with%20React%20Native-green)](https://reactnative.dev/)
+# Mobile Frontend [![Maintenance](https://img.shields.io/badge/Maintained%3F-no-red.svg)](https://bitbucket.org/lbesson/ansi-colors) [![GitHub license](https://img.shields.io/github/license/wsdt/Wavect__s_f_mobile.svg)](https://github.com/wsdt/Wavect__s_f_mobile//blob/master/LICENSE) [![Generic badge](https://img.shields.io/badge/ReactNative-Made%20with%20React%20Native-green)](https://reactnative.dev/)
 
 Core app made with React Native. 
 
