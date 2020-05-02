@@ -4,7 +4,7 @@ Core app made with React Native & Expo.
 
 Download on **[Play-Store](https://play.google.com/apps/testing/com.wavect)**.
 
-  <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_1.webp?raw=true" width="400" /> <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_2.webp?raw=true" width="200" />
+  <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_1.webp?raw=true" width="400" />   <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_2.webp?raw=true" width="300" />
 
 **Don't be confused by browsing our commit-history:** 
 Our requirements have changed drastically over time, thus we ejected our Expo app to pure React-Native and moved back to a non-ejected Expo-App in 2020. 
