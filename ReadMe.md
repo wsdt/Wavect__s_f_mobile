@@ -2,6 +2,9 @@
 
 Core app made with React Native & Expo. 
 
+<img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_Alpha.jpg?raw=true" width="350" />
+<small style="text-align:center;">Current View</small>
+
 Download on **[Play-Store](https://play.google.com/apps/testing/com.wavect)**.
 
   <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_1.webp?raw=true" width="250" />   <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_2.webp?raw=true" width="250" />
