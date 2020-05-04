@@ -5,6 +5,13 @@ Download on **[Play-Store](https://play.google.com/apps/testing/com.wavect)**.
 
 <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_Alpha.jpg?raw=true" width="270" />   <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_1.webp?raw=true" width="250" />   <img src="https://github.com/wsdt/Wavect__s_f_mobile/blob/master/Docs/Screenshot_2.webp?raw=true" width="250" />
 
+## Core-Features/Milestones
+* Caching of Api-Calls and fetched images
+* Encrypted local storage
+* Minimal-Awesome-Prototype (MAP): All functionalities for low-priced Corporate-Social-Responsibility (e.g. Sponsor-Page, User communication, ...) according to our design guidelines (Corporate-Identity: All grayscale until user-interaction)
+* UX field-tested (loading screens/indicators, transitions/animations, workflows, ...)
+
+
 **Don't be confused by browsing our commit-history:** 
 Our requirements have changed drastically over time, thus we ejected our Expo app to pure React-Native and moved back to a non-ejected Expo-App in 2020. 
 
