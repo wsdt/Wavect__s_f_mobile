@@ -1,8 +1,10 @@
 {
   "urlRandomness": "45-zbk",
-  "hostType": "lan",
+  "hostType": "tunnel",
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "https": false
+  "https": false,
+  "scheme": null,
+  "devClient": false
 }

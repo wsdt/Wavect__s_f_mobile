@@ -1,9 +1,10 @@
 {
-  "packagerPort": 19001,
-  "packagerPid": 34580,
-  "expoServerNgrokUrl": "https://45-zbk.wsdt.s-f-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.45-zbk.wsdt.s-f-mobile.exp.direct",
-  "ngrokPid": 20328,
+  "packagerPort": 19000,
+  "packagerPid": null,
+  "expoServerNgrokUrl": "https://45-zbk.anonymous.s-f-mobile.exp.direct",
+  "packagerNgrokUrl": "https://packager.45-zbk.anonymous.s-f-mobile.exp.direct",
+  "ngrokPid": 58852,
   "devToolsPort": 19002,
-  "expoServerPort": 19000
+  "expoServerPort": 19000,
+  "webpackServerPort": null
 }

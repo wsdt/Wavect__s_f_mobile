@@ -7,7 +7,7 @@ import { logEvent, LogType } from './src/mvc/controllers/LoggingController/Loggi
 import { setCurrentLanguageBundle } from './src/mvc/controllers/MultiLingualityController/MultiLingualityController'
 import Router from './src/mvc/views/components/system/TabRouter/TabRouter'
 import {fetchFonts} from "./src/mvc/controllers/FontController/FontController";
-import AppLoading from "expo/build/launch/AppLoading";
+import AppLoading from 'expo-app-loading';
 
 
 const TAG = 'App'
